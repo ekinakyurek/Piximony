@@ -1,0 +1,72 @@
+
+    <div class="modal">
+
+        <!-- Modal header bar -->
+        <ion-header-bar class="bar-secondary">
+            <h1 class="title">Update Question</h1>
+            <button class="button button-clear button-positive" ng-click="closeUpdateQuestion()">Cancel</button>
+        </ion-header-bar>
+
+        <!-- Modal content area -->
+        <ion-content>
+        <a ng-click="updateMedia(question.id)">
+            <img ng-src="{{ question.img }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
+        </a>
+            <form ng-submit="updateQuestion(question)">
+                <div class="list">
+                    <label class="item item-input">
+                        <input type="text" placeholder="Your Question" ng-model="question.title">
+                    </label>
+                    <div class="item item-divider">
+                        Options
+                    </div>
+                    <div class="row">
+                        <div class="col-5 col-center">                            
+                            <input type="radio" name="RightAnswer"  value="A" ng-model="question.answer">                            
+                        </div>
+                        <div class="col">
+                            <label class="item item-input">
+                                <input type="text" placeholder="Option A" ng-model="question.options.A">
+                            </label>
+                        </div>                        
+                    </div>
+                    <div class="row">
+                        <div class="col-5 col-center">                            
+                            <input type="radio" name="RightAnswer"  value="B" ng-model="question.answer">                            
+                        </div>
+                        <div class="col">
+                            <label class="item item-input">
+                                <input type="text" placeholder="Option B" ng-model="question.options.B">
+                            </label>
+                        </div>                        
+                    </div>
+                    <div class="row">
+                        <div class="col-5 col-center">                    
+                            <input type="radio" name="RightAnswer" value="C" ng-model="question.answer">                            
+                        </div>
+                        <div class="col">
+                            <label class="item item-input">
+                                <input type="text" placeholder="Option C" ng-model="question.options.C">
+                            </label>
+                        </div>                        
+                    </div>    
+                    <div class="row">
+                        <div class="col-5 col-center">                        
+                            <input type="radio" name="RightAnswer" value="D" ng-model="question.answer">                            
+                        </div>
+                        <div class="col">
+                            <label class="item item-input">
+                                <input type="text" placeholder="Option D" ng-model="question.options.D">
+                            </label>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="padding">
+                    <button type="submit" class="button button-block button-positive">Update Question</button>
+                </div>
+            </form>
+
+        </ion-content>
+
+    </div>
+

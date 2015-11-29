@@ -1,0 +1,26 @@
+dependencies: \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/Piximony/Plugins/cordova-plugin-file/CDVFile.m \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/CDV.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/CDVAvailability.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/CDVAvailabilityDeprecated.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/CDVPlugin.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/CDVPluginResult.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegate.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/CDVInvokedUrlCommand.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/CDVViewController.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/CDVCommandQueue.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/CDVWhitelist.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/CDVScreenOrientationDelegate.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/CDVURLProtocol.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/CDVDebug.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/CDVLocalStorage.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/CDVTimer.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/NSArray+Comparisons.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/NSData+Base64.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/NSDictionary+Extensions.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/UIDevice+Extensions.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/build/emulator/include/Cordova/CDVJSON.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/Piximony/Plugins/cordova-plugin-file/CDVFile.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/Piximony/Plugins/cordova-plugin-file/CDVLocalFilesystem.h \
+  /Users/volkanbal/npm-global/Piximony/platforms/ios/Piximony/Plugins/cordova-plugin-file/CDVAssetLibraryFilesystem.h

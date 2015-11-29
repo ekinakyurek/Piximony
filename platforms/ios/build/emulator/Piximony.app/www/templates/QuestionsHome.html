@@ -1,0 +1,29 @@
+ <ion-pane>
+        <ion-content>
+            <div class="list">
+                <div class="item item-divider" style="text-align: center">
+                    Questions in <b>{{ projectName }}</b>
+                </div>
+                
+                <a ng-repeat="question in questions | filter: {projectId: projectID}"
+                   ng-click="showQuestionDetails(question.id)"
+                   class="item item-thumbnail-left">
+                    
+                    <img ng-src="{{ question.img }}">
+                    <h2>{{ ($index + 1) + ". " + question.title }}</h2>
+                </a>
+
+            </div>
+
+        </ion-content>
+
+        <div class="bar bar-footer">
+
+            <button class="button button-icon ion-home" ng-click="home()"></button>
+
+            <button class="button button-icon ion-person"></button>
+
+            <button class="button button-icon ion-plus" ng-click="addMedia()"></button>
+        </div>
+
+</ion-pane>

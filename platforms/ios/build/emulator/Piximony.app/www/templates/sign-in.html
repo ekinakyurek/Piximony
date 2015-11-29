@@ -1,0 +1,38 @@
+<ion-view view-title="Piximony">
+    <ion-content>
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label">Username</span>
+                <input type="text" ng-model="user.username">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Password</span>
+                <input type="password" ng-model="user.password">
+            </label>
+            <label class="item item-input" ng-show= isVisible >
+                <span class="input-label" > Re-password</span>
+                <input type="password" ng-model="user.repassword" >
+            </label>
+            <label  class="item item-input" ng-show= isVisible >
+                <span class="input-label">E-mail</span>
+                <input type="text" ng-model="user.email">
+            </label>
+        </div>
+    
+        <div class="padding">
+            <button class="button button-block button-positive" ng-click="signIn(user)" ng-show= !isVisible  >
+                Sign-In
+            </button>
+            <button class="button button-block button-positive" ng-click= "signUP(user)">
+               {{buttonText}}
+            </button>
+            <button class="button button-block button-positive" ng-click= "toggle()" ng-show= isVisible>
+               Cancel
+            </button>
+            <p class="text-center">
+            <a href="#/forgot-password">Forgot password</a>
+            <a href="#/new-account">Create an account</a>
+            </p>
+        </div>
+    </ion-content>
+</ion-view>

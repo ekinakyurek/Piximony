@@ -1,0 +1,73 @@
+
+    <div class="modal">
+
+        <!-- Modal header bar -->
+        <ion-header-bar class="bar-secondary">
+            <h1 class="title">New Question</h1>
+            <button class="button button-clear button-positive" ng-click="closeNewQuestion(questionTmp)">Cancel</button>
+        </ion-header-bar>
+
+        <!-- Modal content area -->
+        <ion-content>
+
+
+        <img ng-src="{{ questionImg }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
+
+            <form ng-submit="createQuestion(questionTmp)">
+                <div class="list">
+                    <label class="item item-input">
+                        <input type="text" placeholder="Your Question" ng-model="questionTmp.title">
+                    </label>
+                    <div class="item item-divider">
+                        Options
+                    </div>
+                    <div class="row">
+                        <div class="col-5 col-center">                            
+                            <input type="radio" name="RightAnswer"  value="A" ng-model="questionTmp.answer">                            
+                        </div>
+                        <div class="col">
+                            <label class="item item-input">
+                                <input type="text" placeholder="Option A" ng-model="questionTmp.options[0]">
+                            </label>
+                        </div>                        
+                    </div>
+                    <div class="row">
+                        <div class="col-5 col-center">                            
+                            <input type="radio" name="RightAnswer"  value="B" ng-model="questionTmp.answer">                            
+                        </div>
+                        <div class="col">
+                            <label class="item item-input">
+                                <input type="text" placeholder="Option B" ng-model="questionTmp.options[1]">
+                            </label>
+                        </div>                        
+                    </div>
+                    <div class="row">
+                        <div class="col-5 col-center">                    
+                            <input type="radio" name="RightAnswer" value="C" ng-model="questionTmp.answer">                            
+                        </div>
+                        <div class="col">
+                            <label class="item item-input">
+                                <input type="text" placeholder="Option C" ng-model="questionTmp.options[2]">
+                            </label>
+                        </div>                        
+                    </div>    
+                    <div class="row">
+                        <div class="col-5 col-center">                        
+                            <input type="radio" name="RightAnswer" value="D" ng-model="questionTmp.answer">                            
+                        </div>
+                        <div class="col">
+                            <label class="item item-input">
+                                <input type="text" placeholder="Option D" ng-model="questionTmp.options[3]">
+                            </label>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="padding">
+                    <button type="submit" class="button button-block button-positive">Create Question</button>
+                </div>
+            </form>
+
+        </ion-content>
+
+    </div>
+
