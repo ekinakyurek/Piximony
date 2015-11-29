@@ -1,0 +1,43 @@
+
+    <div class="modal">
+
+        <!-- Modal header bar -->
+        <ion-header-bar class="bar-secondary">
+            <h1 class="title">Save Answer</h1>
+            <button class="button button-clear button-positive" ng-click="closeSaveAnswer()">Cancel</button>
+        </ion-header-bar>
+
+        <!-- Modal content area -->
+        <ion-content>
+
+            <form ng-submit="saveAnswer(question)">
+                <div class="list">
+                    <label class="item item-input">
+                        <label title="{{question.title}}">
+                    </label>
+                    <div class="item item-divider">
+                        Options
+                    </div>
+                    <label class="item item-radio">
+                        <input type="radio" name="options" ng-model="question.optionsA">
+                    </label>
+                    <label class="item item-radio">
+                        <input type="radio" name="options" ng-model="question.optionsB">
+                    </label>
+                    <label class="item item-radio">
+                        <input type="radio" name="options" ng-model="question.optionsC">
+                    </label>
+                    <label class="item item-radio">
+                        <input type="radio" name="options" ng-model="question.optionsD">
+                    </label>
+
+                </div>
+                <div class="padding">
+                    <button type="submit" class="button button-block button-positive">Save Answer</button>
+                </div>
+            </form>
+
+        </ion-content>
+
+    </div>
+
