@@ -1,6 +1,6 @@
 angular.module('Piximony')
 
-.factory('FileService', function() {
+.factory('FileService', function($rootScope) {
 
   var images;
   var questions;
@@ -21,84 +21,109 @@ angular.module('Piximony')
 
 
   function getImages() {
-    console.log(">> FileService::getImages()");
-     var img = window.localStorage.getItem(IMAGE_STORAGE_KEY);
-    
+      console.log(">> FileService::getImages()");
+      
+      var img = window.localStorage.getItem(IMAGE_STORAGE_KEY);
+      if (img) {
+             images = JSON.parse(img);
+      }else {
+              images = [];
+      }    
+      
       var query = new Parse.Query(pImages);
       query.equalTo("user_id", userObjectId);
       query.first({
             success: function(object) {
-                    img = object.images;
+                    img = object.get("images");
+                    if (img) {
+                        images = JSON.parse(img);
+                        $rootScope.broadcast('iQueryCompleted');
+                    }
                                       },
             error: function(error) {
                 alert("Error: " + error.code + " " + error.message);
                 }
-          });
-          
-    if (img) {
-      images = JSON.parse(img);
-    }
-    else {
-      images = [];
-    }
-    console.log("<< FileService::getImages() images: (" + images + ")" );
-    return images;
+      });
+      console.log("<< FileService::getImages() images: (" + images + ")" );
+      
+      return images;
   };
  
-  function getQuestions() {
-    console.log(">> FileService::getQuestions()");
-    var qst = window.localStorage.getItem(QUESTION_STORAGE_KEY);
-      var query = new Parse.Query(pQuestions);
-      query.equalTo("user_id", userObjectId);
-      query.first({
+  function getQuestions() {   
+     console.log(">> FileService::getQuestions()");
+     
+     var qst = window.localStorage.getItem(QUESTION_STORAGE_KEY);
+      
+     if (qst) {
+      questions = JSON.parse(qst);
+     }else {
+      questions = [];
+     }
+      
+     var query = new Parse.Query(pQuestions);
+     query.equalTo("user_id", userObjectId);
+     query.first({
             success: function(object) {
-                    qst=object.questions;
+                    qst=object.get("questions");
+                    if (qst) {
+                      questions = JSON.parse(qst);
+                      $rootScope.$broadcast('qQueryCompleted'); 
+                      console.log('QueryCompleted');
+                    }
                                       },
             error: function(error) {
                 alert("Error: " + error.code + " " + error.message);
                 }
                 });
-          
-    if (qst) {
-      questions = JSON.parse(qst);
-    }
-    else {
-      questions = [];
-    }
+      
     console.log("<< FileService::getQuestions() questions: (" + questions + ")" );
     return questions;
   };
   
   function getProjects() {
-    console.log(">> FileService::getProjects()");
-    var prj = window.localStorage.getItem(PROJECT_STORAGE_KEY);
-      var query = new Parse.Query(pProjects);
-      query.equalTo("user_id", userObjectId);
-      query.first({
-            success: function(object) {
-                    img=object.projects;
-                                      },
-            error: function(error) {
-                alert("Error: " + error.code + " " + error.message);
-                }
-                });
-          
-    if (prj) {
-      projects = JSON.parse(prj);
+      console.log(">> FileService::getProjects()");
+      var prj = window.localStorage.getItem(PROJECT_STORAGE_KEY);   
+      
+      if (prj) {
+          projects = JSON.parse(prj);
+      }else {
+          projects = [];   
+      }
+
+      console.log("<< FileService::getProjects() projects: (" + projects + ")" );
+             
+      var query = new Parse.Query(pProjects);   
+      query.equalTo("user_id", userObjectId); 
+      
+      query.first().then(function(obj) {
+                               prj= obj.get("projects");
+                               
+                               if (prj) {
+                                projects = JSON.parse(prj);
+                                $rootScope.$broadcast('pQueryCompleted'); 
+                               }
+                            }, function() {
+                                console.log("error");
+                            });
+      return projects;
+    };
+    
+    function returnProjects(){
+       return projects; 
     }
-    else {
-      projects = [];
+    function returnImages(){
+       return images; 
     }
-    console.log("<< FileService::getProjects() projects: (" + projects + ")" );
-    return projects;
-  };
-  
+    function returnQuestions(){
+       return questions; 
+    }
+    
   function addImage(img) {
     console.log(">> FileService::addImage() img: " + img);
     images.push(img);
     console.log("** FileService::addImage() images: " + images);
     var jsonImages = JSON.stringify(images);
-    window.localStorage.setItem(IMAGE_STORAGE_KEY, JSON.stringify(images)); 
+    window.localStorage.setItem(IMAGE_STORAGE_KEY, JSON.stringify(images));   
     parseImages.save({images: jsonImages, user_id: userObjectId},
                     {
                         success: function(imageObject) {
@@ -138,7 +163,7 @@ angular.module('Piximony')
   function saveQuestions(questions) {
     console.log(">> FileService::saveQuestions() questions: " + questions);
     var jsonQuestions = JSON.stringify(questions);
-    window.localStorage.setItem(QUESTION_STORAGE_KEY, jsonQuestions);      
+    window.localStorage.setItem(QUESTION_STORAGE_KEY, jsonQuestions);   
     parseQuestions.save({questions: jsonQuestions, user_id:  userObjectId},
                         {
                         success: function(questionObject) {
@@ -158,6 +183,7 @@ angular.module('Piximony')
     console.log(">> FileService::saveProjects() projects: " + projects);
     var jsonProjects = JSON.stringify(projects);
     window.localStorage.setItem(PROJECT_STORAGE_KEY, jsonProjects);
+      
     parseProjects.save({projects: jsonProjects, user_id: userObjectId  },
                     {
                         success: function(projectObject) {
@@ -179,7 +205,10 @@ angular.module('Piximony')
     questions: getQuestions,
     storeQuestions: saveQuestions,
     projects: getProjects,
-    storeProjects: saveProjects
+    storeProjects: saveProjects,
+    globalprojects: returnProjects,
+    globalimages: returnImages,
+    globalquestions: returnQuestions
   }
 })
 .factory('ImageService', function($cordovaCamera, FileService, $q, $cordovaFile) {

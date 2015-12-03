@@ -6,7 +6,7 @@
 angular.module('Piximony', ['ionic','ngCordova'])
     .config(function($stateProvider, $urlRouterProvider) {
 
-        Parse.initialize("Cf8RgFxwJbxS93aUxTNYtJbzcxRpkywAwNu4aoNb", "qWAIcupqoM1QV8kbW0MblWUOZzasYBBgLrrLzA32");
+         Parse.initialize("iZdpAD7vYS44lPB2qLDedAsl8Fn5XUwtNkHJjYN4", "9OCTXn0Y0kMlRfpPtpeKGGgIevY7waMMUuwrHmpU");
         
             $stateProvider
             .state('MainPage', {
@@ -152,6 +152,12 @@ angular.module('Piximony', ['ionic','ngCordova'])
         console.log('HomeBtnClicked recieved');
         $scope.projects = FileService.projects();
       });
+      
+      $rootScope.$on('pQueryCompleted', function (event, data) {
+        console.log('projects done');
+        $scope.projects = FileService.globalprojects();
+      });
+
 
 
       // Open our new task modal
@@ -173,7 +179,13 @@ angular.module('Piximony', ['ionic','ngCordova'])
 
     .controller('QuestionsHomeCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, FileService)  {
         //alert($stateParams.projectId);
+        $rootScope.$on('pQueryCompleted', function (event, data) {
+         console.log('projects done');
+         $scope.projects = FileService.globalprojects();
+        });
+    
         $scope.projectID = $stateParams.projectId;
+    
     
         $scope.projects = FileService.projects();
             for(var i = 0; i < $scope.projects.length; i += 1){
@@ -199,6 +211,16 @@ angular.module('Piximony', ['ionic','ngCordova'])
         $scope.questions = FileService.questions();
 
         //$scope.$apply();
+        });
+    
+        $rootScope.$on('qQueryCompleted', function (event, data) {
+         console.log('questions done');
+         $scope.questions = FileService.globalquestions();
+        });
+        
+        $rootScope.$on('iQueryCompleted', function (event, data) {
+         console.log('images done');
+         $scope.images = FileService.globalimages();
         });
 
         $scope.addMedia = function() {
