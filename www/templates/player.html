@@ -1,0 +1,86 @@
+
+    <div class="modal">
+
+        <!-- Modal header bar -->
+        <ion-header-bar class="bar-secondary">
+            <h1 class="title">Question {{($index + 1) / questionsToPlay.length+1}}</h1>
+            <button class="button button-clear button-positive" ng-click="closePlayer()">Cancel</button>
+        </ion-header-bar>
+
+        <!-- Modal content area -->
+        <ion-content>
+
+            <img ng-src="{{ questionImg }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
+
+            <div class="list">
+                <div class="item item-divider">
+                <label class="label">
+                    {{questionTmp.title}}
+                </label>
+                </div>
+                <div class="item item-divider">
+                    Options
+                </div>
+                <div class="item item-divider">
+                <div class="row">
+                    <div class="col-5 col-center">                            
+                        <input type="radio" name="RightAnswer"  value="A" ng-model="questionTmp.answer">
+                    </div>
+                    <div class="col">
+                        <label class="label">
+                            {{questionTmp.options.A}}
+                        </label>
+                    </div>                        
+                </div>
+                </div>   
+                <div class="item item-divider">
+                <div class="row">
+                    <div class="col-5 col-center">                            
+                        <input type="radio" name="RightAnswer"  value="B" ng-model="questionTmp.answer">    
+                    </div>
+                    <div class="col">
+                        <label class="label">
+                            {{questionTmp.options.B}}
+                        </label>
+                    </div>                        
+                </div>
+                </div>
+                <div class="item item-divider">
+                <div class="row">
+                    <div class="col-5 col-center">                    
+                        <input type="radio" name="RightAnswer" value="C" ng-model="questionTmp.answer">                            
+                    </div>
+                    <div class="col">
+                        <label class="label">
+                            {{questionTmp.options.C}}
+                        </label>
+                    </div>                        
+                </div>
+                </div>
+                <div class="item item-divider">
+                <div class="row">
+                    <div class="col-5 col-center">                        
+                        <input type="radio" name="RightAnswer" value="D" ng-model="questionTmp.answer">                            
+                    </div>
+                    <div class="col">
+                        <label class="label">
+                            {{questionTmp.options.D}}
+                        </label>
+                    </div>                        
+                </div>
+                </div>
+            </div>
+                
+            <div class="row">
+                <div class="col col-left"> 
+                    <button type="submit" class="button button-positive" ng-click="back()">Back</button>
+                </div>
+                <div class="col col-right"> 
+                    <button type="submit" class="button button-positive" ng-click="next()">Next</button>
+                </div>
+            </div>
+
+        </ion-content>
+
+    </div>
+

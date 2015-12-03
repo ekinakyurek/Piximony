@@ -1,0 +1,29 @@
+
+
+        <ion-content>
+            <div class="list">
+                <div class="item item-divider" style="text-align: center">
+                    Projects to Play
+                </div>
+                <a ng-repeat="project in projectsToPlay"
+                   ng-click="openPlayer()"
+                   class="item item-avatar">
+
+                    <img ng-src="{{ project.img }}">
+                    <h2 style="vertical-align: middle; height: 100%;">{{ ($index + 1) + ". " + project.name }}</h2>
+                    
+                </a>
+
+            </div>
+
+        </ion-content>
+
+        <div class="bar bar-footer">
+
+            <button class="button button-icon ion-home" ng-click="home()"></button>
+
+            <button class="button button-icon ion-person"></button>
+
+        </div>
+
+
