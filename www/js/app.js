@@ -106,14 +106,63 @@ angular.module('Piximony', ['ionic','ngCordova'])
 
     })
 
-    .controller('ProjectsHomeCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, FileService)  {
+    .controller('PlayerHomeCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, DataService)  {
+      //   $scope.projects = [
+      //     {id: 1, name: 'Volkan\'s project 1', img: 'img/image-placeholder.png'},
+      //     {id: 2, name: 'Martin\'s project 2', img: 'img/image-placeholder.png'},
+      //     {id: 3, name: 'Atlas\'s project 3', img: 'img/image-placeholder.png'}
+      // ];
+    
+      $scope.projectsToPlay = DataService.projectsToPlay();
+      $scope.questionsToPlay = DataService.questionsToPlay();
+      
+    
+      $scope.questionTmp = $scope.questionsToPlay[0];
+      $scope.questionImg = $scope.questionsToPlay[0].img;
+      // Create and load the Modal
+    //====>
+      $ionicModal.fromTemplateUrl('templates/player.html', function(modal) {
+        $scope.playerModal = modal;
+      }, {
+        scope: $scope,
+        animation: 'slide-in-up'
+      });
+
+      $scope.home = function() {
+          $state.go('MainPage');
+      };
+
+      $scope.next = function() {
+          alert("next");
+      };
+      $scope.back = function() {
+          alert("back");
+      };
+      
+      $rootScope.$on('HomeBtnClicked', function (event, data) {
+        console.log('HomeBtnClicked recieved');
+        $scope.projects = DataService.projects();
+      });
+
+
+      $scope.openPlayer = function() {
+        $scope.playerModal.show();
+      };
+    
+      $scope.closePlayer = function() {
+        $scope.playerModal.hide();
+      };
+
+    })
+
+    .controller('ProjectsHomeCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, DataService)  {
       //   $scope.projects = [
       //     {id: 1, name: 'Volkan\'s project 1', img: 'img/image-placeholder.png'},
       //     {id: 2, name: 'Martin\'s project 2', img: 'img/image-placeholder.png'},
       //     {id: 3, name: 'Atlas\'s project 3', img: 'img/image-placeholder.png'}
       // ];
 
-      $scope.projects = FileService.projects();
+      $scope.projects = DataService.projects();
 
       // Create and load the Modal
       $ionicModal.fromTemplateUrl('templates/new-project.html', function(modal) {
@@ -143,14 +192,14 @@ angular.module('Piximony', ['ionic','ngCordova'])
         }
         else{
         $scope.projectModal.hide();
-        FileService.storeProjects($scope.projects);
+        DataService.storeProjects($scope.projects);
         project.name = "";
         }
       };
       
       $rootScope.$on('HomeBtnClicked', function (event, data) {
         console.log('HomeBtnClicked recieved');
-        $scope.projects = FileService.projects();
+        $scope.projects = DataService.projects();
       });
 
 
@@ -171,20 +220,20 @@ angular.module('Piximony', ['ionic','ngCordova'])
         };
     })
 
-    .controller('QuestionsHomeCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, FileService)  {
+    .controller('QuestionsHomeCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, DataService)  {
         //alert($stateParams.projectId);
         $scope.projectID = $stateParams.projectId;
     
-        $scope.projects = FileService.projects();
+        $scope.projects = DataService.projects();
             for(var i = 0; i < $scope.projects.length; i += 1){
                 if($scope.projects[i].id == $scope.projectID){
                     $scope.projectName = $scope.projects[i].name;
-                    FileService.storeProjects($scope.projects);
+                    DataService.storeProjects($scope.projects);
                     break;
                 }
             }
     
-        //$scope.questions = FileService.questions();
+        //$scope.questions = DataService.questions();
 
         // [
         //     {id: 1, projectId: 2, title: 'Question 1', options: { A: 'Option A', B: 'Option B', C: 'Option C', D: 'Option D'}, img: 'img/image-placeholder.png'},
@@ -195,8 +244,8 @@ angular.module('Piximony', ['ionic','ngCordova'])
         // ];
 
         $ionicPlatform.ready(function() {
-        $scope.images = FileService.images();
-        $scope.questions = FileService.questions();
+        $scope.images = DataService.images();
+        $scope.questions = DataService.questions();
 
         //$scope.$apply();
         });
@@ -219,7 +268,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
             $scope.hideSheet();
             ImageService.handleMediaDialog(type).then(function() {
             $scope.questionImg = "img/image-placeholder.png";
-            $scope.images = FileService.images();
+            $scope.images = DataService.images();
             //alert($scope.images[($scope.images.length)-1]);
             $scope.newQuestion($scope.images[($scope.images.length)-1]);
             //$scope.$apply();
@@ -267,16 +316,16 @@ angular.module('Piximony', ['ionic','ngCordova'])
                 img: $scope.questionImg
             });
 
-            $scope.projects = FileService.projects();
+            $scope.projects = DataService.projects();
             for(var i = 0; i < $scope.projects.length; i += 1){
                 if($scope.projects[i].id == $scope.projectID){
                     $scope.projects[i].img = $scope.questionImg;
-                    FileService.storeProjects($scope.projects);
+                    DataService.storeProjects($scope.projects);
                     break;
                 }
             }
             $scope.questionModal.hide();
-            FileService.storeQuestions($scope.questions);
+            DataService.storeQuestions($scope.questions);
             questionTmp.title = "";
             questionTmp.options = "";
             questionTmp.answer = "";
@@ -325,7 +374,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
             console.log(">> updatePic():: questionID: " + questionID);
             $scope.hideSheet();
             ImageService.handleMediaDialog(type).then(function() {
-            $scope.images = FileService.images();
+            $scope.images = DataService.images();
             
             
             for(var i = 0; i < $scope.questions.length; i += 1){
@@ -337,14 +386,14 @@ angular.module('Piximony', ['ionic','ngCordova'])
             console.log("** updatePic():: Pic Path: " + $scope.questions[i-1].img);
             
             ImageService.deleteMedia($scope.questions[i-1].img);
-            $scope.images = FileService.images();
+            $scope.images = DataService.images();
             console.log("** updatePic():: images after removal: " + $scope.images);
             $scope.questionImg = cordova.file.dataDirectory + $scope.images[($scope.images.length)-1];
                  
             $scope.questions[i-1].img = cordova.file.dataDirectory + $scope.images[($scope.images.length)-1];
-            FileService.storeQuestions($scope.questions);
+            DataService.storeQuestions($scope.questions);
                 
-            $scope.projects = FileService.projects();
+            $scope.projects = DataService.projects();
             console.log("** updatePic():: projects : " + $scope.projects);    
             for(var i = 0; i < $scope.projects.length; i += 1){
                 if($scope.projects[i].id == $scope.projectID){
@@ -352,7 +401,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
                     console.log("** updatePic():: index of the current project : " + i);
                     console.log("** updatePic():: Current project Img : " + $scope.questionImg);
                     $scope.projects[i].img = $scope.questionImg;
-                    FileService.storeProjects($scope.projects);
+                    DataService.storeProjects($scope.projects);
                     break;
                 }
             }
@@ -373,7 +422,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
                 }
             }
             $scope.questions[i-1] = question;
-            FileService.storeQuestions($scope.questions);
+            DataService.storeQuestions($scope.questions);
             //$scope.$apply();
             
             $scope.updateQuestionModal.hide();
