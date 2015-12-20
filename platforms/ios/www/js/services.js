@@ -1,6 +1,6 @@
 angular.module('Piximony')
 
-.factory('FileService', function() {
+.factory('DataService', function() {
 
   var images;
   var questions;
@@ -21,7 +21,7 @@ angular.module('Piximony')
 
 
   function getImages() {
-    console.log(">> FileService::getImages()");
+    console.log(">> DataService::getImages()");
      var img = window.localStorage.getItem(IMAGE_STORAGE_KEY);
     
       var query = new Parse.Query(pImages);
@@ -41,12 +41,12 @@ angular.module('Piximony')
     else {
       images = [];
     }
-    console.log("<< FileService::getImages() images: (" + images + ")" );
+    console.log("<< DataService::getImages() images: (" + images + ")" );
     return images;
   };
  
   function getQuestions() {
-    console.log(">> FileService::getQuestions()");
+    console.log(">> DataService::getQuestions()");
     var qst = window.localStorage.getItem(QUESTION_STORAGE_KEY);
       var query = new Parse.Query(pQuestions);
       query.equalTo("user_id", userObjectId);
@@ -65,12 +65,12 @@ angular.module('Piximony')
     else {
       questions = [];
     }
-    console.log("<< FileService::getQuestions() questions: (" + questions + ")" );
+    console.log("<< DataService::getQuestions() questions: (" + questions + ")" );
     return questions;
   };
   
   function getProjects() {
-    console.log(">> FileService::getProjects()");
+    console.log(">> DataService::getProjects()");
     var prj = window.localStorage.getItem(PROJECT_STORAGE_KEY);
       var query = new Parse.Query(pProjects);
       query.equalTo("user_id", userObjectId);
@@ -89,14 +89,48 @@ angular.module('Piximony')
     else {
       projects = [];
     }
-    console.log("<< FileService::getProjects() projects: (" + projects + ")" );
+    console.log("<< DataService::getProjects() projects: (" + projects + ")" );
     return projects;
   };
+
+function getProjectsToPlay() {
+    console.log(">> DataService::getProjectsToPlay()");
+
+    //VBAL STARTS
+    //this portion needs to be replaced with the actual Parse data provider
+    projectsToPlay = [
+           {id: 1, name: 'Volkan\'s project 1', img: 'img/image-placeholder.png'},
+           {id: 2, name: 'Martin\'s project 2', img: 'img/image-placeholder.png'},
+           {id: 3, name: 'Atlas\'s project 3', img: 'img/image-placeholder.png'}
+       ];
+    //VBAL ENDS
+    
+    console.log("<< DataService::getProjectsToPlay() projects: (" + projectsToPlay + ")" );
+    return projectsToPlay;
+  };
   
+function getQuestionsToPlay() {
+    console.log(">> DataService::getQuestionsToPlay()");
+
+    //VBAL STARTS
+    //this portion needs to be replaced with the actual Parse data provider
+    questionsToPlay = [
+             {id: 1, projectId: 2, title: 'Who is this?', options: ['MJ', 'Ricky Martin', 'Charlie', 'Maradona'], answer: 0, img: 'img/MJ.jpg'},
+             {id: 2, projectId: 1, title: 'Where is this?', options: ['NYC', 'Austin', 'Chicago', 'New Orleans'], answer: 1, img: 'img/austin-tx.jpg'},
+             {id: 3, projectId: 2, title: 'When was this?', options: ['2014', '2002', '2011', '1998'], answer: 2, img: 'img/mac_mini_2011.jpg'},
+             {id: 4, projectId: 1, title: 'Who was with us?', options: ['Drunk Guy', 'Shy Girl', 'Homeless Lady', 'No one'], answer: 1, img: 'img/ShyGirl.jpg'},
+             {id: 5, projectId: 1, title: 'What car is this?', options: ['Camaro', 'Mustang', 'Aveo', 'Escape'], answer: 0, img: 'img/semacamaro4c.jpg'}
+         ];
+    //VBAL ENDS
+    
+    console.log("<< DataService::getQuestionsToPlay() projects: (" + questionsToPlay + ")" );
+    return questionsToPlay;
+  };
+    
   function addImage(img) {
-    console.log(">> FileService::addImage() img: " + img);
+    console.log(">> DataService::addImage() img: " + img);
     images.push(img);
-    console.log("** FileService::addImage() images: " + images);
+    console.log("** DataService::addImage() images: " + images);
     var jsonImages = JSON.stringify(images);
     window.localStorage.setItem(IMAGE_STORAGE_KEY, JSON.stringify(images)); 
     parseImages.save({images: jsonImages, user_id: userObjectId},
@@ -109,17 +143,17 @@ angular.module('Piximony')
                         // error is a Parse.Error with an error code and message.
                         } 
                     });
-    console.log("<< FileService::addImage()");
+    console.log("<< DataService::addImage()");
   };
  
   function deleteImage(img) {
-    console.log(">> FileService::deleteImage() img: " + img);
+    console.log(">> DataService::deleteImage() img: " + img);
     var index = images.indexOf(img);
     if(index > -1) {
         images.splice(index, 1);
     }
     var jsonImages = JSON.stringify(images);
-    console.log("** FileService::deleteImage() images: " + images);
+    console.log("** DataService::deleteImage() images: " + images);
     window.localStorage.setItem(IMAGE_STORAGE_KEY, jsonImages);
     parseImages.save({images: jsonImages,user_id: userObjectId},
                     {
@@ -132,11 +166,11 @@ angular.module('Piximony')
                         } 
                     });
       
-    console.log("<< FileService::deleteImage()");
+    console.log("<< DataService::deleteImage()");
   };
   
   function saveQuestions(questions) {
-    console.log(">> FileService::saveQuestions() questions: " + questions);
+    console.log(">> DataService::saveQuestions() questions: " + questions);
     var jsonQuestions = JSON.stringify(questions);
     window.localStorage.setItem(QUESTION_STORAGE_KEY, jsonQuestions);      
     parseQuestions.save({questions: jsonQuestions, user_id:  userObjectId},
@@ -151,11 +185,11 @@ angular.module('Piximony')
                         } 
                         });
       
-    console.log("<< FileService::saveQuestions()");
+    console.log("<< DataService::saveQuestions()");
   };
   
   function saveProjects(projects) {
-    console.log(">> FileService::saveProjects() projects: " + projects);
+    console.log(">> DataService::saveProjects() projects: " + projects);
     var jsonProjects = JSON.stringify(projects);
     window.localStorage.setItem(PROJECT_STORAGE_KEY, jsonProjects);
     parseProjects.save({projects: jsonProjects, user_id: userObjectId  },
@@ -170,7 +204,7 @@ angular.module('Piximony')
                     });
     
   
-       console.log("<< FileService::saveProjects()");
+       console.log("<< DataService::saveProjects()");
   };
   return {
     storeImage: addImage,
@@ -179,10 +213,12 @@ angular.module('Piximony')
     questions: getQuestions,
     storeQuestions: saveQuestions,
     projects: getProjects,
-    storeProjects: saveProjects
+    storeProjects: saveProjects,
+    projectsToPlay: getProjectsToPlay,
+    questionsToPlay: getQuestionsToPlay,  
   }
 })
-.factory('ImageService', function($cordovaCamera, FileService, $q, $cordovaFile) {
+.factory('ImageService', function($cordovaCamera, DataService, $q, $cordovaFile) {
   function makeid() {
     console.log(">> ImageService::makeid()");
     var text = '';
@@ -225,7 +261,7 @@ angular.module('Piximony')
         $cordovaFile.copyFile(namePath, name, cordova.file.dataDirectory, newName)
           .then(function(info) {
             console.log("** ImageService::saveMedia() newName: " + newName);
-            FileService.storeImage(newName);
+            DataService.storeImage(newName);
             resolve();
           }, function(e) {
             reject();
@@ -238,7 +274,7 @@ angular.module('Piximony')
     console.log(">> ImageService::removeMedia() imageUrl: " + imageUrl);
     var name = imageUrl.substr(imageUrl.lastIndexOf('/') + 1);
     console.log("** ImageService::removeMedia() name: " + name);
-    FileService.removeImage(name);
+    DataService.removeImage(name);
     $cordovaFile.removeFile(cordova.file.dataDirectory, name);
     console.log("<< ImageService::removeMedia()");
   }
@@ -247,5 +283,6 @@ angular.module('Piximony')
     deleteMedia: removeMedia
   }
 });
+
 
 

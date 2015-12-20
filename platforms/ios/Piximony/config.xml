@@ -31,6 +31,9 @@
     <feature name="Device">
         <param name="ios-package" value="CDVDevice" />
     </feature>
+    <feature name="YoikScreenOrientation">
+        <param name="ios-package" value="YoikScreenOrientation" />
+    </feature>
     <name>Piximony</name>
     <description>
         An Ionic Framework and Cordova project.

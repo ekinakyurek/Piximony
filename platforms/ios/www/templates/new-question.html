@@ -21,17 +21,19 @@
                     <div class="item item-divider">
                         Options
                     </div>
+                    <div ng-repeat="option in options"> 
                     <div class="row">
                         <div class="col-5 col-center">                            
-                            <input type="radio" name="RightAnswer"  value="A" ng-model="questionTmp.answer">                            
+                            <input type="radio" name="RightAnswer"  value="option" ng-model="questionTmp.answer">                        
                         </div>
                         <div class="col">
                             <label class="item item-input">
-                                <input type="text" placeholder="Option A" ng-model="questionTmp.options[0]">
+                                <input type="text" placeholder="Option A" ng-model="questionTmp.options[$index]">
                             </label>
                         </div>                        
                     </div>
-                    <div class="row">
+                    </div>
+<!--                    <div class="row">
                         <div class="col-5 col-center">                            
                             <input type="radio" name="RightAnswer"  value="B" ng-model="questionTmp.answer">                            
                         </div>
@@ -60,7 +62,7 @@
                                 <input type="text" placeholder="Option D" ng-model="questionTmp.options[3]">
                             </label>
                         </div>                        
-                    </div>
+                    </div>-->
                 </div>
                 <div class="padding">
                     <button type="submit" class="button button-block button-positive">Create Question</button>

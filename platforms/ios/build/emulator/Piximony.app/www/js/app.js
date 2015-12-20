@@ -106,14 +106,185 @@ angular.module('Piximony', ['ionic','ngCordova'])
 
     })
 
-    .controller('ProjectsHomeCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, FileService)  {
+    .controller('PlayerHomeCtrl', function($scope, $rootScope, $timeout, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, DataService)  {
+      //   $scope.projects = [
+      //     {id: 1, name: 'Volkan\'s project 1', img: 'img/image-placeholder.png'},
+      //     {id: 2, name: 'Martin\'s project 2', img: 'img/image-placeholder.png'},
+      //     {id: 3, name: 'Atlas\'s project 3', img: 'img/image-placeholder.png'}
+      // ];
+    
+      $scope.projectsToPlay = DataService.projectsToPlay();
+      $scope.questionsToPlay = DataService.questionsToPlay();
+      
+      $scope.currentQuestion = 0;
+    
+      $scope.questionTmp = $scope.questionsToPlay[$scope.currentQuestion];
+      $scope.optionsTmp = $scope.questionsToPlay[$scope.currentQuestion].options;
+    
+      $scope.questionImg = $scope.questionsToPlay[$scope.currentQuestion].img;
+
+    $scope.trial = [false,false,false,false];
+    $scope.bingo = false;
+    
+    window.addEventListener("orientationchange", function(){
+        console.log('Orientation changed to ' + screen.orientation);
+    });
+    
+      // Create and load the Modal
+    //====>
+      $ionicModal.fromTemplateUrl('templates/player.html', function(modal) {
+        $scope.playerModal = modal;
+      }, {
+        scope: $scope,
+        animation: 'slide-in-up'
+      });
+
+      $scope.home = function() {
+          $state.go('MainPage');
+      };
+
+    $scope.nextQuestion = function(){
+        $scope.closefullScreenModal();
+        $scope.trial = [false,false,false,false];
+        $scope.bingo = false;
+        
+        if($scope.currentQuestion < $scope.questionsToPlay.length)
+            $scope.currentQuestion++;
+        //else
+        //    $scope.currentQuestion = 0;
+        $scope.questionTmp = $scope.questionsToPlay[$scope.currentQuestion];
+        $scope.optionsTmp = $scope.questionsToPlay[$scope.currentQuestion].options;
+        $scope.questionImg = $scope.questionsToPlay[$scope.currentQuestion].img; 
+        
+    };
+    
+      $scope.optionSelected = function(option) {
+          console.log('>> optionSelected : (' + option + ')');
+          //alert(option);
+          //alert($scope.questionsToPlay[1].answer);
+          selectedIndex = $scope.optionsTmp.indexOf(option);
+          
+          //alert(selectedIndex);
+          console.log('** optionSelected:: selectedIndex:('+selectedIndex+')');
+          //alert($scope.questionsToPlay[1].answer.charCodeAt(0));
+          //alert('A'.charCodeAt(0));
+          
+          if($scope.questionsToPlay[$scope.currentQuestion].answer == selectedIndex)
+            {
+                console.log('** optionSelected:: BINGO');
+                $scope.bingo = true;
+                $scope.fullScreen($scope.questionImg);
+                $timeout($scope.nextQuestion,3000);
+            }
+          else
+            {
+                console.log('** optionSelected:: SORRY');                
+                $scope.trial[selectedIndex] = true;
+            }
+          console.log('<< optionSelected::');
+      };
+    
+        $scope.isThisDisabled = function(option) {
+            console.log('>> isThisDisabled:: for: (' + option + ')');
+            Index = $scope.optionsTmp.indexOf(option);
+            console.log('** isThisDisabled::Index:' + Index);
+            if(($scope.trial[Index] == true | $scope.bingo == true) & !($scope.questionsToPlay[$scope.currentQuestion].answer == Index))
+            {               
+               console.log('<< isThisDisabled:: TRUE for: (' + option + ')');
+               return true;
+            }
+            else
+            {
+                console.log('<< isThisDisabled:: FALSE for: (' + option + ')');
+               return false;
+            }
+            
+      };
+        $scope.isThisChecked = function(option) {
+            console.log('>> isThisChecked:: for: (' + option + ')');
+            
+            Index = $scope.optionsTmp.indexOf(option);
+            console.log('** isThisChecked::Index:' + Index);
+            if($scope.trial[Index] == true & !($scope.questionsToPlay[$scope.currentQuestion].answer))
+            {
+               console.log('<< isThisChecked:: false for: (' + option + ')');
+               return false;
+            }
+            else
+                console.log('<< isThisChecked:: not changed for: (' + option + ')');
+
+      };
+
+    
+    $ionicModal.fromTemplateUrl('templates/image-modal.html', function(modal) {
+        $scope.fullScreenModal = modal;
+      }, {
+        scope: $scope,
+        animation: 'slide-in-up'
+      });
+
+    
+    $scope.openfullScreenModal = function() {
+      console.log('** openfullScreenModal::Modal is shown!');
+      $scope.fullScreenModal.show();
+    };
+
+    $scope.closefullScreenModal = function() {
+      console.log('**closefullScreenModal::Modal is closed!');
+      $scope.fullScreenModal.hide();
+    };
+
+    //Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      console.log('**$on.$destroy::Modal is destroyed!');
+      $scope.fullScreenModal.remove();
+    });
+    // Execute action on hide modal
+    $scope.$on('fullScreenModal.hide', function() {
+        console.log('**$on.fullScreenModal.hide::Modal is hide!');
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('fullScreenModal.removed', function() {
+        console.log('**$on.fullScreenModal.removed::Modal is removed!');
+      // Execute action
+    });
+    $scope.$on('fullScreenModal.shown', function() {
+        console.log('**$on.fullScreenModal.shown::Modal is shown!');
+      console.log('Modal is shown!');
+    });
+
+    
+    $scope.fullScreen = function(img){
+        
+        $scope.imageSrc = img;
+        $scope.openfullScreenModal();
+    };
+    
+      $rootScope.$on('HomeBtnClicked', function (event, data) {
+        console.log('HomeBtnClicked recieved');
+        $scope.projects = DataService.projects();
+      });
+
+
+      $scope.openPlayer = function() {
+        $scope.playerModal.show();
+      };
+    
+      $scope.closePlayer = function() {
+        $scope.playerModal.hide();
+      };
+
+    })
+
+    .controller('ProjectsHomeCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, DataService)  {
       //   $scope.projects = [
       //     {id: 1, name: 'Volkan\'s project 1', img: 'img/image-placeholder.png'},
       //     {id: 2, name: 'Martin\'s project 2', img: 'img/image-placeholder.png'},
       //     {id: 3, name: 'Atlas\'s project 3', img: 'img/image-placeholder.png'}
       // ];
 
-      $scope.projects = FileService.projects();
+      $scope.projects = DataService.projects();
 
       // Create and load the Modal
       $ionicModal.fromTemplateUrl('templates/new-project.html', function(modal) {
@@ -143,14 +314,14 @@ angular.module('Piximony', ['ionic','ngCordova'])
         }
         else{
         $scope.projectModal.hide();
-        FileService.storeProjects($scope.projects);
+        DataService.storeProjects($scope.projects);
         project.name = "";
         }
       };
       
       $rootScope.$on('HomeBtnClicked', function (event, data) {
         console.log('HomeBtnClicked recieved');
-        $scope.projects = FileService.projects();
+        $scope.projects = DataService.projects();
       });
 
 
@@ -171,20 +342,20 @@ angular.module('Piximony', ['ionic','ngCordova'])
         };
     })
 
-    .controller('QuestionsHomeCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, FileService)  {
+    .controller('QuestionsHomeCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, DataService)  {
         //alert($stateParams.projectId);
         $scope.projectID = $stateParams.projectId;
     
-        $scope.projects = FileService.projects();
+        $scope.projects = DataService.projects();
             for(var i = 0; i < $scope.projects.length; i += 1){
                 if($scope.projects[i].id == $scope.projectID){
                     $scope.projectName = $scope.projects[i].name;
-                    FileService.storeProjects($scope.projects);
+                    DataService.storeProjects($scope.projects);
                     break;
                 }
             }
     
-        //$scope.questions = FileService.questions();
+        //$scope.questions = DataService.questions();
 
         // [
         //     {id: 1, projectId: 2, title: 'Question 1', options: { A: 'Option A', B: 'Option B', C: 'Option C', D: 'Option D'}, img: 'img/image-placeholder.png'},
@@ -195,8 +366,8 @@ angular.module('Piximony', ['ionic','ngCordova'])
         // ];
 
         $ionicPlatform.ready(function() {
-        $scope.images = FileService.images();
-        $scope.questions = FileService.questions();
+        $scope.images = DataService.images();
+        $scope.questions = DataService.questions();
 
         //$scope.$apply();
         });
@@ -219,7 +390,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
             $scope.hideSheet();
             ImageService.handleMediaDialog(type).then(function() {
             $scope.questionImg = "img/image-placeholder.png";
-            $scope.images = FileService.images();
+            $scope.images = DataService.images();
             //alert($scope.images[($scope.images.length)-1]);
             $scope.newQuestion($scope.images[($scope.images.length)-1]);
             //$scope.$apply();
@@ -267,16 +438,16 @@ angular.module('Piximony', ['ionic','ngCordova'])
                 img: $scope.questionImg
             });
 
-            $scope.projects = FileService.projects();
+            $scope.projects = DataService.projects();
             for(var i = 0; i < $scope.projects.length; i += 1){
                 if($scope.projects[i].id == $scope.projectID){
                     $scope.projects[i].img = $scope.questionImg;
-                    FileService.storeProjects($scope.projects);
+                    DataService.storeProjects($scope.projects);
                     break;
                 }
             }
             $scope.questionModal.hide();
-            FileService.storeQuestions($scope.questions);
+            DataService.storeQuestions($scope.questions);
             questionTmp.title = "";
             questionTmp.options = "";
             questionTmp.answer = "";
@@ -285,6 +456,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
         // Open our new question modal
         $scope.newQuestion = function(img) {
             $scope.questionImg = cordova.file.dataDirectory + img;
+            $scope.options = [0,1,2,3];
             $scope.questionModal.show();
         };
 
@@ -325,7 +497,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
             console.log(">> updatePic():: questionID: " + questionID);
             $scope.hideSheet();
             ImageService.handleMediaDialog(type).then(function() {
-            $scope.images = FileService.images();
+            $scope.images = DataService.images();
             
             
             for(var i = 0; i < $scope.questions.length; i += 1){
@@ -337,14 +509,14 @@ angular.module('Piximony', ['ionic','ngCordova'])
             console.log("** updatePic():: Pic Path: " + $scope.questions[i-1].img);
             
             ImageService.deleteMedia($scope.questions[i-1].img);
-            $scope.images = FileService.images();
+            $scope.images = DataService.images();
             console.log("** updatePic():: images after removal: " + $scope.images);
             $scope.questionImg = cordova.file.dataDirectory + $scope.images[($scope.images.length)-1];
                  
             $scope.questions[i-1].img = cordova.file.dataDirectory + $scope.images[($scope.images.length)-1];
-            FileService.storeQuestions($scope.questions);
+            DataService.storeQuestions($scope.questions);
                 
-            $scope.projects = FileService.projects();
+            $scope.projects = DataService.projects();
             console.log("** updatePic():: projects : " + $scope.projects);    
             for(var i = 0; i < $scope.projects.length; i += 1){
                 if($scope.projects[i].id == $scope.projectID){
@@ -352,7 +524,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
                     console.log("** updatePic():: index of the current project : " + i);
                     console.log("** updatePic():: Current project Img : " + $scope.questionImg);
                     $scope.projects[i].img = $scope.questionImg;
-                    FileService.storeProjects($scope.projects);
+                    DataService.storeProjects($scope.projects);
                     break;
                 }
             }
@@ -373,7 +545,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
                 }
             }
             $scope.questions[i-1] = question;
-            FileService.storeQuestions($scope.questions);
+            DataService.storeQuestions($scope.questions);
             //$scope.$apply();
             
             $scope.updateQuestionModal.hide();

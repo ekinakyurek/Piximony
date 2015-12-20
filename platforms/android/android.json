@@ -23,6 +23,10 @@
                         {
                             "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"YoikScreenOrientation\"><param name=\"android-package\" value=\"net.yoik.cordova.plugins.screenorientation.YoikScreenOrientation\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -63,6 +67,9 @@
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
         },
         "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.ionicframework.piximony950885"
+        },
+        "cordova-plugin-screen-orientation": {
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
         }
     },
@@ -282,6 +289,22 @@
             "clobbers": [
                 "device"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-screen-orientation/www/screenorientation.js",
+            "id": "cordova-plugin-screen-orientation.screenorientation",
+            "pluginId": "cordova-plugin-screen-orientation",
+            "clobbers": [
+                "cordova.plugins.screenorientation"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-screen-orientation/www/screenorientation.android.js",
+            "id": "cordova-plugin-screen-orientation.screenorientation.android",
+            "pluginId": "cordova-plugin-screen-orientation",
+            "merges": [
+                "cordova.plugins.screenorientation"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -289,6 +312,7 @@
         "cordova-plugin-camera": "1.2.0",
         "cordova-plugin-file": "3.0.0",
         "org.apache.cordova.console": "0.2.13",
-        "org.apache.cordova.device": "0.3.0"
+        "org.apache.cordova.device": "0.3.0",
+        "cordova-plugin-screen-orientation": "1.4.0"
     }
 }

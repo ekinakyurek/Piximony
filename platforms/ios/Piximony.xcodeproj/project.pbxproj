@@ -51,6 +51,7 @@
 		2BA80A69F598400DAEDA1BD8 /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = AF73739B3D79495C84437BE0 /* CDVAssetLibraryFilesystem.m */; };
 		954D61C8E5EF4746B99A86F6 /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = DF66D740B8BE4032A6E25986 /* CDVLogger.m */; };
 		09BA9FBB0C32440E9A2E1F95 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B72CFC69DE4D26B0DD95F3 /* CDVDevice.m */; };
+		7CF581959A954FABAD36A8F6 /* YoikScreenOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 962AF98740B2435CB8FDABD7 /* YoikScreenOrientation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +140,8 @@
 		125E678C69504E669AD05B48 /* CDVLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLogger.h"; path = "org.apache.cordova.console/CDVLogger.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		A3B72CFC69DE4D26B0DD95F3 /* CDVDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVDevice.m"; path = "org.apache.cordova.device/CDVDevice.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		FFE20783AFCD4A8BA353E269 /* CDVDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVDevice.h"; path = "org.apache.cordova.device/CDVDevice.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		962AF98740B2435CB8FDABD7 /* YoikScreenOrientation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "YoikScreenOrientation.m"; path = "cordova-plugin-screen-orientation/YoikScreenOrientation.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		09F736D7D7BF4E16835D5351 /* YoikScreenOrientation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "YoikScreenOrientation.h"; path = "cordova-plugin-screen-orientation/YoikScreenOrientation.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +265,8 @@
 				125E678C69504E669AD05B48 /* CDVLogger.h */,
 				A3B72CFC69DE4D26B0DD95F3 /* CDVDevice.m */,
 				FFE20783AFCD4A8BA353E269 /* CDVDevice.h */,
+				962AF98740B2435CB8FDABD7 /* YoikScreenOrientation.m */,
+				09F736D7D7BF4E16835D5351 /* YoikScreenOrientation.h */,
 			);
 			name = Plugins;
 			path = "Piximony/Plugins";
@@ -456,6 +461,7 @@
 				2BA80A69F598400DAEDA1BD8 /* CDVAssetLibraryFilesystem.m in Sources */,
 				954D61C8E5EF4746B99A86F6 /* CDVLogger.m in Sources */,
 				09BA9FBB0C32440E9A2E1F95 /* CDVDevice.m in Sources */,
+				7CF581959A954FABAD36A8F6 /* YoikScreenOrientation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

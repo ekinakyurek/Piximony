@@ -18,6 +18,7 @@
     "org.apache.cordova.console",
     "cordova-plugin-console",
     "cordova-plugin-camera",
-    "cordova-plugin-file"
+    "cordova-plugin-file",
+    "cordova-plugin-screen-orientation"
   ]
 }

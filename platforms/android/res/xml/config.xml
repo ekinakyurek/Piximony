@@ -16,6 +16,9 @@
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
     <preference name="AndroidPersistentFileLocation" value="Internal" />
+    <feature name="YoikScreenOrientation">
+        <param name="android-package" value="net.yoik.cordova.plugins.screenorientation.YoikScreenOrientation" />
+    </feature>
     <name>Piximony</name>
     <description>
         An Ionic Framework and Cordova project.

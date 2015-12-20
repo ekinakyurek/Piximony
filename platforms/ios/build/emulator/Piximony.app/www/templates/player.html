@@ -9,77 +9,25 @@
 
         <!-- Modal content area -->
         <ion-content>
-
-            <img ng-src="{{ questionImg }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
-
-            <div class="list">
+            <a ng-click="fullScreen(questionImg)">
+                <img ng-src="{{ questionImg }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
+            </a>
+            
                 <div class="item item-divider">
-                <label class="label">
+                <h2 class="title">
                     {{questionTmp.title}}
-                </label>
+                </h2>
                 </div>
-                <div class="item item-divider">
-                    Options
-                </div>
-                <div class="item item-divider">
-                <div class="row">
-                    <div class="col-5 col-center">                            
-                        <input type="radio" name="RightAnswer"  value="A" ng-model="questionTmp.answer">
-                    </div>
-                    <div class="col">
-                        <label class="label">
-                            {{questionTmp.options.A}}
-                        </label>
-                    </div>                        
-                </div>
-                </div>   
-                <div class="item item-divider">
-                <div class="row">
-                    <div class="col-5 col-center">                            
-                        <input type="radio" name="RightAnswer"  value="B" ng-model="questionTmp.answer">    
-                    </div>
-                    <div class="col">
-                        <label class="label">
-                            {{questionTmp.options.B}}
-                        </label>
-                    </div>                        
-                </div>
-                </div>
-                <div class="item item-divider">
-                <div class="row">
-                    <div class="col-5 col-center">                    
-                        <input type="radio" name="RightAnswer" value="C" ng-model="questionTmp.answer">                            
-                    </div>
-                    <div class="col">
-                        <label class="label">
-                            {{questionTmp.options.C}}
-                        </label>
-                    </div>                        
-                </div>
-                </div>
-                <div class="item item-divider">
-                <div class="row">
-                    <div class="col-5 col-center">                        
-                        <input type="radio" name="RightAnswer" value="D" ng-model="questionTmp.answer">                            
-                    </div>
-                    <div class="col">
-                        <label class="label">
-                            {{questionTmp.options.D}}
-                        </label>
-                    </div>                        
-                </div>
-                </div>
-            </div>
+            <div class="list">
+                <ion-checkbox ng-repeat="option in optionsTmp" ng-model="selected" ng-checked="isThisChecked(option)" ng-change="optionSelected(option)" ng-disabled="isThisDisabled(option)"><p ng-class="{strike:isThisDisabled(option)}">{{option}}</p></ion-checkbox>
                 
-            <div class="row">
-                <div class="col col-left"> 
-                    <button type="submit" class="button button-positive" ng-click="back()">Back</button>
-                </div>
-                <div class="col col-right"> 
-                    <button type="submit" class="button button-positive" ng-click="next()">Next</button>
-                </div>
-            </div>
-
+<!--                    <ion-checkbox ng-checked="optionAselected" ng-click="buttonClicked()">{{questionTmp.options.A}}</ion-checkbox>          
+                    <ion-checkbox ng-checked="optionBselected" ng-click="buttonClicked()">{{questionTmp.options.B}}</ion-checkbox>   
+                    <ion-checkbox ng-checked="optionCselected" ng-click="buttonClicked()">{{questionTmp.options.C}}</ion-checkbox>            
+                    <ion-checkbox ng-checked="optionDselected" ng-click="buttonClicked()">{{questionTmp.options.D}}</ion-checkbox>-->
+                    
+            </div>      
+                
         </ion-content>
 
     </div>
