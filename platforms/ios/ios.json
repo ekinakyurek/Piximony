@@ -35,6 +35,10 @@
                         {
                             "xml": "<feature name=\"YoikScreenOrientation\"><param name=\"ios-package\" value=\"YoikScreenOrientation\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"FileTransfer\"><param name=\"ios-package\" value=\"CDVFileTransfer\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -68,6 +72,9 @@
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
         },
         "cordova-plugin-screen-orientation": {
+            "PACKAGE_NAME": "com.ionicframework.piximony950885"
+        },
+        "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
         }
     },
@@ -319,6 +326,22 @@
             "merges": [
                 "cordova.plugins.screenorientation"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
+            "id": "cordova-plugin-file-transfer.FileTransferError",
+            "pluginId": "cordova-plugin-file-transfer",
+            "clobbers": [
+                "window.FileTransferError"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-file-transfer/www/FileTransfer.js",
+            "id": "cordova-plugin-file-transfer.FileTransfer",
+            "pluginId": "cordova-plugin-file-transfer",
+            "clobbers": [
+                "window.FileTransfer"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -327,6 +350,7 @@
         "cordova-plugin-file": "2.0.0",
         "org.apache.cordova.console": "0.2.13",
         "org.apache.cordova.device": "0.3.0",
-        "cordova-plugin-screen-orientation": "1.4.0"
+        "cordova-plugin-screen-orientation": "1.4.0",
+        "cordova-plugin-file-transfer": "1.4.0"
     }
 }

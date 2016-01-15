@@ -246,6 +246,22 @@ module.exports = [
         "merges": [
             "cordova.plugins.screenorientation"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
+        "id": "cordova-plugin-file-transfer.FileTransferError",
+        "pluginId": "cordova-plugin-file-transfer",
+        "clobbers": [
+            "window.FileTransferError"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-file-transfer/www/FileTransfer.js",
+        "id": "cordova-plugin-file-transfer.FileTransfer",
+        "pluginId": "cordova-plugin-file-transfer",
+        "clobbers": [
+            "window.FileTransfer"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -256,7 +272,8 @@ module.exports.metadata =
     "cordova-plugin-file": "2.0.0",
     "org.apache.cordova.console": "0.2.13",
     "org.apache.cordova.device": "0.3.0",
-    "cordova-plugin-screen-orientation": "1.4.0"
+    "cordova-plugin-screen-orientation": "1.4.0",
+    "cordova-plugin-file-transfer": "1.4.0"
 }
 // BOTTOM OF METADATA
 });

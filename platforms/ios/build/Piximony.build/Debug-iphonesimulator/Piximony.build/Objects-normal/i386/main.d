@@ -1,2 +1,2 @@
 dependencies: \
-  /Users/volkanbal/npm-global/Piximony/platforms/ios/Piximony/main.m
+  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/Piximony/main.m

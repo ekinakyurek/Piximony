@@ -6,8 +6,8 @@
 angular.module('Piximony', ['ionic','ngCordova'])
     .config(function($stateProvider, $urlRouterProvider) {
 
-        Parse.initialize("Cf8RgFxwJbxS93aUxTNYtJbzcxRpkywAwNu4aoNb", "qWAIcupqoM1QV8kbW0MblWUOZzasYBBgLrrLzA32");
-        
+        //Parse.initialize("Cf8RgFxwJbxS93aUxTNYtJbzcxRpkywAwNu4aoNb", "qWAIcupqoM1QV8kbW0MblWUOZzasYBBgLrrLzA32");
+        Parse.initialize("iZdpAD7vYS44lPB2qLDedAsl8Fn5XUwtNkHJjYN4", "9OCTXn0Y0kMlRfpPtpeKGGgIevY7waMMUuwrHmpU");
             $stateProvider
             .state('MainPage', {
                 url: '/MainPage',
@@ -300,45 +300,57 @@ angular.module('Piximony', ['ionic','ngCordova'])
 
       // Called when the form is submitted
       $scope.createProject = function(project) {
-          //alert($scope.projects.length);
         var id = $scope.projects.length+1;
-        
+        console.log(">> createProject() with id: " + id);
+
         $scope.projects.push({
             id: id,
             name: project.name,
             img: 'img/image-placeholder.png'
         });
-          
+
         if(project.name.length > 20){
             alert("Too long project name : " + project.name);
         }
         else{
         $scope.projectModal.hide();
         DataService.storeProjects($scope.projects);
+        DataService.pushProject({ id: id, name: project.name, img: 'img/image-placeholder.png' });
         project.name = "";
         }
       };
       
       $rootScope.$on('HomeBtnClicked', function (event, data) {
-        console.log('HomeBtnClicked recieved');
+        console.log('** HomeBtnClicked recieved');
         $scope.projects = DataService.projects();
       });
 
+    $rootScope.$on('pQueryCompleted', function (event, data) {
+        console.log("** pQueryCompleted is broadcasted");
+        $scope.projects = DataService.globalprojects();
+        $scope.$apply();
+      });
 
       // Open our new task modal
       $scope.newProject = function() {
+        console.log(">> newProject()");
           //alert("newProject");
         $scope.projectModal.show();
+        console.log("<< newProject()");
       };
 
       // Close the new task modal
       $scope.closeNewProject = function() {
+        console.log(">> closeNewProject()");
         $scope.projectModal.hide();
+        console.log("<< closeNewProject()");
       };
 
         $scope.showQuestions = function(projectId) {
             //alert(projectId);
+            console.log(">> showQuestions() go(QuestionsHome)");
             $state.go('QuestionsHome', {'projectId':projectId});
+            console.log("<< showQuestions()");
         };
     })
 
@@ -346,14 +358,36 @@ angular.module('Piximony', ['ionic','ngCordova'])
         //alert($stateParams.projectId);
         $scope.projectID = $stateParams.projectId;
     
-        $scope.projects = DataService.projects();
-            for(var i = 0; i < $scope.projects.length; i += 1){
-                if($scope.projects[i].id == $scope.projectID){
-                    $scope.projectName = $scope.projects[i].name;
-                    DataService.storeProjects($scope.projects);
-                    break;
-                }
-            }
+        //$scope.projects = DataService.projects();
+        $scope.projects = DataService.globalprojects();
+        $scope.images = DataService.images($scope.projectID);
+        $scope.questions = DataService.questions($scope.projectID);
+    
+        $rootScope.$on('pQueryCompleted', function (event, data) {
+           console.log("** pQueryCompleted is broadcasted");
+           $scope.projects = DataService.globalprojects();
+		       $scope.$apply();
+         });
+    
+//            for(var i = 0; i < $scope.projects.length; i += 1){
+//                if($scope.projects[i].id == $scope.projectID){
+//                    $scope.projectName = $scope.projects[i].name;
+//                    DataService.storeProjects($scope.projects);
+//                    break;
+//                }
+//            }
+    
+        $rootScope.$on('qQueryCompleted', function (event, data) {
+          console.log("** qQueryCompleted is broadcasted");
+          $scope.questions = DataService.globalquestions();
+	        $scope.$apply();
+         });
+    
+        $rootScope.$on('iQueryCompleted', function (event, data) {
+          console.log("** iQueryCompleted is broadcasted");
+          $scope.images = DataService.globalimages();
+	        $scope.$apply();
+        } );
     
         //$scope.questions = DataService.questions();
 
@@ -365,14 +399,15 @@ angular.module('Piximony', ['ionic','ngCordova'])
         //     {id: 5, projectId: 1, title: 'Question 5', options: { A: 'Option A', B: 'Option B', C: 'Option C', D: 'Option D'}, img: 'img/image-placeholder.png'}
         // ];
 
-        $ionicPlatform.ready(function() {
-        $scope.images = DataService.images();
-        $scope.questions = DataService.questions();
-
-        //$scope.$apply();
-        });
+//        $ionicPlatform.ready(function() {
+//        $scope.images = DataService.images();
+//        $scope.questions = DataService.questions();
+//
+//        //$scope.$apply();
+//        });
 
         $scope.addMedia = function() {
+             console.log(">> addMedia()");
             $scope.hideSheet = $ionicActionSheet.show({
             buttons: [
                 { text: 'Take photo' },
@@ -384,17 +419,20 @@ angular.module('Piximony', ['ionic','ngCordova'])
                     $scope.addImage(index);
             }
             });
+            console.log("<< addMedia()");
         }
 
         $scope.addImage = function(type) {
+            console.log(">> addImage()");
             $scope.hideSheet();
             ImageService.handleMediaDialog(type).then(function() {
             $scope.questionImg = "img/image-placeholder.png";
-            $scope.images = DataService.images();
+            $scope.images = DataService.globalimages();
             //alert($scope.images[($scope.images.length)-1]);
             $scope.newQuestion($scope.images[($scope.images.length)-1]);
             //$scope.$apply();
             });
+            console.log("<< addImage()");
         }
 
         // Create and load the Modal
@@ -422,7 +460,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
         $scope.createQuestion = function(questionTmp) {
             //alert('HELLO');
             //console.log("Selected Answer: " + questionTmp.answer);
-            
+            console.log(">> createQuestion()");
             var id = $scope.questions.length+1;
             $scope.questions.push({
                 id: id,
@@ -437,50 +475,56 @@ angular.module('Piximony', ['ionic','ngCordova'])
                 answer: questionTmp.answer,
                 img: $scope.questionImg
             });
-
-            $scope.projects = DataService.projects();
+            //change projects thumbnail with last uploaded picture
+            $scope.projects = DataService.globalprojects();
             for(var i = 0; i < $scope.projects.length; i += 1){
                 if($scope.projects[i].id == $scope.projectID){
                     $scope.projects[i].img = $scope.questionImg;
+                    DataService.updateProject($scope.projects[i],$scope.projects[i].id);
                     DataService.storeProjects($scope.projects);
                     break;
                 }
             }
             $scope.questionModal.hide();
-            DataService.storeQuestions($scope.questions);
+            DataService.storeQuestions($scope.questions,$scope.projectID);
             questionTmp.title = "";
             questionTmp.options = "";
             questionTmp.answer = "";
+             console.log("<< createQuestion()");
         };
 
         // Open our new question modal
         $scope.newQuestion = function(img) {
-            $scope.questionImg = cordova.file.dataDirectory + img;
-            $scope.options = [0,1,2,3];
+            console.log(">> newQuestion()");
+            $scope.questionImg = img;
             $scope.questionModal.show();
+            $scope.options = [0,1,2,3];
+            console.log("<< newQuestion()");
         };
 
         // Close the new question modal
         $scope.closeNewQuestion = function() {
-            ImageService.deleteMedia($scope.questionImg);
+            console.log(">>closeNewQuestion():: deleteImage:: " + $scope.questionImg);
+            ImageService.deleteMedia($scope.questionImg,$scope.projectID);
             $scope.questionModal.hide();
+            console.log("<< closeNewQuestion()");
         };
 
         $scope.showQuestionDetails = function(questionID) {
+            console.log(">> showQuestionDetails():: questionID:: "+ questionID );
             $scope.question = '';
             for(var i = 0; i < $scope.questions.length; i += 1){
                 $scope.question = $scope.questions[i];
-                if($scope.question.id == questionID){
+                if(parseInt($scope.question.id) == parseInt(questionID)){
                     break;
                 }
             }
-            //alert($scope.question.id);
             $scope.updateQuestionModal.show();
+            console.log("<< showQuestionDetails()");
         };
 
         $scope.updateMedia = function(questionID) {
             console.log(">> UpdateMedia():: questionID: " + questionID);
-            
             $scope.hideSheet = $ionicActionSheet.show({
             buttons: [
                 { text: 'Take photo' },
@@ -492,62 +536,64 @@ angular.module('Piximony', ['ionic','ngCordova'])
                     $scope.updatePic(index,questionID);
             }
             });
+            console.log("<< UpdateMedia()");
         };
         $scope.updatePic = function(type,questionID) {
             console.log(">> updatePic():: questionID: " + questionID);
             $scope.hideSheet();
-            ImageService.handleMediaDialog(type).then(function() {
-            $scope.images = DataService.images();
-            
-            
+            ImageService.handleMediaDialog(type,$scope.projectID).then(function() {
+
+            $scope.images = DataService.globalimages();
+            $scope.questionImg = $scope.images[($scope.images.length)-1];
+            $scope.$apply();
+
             for(var i = 0; i < $scope.questions.length; i += 1){
-                if($scope.questions[i] == questionID){
-                    break;
-                }
-            }
-            console.log("** updatePic():: Pic Index: " + (i-1));
-            console.log("** updatePic():: Pic Path: " + $scope.questions[i-1].img);
-            
-            ImageService.deleteMedia($scope.questions[i-1].img);
-            $scope.images = DataService.images();
-            console.log("** updatePic():: images after removal: " + $scope.images);
-            $scope.questionImg = cordova.file.dataDirectory + $scope.images[($scope.images.length)-1];
-                 
-            $scope.questions[i-1].img = cordova.file.dataDirectory + $scope.images[($scope.images.length)-1];
-            DataService.storeQuestions($scope.questions);
-                
-            $scope.projects = DataService.projects();
-            console.log("** updatePic():: projects : " + $scope.projects);    
-            for(var i = 0; i < $scope.projects.length; i += 1){
+                 if(parseInt($scope.questions[i].id) == parseInt(questionID)){
+                     break;
+                 }
+           }
+            console.log("** updatePic():: Pic Index: " + i);
+            console.log("** updatePic():: Pic Path: " + $scope.questions[i].img);
+        //console.log("** updatePic():: images after removal: " + $scope.images);
+
+            $scope.questions[i].img =  $scope.questionImg;
+            DataService.storeQuestions($scope.questions,$scope.projectID);
+
+            $scope.projects = DataService.globalprojects();
+            console.log("** updatePic():: projects : " + $scope.projects);
+            for( i = 0; i < $scope.projects.length; i += 1){
                 if($scope.projects[i].id == $scope.projectID){
                     console.log("** updatePic():: Current projectID : " + $scope.projectID);
                     console.log("** updatePic():: index of the current project : " + i);
                     console.log("** updatePic():: Current project Img : " + $scope.questionImg);
                     $scope.projects[i].img = $scope.questionImg;
+				    DataService.updateProject($scope.projects[i],$scope.projects[i].id);
                     DataService.storeProjects($scope.projects);
                     break;
                 }
             }
-                                            
-            //$scope.$apply();
+
+            $scope.$apply();
             });
+            console.log("<< updatePic()");
         };
     
         // Close the new task modal
         $scope.closeUpdateQuestion = function() {
+            console.log(">> closeUpdateQuestion()");
             $scope.updateQuestionModal.hide();
+            console.log("<< closeUpdateQuestion()");
         };
         $scope.updateQuestion = function(question) {
-            
+            console.log(">> updateQuestion():: quesstionID::" + question.id);
             for(var i = 0; i < $scope.questions.length; i += 1){
-                if($scope.questions[i] == question.id){
+                if(parseInt($scope.questions[i].id) == parseInt(question.id)){
+					          $scope.questions[i] = question;
                     break;
                 }
             }
-            $scope.questions[i-1] = question;
-            DataService.storeQuestions($scope.questions);
-            //$scope.$apply();
-            
+            DataService.storeQuestions($scope.questions,$scope.projectID);
             $scope.updateQuestionModal.hide();
+            console.log("<< updateQuestion()");
         };
     });
