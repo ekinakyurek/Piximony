@@ -66,6 +66,7 @@ function getProjectsToPlay() {
       });
       console.log("<< DataService::pushProjectToParse()");
     };
+    
     function updateProjectToParse(Project,projectID){
       console.log(">> DataService::updateProjectToParse() project: " + Project.name);
       var query = new Parse.Query(pProjects);
@@ -207,7 +208,7 @@ function getProjectsToPlay() {
     }
     function getImages(projectID) {
       console.log(">> DataService::getImages() for projectID::" + projectID);
-      var img = window.localStorage.getItem(IMAGE_STORAGE_KEY);
+      var img = window.localStorage.getItem(IMAGE_STORAGE_KEY + projectID);
       if (img) {
         images = JSON.parse(img);
       }else {
@@ -220,7 +221,7 @@ function getProjectsToPlay() {
 
     function getQuestions(projectID) {
       console.log(">> DataService::getQuestions() for projectID::" + projectID);
-      var qst = window.localStorage.getItem(QUESTION_STORAGE_KEY);
+      var qst = window.localStorage.getItem(QUESTION_STORAGE_KEY + projectID);
       if (qst) {
         questions = JSON.parse(qst);
       }else {
@@ -249,7 +250,7 @@ function getProjectsToPlay() {
       console.log(">> DataService::addImage() img: " + img);
       images.push(img);
       var jsonImages = JSON.stringify(images);
-      window.localStorage.setItem(IMAGE_STORAGE_KEY, jsonImages);
+      window.localStorage.setItem(IMAGE_STORAGE_KEY + projectID, jsonImages);
       addImageToParse(jsonImages,projectID);
       console.log("<< DataService::addImage()");
     };
@@ -261,7 +262,7 @@ function getProjectsToPlay() {
         images.splice(index, 1);
       }
       var jsonImages = JSON.stringify(images);
-      window.localStorage.setItem(IMAGE_STORAGE_KEY, jsonImages);
+      window.localStorage.setItem(IMAGE_STORAGE_KEY + projectID, jsonImages);
       deleteImageFromParse(jsonImages,projectID);
       console.log("<< DataService::deleteImage()");
     };
@@ -269,7 +270,7 @@ function getProjectsToPlay() {
     function saveQuestions(questions,projectID) {
       console.log(">> DataService::saveQuestions() questions: " + questions.length);
       var jsonQuestions = JSON.stringify(questions);
-      window.localStorage.setItem(QUESTION_STORAGE_KEY, jsonQuestions);
+      window.localStorage.setItem(QUESTION_STORAGE_KEY + projectID, jsonQuestions);
       questions = jsonQuestions;
       saveQuestionsToParse(jsonQuestions,projectID);
       console.log("<< DataService::saveQuestions()");

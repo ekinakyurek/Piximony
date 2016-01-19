@@ -466,12 +466,12 @@ angular.module('Piximony', ['ionic','ngCordova'])
                 id: id,
                 projectId: $scope.projectID,
                 title: questionTmp.title,
-                options: {  
-                            A: questionTmp.options[0],
-                            B: questionTmp.options[1],
-                            C: questionTmp.options[2],
-                            D: questionTmp.options[3]
-                    },
+                options: [
+                            questionTmp.options[0],
+                            questionTmp.options[1],
+                            questionTmp.options[2],
+                            questionTmp.options[3]
+                    ],
                 answer: questionTmp.answer,
                 img: $scope.questionImg
             });
@@ -497,8 +497,9 @@ angular.module('Piximony', ['ionic','ngCordova'])
         $scope.newQuestion = function(img) {
             console.log(">> newQuestion()");
             $scope.questionImg = img;
-            $scope.questionModal.show();
             $scope.options = [0,1,2,3];
+            $scope.questionModal.show();
+           
             console.log("<< newQuestion()");
         };
 

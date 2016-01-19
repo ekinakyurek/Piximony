@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/CordovaLib/Classes/CDVConfigParser.m \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/CordovaLib/Classes/CDVConfigParser.h
+  /Users/ekin/gitcopy/piximony1/piximony/platforms/ios/CordovaLib/Classes/CDVConfigParser.m \
+  /Users/ekin/gitcopy/piximony1/piximony/platforms/ios/CordovaLib/Classes/CDVConfigParser.h

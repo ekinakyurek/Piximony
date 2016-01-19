@@ -1,16 +1,16 @@
 dependencies: \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/Piximony/Classes/AppDelegate.m \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/Piximony/Classes/AppDelegate.h \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/build/emulator/include/Cordova/CDVViewController.h \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/build/emulator/include/Cordova/CDVAvailability.h \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/build/emulator/include/Cordova/CDVAvailabilityDeprecated.h \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/build/emulator/include/Cordova/CDVInvokedUrlCommand.h \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegate.h \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/build/emulator/include/Cordova/CDVCommandQueue.h \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/build/emulator/include/Cordova/CDVWhitelist.h \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/build/emulator/include/Cordova/CDVScreenOrientationDelegate.h \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/build/emulator/include/Cordova/CDVPlugin.h \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/build/emulator/include/Cordova/CDVPluginResult.h \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/Piximony/Classes/MainViewController.h \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegateImpl.h
+  /Users/ekin/gitcopy/piximony1/piximony/platforms/ios/Piximony/Classes/AppDelegate.m \
+  /Users/ekin/gitcopy/piximony1/piximony/platforms/ios/Piximony/Classes/AppDelegate.h \
+  /Users/ekin/gitcopy/piximony1/piximony/platforms/ios/build/emulator/include/Cordova/CDVViewController.h \
+  /Users/ekin/gitcopy/piximony1/piximony/platforms/ios/build/emulator/include/Cordova/CDVAvailability.h \
+  /Users/ekin/gitcopy/piximony1/piximony/platforms/ios/build/emulator/include/Cordova/CDVAvailabilityDeprecated.h \
+  /Users/ekin/gitcopy/piximony1/piximony/platforms/ios/build/emulator/include/Cordova/CDVInvokedUrlCommand.h \
+  /Users/ekin/gitcopy/piximony1/piximony/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegate.h \
+  /Users/ekin/gitcopy/piximony1/piximony/platforms/ios/build/emulator/include/Cordova/CDVCommandQueue.h \
+  /Users/ekin/gitcopy/piximony1/piximony/platforms/ios/build/emulator/include/Cordova/CDVWhitelist.h \
+  /Users/ekin/gitcopy/piximony1/piximony/platforms/ios/build/emulator/include/Cordova/CDVScreenOrientationDelegate.h \
+  /Users/ekin/gitcopy/piximony1/piximony/platforms/ios/build/emulator/include/Cordova/CDVPlugin.h \
+  /Users/ekin/gitcopy/piximony1/piximony/platforms/ios/build/emulator/include/Cordova/CDVPluginResult.h \
+  /Users/ekin/gitcopy/piximony1/piximony/platforms/ios/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h \
+  /Users/ekin/gitcopy/piximony1/piximony/platforms/ios/Piximony/Classes/MainViewController.h \
+  /Users/ekin/gitcopy/piximony1/piximony/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegateImpl.h

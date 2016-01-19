@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/CordovaLib/Classes/CDVWhitelist.m \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/CordovaLib/Classes/CDVWhitelist.h
+  /Users/ekin/gitcopy/piximony1/piximony/platforms/ios/CordovaLib/Classes/CDVWhitelist.m \
+  /Users/ekin/gitcopy/piximony1/piximony/platforms/ios/CordovaLib/Classes/CDVWhitelist.h
