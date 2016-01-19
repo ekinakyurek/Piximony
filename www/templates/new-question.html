@@ -10,9 +10,10 @@
         <!-- Modal content area -->
         <ion-content>
 
-
+<figure>
         <img ng-src="{{ questionImg }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
-
+        <figcaption> {{ questionImg }} </figcaption>
+</figure>
             <form ng-submit="createQuestion(questionTmp)">
                 <div class="list">
                     <label class="item item-input">

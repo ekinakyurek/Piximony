@@ -244,6 +244,18 @@ function getProjectsToPlay() {
       console.log("<< DataService::getProjects() length:: " + projects.length );
       return projects;
     };
+    
+      function updateQuestion(question,projectID){
+        
+         for(var i = 0; i <  questions.length; i += 1){
+            if(parseInt(questions[i].id) == parseInt(question.id)){
+              break;
+            }
+        }
+        
+          questions[i] = question
+          saveQuestions(questions,projectID);
+    }
 
 
     function addImage(img, projectID) {
@@ -308,7 +320,8 @@ function getProjectsToPlay() {
       pushProject: pushProjectToParse,
       updateProject: updateProjectToParse,
       projectsToPlay: getProjectsToPlay,
-      questionsToPlay: getQuestionsToPlay
+      questionsToPlay: getQuestionsToPlay,
+      updateQuestion: updateQuestion
     }
   })
   .factory('ImageService', function($cordovaCamera, DataService, $q, $cordovaFile, $cordovaFileTransfer) {
@@ -351,7 +364,7 @@ function getProjectsToPlay() {
         saveToPhotoAlbum: false
       };
     }
-    function saveMedia(type,projectID) {
+    function saveMedia(type,projectID,questionID) {
       console.log(">> ImageService::saveMedia() type: " + type);
       return $q(function(resolve, reject) {
         var options = optionsForType(type);
@@ -362,10 +375,9 @@ function getProjectsToPlay() {
           $cordovaFile.copyFile(namePath, name, cordova.file.dataDirectory, newName)
           .then(function(info) {
             console.log("** ImageService::saveMedia() newName: " + newName);
-            DataService.storeImage( cordova.file.dataDirectory + newName,projectID);
+            DataService.storeImage(cordova.file.dataDirectory+newName,projectID);
             console.log("ImageService::saveMedia()->uploadPicture()");
-          
-            uploadPictureToParse(cordova.file.dataDirectory,newName,projectID,resolve,reject);
+            resolve();
           }, function(error) {
             alert("saveMedia() error::" + error.message) ;
             reject();
@@ -375,26 +387,42 @@ function getProjectsToPlay() {
       })
       console.log("<< ImageService::saveMedia()");
     };
-
-    function uploadPictureToParse(path,name,projectID,resolve,reject){
+    
+   
+    function uploadPictureToParse(path,name, projectID,questionID){
+      
       console.log(">> ImageService::uploadPicture()");
       var server = 'https://api.parse.com/1/files/' + name;
-      path = path + name ;
-
+      
+      //console.log(server + " " + path +  " " +  options)
+      
       $cordovaFileTransfer.upload(server, path , options)
       .then(function(result) {
         DataService.storeImage(result.headers.Location,projectID);
-       
-        console.log("uploadPicture() success");
-        resolve();
+        
+        var questions = DataService.globalquestions();
+        
+        for(var i = 0; i <  questions.length; i += 1){
+            if(parseInt(questions[i].id) == parseInt(questionID)){  
+              break;
+            }
+        }
+        
+          questions[i].remote = result.headers.Location
+         // questions[i].url = result.headers.Location  // daha sonra silinecek
+          DataService.storeQuestions(questions,projectID);
+         
+          console.log("uploadPicture() success" + result.headers.Location );
+     
       },function(error) {
         alert("uploadPicture() error::" + error.message) ;
-        reject();
+     
       }, function (progress) {
         // constant progress updates
       });
       console.log("<< ImageService::uploadPicture()");
     }
+    
     function removeMedia(imageUrl,projectID) {
       console.log(">> ImageService::removeMedia() imageUrl: " + imageUrl);
       var name = imageUrl.substr(imageUrl.lastIndexOf('/') + 1);
@@ -405,6 +433,7 @@ function getProjectsToPlay() {
     }
     return {
       handleMediaDialog: saveMedia,
-      deleteMedia: removeMedia
+      deleteMedia: removeMedia,
+      uploadPictureToParse :  uploadPictureToParse
     }
   });

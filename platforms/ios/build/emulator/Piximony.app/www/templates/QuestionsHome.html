@@ -9,7 +9,7 @@
                    ng-click="showQuestionDetails(question.id)"
                    class="item item-thumbnail-left">
                     
-                    <img ng-src="{{ question.img }}">
+                    <img ng-src="{{ getUrl(question) }}">
                     <h2>{{ ($index + 1) + ". " + question.title }}</h2>
                 </a>
 
