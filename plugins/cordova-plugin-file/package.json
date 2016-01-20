@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-file",
-  "version": "3.0.0",
+  "version": "4.1.0",
   "description": "Cordova File Plugin",
   "cordova": {
     "id": "cordova-plugin-file",
@@ -9,6 +9,7 @@
       "amazon-fireos",
       "ubuntu",
       "ios",
+      "osx",
       "wp7",
       "wp8",
       "blackberry10",
@@ -29,6 +30,7 @@
     "cordova-amazon-fireos",
     "cordova-ubuntu",
     "cordova-ios",
+    "cordova-osx",
     "cordova-wp7",
     "cordova-wp8",
     "cordova-blackberry10",

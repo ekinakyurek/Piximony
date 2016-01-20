@@ -16,16 +16,16 @@
         "cordova-plugin-file": {
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
         },
-        "org.apache.cordova.console": {
-            "PACKAGE_NAME": "com.ionicframework.piximony950885"
-        },
-        "org.apache.cordova.device": {
+        "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
         },
         "cordova-plugin-screen-orientation": {
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
         },
-        "cordova-plugin-file-transfer": {
+        "org.apache.cordova.console": {
+            "PACKAGE_NAME": "com.ionicframework.piximony950885"
+        },
+        "org.apache.cordova.device": {
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
         }
     },

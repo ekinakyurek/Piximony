@@ -74,7 +74,7 @@ multi-part POST or PUT request, and to download files as well.
 
 __Parameters__:
 
-- __fileURL__: Filesystem URL representing the file on the device. For backwards compatibility, this can also be the full path of the file on the device. (See [Backwards Compatibility Notes] below)
+- __fileURL__: Filesystem URL representing the file on the device or a [data: URI](https://en.wikipedia.org/wiki/Data_URI_scheme). For backwards compatibility, this can also be the full path of the file on the device. (See [Backwards Compatibility Notes](#backwards-compatibility-notes) below)
 
 - __server__: URL of the server to receive the file, as encoded by `encodeURI()`.
 
@@ -87,7 +87,7 @@ __Parameters__:
   - __fileName__: The file name to use when saving the file on the server.  Defaults to `image.jpg`. (DOMString)
   - __httpMethod__: The HTTP method to use - either `PUT` or `POST`. Defaults to `POST`. (DOMString)
   - __mimeType__: The mime type of the data to upload.  Defaults to `image/jpeg`. (DOMString)
-  - __params__: A set of optional key/value pairs to pass in the HTTP request. (Object)
+  - __params__: A set of optional key/value pairs to pass in the HTTP request. (Object, key/value - DOMString)
   - __chunkedMode__: Whether to upload the data in chunked streaming mode. Defaults to `true`. (Boolean)
   - __headers__: A map of header name/header values. Use an array to specify more than one value.  On iOS, FireOS, and Android, if a header named Content-Type is present, multipart form data will NOT be used. (Object)
 
@@ -289,6 +289,10 @@ A `FileTransferError` object is passed to an error callback when an error occurs
 - 3 = `FileTransferError.CONNECTION_ERR`
 - 4 = `FileTransferError.ABORT_ERR`
 - 5 = `FileTransferError.NOT_MODIFIED_ERR`
+
+## Windows Quirks
+
+- The plugin implementation is based on [BackgroundDownloader](https://msdn.microsoft.com/en-us/library/windows/apps/windows.networking.backgroundtransfer.backgrounddownloader.aspx)/[BackgroundUploader](https://msdn.microsoft.com/en-us/library/windows/apps/windows.networking.backgroundtransfer.backgrounduploader.aspx), which entails the latency issues on Windows devices (creation/starting of an operation can take up to a few seconds). You can use XHR or [HttpClient](https://msdn.microsoft.com/en-us/library/windows/apps/windows.web.http.httpclient.aspx) as a quicker alternative for small downloads.
 
 ## Backwards Compatibility Notes
 

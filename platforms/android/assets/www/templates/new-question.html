@@ -10,9 +10,10 @@
         <!-- Modal content area -->
         <ion-content>
 
-
+<figure>
         <img ng-src="{{ questionImg }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
-
+        <figcaption> {{ questionImg }} </figcaption>
+</figure>
             <form ng-submit="createQuestion(questionTmp)">
                 <div class="list">
                     <label class="item item-input">
@@ -24,11 +25,11 @@
                     <div ng-repeat="option in options"> 
                     <div class="row">
                         <div class="col-5 col-center">                            
-                            <input type="radio" name="RightAnswer"  value="option" ng-model="questionTmp.answer">                        
+                            <input type="radio" name="RightAnswer"  value="{{$index}}" ng-model="questionTmp.answer">                        
                         </div>
                         <div class="col">
                             <label class="item item-input">
-                                <input type="text" placeholder="Option A" ng-model="questionTmp.options[$index]">
+                                <input type="text" placeholder="Option {{$index}}" ng-model="questionTmp.options[$index]">
                             </label>
                         </div>                        
                     </div>

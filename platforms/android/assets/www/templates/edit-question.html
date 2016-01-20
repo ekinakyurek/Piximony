@@ -10,7 +10,7 @@
         <!-- Modal content area -->
         <ion-content>
         <a ng-click="updateMedia(question.id)">
-            <img ng-src="{{ question.img }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
+            <img ng-src="{{ questionImg }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
         </a>
             <form ng-submit="updateQuestion(question)">
                 <div class="list">
@@ -20,43 +20,14 @@
                     <div class="item item-divider">
                         Options
                     </div>
-                    <div class="row">
+                        <div ng-repeat="option in question.options"> 
+                       <div class="row">
                         <div class="col-5 col-center">                            
-                            <input type="radio" name="RightAnswer"  value="A" ng-model="question.answer">                            
+                            <input type="radio" name="RightAnswer"  value="{{$index}}" ng-model="question.answer">                        
                         </div>
                         <div class="col">
                             <label class="item item-input">
-                                <input type="text" placeholder="Option A" ng-model="question.options.A">
-                            </label>
-                        </div>                        
-                    </div>
-                    <div class="row">
-                        <div class="col-5 col-center">                            
-                            <input type="radio" name="RightAnswer"  value="B" ng-model="question.answer">                            
-                        </div>
-                        <div class="col">
-                            <label class="item item-input">
-                                <input type="text" placeholder="Option B" ng-model="question.options.B">
-                            </label>
-                        </div>                        
-                    </div>
-                    <div class="row">
-                        <div class="col-5 col-center">                    
-                            <input type="radio" name="RightAnswer" value="C" ng-model="question.answer">                            
-                        </div>
-                        <div class="col">
-                            <label class="item item-input">
-                                <input type="text" placeholder="Option C" ng-model="question.options.C">
-                            </label>
-                        </div>                        
-                    </div>    
-                    <div class="row">
-                        <div class="col-5 col-center">                        
-                            <input type="radio" name="RightAnswer" value="D" ng-model="question.answer">                            
-                        </div>
-                        <div class="col">
-                            <label class="item item-input">
-                                <input type="text" placeholder="Option D" ng-model="question.options.D">
+                                <input type="text" placeholder="Option {{$index}}" ng-model="question.options[$index]">
                             </label>
                         </div>                        
                     </div>

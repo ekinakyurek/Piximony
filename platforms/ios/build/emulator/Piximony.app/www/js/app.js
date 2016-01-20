@@ -457,15 +457,19 @@ angular.module('Piximony', ['ionic','ngCordova'])
         };
       
       $scope.getUrl = function(question) {
+          
        if(question != undefined && question.img != undefined ) {
-         $cordovaFile.checkDir(question.img, "inbounds").then(function (success) {
-            if(question.url != question.img) {
-                   question.url = question.img            
+           
+         $cordovaFile.checkFile(cordova.file.dataDirectory, question.name ).then(function (success) {
+            if(question.url !=  cordova.file.dataDirectory + question.name ) {
+              
+                   question.url = cordova.file.dataDirectory + question.name          
                    DataService.updateQuestion(question,$scope.projectID)
             }
            }, function (error) {
               
            if(question.url != question.remote) {
+                   console.log(error + " " + question.img  )
                    question.url = question.remote         
                    DataService.updateQuestion(question,$scope.projectID)
             }
@@ -482,6 +486,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
             console.log(">> createQuestion()");
             var id = $scope.questions.length+1;
             var name =  $scope.questionImg.split("/")[$scope.questionImg.split("/").length-1]
+            
             $scope.questions.push({
                 id: id,
                 projectId: $scope.projectID,
@@ -579,7 +584,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
  
             $scope.images = DataService.globalimages();
             $scope.questionImg = $scope.images[($scope.images.length)-1];
-            
+          
             for(var i = 0; i < $scope.questions.length; i += 1){
                  if(parseInt($scope.questions[i].id) == parseInt(questionID)){
                      break;
@@ -589,7 +594,11 @@ angular.module('Piximony', ['ionic','ngCordova'])
             console.log("** updatePic():: Pic Path: " + $scope.questions[i].img);
 
             $scope.questions[i].img =  $scope.questionImg;
+            $scope.questions[i].name = $scope.questionImg.split("/")[$scope.questionImg.split("/").length-1];
+            console.log('name: ' +   $scope.questions[i].name );
             
+            $scope.questions[i].url =  $scope.questionImg;                                                                      
+            $scope.$apply();
             DataService.storeQuestions($scope.questions,$scope.projectID);
            
             ImageService.uploadPictureToParse($scope.questionImg,$scope.questions[i].name,$scope.projectID,questionID);

@@ -30,9 +30,8 @@ exports.defineAutoTests = function () {
     var isIndexedDBShim = isBrowser && !isChrome;   // Firefox and IE for example
 
     var isWindows = (cordova.platformId === "windows" || cordova.platformId === "windows8");
-    
+
     var MEDIUM_TIMEOUT = 15000;
-    var LONG_TIMEOUT = 60000;
 
     describe('File API', function () {
         // Adding a Jasmine helper matcher, to report errors when comparing to FileError better.
@@ -232,8 +231,12 @@ exports.defineAutoTests = function () {
                         expect(fileSystem.root.toURL()).toMatch(/\/$/);
                         done();
                     };
+
+                    // Request a little bit of space on the filesystem, unless we're running in a browser where that could cause a prompt.
+                    var spaceRequired = isBrowser ? 0 : 1024;
+
                     // retrieve PERSISTENT file system
-                    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, win, failed.bind(null, done, 'window.requestFileSystem - Error retrieving PERSISTENT file system'));
+                    window.requestFileSystem(LocalFileSystem.PERSISTENT, spaceRequired, win, failed.bind(null, done, 'window.requestFileSystem - Error retrieving PERSISTENT file system'));
                 });
                 it("file.spec.5 should be able to retrieve a TEMPORARY file system", function (done) {
                     var win = function (fileSystem) {
@@ -1140,6 +1143,21 @@ exports.defineAutoTests = function () {
             });
             it("file.spec.53 Entry.remove on file", function (done) {
                 var fileName = "entr .rm.file";
+                // create a new file entry
+                createFile(fileName, function (entry) {
+                    expect(entry).toBeDefined();
+                    entry.remove(function () {
+                        root.getFile(fileName, null, succeed.bind(null, done, 'root.getFile - Unexpected success callback, it should not get deleted file : ' + fileName), function (error) {
+                            expect(error).toBeDefined();
+                            expect(error).toBeFileError(FileError.NOT_FOUND_ERR);
+                            // cleanup
+                            deleteEntry(fileName, done);
+                        });
+                    }, failed.bind(null, done, 'entry.remove - Error removing entry : ' + fileName));
+                }, failed.bind(null, done, 'createFile - Error creating file : ' + fileName));
+            });
+            it("file.spec.53.1 Entry.remove on filename with #s", function (done) {
+                var fileName = "entry.#rm#.file";
                 // create a new file entry
                 createFile(fileName, function (entry) {
                     expect(entry).toBeDefined();
@@ -3303,6 +3321,8 @@ exports.defineAutoTests = function () {
                     expectedPaths.push('externalRootDirectory', 'sharedDirectory');
                 } else if (cordova.platformId == 'ios') {
                     expectedPaths.push('syncedDataDirectory', 'documentsDirectory', 'tempDirectory');
+                } else if (cordova.platformId == 'osx') {
+                    expectedPaths.push('documentsDirectory', 'tempDirectory', 'rootDirectory');
                 } else {
                     console.log('Skipping test due on unsupported platform.');
                     return;
@@ -3484,19 +3504,50 @@ exports.defineAutoTests = function () {
                     }, failed.bind(null, done, 'resolveLocalFileSystemURL failed for content provider'));
                 });
             });
+
+            // these tests ensure that you can read and copy from android_asset folder
+            // for details see https://issues.apache.org/jira/browse/CB-6428
+            // and https://mail-archives.apache.org/mod_mbox/cordova-dev/201508.mbox/%3C782154441.8406572.1440182722528.JavaMail.yahoo%40mail.yahoo.com%3E
             describe('asset: URLs', function() {
                 it("file.spec.141 filePaths.applicationStorage", function() {
                     expect(cordova.file.applicationDirectory).toEqual('file:///android_asset/');
                 }, MEDIUM_TIMEOUT);
                 it("file.spec.142 assets should be enumerable", function(done) {
-                    resolveLocalFileSystemURL('file:///android_asset/www/', function(entry) {
+                    resolveLocalFileSystemURL('file:///android_asset/www/fixtures/asset-test', function(entry) {
                         var reader = entry.createReader();
                         reader.readEntries(function (entries) {
                             expect(entries.length).not.toBe(0);
                             done();
                         }, failed.bind(null, done, 'reader.readEntries - Error during reading of entries from assets directory'));
                     }, failed.bind(null, done, 'resolveLocalFileSystemURL failed for assets'));
-                }, LONG_TIMEOUT);
+                }, MEDIUM_TIMEOUT);
+                it("file.spec.145 asset subdirectories should be obtainable", function(done) {
+                    resolveLocalFileSystemURL('file:///android_asset/www/fixtures', function(entry) {
+                        entry.getDirectory('asset-test', { create: false }, function (subDir) {
+                            expect(subDir).toBeDefined();
+                            expect(subDir.isFile).toBe(false);
+                            expect(subDir.isDirectory).toBe(true);
+                            expect(subDir.name).toCanonicallyMatch('asset-test');
+                            done();
+                        }, failed.bind(null, done, 'entry.getDirectory - Error getting asset subdirectory'));
+                    }, failed.bind(null, done, 'resolveLocalFileSystemURL failed for assets'));
+                }, MEDIUM_TIMEOUT);
+                it("file.spec.146 asset files should be readable", function(done) {
+                    resolveLocalFileSystemURL('file:///android_asset/www/fixtures/asset-test/asset-test.txt', function(entry) {
+                        expect(entry.isFile).toBe(true);
+                        entry.file(function (file) {
+                            expect(file).toBeDefined();
+                            var reader = new FileReader();
+                            reader.onerror = failed.bind(null, done, 'reader.readAsText - Error reading asset text file');
+                            reader.onloadend = function () {
+                                expect(this.result).toBeDefined();
+                                expect(this.result.length).not.toBe(0);
+                                done();
+                            };
+                            reader.readAsText(file);
+                        }, failed.bind(null, done, 'entry.file - Error reading asset file'));
+                    }, failed.bind(null, done, 'resolveLocalFileSystemURL failed for assets'));
+                }, MEDIUM_TIMEOUT);
                 it("file.spec.143 copyTo: asset -> temporary", function(done) {
                     var file2 = "entry.copy.file2b",
                     fullPath = joinURL(temp_root.fullPath, file2),
@@ -3522,7 +3573,7 @@ exports.defineAutoTests = function () {
                 }, MEDIUM_TIMEOUT);
             });
             it("file.spec.144 copyTo: asset directory", function (done) {
-                var srcUrl = 'file:///android_asset/www';
+                var srcUrl = 'file:///android_asset/www/fixtures/asset-test';
                 var dstDir = "entry.copy.dstDir";
                 var dstPath = joinURL(root.fullPath, dstDir);
                 // create a new directory entry to kick off it
@@ -3542,7 +3593,7 @@ exports.defineAutoTests = function () {
                                 expect(dirEntry.isDirectory).toBe(true);
                                 expect(dirEntry.fullPath).toCanonicallyMatch(dstPath);
                                 expect(dirEntry.name).toCanonicallyMatch(dstDir);
-                                dirEntry.getFile('cordova.js', {
+                                dirEntry.getFile('asset-test.txt', {
                                     create : false
                                 }, function (fileEntry) {
                                     expect(fileEntry).toBeDefined();
@@ -3554,7 +3605,7 @@ exports.defineAutoTests = function () {
                         }, failed.bind(null, done, 'directory.copyTo - Error copying directory'));
                     }, failed.bind(null, done, 'resolving src dir'));
                 }, failed.bind(null, done, 'deleteEntry - Error removing directory : ' + dstDir));
-            }, LONG_TIMEOUT);
+            }, MEDIUM_TIMEOUT);
         }
     });
 
@@ -3626,6 +3677,7 @@ exports.defineManualTests = function (contentEl, createActionButton) {
 
     var fsRoots = {
         "ios" : "library,library-nosync,documents,documents-nosync,cache,bundle,root,private",
+        "osx" : "library,library-nosync,documents,documents-nosync,cache,bundle,root,private",
         "android" : "files,files-external,documents,sdcard,cache,cache-external,root",
         "amazon-fireos" : "files,files-external,documents,sdcard,cache,cache-external,root",
         "windows": "temporary,persistent"
