@@ -349,6 +349,9 @@ angular.module('Piximony', ['ionic','ngCordova'])
         $scope.showQuestions = function(projectId) {
             //alert(projectId);
             console.log(">> showQuestions() go(QuestionsHome)");
+            callquestions =  DataService.questions(projectId);
+            callimages = DataService.images(projectId);
+    
             $state.go('QuestionsHome', {'projectId':projectId});
             console.log("<< showQuestions()");
         };
@@ -380,7 +383,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
         $rootScope.$on('qQueryCompleted', function (event, data) {
           console.log("** qQueryCompleted is broadcasted");
           $scope.questions = DataService.globalquestions();
-	        $scope.$apply();
+	      $scope.$apply();
          });
     
         $rootScope.$on('iQueryCompleted', function (event, data) {
@@ -467,12 +470,14 @@ angular.module('Piximony', ['ionic','ngCordova'])
                    DataService.updateQuestion(question,$scope.projectID)
             }
            }, function (error) {
-              
+          
            if(question.url != question.remote) {
+               
                    console.log(error + " " + question.img  )
                    question.url = question.remote         
                    DataService.updateQuestion(question,$scope.projectID)
-            }
+                           
+             }
          });        
         return question.url;  
        }else{

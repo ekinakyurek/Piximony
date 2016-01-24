@@ -326,8 +326,9 @@ function getProjectsToPlay() {
   })
   .factory('ImageService', function($cordovaCamera, DataService, $q, $cordovaFile, $cordovaFileTransfer) {
 
+    var inProgress = false ;
     var options = new FileUploadOptions();
-
+ 
     var headers={'X-Parse-Application-Id':'iZdpAD7vYS44lPB2qLDedAsl8Fn5XUwtNkHJjYN4',
     'X-Parse-REST-API-Key':'A74NTKD0VcG6MimypvHfo9ru1K4rrDRRTItgceSJ',
     'Content-Type':'image/jpeg'};
@@ -431,9 +432,35 @@ function getProjectsToPlay() {
       $cordovaFile.removeFile(cordova.file.dataDirectory, name);
       console.log("<< ImageService::removeMedia()");
     }
+    
+    function isInProgress () {
+        return inProgress
+    }
+       
+    function downloadImage(question) {
+    inProgress = true; 
+    var url = question.remote;
+    var targetPath = question.name;
+    var trustHosts = true;
+    var options = {};
+    
+    $cordovaFileTransfer.download(url, targetPath, options, trustHosts)
+      .then(function(result) {
+        console.log('download succesfull')
+        inProgress = false;
+      }, function(err) {
+        // Error
+         inProgress = false;
+      }, function (progress) {
+        //
+      });
+      
+   }
     return {
       handleMediaDialog: saveMedia,
       deleteMedia: removeMedia,
-      uploadPictureToParse :  uploadPictureToParse
+      uploadPictureToParse :  uploadPictureToParse,
+      downloadImage : downloadImage,
+      isInProgress : isInProgress
     }
   });
