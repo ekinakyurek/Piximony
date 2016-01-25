@@ -53,7 +53,7 @@ function getProjectsToPlay() {
   function pushProjectToParse(Project){
     console.log(">> DataService::pushProjectToParse() project: " + Project.name);
     var newProject = new pProjects();
-    newProject.save({name: Project.name, user_id: userObjectId, img: Project.img  },
+    newProject.save({name: Project.name, user_id: userObjectId, img: Project.img, url: Project.url, remote : Project.remote   },
       {
         success: function(projectObject) {
           console.log("DataService::pushProjectToParse() success:: " + Project.name);
@@ -75,6 +75,8 @@ function getProjectsToPlay() {
         success: function(project) {
           project.set("name",Project.name);
           project.set("img",Project.img);
+          project.set("url", Project.url);
+          project.set("remote", Project.remote);
           project.save().then({
             succes:function(object) {
               console.log("DataService::updateProjectToParse() success:: " + object.get("name"));
@@ -133,7 +135,7 @@ function getProjectsToPlay() {
         success: function(obj) {
           projects = [];
           for (var i = 0; i < obj.length; i++) {
-            projects.push({ id : obj[i].id, name : obj[i].get("name"), img : obj[i].get("img") });
+            projects.push({ id : obj[i].id, name : obj[i].get("name"), img : obj[i].get("img"), url: obj[i].get("url") , remote: obj[i].get("remote") } );
           }
           $rootScope.$broadcast('pQueryCompleted');
           console.log("DataService::getProjectsFromParse() success:: pQueryCompleted sent");
@@ -402,6 +404,7 @@ function getProjectsToPlay() {
         DataService.storeImage(result.headers.Location,projectID);
         
         var questions = DataService.globalquestions();
+        var projects = DataService.globalprojects();
         
         for(var i = 0; i <  questions.length; i += 1){
             if(parseInt(questions[i].id) == parseInt(questionID)){  
@@ -410,9 +413,22 @@ function getProjectsToPlay() {
         }
         
           questions[i].remote = result.headers.Location
-         // questions[i].url = result.headers.Location  // daha sonra silinecek
+      
+        
+        for(var j = 0; j <  projects.length; j += 1){
+            if(projects[j].id == projectID){  
+                  
+              projects[j].remote = result.headers.Location
+              DataService.updateProject(projects[j],projects[j].id);
+              break;
+            }
+        }
+        
+    
+                
+          DataService.storeProjects(projects);
           DataService.storeQuestions(questions,projectID);
-         
+        
           console.log("uploadPicture() success" + result.headers.Location );
      
       },function(error) {

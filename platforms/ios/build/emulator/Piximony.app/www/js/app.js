@@ -306,7 +306,9 @@ angular.module('Piximony', ['ionic','ngCordova'])
         $scope.projects.push({
             id: id,
             name: project.name,
-            img: 'img/image-placeholder.png'
+            img: 'img/image-placeholder.png',
+            url : 'img/image-placeholder.png',
+            remote: 'img/image-placeholder.png'
         });
 
         if(project.name.length > 20){
@@ -315,7 +317,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
         else{
         $scope.projectModal.hide();
         DataService.storeProjects($scope.projects);
-        DataService.pushProject({ id: id, name: project.name, img: 'img/image-placeholder.png' });
+        DataService.pushProject({ id: id, name: project.name, img: 'img/image-placeholder.png', url : 'img/image-placeholder.png', remote : 'img/image-placeholder.png' });
         project.name = "";
         }
       };
@@ -330,7 +332,32 @@ angular.module('Piximony', ['ionic','ngCordova'])
         $scope.projects = DataService.globalprojects();
          $scope.$apply();
       });
-
+          
+      $scope.getUrl = function(project) {
+          
+       if(project != undefined &&  project.img != undefined ) {
+           
+         $cordovaFile.checkFile(cordova.file.dataDirectory, project.img ).then(function (success) {
+            if(project.url !=  cordova.file.dataDirectory + project.img ) {
+              
+                   project.url = cordova.file.dataDirectory + project.img          
+                   DataService.updateProject(project,project.id)
+            }
+           }, function (error) {
+          
+           if(project.url != project.remote) {
+               
+                   console.log(error + " " + project.img  )
+                   project.url = project.remote         
+                   DataService.updateProject(project,project.id)
+                           
+             }
+         });        
+        return project.url;  
+       }else{
+        return 'img/image-placeholder.png';
+       } 
+      };
       // Open our new task modal
       $scope.newProject = function() {
         console.log(">> newProject()");
@@ -515,7 +542,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
             $scope.projects = DataService.globalprojects();
             for(var i = 0; i < $scope.projects.length; i += 1){
                 if($scope.projects[i].id == $scope.projectID){
-                    $scope.projects[i].img = $scope.questionImg;
+                    $scope.projects[i].img = $scope.questionImg.split("/")[$scope.questionImg.split("/").length-1];
                     DataService.updateProject($scope.projects[i],$scope.projects[i].id);
                     DataService.storeProjects($scope.projects);
                     break;
@@ -616,7 +643,8 @@ angular.module('Piximony', ['ionic','ngCordova'])
                     console.log("** updatePic():: Current projectID : " + $scope.projectID);
                     console.log("** updatePic():: index of the current project : " + i);
                     console.log("** updatePic():: Current project Img : " + $scope.questionImg);
-                    $scope.projects[i].img = $scope.questionImg;
+                    $scope.projects[i].img = $scope.questionImg.split("/")[$scope.questionImg.split("/").length-1];
+                    $scope.projects[i].url = $scope.questionImg;
 				    DataService.updateProject($scope.projects[i],$scope.projects[i].id);
                     DataService.storeProjects($scope.projects);
                     break;
