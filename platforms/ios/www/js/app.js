@@ -117,6 +117,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
       $scope.questionsToPlay = DataService.questionsToPlay();
       
       $scope.currentQuestion = 0;
+      $scope.currentScore = 0;
     
       $scope.questionTmp = $scope.questionsToPlay[$scope.currentQuestion];
       $scope.optionsTmp = $scope.questionsToPlay[$scope.currentQuestion].options;
@@ -144,18 +145,25 @@ angular.module('Piximony', ['ionic','ngCordova'])
       };
 
     $scope.nextQuestion = function(){
+        console.log('>> nextQuestion');
         $scope.closefullScreenModal();
         $scope.trial = [false,false,false,false];
         $scope.bingo = false;
         
-        if($scope.currentQuestion < $scope.questionsToPlay.length)
+        console.log('** nextQuestion:: $scope.currentQuestion:',$scope.currentQuestion);
+        console.log('** nextQuestion:: $scope.questionsToPlay.length:',$scope.questionsToPlay.length);
+        if($scope.currentQuestion < $scope.questionsToPlay.length-1)
             $scope.currentQuestion++;
-        //else
-        //    $scope.currentQuestion = 0;
+        else
+        {
+            $scope.currentQuestion = 0;
+            $scope.currentScore = 0;
+            $scope.closePlayer();
+        }
         $scope.questionTmp = $scope.questionsToPlay[$scope.currentQuestion];
         $scope.optionsTmp = $scope.questionsToPlay[$scope.currentQuestion].options;
         $scope.questionImg = $scope.questionsToPlay[$scope.currentQuestion].img; 
-        
+        console.log('<< nextQuestion');
     };
     
       $scope.optionSelected = function(option) {
@@ -173,6 +181,10 @@ angular.module('Piximony', ['ionic','ngCordova'])
             {
                 console.log('** optionSelected:: BINGO');
                 $scope.bingo = true;
+                for(var i=0; i<$scope.trial.length; i++){
+                    if($scope.trial[i] == false)        
+                        $scope.currentScore = $scope.currentScore+25;
+                }
                 $scope.fullScreen($scope.questionImg);
                 $timeout($scope.nextQuestion,3000);
             }
@@ -399,13 +411,13 @@ angular.module('Piximony', ['ionic','ngCordova'])
 		     //$scope.$apply();
          });
     
-//            for(var i = 0; i < $scope.projects.length; i += 1){
-//                if($scope.projects[i].id == $scope.projectID){
-//                    $scope.projectName = $scope.projects[i].name;
-//                    DataService.storeProjects($scope.projects);
-//                    break;
-//                }
-//            }
+            for(var i = 0; i < $scope.projects.length; i += 1){
+                if($scope.projects[i].id == $scope.projectID){
+                    $scope.projectName = $scope.projects[i].name;
+                    //DataService.storeProjects($scope.projects);
+                    break;
+                }
+            }
     
         $rootScope.$on('qQueryCompleted', function (event, data) {
           console.log("** qQueryCompleted is broadcasted");

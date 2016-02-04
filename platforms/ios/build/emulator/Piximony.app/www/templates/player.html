@@ -3,7 +3,7 @@
 
         <!-- Modal header bar -->
         <ion-header-bar class="bar-secondary">
-            <h1 class="title">Question {{($index + 1) / questionsToPlay.length+1}}</h1>
+            <h1 class="title">Question {{currentQuestion + 1}} / {{questionsToPlay.length}} | {{currentScore}}</h1>
             <button class="button button-clear button-positive" ng-click="closePlayer()">Cancel</button>
         </ion-header-bar>
 
