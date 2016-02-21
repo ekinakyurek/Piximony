@@ -5,6 +5,8 @@ angular.module('Piximony')
   var images;
   var questions;
   var projects;
+  var projects2Play;
+  var questions2Play;
 
   var userObjectId = Parse.User.current().id;
   var IMAGE_STORAGE_KEY = 'images';
@@ -14,42 +16,107 @@ angular.module('Piximony')
   var pImages = Parse.Object.extend("pImages");
   var pProjects = Parse.Object.extend("pProjects");
   var pQuestions = Parse.Object.extend("pQuestions");
-  // 
+  //
   // var parseImages = new pImages();
   // var parseProjects = new pProjects();
   // var parseQuestions = new pQuestions();
-function getProjectsToPlay() {
-    console.log(">> DataService::getProjectsToPlay()");
+  function getProjectsToPlay() {
+      console.log(">> DataService::getProjectsToPlay()");
 
-    //VBAL STARTS
-    //this portion needs to be replaced with the actual Parse data provider
-    var projectsToPlay = [
-           {id: 1, name: 'Volkan\'s project 1', img: 'img/image-placeholder.png'},
-           {id: 2, name: 'Martin\'s project 2', img: 'img/image-placeholder.png'},
-           {id: 3, name: 'Atlas\'s project 3', img: 'img/image-placeholder.png'}
-       ];
-    //VBAL ENDS
-    
-    console.log("<< DataService::getProjectsToPlay() projects: (" + projectsToPlay + ")" );
-    return projectsToPlay;
-  };
-  function getQuestionsToPlay() {
-    console.log(">> DataService::getQuestionsToPlay()");
+      var allPlayingProjects = JSON.parse(Parse.User.current().get("Projects2Play"));
 
-    //VBAL STARTS
-    //this portion needs to be replaced with the actual Parse data provider
-    var questionsToPlay = [
-             {id: 1, projectId: 2, title: 'Who is this?', options: ['MJ', 'Ricky Martin', 'Charlie', 'Maradona'], answer: 0, img: 'img/MJ.jpg'},
-             {id: 2, projectId: 1, title: 'Where is this?', options: ['NYC', 'Austin', 'Chicago', 'New Orleans'], answer: 1, img: 'img/austin-tx.jpg'},
-             {id: 3, projectId: 2, title: 'When was this?', options: ['2014', '2002', '2011', '1998'], answer: 2, img: 'img/mac_mini_2011.jpg'},
-             {id: 4, projectId: 1, title: 'Who was with us?', options: ['Drunk Guy', 'Shy Girl', 'Homeless Lady', 'No one'], answer: 1, img: 'img/ShyGirl.jpg'},
-             {id: 5, projectId: 1, title: 'What car is this?', options: ['Camaro', 'Mustang', 'Aveo', 'Escape'], answer: 0, img: 'img/semacamaro4c.jpg'}
+      var query = new Parse.Query(pProjects);
+      query.containedIn("objectId",allPlayingProjects);
+
+      return query.find({
+          success: function(objects) {
+            if(objects !== undefined || objects.length != 0){
+              projects2Play = [] ;
+
+              for(var i = 0 ; i < objects.length ; i ++){
+                var newproject = { name : "", remote : "", url : "" , img : "", id : ""};
+                newproject.name  = objects[i].get("name");
+                newproject.id = objects[i].id;
+                newproject.url = objects[i].get("remote");
+                newproject.img = objects[i].get("remote");
+                newproject.remote = objects[i].get("remote");
+                projects2Play.push(newproject);
+              }
+              $rootScope.$broadcast('projectsToPlay');
+            }else{
+              projects2Play = [] ;
+              $rootScope.$broadcast('projectsToPlay');
+            }
+          },
+          error: function(error) {
+            alert("DataService::getProjectsToPlay() error:: " + error.message);
+          }
+        });
+
+      //VBAL STARTS
+      //this portion needs to be replaced with the actual Parse data provider
+    /*  var projectsToPlay = [
+             {id: 1, name: 'Volkan\'s project 1', img: 'img/image-placeholder.png'},
+             {id: 2, name: 'Martin\'s project 2', img: 'img/image-placeholder.png'},
+             {id: 3, name: 'Atlas\'s project 3', img: 'img/image-placeholder.png'}
          ];
-    //VBAL ENDS
-    
-    console.log("<< DataService::getQuestionsToPlay() projects: (" + questionsToPlay + ")" );
-    return questionsToPlay;
-  };
+      //VBAL ENDS
+  */
+      console.log("<< DataService::getProjectsToPlay() projects: (" + projects2Play + ")" );
+      return projects2Play;
+    };
+
+    function getQuestionsToPlay() {
+      console.log(">> DataService::getQuestionsToPlay()");
+      var allPlayingProjects = JSON.parse(Parse.User.current().get("Projects2Play"));
+
+      var query = new Parse.Query(pQuestions);
+      query.containedIn("project_id",allPlayingProjects);
+
+      return query.find({
+          success: function(objects) {
+
+            if(objects !== undefined || objects.length != 0){
+             questions2Play = [];
+
+              for(var i = 0 ; i < objects.length ; i ++){
+
+                var qstn = JSON.parse(objects[i].get("questions"));
+                var projectId = objects[i].get("project_id");
+                for(var j = 0 ; j < qstn.length ; j++){
+                      var newQuestion = qstn[j];
+                      newQuestion.url = newQuestion.remote;
+                      newQuestion.projectId = projectId;
+                      questions2Play.push(newQuestion);
+                }
+              }
+               $rootScope.$broadcast('questionsToPlay');
+            }else{
+                questions2Play = [] ;
+               $rootScope.$broadcast('questionsToPlay');
+            }
+
+          },
+          error: function(error) {
+            alert("DataService::getQuestionsToPlay() error:: " + error.message);
+          }
+        });
+      //VBAL STARTS
+      //this portion needs to be replaced with the actual Parse data provider
+     /* var questionsToPlay = [
+               {id: 1, projectId: 2, title: 'Who is this?', options: ['MJ', 'Ricky Martin', 'Charlie', 'Maradona'], answer: 0, img: 'img/MJ.jpg'},
+               {id: 2, projectId: 1, title: 'Where is this?', options: ['NYC', 'Austin', 'Chicago', 'New Orleans'], answer: 1, img: 'img/austin-tx.jpg'},
+               {id: 3, projectId: 2, title: 'When was this?', options: ['2014', '2002', '2011', '1998'], answer: 2, img: 'img/mac_mini_2011.jpg'},
+               {id: 4, projectId: 1, title: 'Who was with us?', options: ['Drunk Guy', 'Shy Girl', 'Homeless Lady', 'No one'], answer: 1, img: 'img/ShyGirl.jpg'},
+               {id: 5, projectId: 1, title: 'What car is this?', options: ['Camaro', 'Mustang', 'Aveo', 'Escape'], answer: 0, img: 'img/semacamaro4c.jpg'}
+           ];
+           */
+      //VBAL ENDS
+
+      console.log("<< DataService::getQuestionsToPlay() projects: (" + questions2Play + ")" );
+
+      //return questions2Play;
+    };
   function pushProjectToParse(Project){
     console.log(">> DataService::pushProjectToParse() project: " + Project.name);
     var newProject = new pProjects();
@@ -66,7 +133,7 @@ function getProjectsToPlay() {
       });
       console.log("<< DataService::pushProjectToParse()");
     };
-    
+
     function updateProjectToParse(Project,projectID){
       console.log(">> DataService::updateProjectToParse() project: " + Project.name);
       var query = new Parse.Query(pProjects);
@@ -246,15 +313,15 @@ function getProjectsToPlay() {
       console.log("<< DataService::getProjects() length:: " + projects.length );
       return projects;
     };
-    
+
       function updateQuestion(question,projectID){
-        
+
          for(var i = 0; i <  questions.length; i += 1){
             if(parseInt(questions[i].id) == parseInt(question.id)){
               break;
             }
         }
-        
+
           questions[i] = question
           saveQuestions(questions,projectID);
     }
@@ -308,6 +375,12 @@ function getProjectsToPlay() {
     function returnQuestions(){
       return questions;
     }
+    function returnprojects2Play(){
+   return projects2Play;
+ }
+ function returnquestions2Play(){
+   return questions2Play;
+ }
     return {
       storeImage: addImage,
       removeImage: deleteImage,
@@ -323,14 +396,16 @@ function getProjectsToPlay() {
       updateProject: updateProjectToParse,
       projectsToPlay: getProjectsToPlay,
       questionsToPlay: getQuestionsToPlay,
-      updateQuestion: updateQuestion
+      updateQuestion: updateQuestion,
+      projects2Play : returnprojects2Play,
+      questions2Play : returnquestions2Play
     }
   })
   .factory('ImageService', function($cordovaCamera, DataService, $q, $cordovaFile, $cordovaFileTransfer) {
 
     var inProgress = false ;
     var options = new FileUploadOptions();
- 
+
     var headers={'X-Parse-Application-Id':'iZdpAD7vYS44lPB2qLDedAsl8Fn5XUwtNkHJjYN4',
     'X-Parse-REST-API-Key':'A74NTKD0VcG6MimypvHfo9ru1K4rrDRRTItgceSJ',
     'Content-Type':'image/jpeg'};
@@ -390,56 +465,56 @@ function getProjectsToPlay() {
       })
       console.log("<< ImageService::saveMedia()");
     };
-    
-   
+
+
     function uploadPictureToParse(path,name, projectID,questionID){
-      
+
       console.log(">> ImageService::uploadPicture()");
       var server = 'https://api.parse.com/1/files/' + name;
-      
+
       //console.log(server + " " + path +  " " +  options)
-      
+
       $cordovaFileTransfer.upload(server, path , options)
       .then(function(result) {
         DataService.storeImage(result.headers.Location,projectID);
-        
+
         var questions = DataService.globalquestions();
         var projects = DataService.globalprojects();
-        
+
         for(var i = 0; i <  questions.length; i += 1){
-            if(parseInt(questions[i].id) == parseInt(questionID)){  
+            if(parseInt(questions[i].id) == parseInt(questionID)){
               break;
             }
         }
-        
+
           questions[i].remote = result.headers.Location
-      
-        
+
+
         for(var j = 0; j <  projects.length; j += 1){
-            if(projects[j].id == projectID){  
-                  
+            if(projects[j].id == projectID){
+
               projects[j].remote = result.headers.Location
               DataService.updateProject(projects[j],projects[j].id);
               break;
             }
         }
-        
-    
-                
+
+
+
           DataService.storeProjects(projects);
           DataService.storeQuestions(questions,projectID);
-        
+
           console.log("uploadPicture() success" + result.headers.Location );
-     
+
       },function(error) {
         alert("uploadPicture() error::" + error.message) ;
-     
+
       }, function (progress) {
         // constant progress updates
       });
       console.log("<< ImageService::uploadPicture()");
     }
-    
+
     function removeMedia(imageUrl,projectID) {
       console.log(">> ImageService::removeMedia() imageUrl: " + imageUrl);
       var name = imageUrl.substr(imageUrl.lastIndexOf('/') + 1);
@@ -448,18 +523,18 @@ function getProjectsToPlay() {
       $cordovaFile.removeFile(cordova.file.dataDirectory, name);
       console.log("<< ImageService::removeMedia()");
     }
-    
+
     function isInProgress () {
         return inProgress
     }
-       
+
     function downloadImage(question) {
-    inProgress = true; 
+    inProgress = true;
     var url = question.remote;
     var targetPath = question.name;
     var trustHosts = true;
     var options = {};
-    
+
     $cordovaFileTransfer.download(url, targetPath, options, trustHosts)
       .then(function(result) {
         console.log('download succesfull')
@@ -470,7 +545,7 @@ function getProjectsToPlay() {
       }, function (progress) {
         //
       });
-      
+
    }
     return {
       handleMediaDialog: saveMedia,
