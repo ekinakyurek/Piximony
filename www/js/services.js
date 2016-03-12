@@ -440,7 +440,7 @@ angular.module('Piximony')
         sourceType: source,
         quality: 75,
         targetHeight: 500,
-        targetWidth: 500,
+      //targetWidth: 500,
         //allowEdit: true,
         encodingType: Camera.EncodingType.JPEG,
         popoverOptions: CameraPopoverOptions,
