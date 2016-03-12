@@ -49,10 +49,11 @@ angular.module('Piximony', ['ionic','ngCordova'])
 
       $scope.GoToPlayerHome = function() {
        console.log("** GoToPlayerHome()");
+             $state.go('PlayerHome');
        DataService.projectsToPlay().then(function(prjcts) {
 
            DataService.questionsToPlay().then(function(qstns){
-                $state.go('PlayerHome');
+
            },function(error){
                 alert("error: cannot find questions");
            });
@@ -129,25 +130,25 @@ angular.module('Piximony', ['ionic','ngCordova'])
 
   $rootScope.$on('questionsToPlay', function (event, data) {
     console.log("** questionsToPlay is received");
-    $scope.questionsToPlay = DataService.questions2Play();
-  });
-
-
-
     $scope.projectsToPlay = DataService.projects2Play();
 
     $scope.questionsToPlay = DataService.questions2Play();
 
-      $scope.currentQuestion = 0;
-      $scope.currentScore = 0;
+    $scope.currentQuestion = 0;
+    $scope.currentScore = 0;
 
-      $scope.questionTmp = $scope.questionsToPlay[$scope.currentQuestion];
-      $scope.optionsTmp = $scope.questionsToPlay[$scope.currentQuestion].options;
+    $scope.questionTmp = $scope.questionsToPlay[$scope.currentQuestion];
+    $scope.optionsTmp = $scope.questionsToPlay[$scope.currentQuestion].options;
 
-      $scope.questionImg = $scope.questionsToPlay[$scope.currentQuestion].remote;
+    $scope.questionImg = $scope.questionsToPlay[$scope.currentQuestion].remote;
 
     $scope.trial = [false,false,false,false];
     $scope.bingo = false;
+  });
+
+
+
+
 
     window.addEventListener("orientationchange", function(){
         console.log('Orientation changed to ' + screen.orientation);
@@ -192,7 +193,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
           console.log('>> optionSelected : (' + option + ')');
           //alert(option);
           //alert($scope.questionsToPlay[1].answer);
-          selectedIndex = $scope.optionsTmp.indexOf(option);
+          var selectedIndex = $scope.optionsTmp.indexOf(option);
 
           //alert(selectedIndex);
           console.log('** optionSelected:: selectedIndex:('+selectedIndex+')');
@@ -220,7 +221,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
 
         $scope.isThisDisabled = function(option) {
             console.log('>> isThisDisabled:: for: (' + option + ')');
-            Index = $scope.optionsTmp.indexOf(option);
+            var Index = $scope.optionsTmp.indexOf(option);
             console.log('** isThisDisabled::Index:' + Index);
             if(($scope.trial[Index] == true | $scope.bingo == true) & !($scope.questionsToPlay[$scope.currentQuestion].answer == Index))
             {
@@ -237,16 +238,19 @@ angular.module('Piximony', ['ionic','ngCordova'])
         $scope.isThisChecked = function(option) {
             console.log('>> isThisChecked:: for: (' + option + ')');
 
-            Index = $scope.optionsTmp.indexOf(option);
+            var Index = $scope.optionsTmp.indexOf(option);
             console.log('** isThisChecked::Index:' + Index);
             if($scope.trial[Index] == true & !($scope.questionsToPlay[$scope.currentQuestion].answer))
             {
                console.log('<< isThisChecked:: false for: (' + option + ')');
                return false;
             }
-            else
-                console.log('<< isThisChecked:: not changed for: (' + option + ')');
+            else{
 
+              console.log('<< isThisChecked:: not changed for: (' + option + ')');
+            }
+
+             return false;
       };
 
 

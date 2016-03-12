@@ -86,10 +86,12 @@ angular.module('Piximony')
                 for(var j = 0 ; j < qstn.length ; j++){
                       var newQuestion = qstn[j];
                       newQuestion.url = newQuestion.remote;
+                      newQuestion.img = newQuestion.remote;
                       newQuestion.projectId = projectId;
                       questions2Play.push(newQuestion);
                 }
               }
+
                $rootScope.$broadcast('questionsToPlay');
             }else{
                 questions2Play = [] ;
@@ -436,7 +438,10 @@ angular.module('Piximony')
       return {
         destinationType: Camera.DestinationType.FILE_URI,
         sourceType: source,
-        allowEdit: false,
+        quality: 75,
+        targetHeight: 500,
+        targetWidth: 500,
+        //allowEdit: true,
         encodingType: Camera.EncodingType.JPEG,
         popoverOptions: CameraPopoverOptions,
         saveToPhotoAlbum: false
