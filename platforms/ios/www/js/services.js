@@ -77,18 +77,19 @@ angular.module('Piximony')
           success: function(objects) {
 
             if(objects !== undefined || objects.length != 0){
-             questions2Play = [];
 
+            questions2Play = new Array(objects.length);
               for(var i = 0 ; i < objects.length ; i ++){
 
                 var qstn = JSON.parse(objects[i].get("questions"));
                 var projectId = objects[i].get("project_id");
+                questions2Play[i] = new Array(qstn.length)
                 for(var j = 0 ; j < qstn.length ; j++){
                       var newQuestion = qstn[j];
                       newQuestion.url = newQuestion.remote;
                       newQuestion.img = newQuestion.remote;
                       newQuestion.projectId = projectId;
-                      questions2Play.push(newQuestion);
+                      questions2Play[i][j] = newQuestion;
                 }
               }
 
@@ -440,7 +441,7 @@ angular.module('Piximony')
         sourceType: source,
         quality: 75,
         targetHeight: 500,
-        targetWidth: 500,
+      //targetWidth: 500,
         //allowEdit: true,
         encodingType: Camera.EncodingType.JPEG,
         popoverOptions: CameraPopoverOptions,

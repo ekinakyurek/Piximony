@@ -122,28 +122,31 @@ angular.module('Piximony', ['ionic','ngCordova'])
       //     {id: 3, name: 'Atlas\'s project 3', img: 'img/image-placeholder.png'}
       // ];
 
-
+  $scope.projectindex = 0
   $rootScope.$on('projectsToPlay', function (event, data) {
     console.log('** projectsToPlay recieved');
-    $scope.projectsToPlay = DataService.projects2Play();
+    //$scope.projectsToPlay = DataService.projects2Play();
+    $scope.projectsToPlay = DataService.projects2Play()
+    console.log($scope.projectsToPlay)
+
+    $scope.$apply()
   });
 
   $rootScope.$on('questionsToPlay', function (event, data) {
     console.log("** questionsToPlay is received");
-    $scope.projectsToPlay = DataService.projects2Play();
+    //$scope.projectsToPlay = DataService.projects2Play();
 
-    $scope.questionsToPlay = DataService.questions2Play();
-
+    //$scope.questionsToPlay = DataService.questions2Play();
+      //$scope.projectsToPlay = DataService.returnprojects2Play
+    $scope.questionsToPlay = DataService.questions2Play()
+      console.log($scope.questionsToPlay)
     $scope.currentQuestion = 0;
     $scope.currentScore = 0;
 
-    $scope.questionTmp = $scope.questionsToPlay[$scope.currentQuestion];
-    $scope.optionsTmp = $scope.questionsToPlay[$scope.currentQuestion].options;
-
-    $scope.questionImg = $scope.questionsToPlay[$scope.currentQuestion].remote;
 
     $scope.trial = [false,false,false,false];
     $scope.bingo = false;
+    $scope.$apply()
   });
 
 
@@ -174,8 +177,8 @@ angular.module('Piximony', ['ionic','ngCordova'])
         $scope.bingo = false;
 
         console.log('** nextQuestion:: $scope.currentQuestion:',$scope.currentQuestion);
-        console.log('** nextQuestion:: $scope.questionsToPlay.length:',$scope.questionsToPlay.length);
-        if($scope.currentQuestion < $scope.questionsToPlay.length-1)
+        console.log('** nextQuestion:: $scope.questionsToPlay.length:',$scope.questionsToPlay[$scope.projectindex].length);
+        if($scope.currentQuestion < $scope.questionsToPlay[$scope.projectindex].length-1)
             $scope.currentQuestion++;
         else
         {
@@ -183,9 +186,9 @@ angular.module('Piximony', ['ionic','ngCordova'])
             $scope.currentScore = 0;
             $scope.closePlayer();
         }
-        $scope.questionTmp = $scope.questionsToPlay[$scope.currentQuestion];
-        $scope.optionsTmp = $scope.questionsToPlay[$scope.currentQuestion].options;
-        $scope.questionImg = $scope.questionsToPlay[$scope.currentQuestion].img;
+        $scope.questionTmp = $scope.questionsToPlay[$scope.projectindex][$scope.currentQuestion];
+        $scope.optionsTmp = $scope.questionsToPlay[$scope.projectindex][$scope.currentQuestion].options;
+        $scope.questionImg = $scope.questionsToPlay[$scope.projectindex][$scope.currentQuestion].img;
         console.log('<< nextQuestion');
     };
 
@@ -200,7 +203,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
           //alert($scope.questionsToPlay[1].answer.charCodeAt(0));
           //alert('A'.charCodeAt(0));
 
-          if($scope.questionsToPlay[$scope.currentQuestion].answer == selectedIndex)
+          if($scope.questionsToPlay[$scope.projectindex][$scope.currentQuestion].answer == selectedIndex)
             {
                 console.log('** optionSelected:: BINGO');
                 $scope.bingo = true;
@@ -223,7 +226,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
             console.log('>> isThisDisabled:: for: (' + option + ')');
             var Index = $scope.optionsTmp.indexOf(option);
             console.log('** isThisDisabled::Index:' + Index);
-            if(($scope.trial[Index] == true | $scope.bingo == true) & !($scope.questionsToPlay[$scope.currentQuestion].answer == Index))
+            if(($scope.trial[Index] == true | $scope.bingo == true) & !($scope.questionsToPlay[$scope.projectindex][$scope.currentQuestion].answer == Index))
             {
                console.log('<< isThisDisabled:: TRUE for: (' + option + ')');
                return true;
@@ -240,7 +243,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
 
             var Index = $scope.optionsTmp.indexOf(option);
             console.log('** isThisChecked::Index:' + Index);
-            if($scope.trial[Index] == true & !($scope.questionsToPlay[$scope.currentQuestion].answer))
+            if($scope.trial[Index] == true & !($scope.questionsToPlay[$scope.projectindex][$scope.currentQuestion].answer))
             {
                console.log('<< isThisChecked:: false for: (' + option + ')');
                return false;
@@ -305,7 +308,13 @@ angular.module('Piximony', ['ionic','ngCordova'])
       });
 
 
-      $scope.openPlayer = function() {
+      $scope.openPlayer = function(index) {
+        $scope.projectindex = index
+        if($scope.questionsToPlay.length > 0) {
+          $scope.questionTmp = $scope.questionsToPlay[$scope.projectindex][$scope.currentQuestion];
+          $scope.optionsTmp = $scope.questionsToPlay[$scope.projectindex][$scope.currentQuestion].options;
+          $scope.questionImg = $scope.questionsToPlay[$scope.projectindex][$scope.currentQuestion].remote;
+        }
         $scope.playerModal.show();
       };
 
