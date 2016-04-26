@@ -9,6 +9,8 @@ angular.module('Piximony')
   var questions2Play;
 
   var userObjectId = Parse.User.current().id;
+  var Currentusername = Parse.User.current().get("username")
+  
   var IMAGE_STORAGE_KEY = 'images';
   var QUESTION_STORAGE_KEY = 'questions';
   var PROJECT_STORAGE_KEY = 'projects';
@@ -20,6 +22,55 @@ angular.module('Piximony')
   // var parseImages = new pImages();
   // var parseProjects = new pProjects();
   // var parseQuestions = new pQuestions();
+  
+  function shareAProject(projectId, users){
+       
+    var query = new Parse.Query(Parse.User);
+    query.containedIn("username", users);  // find all the women
+    return query.find({
+      success: function(users) {
+        
+         for(var i=0; i < users.length; i++){
+           projects = [];
+           
+           if(users[i].get("Projects2Play")!=undefined){
+           projects = JSON.parse(users[i].get("Projects2Play"))
+           }
+         
+           if(projects.indexOf(projectId)==-1){
+                projects.push(projectId)
+           }
+           console.log(JSON.stringify(projects))
+           users[i].set("Projects2Play",JSON.stringify(projects))
+           users[i].save()
+         console.log("sucessfully shared")
+      },error: function(error){
+        
+      }
+    });
+    
+  }
+  
+  
+  function getFriends(){
+   
+   
+    var query = new Parse.Query(Parse.User);
+   
+    return query.find({
+      success: function(users) {
+         console.log("sucessfully getting users")
+         usernames = [];
+         for(var i = 0; i < users.length; i ++){
+           usernames.push(users[i].get("username"))
+         }
+         $rootScope.$broadcast('getUsers', usernames)
+      },error: function(error){
+        console.log("error when getting users")
+      }
+    });
+    
+  }
   function getProjectsToPlay() {
       console.log(">> DataService::getProjectsToPlay()");
 
@@ -123,7 +174,7 @@ angular.module('Piximony')
   function pushProjectToParse(Project){
     console.log(">> DataService::pushProjectToParse() project: " + Project.name);
     var newProject = new pProjects();
-    newProject.save({name: Project.name, user_id: userObjectId, img: Project.img, url: Project.url, remote : Project.remote   },
+    newProject.save({name: Project.name, user_id: userObjectId, img: Project.img, url: Project.url, remote : Project.remote , username: Project.username, owner: Project.owner },
       {
         success: function(projectObject) {
           console.log("DataService::pushProjectToParse() success:: " + Project.name);
@@ -401,7 +452,9 @@ angular.module('Piximony')
       questionsToPlay: getQuestionsToPlay,
       updateQuestion: updateQuestion,
       projects2Play : returnprojects2Play,
-      questions2Play : returnquestions2Play
+      questions2Play : returnquestions2Play,
+      shareProject: shareAProject,
+      getMyFriends: getFriends
     }
   })
   .factory('ImageService', function($cordovaCamera, DataService, $q, $cordovaFile, $cordovaFileTransfer) {
