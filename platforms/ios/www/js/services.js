@@ -24,8 +24,8 @@ angular.module('Piximony')
   // var parseQuestions = new pQuestions();
   
   function shareAProject(projectId, users){
-       
-    var query = new Parse.Query(Parse.User);
+    var shared = Parse.Object.extend("shares"); 
+    var query = new Parse.Query(shared);
     query.containedIn("username", users);  // find all the women
     return query.find({
       success: function(users) {
@@ -42,15 +42,7 @@ angular.module('Piximony')
            }
            console.log(JSON.stringify(projects))
            users[i].set("Projects2Play",JSON.stringify(projects))
-           users[i].save().then({
-            success:function(succes){
-             console.log(succes)
-           },
-            error: function(error){
-           console.log(error)
-            }
-          })
-         }
+           users[i].save()
          console.log("sucessfully shared")
       },error: function(error){
         
@@ -81,36 +73,48 @@ angular.module('Piximony')
   }
   function getProjectsToPlay() {
       console.log(">> DataService::getProjectsToPlay()");
+        var shared = Parse.Object.extend("shares"); 
+        var squery = new Parse.Query(shared);
+        squery.equalTo("username",Currentusername)
+    
+      
+      return squery.first({
+        success:function(share){
+               var allPlayingProjects = JSON.parse(share.get("Projects2Play"));
+               var query = new Parse.Query(pProjects);
+               query.containedIn("objectId",allPlayingProjects);
+               query.find({
+                      success: function(objects) {
+                        if(objects !== undefined || objects.length != 0){
+                          projects2Play = [] ;
 
-      var allPlayingProjects = JSON.parse(Parse.User.current().get("Projects2Play"));
-
-      var query = new Parse.Query(pProjects);
-      query.containedIn("objectId",allPlayingProjects);
-
-      return query.find({
-          success: function(objects) {
-            if(objects !== undefined || objects.length != 0){
-              projects2Play = [] ;
-
-              for(var i = 0 ; i < objects.length ; i ++){
-                var newproject = { name : "", remote : "", url : "" , img : "", id : ""};
-                newproject.name  = objects[i].get("name");
-                newproject.id = objects[i].id;
-                newproject.url = objects[i].get("remote");
-                newproject.img = objects[i].get("remote");
-                newproject.remote = objects[i].get("remote");
-                projects2Play.push(newproject);
-              }
-              $rootScope.$broadcast('projectsToPlay');
-            }else{
-              projects2Play = [] ;
-              $rootScope.$broadcast('projectsToPlay');
-            }
-          },
-          error: function(error) {
-            alert("DataService::getProjectsToPlay() error:: " + error.message);
-          }
-        });
+                          for(var i = 0 ; i < objects.length ; i ++){
+                            var newproject = { name : "", remote : "", url : "" , img : "", id : ""};
+                            newproject.name  = objects[i].get("name");
+                            newproject.id = objects[i].id;
+                            newproject.url = objects[i].get("remote");
+                            newproject.img = objects[i].get("remote");
+                            newproject.remote = objects[i].get("remote");
+                            projects2Play.push(newproject);
+                          }
+                          $rootScope.$broadcast('projectsToPlay');
+                        }else{
+                          projects2Play = [] ;
+                          $rootScope.$broadcast('projectsToPlay');
+                        }
+                      },
+                      error: function(error) {
+                        alert("DataService::getProjectsToPlay() error:: " + error.message);
+                      }
+              });
+        },
+        error:function(error){
+          
+        }
+      })
+      
+      
+      
 
       //VBAL STARTS
       //this portion needs to be replaced with the actual Parse data provider
@@ -127,42 +131,55 @@ angular.module('Piximony')
 
     function getQuestionsToPlay() {
       console.log(">> DataService::getQuestionsToPlay()");
-      var allPlayingProjects = JSON.parse(Parse.User.current().get("Projects2Play"));
-
-      var query = new Parse.Query(pQuestions);
-      query.containedIn("project_id",allPlayingProjects);
-
-      return query.find({
+      var shared = Parse.Object.extend("shares"); 
+      var squery = new Parse.Query(shared);
+      squery.equalTo("username",Currentusername)
+      
+      return squery.first({
+        success:function(share){
+        
+        var allPlayingProjects = JSON.parse(share.get("Projects2Play"));
+        var query = new Parse.Query(pQuestions);
+        query.containedIn("project_id",allPlayingProjects);
+        query.find({
           success: function(objects) {
 
-            if(objects !== undefined || objects.length != 0){
+                    if(objects !== undefined || objects.length != 0){
 
-            questions2Play = new Array(objects.length);
-              for(var i = 0 ; i < objects.length ; i ++){
+                    questions2Play = new Array(objects.length);
+                      for(var i = 0 ; i < objects.length ; i ++){
 
-                var qstn = JSON.parse(objects[i].get("questions"));
-                var projectId = objects[i].get("project_id");
-                questions2Play[i] = new Array(qstn.length)
-                for(var j = 0 ; j < qstn.length ; j++){
-                      var newQuestion = qstn[j];
-                      newQuestion.url = newQuestion.remote;
-                      newQuestion.img = newQuestion.remote;
-                      newQuestion.projectId = projectId;
-                      questions2Play[i][j] = newQuestion;
+                        var qstn = JSON.parse(objects[i].get("questions"));
+                        var projectId = objects[i].get("project_id");
+                        questions2Play[i] = new Array(qstn.length)
+                        for(var j = 0 ; j < qstn.length ; j++){
+                              var newQuestion = qstn[j];
+                              newQuestion.url = newQuestion.remote;
+                              newQuestion.img = newQuestion.remote;
+                              newQuestion.projectId = projectId;
+                              questions2Play[i][j] = newQuestion;
+                        }
+                      }
+
+                      $rootScope.$broadcast('questionsToPlay');
+                    }else{
+                        questions2Play = [] ;
+                      $rootScope.$broadcast('questionsToPlay');
+                    }
+
+                  },
+                  error: function(error) {
+                    alert("DataService::getQuestionsToPlay() error:: " + error.message);
+                  }
+                });
+                },
+                error:function(error){
+                  
                 }
-              }
-
-               $rootScope.$broadcast('questionsToPlay');
-            }else{
-                questions2Play = [] ;
-               $rootScope.$broadcast('questionsToPlay');
-            }
-
-          },
-          error: function(error) {
-            alert("DataService::getQuestionsToPlay() error:: " + error.message);
-          }
-        });
+      
+    
+  })
+     
       //VBAL STARTS
       //this portion needs to be replaced with the actual Parse data provider
      /* var questionsToPlay = [
