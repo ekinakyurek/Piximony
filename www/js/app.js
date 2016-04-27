@@ -421,6 +421,70 @@ angular.module('Piximony', ['ionic','ngCordova'])
         $scope.projectModal.hide();
         console.log("<< closeNewProject()");
       };
+      
+   
+       $scope.getMyFriends = function() {
+             console.log("print")
+             DataService.getMyFriends()
+             DataService.getAllUsers()
+            $scope.openFriendsModal()
+       };
+       
+         
+        $scope.addFriend = function(username) {
+             DataService.addFriend(username)
+              $scope.users.push(username)
+             for(var i = 0; i< $scope.users.length; i++){
+                 if($scope.users[i]==username){
+                       $scope.users.pop()
+                     break;
+                 } 
+             }
+             
+       
+             for(var i = 0; i< $scope.others.length; i++){
+                 if($scope.others[i]==username){
+                     $scope.others.splice(i, 1);
+                     break;
+                 } 
+             }
+             
+             $scope.$apply
+       };
+       
+       
+       $rootScope.$on('getFriends', function (event, data) {
+          console.log("** getUsers is broadcasted");
+          $scope.users = data
+        
+        });
+        
+        
+        $rootScope.$on('getUsers', function (event, data) {
+          console.log("** getUsers is broadcasted");   
+          $scope.others = data
+          $scope.$apply
+        });
+      
+      
+      $scope.openFriendsModal = function(){
+        console.log(">> closeNewProject()");
+        $scope.friendsModal.show();
+        console.log("<< closeNewProject()");
+      }
+      
+      $scope.closeFriendsModal = function(){
+        console.log(">> closeNewProject()");
+        $scope.friendsModal.hide();
+        console.log("<< closeNewProject()");
+      }
+      
+       $ionicModal.fromTemplateUrl('templates/friends.html', function(modal) {
+            $scope.friendsModal = modal;
+        }, {
+            scope: $scope,
+            animation: 'slide-in-up'
+       });
 
         $scope.showQuestions = function(projectId) {
             //alert(projectId);
@@ -552,7 +616,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
         }
         
         
-        $rootScope.$on('getUsers', function (event, data) {
+        $rootScope.$on('getFriends', function (event, data) {
           console.log("** getUsers is broadcasted");
           $scope.users = [];
           $scope.selectedUsers = [];

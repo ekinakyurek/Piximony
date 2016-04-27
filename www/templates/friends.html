@@ -1,0 +1,40 @@
+<div class="modal">
+
+        <ion-content>
+            <div class="list">
+                <div class="item item-divider" style="text-align: center">
+                    Friends
+                </div>
+                   
+                        <a ng-repeat="user in users"
+                        ng-click=""
+                        class="item item-avatar">
+                            <img ng-src="img/User-100.png">
+                            <h2 style="vertical-align: middle; height: 100%;">{{user}}</h2>
+
+                        </a>
+               <div class="item item-divider" style="text-align: center">
+                    Other Users
+               </div>
+                          <a ng-repeat="other in others"
+                        ng-click="addFriend(other)"
+                        class="item item-avatar">
+
+                            <img ng-src="img/User-100.png">
+                            <h2 style="vertical-align: middle; height: 100%;">{{ other}}</h2>
+
+                        </a>
+
+            </div>
+            
+               <div class="bar bar-footer">
+               
+                 <button class="button" ng-click="closeFriendsModal()"> Cancel </button>
+               </div>
+
+            </div>
+
+     
+        </ion-content>
+
+</div>

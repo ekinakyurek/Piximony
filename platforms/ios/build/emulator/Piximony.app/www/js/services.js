@@ -43,8 +43,9 @@ angular.module('Piximony')
            console.log(JSON.stringify(projects))
            users[i].set("Projects2Play",JSON.stringify(projects))
            users[i].save()
-         console.log("sucessfully shared")
-      },error: function(error){
+            
+           console.log("sucessfully shared")
+      }},error: function(error){
         
       }
     });
@@ -76,16 +77,17 @@ angular.module('Piximony')
         var shared = Parse.Object.extend("shares"); 
         var squery = new Parse.Query(shared);
         squery.equalTo("username",Currentusername)
-    
+        
+        console.log("<< DataService::getProjectsToPlay() projects: (" + projects2Play + ")" );
       
-      return squery.first({
-        success:function(share){
-               var allPlayingProjects = JSON.parse(share.get("Projects2Play"));
-               var query = new Parse.Query(pProjects);
-               query.containedIn("objectId",allPlayingProjects);
-               query.find({
-                      success: function(objects) {
-                        if(objects !== undefined || objects.length != 0){
+      return squery.first({ 
+        success: function(share){
+           var allPlayingProjects = JSON.parse(share.get("Projects2Play"));
+           var query = new Parse.Query(pProjects);
+           query.containedIn("objectId",allPlayingProjects);
+            query.find({
+                    success: function(objects) {
+                       if(objects !== undefined || objects.length != 0){
                           projects2Play = [] ;
 
                           for(var i = 0 ; i < objects.length ; i ++){
@@ -107,11 +109,7 @@ angular.module('Piximony')
                         alert("DataService::getProjectsToPlay() error:: " + error.message);
                       }
               });
-        },
-        error:function(error){
-          
-        }
-      })
+        },error:function(error){} })
       
       
       
@@ -125,8 +123,8 @@ angular.module('Piximony')
          ];
       //VBAL ENDS
   */
-      console.log("<< DataService::getProjectsToPlay() projects: (" + projects2Play + ")" );
-      return projects2Play;
+    
+     
     };
 
     function getQuestionsToPlay() {
@@ -142,7 +140,7 @@ angular.module('Piximony')
         var query = new Parse.Query(pQuestions);
         query.containedIn("project_id",allPlayingProjects);
         query.find({
-          success: function(objects) {
+                  success: function(objects) {
 
                     if(objects !== undefined || objects.length != 0){
 
