@@ -31,17 +31,8 @@ angular.module('Piximony')
       success: function(users) {
         
          for(var i=0; i < users.length; i++){
-           projects = [];
            
-           if(users[i].get("Projects2Play")!=undefined){
-           projects = JSON.parse(users[i].get("Projects2Play"))
-           }
-         
-           if(projects.indexOf(projectId)==-1){
-                projects.push(projectId)
-           }
-           console.log(JSON.stringify(projects))
-           users[i].set("Projects2Play",JSON.stringify(projects))
+           users[i].addUnique("Projects2Play",projectId)
            users[i].save()
             
            console.log("sucessfully shared")
@@ -53,7 +44,31 @@ angular.module('Piximony')
   }
   
   
-  function getFriends(){
+  function addFriend(username){
+    var friends = Parse.Object.extend("friends"); 
+    var query = new Parse.Query(friends);
+    query.equalTo("username", Currentusername);  // find all the women
+    return query.first({
+      success: function(user) {
+        if(user != undefined){
+           user.addUnique("friends",username)
+           user.save()
+           console.log("sucessfully shared")
+        }else{
+            var friend = new friends()
+            friend.addUnique("friends",username)
+            friend.set("username",Currentusername)
+            friend.save()
+        }
+       //$rootScope.$broadcast('getFriends', usernames)
+      },error: function(error){
+        
+      }
+    });
+    
+  }
+  
+  function AllUsers(){
    
    
     var query = new Parse.Query(Parse.User);
@@ -72,6 +87,31 @@ angular.module('Piximony')
     });
     
   }
+  
+   function getFriends(){
+   console.log("println")
+    var object = Parse.Object.extend("friends");
+    var query = new Parse.Query(object);
+    query.equalTo("username",Currentusername)
+    return query.first({
+      success: function(theuser) {
+        
+        usernames = [];
+        if(theuser != undefined){
+         console.log("sucessfully getting friends")
+         usernames = theuser.get("friends")
+        }else{
+          
+        }
+         $rootScope.$broadcast('getFriends', usernames)
+      },error: function(error){
+        console.log("error when getting friends")
+      }
+    });
+    
+  }
+  
+  
   function getProjectsToPlay() {
       console.log(">> DataService::getProjectsToPlay()");
         var shared = Parse.Object.extend("shares"); 
@@ -82,7 +122,7 @@ angular.module('Piximony')
       
       return squery.first({ 
         success: function(share){
-           var allPlayingProjects = JSON.parse(share.get("Projects2Play"));
+           var allPlayingProjects = share.get("Projects2Play");
            var query = new Parse.Query(pProjects);
            query.containedIn("objectId",allPlayingProjects);
             query.find({
@@ -136,7 +176,7 @@ angular.module('Piximony')
       return squery.first({
         success:function(share){
         
-        var allPlayingProjects = JSON.parse(share.get("Projects2Play"));
+        var allPlayingProjects = share.get("Projects2Play");
         var query = new Parse.Query(pQuestions);
         query.containedIn("project_id",allPlayingProjects);
         query.find({
@@ -477,7 +517,9 @@ angular.module('Piximony')
       projects2Play : returnprojects2Play,
       questions2Play : returnquestions2Play,
       shareProject: shareAProject,
-      getMyFriends: getFriends
+      getMyFriends: getFriends,
+      getAllUsers: AllUsers,
+      addFriend:addFriend 
     }
   })
   .factory('ImageService', function($cordovaCamera, DataService, $q, $cordovaFile, $cordovaFileTransfer) {

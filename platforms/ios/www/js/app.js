@@ -67,8 +67,8 @@ angular.module('Piximony', ['ionic','ngCordova'])
 
     .controller('SignInCtrl', function($scope, $state) {
 
-      $scope.signIn = function(user) {
-     console.log(">> signIn");
+     $scope.signIn = function(user) {
+     console.log(">> signIn()");
      Parse.User.logIn(user.username, user.password, {
          success: function(PFuser) {
            $state.go('MainPage');
@@ -78,6 +78,7 @@ angular.module('Piximony', ['ionic','ngCordova'])
             alert("Error: " + error.code + " " + error.message);
          }
      });
+    console.log("<< signIn()");
  };
 
  $scope.isVisible = false;
@@ -421,6 +422,71 @@ angular.module('Piximony', ['ionic','ngCordova'])
         $scope.projectModal.hide();
         console.log("<< closeNewProject()");
       };
+      
+   
+       $scope.getMyFriends = function() {
+             console.log(">> getMyFriends()");
+             DataService.getMyFriends();
+             DataService.getAllUsers();
+             $scope.openFriendsModal();
+             console.log("<< getMyFriends()"); 
+       };
+       
+         
+        $scope.addFriend = function(username) {
+             DataService.addFriend(username)
+              $scope.users.push(username)
+             for(var i = 0; i< $scope.users.length; i++){
+                 if($scope.users[i]==username){
+                       $scope.users.pop()
+                     break;
+                 } 
+             }
+             
+       
+             for(var i = 0; i< $scope.others.length; i++){
+                 if($scope.others[i]==username){
+                     $scope.others.splice(i, 1);
+                     break;
+                 } 
+             }
+             
+             $scope.$apply
+       };
+       
+       
+       $rootScope.$on('getFriends', function (event, data) {
+          console.log("** getUsers is broadcasted");
+          $scope.users = data;
+        
+        });
+        
+        
+        $rootScope.$on('getUsers', function (event, data) {
+          console.log("** getUsers is broadcasted");   
+          $scope.others = data;
+          $scope.$apply;
+        });
+      
+      
+      $scope.openFriendsModal = function(){
+        console.log(">> openFriendsModal()");
+        $scope.friendsModal.show();
+        console.log("<< openFriendsModal()");
+      }
+      
+      $scope.closeFriendsModal = function(){
+        console.log(">> closeFriendsModal()");
+        $scope.friendsModal.hide();
+        console.log("<< closeFriendsModal()");
+      }
+      
+       $ionicModal.fromTemplateUrl('templates/friends.html', function(modal) {
+            $scope.friendsModal = modal;
+        }, {
+            scope: $scope,
+            animation: 'slide-in-up'
+       });
 
         $scope.showQuestions = function(projectId) {
             //alert(projectId);
@@ -431,6 +497,53 @@ angular.module('Piximony', ['ionic','ngCordova'])
             $state.go('QuestionsHome', {'projectId':projectId});
             console.log("<< showQuestions()");
         };
+    
+        $scope.openShareProjectModal = function(projectID){
+            console.log(">> openShareProjectModal(" + projectID + ")");
+            DataService.getMyFriends();
+            $scope.projectID = projectID;
+            $scope.shareProjectModal.show();
+            console.log("<< openShareProjectModal()");
+        }
+        
+         $scope.shareProject = function(){
+            console.log(">> shareProject(" + $scope.projectID + ")");
+            //if there is no selected user alert error
+            DataService.shareProject($scope.projectID,$scope.selectedUsers)
+            $scope.shareProjectModal.hide();
+            $scope.selectedUsers = [];
+            $scope.users = [];
+            console.log("<< shareProject()");;
+        }
+        
+        $scope.shareProjectCancel = function(){
+            $scope.shareProjectModal.hide();
+            $scope.selectedUsers = [];
+            $scope.users = [];
+        }
+        
+        $scope.addSelectedUser = function(user,selected){
+            if(selected){
+                $scope.selectedUsers.push(user)
+            }else{
+                for( var i = 0 ; i < $scope.selectedUsers.length ; i++ ){
+                    if(user == $scope.selectedUsers[i]){
+                        $scope.selectedUsers.splice(i,1);
+                        break;
+                    }
+                }
+            }
+            
+            console.log($scope.selectedUsers)
+        }
+        
+        $ionicModal.fromTemplateUrl('templates/shareProject.html', function(modal) {
+            $scope.shareProjectModal = modal;
+        }, {
+            scope: $scope,
+            animation: 'slide-in-up'
+        });
+    
     })
 
     .controller('QuestionsHomeCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, DataService)  {
@@ -515,27 +628,29 @@ angular.module('Piximony', ['ionic','ngCordova'])
             console.log("<< addImage()");
         }
         
-        $scope.openShareModal = function(){
-            console.log("share modal clicked")
-            DataService.getMyFriends()
-           
+/*        $scope.openShareProjectModal = function(){
+            console.log(">> openShareProjectModal()");
+            DataService.getMyFriends();
+            $scope.shareProjectModal.show();
+            console.log("<< openShareProjectModal()");
         }
         
-         $scope.share = function(){
-            console.log("sharing started")
+         $scope.shareProject = function(){
+            console.log(">> shareProject()");
             //if there is no selected user alert error
             DataService.shareProject($scope.projectID,$scope.selectedUsers)
-             $scope.shareModal.hide()
+            $scope.shareProjectModal.hide();
+            $scope.selectedUsers = [];
+            $scope.users = [];
+            console.log("<< shareProject()");;
+        }
+        
+        $scope.shareProjectCancel = function(){
+            $scope.shareProjectModal.hide();
             $scope.selectedUsers = [];
             $scope.users = [];
         }
         
-        $scope.sharecancel = function(){
-      
-            $scope.shareModal.hide()
-              $scope.selectedUsers = [];
-            $scope.users = [];
-        }
         $scope.addSelectedUser = function(user,selected){
             if(selected){
                 $scope.selectedUsers.push(user)
@@ -549,15 +664,15 @@ angular.module('Piximony', ['ionic','ngCordova'])
             }
             
             console.log($scope.selectedUsers)
-        }
+        }*/
         
         
-        $rootScope.$on('getUsers', function (event, data) {
-          console.log("** getUsers is broadcasted");
+        $rootScope.$on('getFriends', function (event, data) {
+          console.log("** getFriends is broadcasted");
           $scope.users = [];
           $scope.selectedUsers = [];
-          $scope.users = data
-          $scope.shareModal.show()
+          $scope.users = data;
+          //$scope.shareModal.show();
         });
 
         // Create and load the Modal
@@ -569,8 +684,8 @@ angular.module('Piximony', ['ionic','ngCordova'])
         });
         
         
-         $ionicModal.fromTemplateUrl('templates/share.html', function(modal) {
-            $scope.shareModal = modal;
+         $ionicModal.fromTemplateUrl('templates/shareProject.html', function(modal) {
+            $scope.shareProjectModal = modal;
         }, {
             scope: $scope,
             animation: 'slide-in-up'
