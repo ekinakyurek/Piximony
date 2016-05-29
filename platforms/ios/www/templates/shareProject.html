@@ -1,0 +1,19 @@
+<div class="modal">
+        <!-- Modal header bar -->
+        <ion-header-bar class="bar-secondary">
+            <h1 class="title">Share with Friends</h1>
+            <button class="button button-clear button-positive" ng-click="shareProjectCancel()">Cancel</button>
+        </ion-header-bar>
+        <!-- Modal content area -->
+        <ion-content>
+            <form ng-submit="shareProject()">
+                <div class="list">
+                    <ion-checkbox ng-repeat="user in users" ng-model="selected" ng-change="addSelectedUser(user,selected)"><p ng-class="">{{user}}</p>
+                    </ion-checkbox>
+                </div>
+                <div class="padding">
+                    <button type="submit" class="button button-block button-positive">Share The Project</button>
+                </div>
+            </form>
+        </ion-content>
+</div>
