@@ -22,7 +22,7 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
       // Called when the form is submitted
       $scope.createProject = function(project) {
         var id = $scope.projects.length+1;
-        console.log(">> createProject() with id: " + id);
+        console.log(">> ProjectsHomeCtrl.createProject() with id: " + id);
 
         $scope.projects.push({
             id: id,
@@ -35,7 +35,7 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
         });
 
         if(project.name.length > 20){
-            alert("Too long project name : " + project.name);
+            alert("Project name is too long: " + project.name);
         }
         else{
         $scope.projectModal.hide();
@@ -46,12 +46,12 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
       };
 
       $rootScope.$on('HomeBtnClicked', function (event, data) {
-        console.log('** HomeBtnClicked recieved');
+        console.log('** ProjectsHomeCtrl.$on() HomeBtnClicked recieved');
         $scope.projects = DataService.projects();
       });
 
     $rootScope.$on('pQueryCompleted', function (event, data) {
-        console.log("** pQueryCompleted is broadcasted");
+        console.log("** ProjectsHomeCtrl.$on() pQueryCompleted is broadcasted");
         $scope.projects = DataService.globalprojects();
          $scope.$apply();
       });
@@ -62,18 +62,15 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
 
          $cordovaFile.checkFile(cordova.file.dataDirectory, project.img ).then(function (success) {
             if(project.url !=  cordova.file.dataDirectory + project.img ) {
-
                    project.url = cordova.file.dataDirectory + project.img
                    DataService.updateProject(project,project.id)
             }
            }, function (error) {
 
            if(project.url != project.remote) {
-
-                   console.log(error + " " + project.img  )
-                   project.url = project.remote
-                   DataService.updateProject(project,project.id)
-
+                console.log("** ProjectsHomeCtrl.$on() error: " + error + " " + project.img)
+                project.url = project.remote
+                DataService.updateProject(project,project.id)
              }
          });
         return project.url;
@@ -83,75 +80,73 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
       };
       // Open our new task modal
       $scope.newProject = function() {
-        console.log(">> newProject()");
+        console.log(">> ProjectsHomeCtrl.newProject()");
           //alert("newProject");
         $scope.projectModal.show();
-        console.log("<< newProject()");
+        console.log("<< ProjectsHomeCtrl.newProject()");
       };
 
       // Close the new task modal
       $scope.closeNewProject = function() {
-        console.log(">> closeNewProject()");
+        console.log(">> ProjectsHomeCtrl.closeNewProject()");
         $scope.projectModal.hide();
-        console.log("<< closeNewProject()");
+        console.log("<< ProjectsHomeCtrl.closeNewProject()");
       };
       
    
        $scope.getMyFriends = function() {
-             console.log(">> getMyFriends()");
+             console.log(">> ProjectsHomeCtrl.getMyFriends()");
              DataService.getMyFriends();
              DataService.getAllUsers();
              $scope.openFriendsModal();
-             console.log("<< getMyFriends()"); 
+             console.log("<< ProjectsHomeCtrl.getMyFriends()"); 
        };
        
          
         $scope.addFriend = function(username) {
-             DataService.addFriend(username)
-              $scope.users.push(username)
-             for(var i = 0; i< $scope.users.length; i++){
-                 if($scope.users[i]==username){
+            console.log(">> ProjectsHomeCtrl.addFriend(" + username + ")");
+            DataService.addFriend(username)
+            $scope.users.push(username)
+            for(var i = 0; i< $scope.users.length; i++){
+                if($scope.users[i]==username){
                        $scope.users.pop()
                      break;
-                 } 
-             }
-             
-       
-             for(var i = 0; i< $scope.others.length; i++){
-                 if($scope.others[i]==username){
+                } 
+            }        
+            for(var i = 0; i< $scope.others.length; i++){
+                if($scope.others[i]==username){
                      $scope.others.splice(i, 1);
                      break;
-                 } 
-             }
-             
-             $scope.$apply
+                } 
+            }             
+            $scope.$apply;
+            console.log("<< ProjectsHomeCtrl.addFriend()");
        };
        
-       
        $rootScope.$on('getFriends', function (event, data) {
-          console.log("** getUsers is broadcasted");
+          console.log("** ProjectsHomeCtrl.$on() getFriends is broadcasted");
           $scope.users = data;
         
         });
         
         
         $rootScope.$on('getUsers', function (event, data) {
-          console.log("** getUsers is broadcasted");   
+          console.log("** ProjectsHomeCtrl.$on() getUsers is broadcasted");   
           $scope.others = data;
           $scope.$apply;
         });
       
       
       $scope.openFriendsModal = function(){
-        console.log(">> openFriendsModal()");
+        console.log(">> ProjectsHomeCtrl.openFriendsModal()");
         $scope.friendsModal.show();
-        console.log("<< openFriendsModal()");
+        console.log("<< ProjectsHomeCtrl.openFriendsModal()");
       }
       
       $scope.closeFriendsModal = function(){
-        console.log(">> closeFriendsModal()");
+        console.log(">> ProjectsHomeCtrl.closeFriendsModal()");
         $scope.friendsModal.hide();
-        console.log("<< closeFriendsModal()");
+        console.log("<< ProjectsHomeCtrl.closeFriendsModal()");
       }
       
        $ionicModal.fromTemplateUrl('templates/friends.html', function(modal) {
@@ -163,39 +158,42 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
 
         $scope.showQuestions = function(projectId) {
             //alert(projectId);
-            console.log(">> showQuestions() go(QuestionsHome)");
+            console.log(">> ProjectsHomeCtrl.showQuestions(" + projectId + ")");
             callquestions =  DataService.questions(projectId);
             callimages = DataService.images(projectId);
 
             $state.go('QuestionsHome', {'projectId':projectId});
-            console.log("<< showQuestions()");
+            console.log("<< ProjectsHomeCtrl.showQuestions()");
         };
     
         $scope.openShareProjectModal = function(projectID){
-            console.log(">> openShareProjectModal(" + projectID + ")");
+            console.log(">> ProjectsHomeCtrl.openShareProjectModal(" + projectID + ")");
             DataService.getMyFriends();
             $scope.projectID = projectID;
             $scope.shareProjectModal.show();
-            console.log("<< openShareProjectModal()");
-        }
+            console.log("<< ProjectsHomeCtrl.openShareProjectModal()");
+        };
         
          $scope.shareProject = function(){
-            console.log(">> shareProject(" + $scope.projectID + ")");
+            console.log(">> ProjectsHomeCtrl.shareProject(" + $scope.projectID + ")");
             //if there is no selected user alert error
             DataService.shareProject($scope.projectID,$scope.selectedUsers)
             $scope.shareProjectModal.hide();
             $scope.selectedUsers = [];
             $scope.users = [];
-            console.log("<< shareProject()");;
-        }
+            console.log("<< ProjectsHomeCtrl.shareProject()");
+        };
         
         $scope.shareProjectCancel = function(){
+            console.log(">> ProjectsHomeCtrl.shareProjectCancel()");
             $scope.shareProjectModal.hide();
             $scope.selectedUsers = [];
             $scope.users = [];
-        }
+            console.log("<< ProjectsHomeCtrl.shareProjectCancel()");
+        };
         
         $scope.addSelectedUser = function(user,selected){
+            console.log(">> ProjectsHomeCtrl.addSelectedUser(" + user + selected + ")");
             if(selected){
                 $scope.selectedUsers.push(user)
             }else{
@@ -206,9 +204,8 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
                     }
                 }
             }
-            
-            console.log($scope.selectedUsers)
-        }
+            console.log("<< ProjectsHomeCtrl.addSelectedUser(" + $scope.selectedUsers + ")");
+        };
         
         $ionicModal.fromTemplateUrl('templates/shareProject.html', function(modal) {
             $scope.shareProjectModal = modal;
@@ -216,5 +213,4 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
             scope: $scope,
             animation: 'slide-in-up'
         });
-    
-    })
+});
