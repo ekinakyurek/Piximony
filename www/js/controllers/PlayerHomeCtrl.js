@@ -1,9 +1,4 @@
 angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootScope, $timeout, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, DataService)  {
-      //   $scope.projects = [
-      //     {id: 1, name: 'Volkan\'s project 1', img: 'img/image-placeholder.png'},
-      //     {id: 2, name: 'Martin\'s project 2', img: 'img/image-placeholder.png'},
-      //     {id: 3, name: 'Atlas\'s project 3', img: 'img/image-placeholder.png'}
-      // ];
 
   $scope.projectindex = 0
   $rootScope.$on('projectsToPlay', function (event, data) {
@@ -26,7 +21,7 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
     $scope.currentScore = 0;
     $scope.trial = [false,false,false,false];
     $scope.bingo = false;
-    $scope.$apply()
+    $scope.$apply();
     console.log('<< PlayerHomeCtrl.$on() questionsToPlay');
   });
 
@@ -61,7 +56,8 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
         {
             $scope.currentQuestion = 0;
             $scope.currentScore = 0;
-            $scope.closePlayer();
+            //$scope.closePlayer();
+            $scope.removePlayer();
         }
         $scope.questionTmp = $scope.questionsToPlay[$scope.projectindex][$scope.currentQuestion];
         $scope.optionsTmp = $scope.questionsToPlay[$scope.projectindex][$scope.currentQuestion].options;
@@ -88,8 +84,10 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
                     if($scope.trial[i] == false)
                         $scope.currentScore = $scope.currentScore+25;
                 }
+                
                 $scope.fullScreen($scope.questionImg);
                 $timeout($scope.nextQuestion,3000);
+                
             }
           else
             {
@@ -103,7 +101,10 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
             console.log('>> PlayerHomeCtrl.isThisDisabled() for: (' + option + ')');
             var Index = $scope.optionsTmp.indexOf(option);
             console.log('** PlayerHomeCtrl.isThisDisabled() Index:' + Index);
-            if(($scope.trial[Index] == true | $scope.bingo == true) & !($scope.questionsToPlay[$scope.projectindex][$scope.currentQuestion].answer == Index))
+            console.log('** PlayerHomeCtrl.isThisDisabled() trial[' + Index + "]:" + $scope.trial[Index]);
+            console.log('** PlayerHomeCtrl.isThisDisabled() answer:' +$scope.questionsToPlay[$scope.projectindex][$scope.currentQuestion].answer);
+            
+            if(($scope.trial[Index] == true ) & !($scope.questionsToPlay[$scope.projectindex][$scope.currentQuestion].answer == Index))
             {
                console.log('<< PlayerHomeCtrl.isThisDisabled() TRUE for: (' + option + ')');
                return true;
@@ -111,7 +112,7 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
             else
             {
                 console.log('<< PlayerHomeCtrl.isThisDisabled() FALSE for: (' + option + ')');
-               return false;
+               //return false;
             }
 
       };
@@ -119,18 +120,25 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
             console.log('>> PlayerHomeCtrl.isThisChecked() for: (' + option + ')');
 
             var Index = $scope.optionsTmp.indexOf(option);
+            
             console.log('** PlayerHomeCtrl.isThisChecked() Index:' + Index);
-            if($scope.trial[Index] == true & !($scope.questionsToPlay[$scope.projectindex][$scope.currentQuestion].answer))
+            console.log('** PlayerHomeCtrl.isThisChecked() trial[' + Index + "]:" + $scope.trial[Index]);
+            console.log('** PlayerHomeCtrl.isThisChecked() answer:' +$scope.questionsToPlay[$scope.projectindex][$scope.currentQuestion].answer);
+            if($scope.trial[Index] == true & !($scope.questionsToPlay[$scope.projectindex][$scope.currentQuestion].answer == Index))
             {
                console.log('<< PlayerHomeCtrl.isThisChecked() false for: (' + option + ')');
                return false;
             }
-            else{
-
-              console.log('<< PlayerHomeCtrl.isThisChecked() not changed for: (' + option + ')');
+            else if ($scope.bingo == true)
+            {
+                console.log('<< PlayerHomeCtrl.isThisChecked() false (BINGO) for: (' + option + ')');
+                return false;
             }
-
-             return false;
+            else{
+              console.log('<< PlayerHomeCtrl.isThisChecked() not changed for: (' + option + ')');
+              //return false;
+            }
+             
       };
 
 
@@ -149,13 +157,21 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
 
     $scope.closefullScreenModal = function() {
       console.log('** PlayerHomeCtrl.closefullScreenModal() Modal is closed!');
-      $scope.fullScreenModal.hide();
+      //$scope.fullScreenModal.hide();
+      $scope.fullScreenModal.remove();
+        $ionicModal.fromTemplateUrl('templates/image-modal.html', function(modal) {
+        $scope.fullScreenModal = modal;
+        }, {
+            scope: $scope,
+            animation: 'slide-in-up'
+        });
+        
     };
 
     //Cleanup the modal when we're done with it!
     $scope.$on('$destroy', function() {
       console.log('** PlayerHomeCtrl.$on() $destroy::Modal is destroyed!');
-      $scope.fullScreenModal.remove();
+      //$scope.fullScreenModal.remove();
     });
     // Execute action on hide modal
     $scope.$on('fullScreenModal.hide', function() {
@@ -183,14 +199,16 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
 
 
       $scope.openPlayer = function(index) {
-        console.log('>> PlayerHomeCtrl.openPlayer()');
+        console.log('>> PlayerHomeCtrl.openPlayer() index: ' + index);  
         $scope.projectindex = index;
+          
         if($scope.questionsToPlay.length > 0) {
           $scope.questionTmp = $scope.questionsToPlay[$scope.projectindex][$scope.currentQuestion];
           $scope.optionsTmp = $scope.questionsToPlay[$scope.projectindex][$scope.currentQuestion].options;
           $scope.questionImg = $scope.questionsToPlay[$scope.projectindex][$scope.currentQuestion].remote;
         }
         $scope.playerModal.show();
+        $scope.$apply;
         console.log('<< PlayerHomeCtrl.openPlayer()');
       };
 
@@ -198,6 +216,23 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
         console.log('>> PlayerHomeCtrl.closePlayer()');
         $scope.playerModal.hide();
         console.log('<< PlayerHomeCtrl.closePlayer()');
+      };
+      $scope.removePlayer = function() {
+        console.log('>> PlayerHomeCtrl.destroyPlayer()');
+        //$scope.playerModal.hide();
+        $scope.playerModal.remove(); 
+        
+        $ionicModal.fromTemplateUrl('templates/player.html', function(modal) {
+        $scope.playerModal = modal;
+        }, {
+            scope: $scope,
+            animation: 'slide-in-up'
+        });
+        
+        
+          
+          
+        console.log('<< PlayerHomeCtrl.destroyPlayer()');
       };
 
     })

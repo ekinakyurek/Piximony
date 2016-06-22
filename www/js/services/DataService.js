@@ -22,6 +22,7 @@ angular.module('Piximony').factory('DataService', function($rootScope) {
   // var parseQuestions = new pQuestions();
   
   function shareAProject(projectId, users){
+    console.log(">> DataService.shareAProject(" + projectId + "," + users + ")");
     var shared = Parse.Object.extend("shares"); 
     var query = new Parse.Query(shared);
     query.containedIn("username", users);  // find all the women
@@ -33,16 +34,16 @@ angular.module('Piximony').factory('DataService', function($rootScope) {
            users[i].addUnique("Projects2Play",projectId)
            users[i].save()
             
-           console.log("sucessfully shared")
+           console.log("** DataService.shareAProject() sucessfully shared");
       }},error: function(error){
         
       }
     });
-    
-  }
-  
+    console.log("<< DataService.shareAProject()");
+  };
   
   function addFriend(username){
+    console.log(">> DataService.addFriend(" + username + ")");      
     var friends = Parse.Object.extend("friends"); 
     var query = new Parse.Query(friends);
     query.equalTo("username", Currentusername);  // find all the women
@@ -51,7 +52,7 @@ angular.module('Piximony').factory('DataService', function($rootScope) {
         if(user != undefined){
            user.addUnique("friends",username)
            user.save()
-           console.log("sucessfully shared")
+           console.log("** DataService.addFriend() sucessfully added");
         }else{
             var friend = new friends()
             friend.addUnique("friends",username)
@@ -60,34 +61,33 @@ angular.module('Piximony').factory('DataService', function($rootScope) {
         }
        //$rootScope.$broadcast('getFriends', usernames)
       },error: function(error){
-        
+        console.log("** DataService.addFriend() error when adding friends");
       }
     });
-    
-  }
+    console.log("<< DataService.addFriend()");
+  };
   
   function AllUsers(){
-   
-   
+    console.log(">> DataService.AllUsers()");
     var query = new Parse.Query(Parse.User);
    
     return query.find({
       success: function(users) {
-         console.log("sucessfully getting users")
+         console.log("** DataService.AllUsers() sucessfully getting users");
          usernames = [];
          for(var i = 0; i < users.length; i ++){
            usernames.push(users[i].get("username"))
          }
          $rootScope.$broadcast('getUsers', usernames)
       },error: function(error){
-        console.log("error when getting users")
+        console.log("** DataService.AllUsers() error when getting users");
       }
     });
-    
-  }
+    console.log("<< DataService.AllUsers()");
+  };
   
    function getFriends(){
-   console.log("println")
+   console.log(">> DataService.getFriends()");
     var object = Parse.Object.extend("friends");
     var query = new Parse.Query(object);
     query.equalTo("username",Currentusername)
@@ -96,28 +96,25 @@ angular.module('Piximony').factory('DataService', function($rootScope) {
         
         usernames = [];
         if(theuser != undefined){
-         console.log("sucessfully getting friends")
+         console.log("** DataService.getFriends() sucessfully getting friends");
          usernames = theuser.get("friends")
         }else{
           
         }
          $rootScope.$broadcast('getFriends', usernames)
       },error: function(error){
-        console.log("error when getting friends")
+        console.log("** DataService.getFriends() error when getting friends");
       }
     });
-    
-  }
-  
+    console.log("<< DataService.getFriends()");
+  };
   
   function getProjectsToPlay() {
-      console.log(">> DataService::getProjectsToPlay()");
+      console.log(">> DataService.getProjectsToPlay()");
         var shared = Parse.Object.extend("shares"); 
         var squery = new Parse.Query(shared);
-        squery.equalTo("username",Currentusername)
+        squery.equalTo("username",Currentusername);
         
-        console.log("<< DataService::getProjectsToPlay() projects: (" + projects2Play + ")" );
-      
       return squery.first({ 
         success: function(share){
            var allPlayingProjects = share.get("Projects2Play");
@@ -137,6 +134,7 @@ angular.module('Piximony').factory('DataService', function($rootScope) {
                             newproject.remote = objects[i].get("remote");
                             projects2Play.push(newproject);
                           }
+                            console.log("<< DataService.getProjectsToPlay() projects: (" + projects2Play + ")");
                           $rootScope.$broadcast('projectsToPlay');
                         }else{
                           projects2Play = [] ;
@@ -148,25 +146,10 @@ angular.module('Piximony').factory('DataService', function($rootScope) {
                       }
               });
         },error:function(error){} })
-      
-      
-      
-
-      //VBAL STARTS
-      //this portion needs to be replaced with the actual Parse data provider
-    /*  var projectsToPlay = [
-             {id: 1, name: 'Volkan\'s project 1', img: 'img/image-placeholder.png'},
-             {id: 2, name: 'Martin\'s project 2', img: 'img/image-placeholder.png'},
-             {id: 3, name: 'Atlas\'s project 3', img: 'img/image-placeholder.png'}
-         ];
-      //VBAL ENDS
-  */
-    
-     
     };
 
     function getQuestionsToPlay() {
-      console.log(">> DataService::getQuestionsToPlay()");
+      console.log(">> DataService.getQuestionsToPlay()");
       var shared = Parse.Object.extend("shares"); 
       var squery = new Parse.Query(shared);
       squery.equalTo("username",Currentusername)
@@ -196,7 +179,7 @@ angular.module('Piximony').factory('DataService', function($rootScope) {
                               questions2Play[i][j] = newQuestion;
                         }
                       }
-
+                        console.log("<< DataService.getQuestionsToPlay() questions: (" + questions2Play + ")");
                       $rootScope.$broadcast('questionsToPlay');
                     }else{
                         questions2Play = [] ;
@@ -212,45 +195,28 @@ angular.module('Piximony').factory('DataService', function($rootScope) {
                 error:function(error){
                   
                 }
-      
-    
-  })
-     
-      //VBAL STARTS
-      //this portion needs to be replaced with the actual Parse data provider
-     /* var questionsToPlay = [
-               {id: 1, projectId: 2, title: 'Who is this?', options: ['MJ', 'Ricky Martin', 'Charlie', 'Maradona'], answer: 0, img: 'img/MJ.jpg'},
-               {id: 2, projectId: 1, title: 'Where is this?', options: ['NYC', 'Austin', 'Chicago', 'New Orleans'], answer: 1, img: 'img/austin-tx.jpg'},
-               {id: 3, projectId: 2, title: 'When was this?', options: ['2014', '2002', '2011', '1998'], answer: 2, img: 'img/mac_mini_2011.jpg'},
-               {id: 4, projectId: 1, title: 'Who was with us?', options: ['Drunk Guy', 'Shy Girl', 'Homeless Lady', 'No one'], answer: 1, img: 'img/ShyGirl.jpg'},
-               {id: 5, projectId: 1, title: 'What car is this?', options: ['Camaro', 'Mustang', 'Aveo', 'Escape'], answer: 0, img: 'img/semacamaro4c.jpg'}
-           ];
-           */
-      //VBAL ENDS
-
-      console.log("<< DataService::getQuestionsToPlay() projects: (" + questions2Play + ")" );
-
-      //return questions2Play;
+        });
     };
+    
   function pushProjectToParse(Project){
-    console.log(">> DataService::pushProjectToParse() project: " + Project.name);
+    console.log(">> DataService.pushProjectToParse() project: " + Project.name);
     var newProject = new pProjects();
     newProject.save({name: Project.name, user_id: userObjectId, img: Project.img, url: Project.url, remote : Project.remote , username: Project.username, owner: Project.owner },
       {
         success: function(projectObject) {
-          console.log("DataService::pushProjectToParse() success:: " + Project.name);
+          console.log("** DataService.pushProjectToParse() success:: " + Project.name);
           projects[projects.length-1].id = projectObject.id;
           $rootScope.$broadcast('pQueryCompleted');
         },
         error: function(projectObject, error) {
-          alert("DataService::pushProjectToParse() error:: " + error);
+          alert("DataService.pushProjectToParse() error:: " + error);
         }
       });
-      console.log("<< DataService::pushProjectToParse()");
+      console.log("<< DataService.pushProjectToParse()");
     };
 
     function updateProjectToParse(Project,projectID){
-      console.log(">> DataService::updateProjectToParse() project: " + Project.name);
+      console.log(">> DataService.updateProjectToParse() project: " + Project.name);
       var query = new Parse.Query(pProjects);
       query.equalTo('objectId', projectID);
       query.first( {
@@ -261,20 +227,23 @@ angular.module('Piximony').factory('DataService', function($rootScope) {
           project.set("remote", Project.remote);
           project.save().then({
             succes:function(object) {
-              console.log("DataService::updateProjectToParse() success:: " + object.get("name"));
+              console.log("** DataService.updateProjectToParse() success:: " + object.get("name"));
             },
             error:function(error){
-              alert("DataService::updateProjectToParse() error:: "+ error);
+              alert("DataService.updateProjectToParse() error:: "+ error);
             }
           });
         },
         error: function(project, error) {
-          alert("DataService::updateProjectToParse() internal error:: "+ error);
+            console.log("** DataService.updateProjectToParse() error:" + error);
+            alert("DataService.updateProjectToParse() internal error:: "+ error);
         }
       });
-      console.log("<< DataService::updateProjectToParse()");
+      console.log("<< DataService.updateProjectToParse()");
     };
+    
     function getImagesFromParse(projectID){
+        console.log(">> DataService.getImagesFromParse() projectID:" + projectID);
       var query = new Parse.Query(pImages);
       query.equalTo("user_id", userObjectId);
       query.equalTo("project_id", projectID);
@@ -284,33 +253,41 @@ angular.module('Piximony').factory('DataService', function($rootScope) {
             var img = object.get("images");
             images = JSON.parse(img);
             $rootScope.$broadcast('iQueryCompleted');
-            console.log("DataService::getImagesFromParse() success: iQueryCompleted sent")
+            console.log("** DataService.getImagesFromParse() success: iQueryCompleted sent")
           }
         },
         error: function(error) {
-          alert("DataService::getImagesFromParse() error:: " + error.message);
+            console.log("** DataService.getImagesFromParse() error:" + error.message);
+            alert("DataService::getImagesFromParse() error:: " + error.message);
         }
       });
+        console.log("<< DataService.getImagesFromParse()");
     };
+    
     function getQuestionsFromParse(projectID) {
-      var query = new Parse.Query(pQuestions);
-      query.equalTo("user_id", userObjectId);
-      query.equalTo("project_id", projectID);
-      query.first({
-        success: function(object){
-          if(object !== undefined){
-            var qst=object.get("questions");
-            questions = JSON.parse(qst);
-            $rootScope.$broadcast('qQueryCompleted');
-            console.log("DataService::getQuestionsFromParse() success:: qQueryCompleted sent");
-          }
-        },
-        error: function(error) {
-          alert("DataService::getQuestionsFromParse() error:: " + error.message);
-        }
-      });
+        console.log(">> DataService.getQuestionsFromParse() projectID:" + projectID);
+          var query = new Parse.Query(pQuestions);
+          query.equalTo("user_id", userObjectId);
+          query.equalTo("project_id", projectID);
+          query.first({
+            success: function(object){
+              if(object !== undefined){
+                var qst=object.get("questions");
+                questions = JSON.parse(qst);
+                $rootScope.$broadcast('qQueryCompleted');
+                console.log("** DataService.getQuestionsFromParse() success:: qQueryCompleted sent");
+              }
+            },
+            error: function(error) {
+                console.log("** DataService.getQuestionsFromParse() error:" + error.message);
+                alert("DataService::getQuestionsFromParse() error:: " + error.message);
+            }
+          });
+        console.log("<< DataService.getQuestionsFromParse()");
     };
+    
     function getProjectsFromParse(){
+    console.log(">> DataService.getProjectsFromParse()");
       var query = new Parse.Query(pProjects);
       query.equalTo("user_id", userObjectId);
       query.find({
