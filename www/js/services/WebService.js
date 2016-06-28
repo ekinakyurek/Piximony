@@ -377,7 +377,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
         json = {"users": users}
 
         var settings = {
-            "url":  "http://127.0.0.1:8000/"+ "project/api/share_project/?project_id=" + project_id,
+            "url":  baseUrl + "project/api/share_project/?project_id=" + project_id,
             "method": "POST",
             "headers": {
                 "content-type": "application/json"
