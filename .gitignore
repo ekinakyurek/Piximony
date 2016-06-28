@@ -1,0 +1,16 @@
+*.mode1v3
+*.perspectivev3
+*.pbxuser
+platforms/ios/build
+.vscode/
+.DS_Store
+platforms/android/build.xml
+platforms/android/local.properties
+platforms/android/gradlew
+platforms/android/gradlew.bat
+platforms/android/gradle
+platforms/android/ant-build
+platforms/android/ant-gen
+platforms/android/gen
+platforms/android/out
+platforms/android/build
