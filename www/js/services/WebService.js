@@ -348,7 +348,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
         form.append("correct_option", question.correct_option)
 
         var settings = {
-            "url":  "http://127.0.0.1:8000/"+ "question/api/edit_question/",
+            "url":  baseUrl + "question/api/edit_question/",
             "method": "POST",
             "headers": {
                 'Content-Type': undefined
