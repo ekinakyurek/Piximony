@@ -7,7 +7,6 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
       console.log($rootScope.user.username)
       WebService.get_user_projects($rootScope.user.username, function (result, projects, next, previos, count) {
           if (result==true){
-              console.log(projects)
               $scope.projects = projects
           }else{
               alert("Error in get_user_projects, pleaser try again!")

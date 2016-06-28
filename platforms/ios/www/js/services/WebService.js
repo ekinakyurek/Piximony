@@ -22,8 +22,11 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
 
         return $http(settings).then(function(response) {
             if (response.data.hasOwnProperty("access_token")){
-                callback(true,response.data)
+                $rootScope.user = response.data
                 currentUser = response.data
+                userToken =  currentUser.access_token
+                callback(true,response.data)
+
             }else{
                 callback(false,response)
             }
@@ -282,11 +285,11 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
                 console.log(JSON.stringify(response))
                 callback(true,response.data.results, response.data.next, response.data.previous, response.data.count)
             }else{
-                console.log(response)
+                console.log(JSON.stringify(response))
                 callback(false,response.data,null,null,null,0)
             }
         }, function(response) {
-            console.log(response)
+            console.log(JSON.stringify(response))
             callback(false,response,null,null,null,0)
         });
     }
@@ -348,7 +351,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
         form.append("correct_option", question.correct_option)
 
         var settings = {
-            "url":  "http://127.0.0.1:8000/"+ "question/api/edit_question/",
+            "url":  baseUrl + "question/api/edit_question/",
             "method": "POST",
             "headers": {
                 'Content-Type': undefined

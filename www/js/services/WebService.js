@@ -22,8 +22,12 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
 
         return $http(settings).then(function(response) {
             if (response.data.hasOwnProperty("access_token")){
-                callback(true,response.data)
+                $rootScope.user = response.data
                 currentUser = response.data
+                userToken =  currentUser.access_token
+                $http.defaults.headers.common.Authorization = 'Token ' + userToken
+                callback(true,response.data)
+
             }else{
                 callback(false,response)
             }
@@ -56,7 +60,6 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
                     if (result==true){
                         $rootScope.user = info
                         currentUser = info
-                        console.log(JSON.stringify(currentUser))
                     }else{
                         alert("An error in login")
                     }
@@ -279,14 +282,13 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
         }
         return $http(settings).then(function(response) {
             if (response.data.hasOwnProperty("count")){
-                console.log(JSON.stringify(response))
                 callback(true,response.data.results, response.data.next, response.data.previous, response.data.count)
             }else{
-                console.log(response)
+                console.log(JSON.stringify(response))
                 callback(false,response.data,null,null,null,0)
             }
         }, function(response) {
-            console.log(response)
+            console.log(JSON.stringify(response))
             callback(false,response,null,null,null,0)
         });
     }

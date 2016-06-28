@@ -29,7 +29,7 @@ angular.module('Piximony').controller('SignInCtrl', function($scope,$rootScope, 
              if (result==true){
                  $state.go('MainPage');
              }else{
-                 alert("error::"+ info)
+                 alert("error::"+JSON.stringify(info))
              }
          })
      }
