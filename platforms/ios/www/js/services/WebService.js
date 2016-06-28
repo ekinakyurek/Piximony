@@ -25,6 +25,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
                 $rootScope.user = response.data
                 currentUser = response.data
                 userToken =  currentUser.access_token
+                $http.defaults.headers.common.Authorization = 'Token ' + userToken
                 callback(true,response.data)
 
             }else{
@@ -59,7 +60,6 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
                     if (result==true){
                         $rootScope.user = info
                         currentUser = info
-                        console.log(JSON.stringify(currentUser))
                     }else{
                         alert("An error in login")
                     }
@@ -122,7 +122,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
         }
         return $http(settings).then(function(response) {
             if (response.data.hasOwnProperty("count")){
-                callback(true,response.data)
+                callback(true,response.data.results)
             }else{
                 console.log(response)
                 callback(false,response)
@@ -250,9 +250,86 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
         });
     }
 
+    function get_friends(callback){
+        var settings = {
+            "url": baseUrl + "account/api/get_friends/?username=" + currentUser.username,
+            "method": "GET"
+        }
+        return $http(settings).then(function(response) {
+            if (response.data.hasOwnProperty("count")){
+                callback(true,response.data.results)
+            }else{
+                console.log(response)
+                callback(false,response)
+            }
+        }, function(response) {
+            console.log(response)
+            callback(false,response)
+        });
+    }
+
+
+    function get_requests(callback){
+        var settings = {
+            "url": baseUrl + "account/api/get_requests/?username=" + currentUser.username,
+            "method": "GET"
+        }
+        return $http(settings).then(function(response) {
+            if (response.data.hasOwnProperty("count")){
+                callback(true,response.data.results)
+            }else{
+                console.log(response)
+                callback(false,response)
+            }
+        }, function(response) {
+            console.log(response)
+            callback(false,response)
+        });
+    }
+
+
+    function accept_friendship(username, callback){
+        var settings = {
+            "url": baseUrl + "account/api/accept_friendship/?username=" + username,
+            "method": "POST"
+        }
+        return $http(settings).then(function(response) {
+            if (response.data.hasOwnProperty("result")){
+                callback(response.data.result=="success")
+            }else{
+                console.log(response)
+                callback(false)
+            }
+        }, function(response) {
+            console.log(response)
+            callback(false,response)
+        });
+    }
+
+    function request_friendship(username, callback){
+        var settings = {
+            "url": baseUrl + "account/api/request_friendship/?username=" + username,
+            "method": "POST"
+        }
+        return $http(settings).then(function(response) {
+            if (response.data.hasOwnProperty("result")){
+                console.log(JSON.stringify(response))
+                callback(response.data.result=="success")
+            }else{
+                console.log(response)
+                callback(false)
+            }
+        }, function(response) {
+            console.log(response)
+            callback(false,response)
+        });
+    }
+
+
+
 
     //PROJECT
-    function create_project(project){
+    function create_project(project,callback){
 
         var settings = {
             "url":  baseUrl + "project/api/create_project/",
@@ -265,13 +342,15 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
 
         $http(settings).then(function(response) {
 
-            if (response.data.hasOwnProperty("date")){
+            if (response.data.hasOwnProperty("date_str")){
                 callback(true, response.data)
             }else{
+                console.log(JSON.stringify(response))
                 callback(false,response.data)
             }
         }, function(response) {
             callback(false,response)
+            console.log(JSON.stringify(response))
         });
     }
 
@@ -282,7 +361,6 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
         }
         return $http(settings).then(function(response) {
             if (response.data.hasOwnProperty("count")){
-                console.log(JSON.stringify(response))
                 callback(true,response.data.results, response.data.next, response.data.previous, response.data.count)
             }else{
                 console.log(JSON.stringify(response))
@@ -293,6 +371,37 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
             callback(false,response,null,null,null,0)
         });
     }
+
+    function share_project(project_id, users,callback){
+
+        json = {"users": users}
+
+        var settings = {
+            "url":  "http://127.0.0.1:8000/"+ "project/api/share_project/?project_id=" + project_id,
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json"
+            },
+            "data": JSON.stringify(json)
+        }
+
+        $http(settings).then(function(response) {
+
+            if (response.data.hasOwnProperty("result")){
+                callback(response.data.result=="success")
+                console.log(JSON.stringify(response))
+            }else{
+                callback(false,JSON.stringify(response.data))
+                console.log(JSON.stringify(response))
+            }
+        }, function(response) {
+            callback(false,JSON.stringify(response))
+            console.log(JSON.stringify(response))
+        });
+    }
+
+
+
 
     //Question
 
@@ -485,6 +594,11 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
         get_questions: get_questions,
         randomString:randomString,
         update_question: update_question,
+        get_friends: get_friends,
+        get_requests: get_requests,
+        request_friendship: request_friendship,
+        accept_friendship: accept_friendship,
+        share_project: share_project,
         baseUrl: baseUrl,
         userToken: userToken,
         currentUser: currentUser

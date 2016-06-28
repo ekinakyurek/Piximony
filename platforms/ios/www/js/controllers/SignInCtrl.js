@@ -8,7 +8,7 @@ angular.module('Piximony').controller('SignInCtrl', function($scope,$rootScope, 
                 $state.go('MainPage')
             }else{
                 alert("Your credentials are wrong")
-                console.log(response)
+                console.log(JSON.stringify(response))
             }
         })
 

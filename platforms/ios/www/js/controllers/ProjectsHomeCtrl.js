@@ -7,7 +7,6 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
       console.log($rootScope.user.username)
       WebService.get_user_projects($rootScope.user.username, function (result, projects, next, previos, count) {
           if (result==true){
-              console.log(projects)
               $scope.projects = projects
           }else{
               alert("Error in get_user_projects, pleaser try again!")
@@ -109,45 +108,89 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
    
        $scope.getMyFriends = function() {
              console.log(">> ProjectsHomeCtrl.getMyFriends()");
-             DataService.getMyFriends();
-             DataService.getAllUsers();
-             $scope.openFriendsModal();
+           //   WebService.get_friends(function (result,response) {
+           //       if (result==true){
+           //           console.log(JSON.stringify(response))
+           //           $scope.friends = response
+           //       }else{
+           //           console.log(JSON.stringify(response))
+           //       }
+           //   })
+           //
+           // WebService.get_requests(function (result,response) {
+           //     if (result==true){
+           //         console.log(JSON.stringify(response))
+           //         $scope.requests = response
+           //     }else{
+           //         console.log(JSON.stringify(response))
+           //     }
+           // })
+
+
+           WebService.get_all_users(function (result,response) {
+               if (result==true){
+                   console.log(JSON.stringify(response))
+                   $scope.friends = []
+                   $scope.requests = []
+                   $scope.requesteds = []
+                   $scope.others = []
+
+                   for (var i in response){
+                       if (response[i].is_friend){
+                           $scope.friends.push(response[i])
+                       }else if (response[i].is_requesting){
+                           $scope.requests.push(response[i])
+                       }else if (response[i].is_requested){
+                           $scope.requesteds.push(response[i])
+                       }else{
+                           $scope.others.push(response[i])
+                       }
+                   }
+
+                   console.log($scope.friends.length)
+               }else{
+                   console.log(JSON.stringify(response))
+               }
+           })
+
+           $scope.openFriendsModal();
              console.log("<< ProjectsHomeCtrl.getMyFriends()"); 
        };
-       
-         
-        $scope.addFriend = function(username) {
-            console.log(">> ProjectsHomeCtrl.addFriend(" + username + ")");
-            DataService.addFriend(username)
-            $scope.users.push(username)
-            for(var i = 0; i< $scope.users.length; i++){
-                if($scope.users[i]==username){
-                       $scope.users.pop()
-                     break;
-                } 
-            }        
-            for(var i = 0; i< $scope.others.length; i++){
-                if($scope.others[i]==username){
-                     $scope.others.splice(i, 1);
-                     break;
-                } 
-            }             
-            $scope.$apply;
-            console.log("<< ProjectsHomeCtrl.addFriend()");
+
+        $scope.accept_friendship = function(user){
+            
+            WebService.accept_friendship(user.username, function(result){
+                if (result){
+                    $scope.friends.unshiftpush(user)
+                    $scope.requests.splice($scope.requests.indexOf(user),1);
+                }
+
+            })
+
+        }
+
+        $scope.request_friendship = function(user) {
+            
+            WebService.request_friendship(user.username,function (result) {
+                if (result) {
+                    $scope.requesteds.unshift(user)
+                    $scope.others.splice($scope.others.indexOf(user),1);
+                }
+            })
        };
        
-       $rootScope.$on('getFriends', function (event, data) {
-          console.log("** ProjectsHomeCtrl.$on() getFriends is broadcasted");
-          $scope.users = data;
-        
-        });
-        
-        
-        $rootScope.$on('getUsers', function (event, data) {
-          console.log("** ProjectsHomeCtrl.$on() getUsers is broadcasted");   
-          $scope.others = data;
-          $scope.$apply;
-        });
+       // $rootScope.$on('getFriends', function (event, data) {
+       //    console.log("** ProjectsHomeCtrl.$on() getFriends is broadcasted");
+       //    $scope.users = data;
+       // 
+       //  });
+       // 
+       // 
+       //  $rootScope.$on('getUsers', function (event, data) {
+       //    console.log("** ProjectsHomeCtrl.$on() getUsers is broadcasted");   
+       //    $scope.others = data;
+       //    $scope.$apply;
+       //  });
       
       
       $scope.openFriendsModal = function(){

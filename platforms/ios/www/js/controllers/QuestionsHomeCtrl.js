@@ -5,26 +5,63 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         $scope.users = []
         $scope.selectedUsers = []
         //$scope.projects = DataService.projects();
-        
-
-        $rootScope.$on('pQueryCompleted', function (event, data) {
-           console.log("** QuestionsHomeCtrl.$on() pQueryCompleted is broadcasted");
-           $scope.projects = DataService.globalprojects();
-		  //$scope.$apply();
-         });
-
+    
         $rootScope.$on('projectQuestions', function (event, data) {
           console.log("** QuestionsHomeCtrl.$on() projectQuestions is broadcasted");
           $scope.questions = data
           console.log(JSON.stringify(data))
          });
 
-        $rootScope.$on('iQueryCompleted', function (event, data) {
-          console.log("** QuestionsHomeCtrl.$on() iQueryCompleted is broadcasted");
-          $scope.images = DataService.globalimages();
-	      //$scope.$apply();
-        });
-
+        $scope.openShareModal = function(){
+            console.log("share modal clicked")
+            $scope.shareModal.show()
+            WebService.get_friends(function(result,users){
+                
+                if(result){
+                    $scope.friends = users
+                }
+            })
+    
+        }
+    
+        $scope.share = function(){
+            console.log("sharing started")
+            //if there is no selected user alert error
+            //DataService.shareProject($scope.projectID,$scope.selectedUsers)
+            WebService.share_project($scope.projectID, $scope.selectedUsers, function (result,response) {
+                if(!result){
+                    alert("There was an error when sharing the project")
+                    console.log(response)
+                }else{
+                    
+                }
+            })
+            $scope.shareModal.hide()
+            $scope.selectedUsers = [];
+            $scope.friends = [];
+        }
+    
+        $scope.sharecancel = function(){
+            $scope.shareModal.hide()
+            $scope.selectedUsers = [];
+            $scope.friends = [];
+        }
+    
+        $scope.addSelectedUser = function(user,selected){
+            if(selected){
+                $scope.selectedUsers.push(user)
+            }else{
+                for( var i = 0 ; i < $scope.selectedUsers.length ; i++ ){
+                    if(user == $scope.selectedUsers[i]){
+                        $scope.selectedUsers.splice(i,1);
+                        break;
+                    }
+                }
+            }
+    
+            console.log($scope.selectedUsers)
+        }
+       
         $scope.addMedia = function() {
              console.log(">> QuestionsHomeCtrl.addMedia()");
             $scope.hideSheet = $ionicActionSheet.show({
@@ -54,13 +91,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             console.log("<< QuestionsHomeCtrl.addImage()");
         }
         
-        $rootScope.$on('getFriends', function (event, data) {
-          console.log("** QuestionsHomeCtrl.$on() getFriends is broadcasted");
-          $scope.users = [];
-          $scope.selectedUsers = [];
-          $scope.users = data;
-          //$scope.shareModal.show();
-        });
+
 
         // Create and load the Modal
         $ionicModal.fromTemplateUrl('templates/new-question.html', function(modal) {
@@ -72,7 +103,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         
         
          $ionicModal.fromTemplateUrl('templates/shareProject.html', function(modal) {
-            $scope.shareProjectModal = modal;
+            $scope.shareModal = modal;
         }, {
             scope: $scope,
             animation: 'slide-in-up'
