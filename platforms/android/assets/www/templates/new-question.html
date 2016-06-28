@@ -10,10 +10,9 @@
         <!-- Modal content area -->
         <ion-content>
 
-<figure>
+
         <img ng-src="{{ questionImg }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
-        <figcaption> {{ questionImg }} </figcaption>
-</figure>
+        
             <form ng-submit="createQuestion(questionTmp)">
                 <div class="list">
                     <label class="item item-input">
@@ -29,7 +28,7 @@
                         </div>
                         <div class="col">
                             <label class="item item-input">
-                                <input type="text" placeholder="Option {{$index}}" ng-model="questionTmp.options[$index]">
+                                <input type="text" placeholder="Option {{$index+1}}" ng-model="questionTmp.options[$index]">
                             </label>
                         </div>                        
                     </div>

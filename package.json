@@ -20,6 +20,11 @@
     "cordova-plugin-camera",
     "cordova-plugin-file",
     "cordova-plugin-screen-orientation",
-    "cordova-plugin-file-transfer"
+    "cordova-plugin-file-transfer",
+    "cordova-plugin-whitelist"
+  ],
+  "cordovaPlatforms": [
+    "android",
+    "ios"
   ]
 }
