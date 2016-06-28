@@ -55,7 +55,7 @@ angular.module('Piximony').factory('ImageService', function($cordovaCamera, Data
             console.log("** ImageService::saveMedia() newName: " + newName);
             DataService.storeImage(cordova.file.dataDirectory+newName,projectID);
             console.log("ImageService::saveMedia()->uploadPicture()");
-            resolve();
+            resolve(newName);
           }, function(error) {
             alert("saveMedia() error::" + error.message) ;
             reject();

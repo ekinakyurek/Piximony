@@ -302,7 +302,6 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
                 var imgBlob = new Blob([success], { type: "image/jpeg" } );
                 form.append("file", imgBlob)
                 form.append("title", question.title)
-                
                 form.append("options", question.options)
                 form.append("correct_option", question.correct_option)
                 form.append("question_id", question.question_id)
@@ -343,40 +342,58 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
 
     function update_question(question,picture, callback){
         var form = new FormData()
-         if (picture != null){
-             form.append("file", picture)
-         }
         form.append("question_id", question.question_id)
         form.append("title", question.title)
-        form.append("options", JSON.stringify(question.options))
+        form.append("options", question.options)
         form.append("correct_option", question.correct_option)
-        console.log("here is questions id" + question.question_id )
-
 
         var settings = {
-            "url":  baseUrl + "question/api/edit_question/",
+            "url":  "http://127.0.0.1:8000/"+ "question/api/edit_question/",
             "method": "POST",
             "headers": {
                 'Content-Type': undefined
             },
+            "filename": question.question_id,
             "processData": false,
             "data": form
 
         }
 
 
-        $http(settings).then(function(response) {
+        if (picture != null){
+            $cordovaFile.readAsArrayBuffer(cordova.file.dataDirectory, question.name)
+                .then(function (success) {
+                    var imgBlob = new Blob([success], {type: "image/jpeg"});
+                    form.append("file", imgBlob)
+                    $http(settings).then(function(response) {
 
-            if (response.data.hasOwnProperty("date_str")){
-                callback(true, response.data)
-            }else{
-                console.log("Im here" + response.data)
-                callback(false,response.data)
-            }
-        }, function(response) {
-            callback(false,response.data)
-            console.log(JSON.stringify(response.data))
-        });
+                        if (response.data.hasOwnProperty("date_str")){
+                            callback(true, response.data)
+                        }else{
+                            console.log("Im here" + response.data)
+                            callback(false,response.data)
+                        }
+                    }, function(response) {
+                        callback(false,response.data)
+                        console.log(JSON.stringify(response.data))
+                    });
+
+                })
+         }else{
+                $http(settings).then(function(response) {
+
+                    if (response.data.hasOwnProperty("date_str")){
+                        callback(true, response.data)
+                    }else{
+                        console.log("Im here" + response.data)
+                        callback(false,response.data)
+                    }
+                }, function(response) {
+                    callback(false,response.data)
+                    console.log(JSON.stringify(response.data))
+                });
+
+        }
     }
 
     function Utf8Decode(strUtf) {

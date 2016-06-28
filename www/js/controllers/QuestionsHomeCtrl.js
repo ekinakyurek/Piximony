@@ -147,8 +147,6 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             WebService.create_question(question,function(result,response){
                 if (result == true){
 
-                    question = response.data
-                    $scope.questions[0] = question
                 }else{
                     alert("There was an error when creating question")
                 }
@@ -156,9 +154,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
 
 
             $scope.questionModal.hide();
-            questionTmp.title = "";
-            questionTmp.options = "";
-            questionTmp.answer = "";
+
              console.log("<< QuestionsHomeCtrl.createQuestion()");
         };
 
@@ -182,16 +178,20 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         $scope.showQuestionDetails = function(questionID) {
             console.log(">> QuestionsHomeCtrl.showQuestionDetails() questionID:"+ questionID );
             $scope.question = '';
-            for(var i = 0; i < $scope.questions.length; i += 1){
+            for(var i = 0; i < $scope.questions.length; i += 1) {
 
-                if($scope.questions[i].question_id == questionID){
+                if ($scope.questions[i].question_id == questionID) {
+                    $scope.question = $scope.questions[i];
+                    if ($scope.question.name != undefined) {
+                        $scope.questionImg = cordova.file.dataDirectory + $scope.question.name
+                    } else {
+                        $scope.questionImg = $scope.question.picture_url
+                    }
                     break;
                 }
             }
 
-            $scope.question = $scope.questions[i];
             console.log(JSON.stringify($scope.question))
-            $scope.questionImg = $scope.questions.picture_url;
             $scope.updateQuestionModal.show();
             console.log("<< QuestionsHomeCtrl.showQuestionDetails()");
         };
@@ -211,47 +211,31 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             });
             console.log("<< QuestionsHomeCtrl.UpdateMedia()");
         };
+
         $scope.updatePic = function(type,questionID) {
             console.log(">> QuestionsHomeCtrl.updatePic() questionID:" + questionID);
             $scope.hideSheet();
-            ImageService.handleMediaDialog(type,$scope.projectID,questionID).then(function() {
-            $scope.images = DataService.globalimages();
-            $scope.questionImg = $scope.images[($scope.images.length)-1];
+            ImageService.handleMediaDialog(type,$scope.projectID,questionID).then(function(name) {
 
-            for(var i = 0; i < $scope.questions.length; i += 1){
-                 if(parseInt($scope.questions[i].id) == parseInt(questionID)){
-                     break;
-                 }
-           }
-            console.log("** QuestionsHomeCtrl.updatePic() Pic Index: " + i);
-            console.log("** QuestionsHomeCtrl.updatePic() Pic Path:" + $scope.questions[i].img);
+                $scope.question.picture_url =  cordova.file.dataDirectory + name
+                $scope.question.img =  $scope.question.picture_url
+                $scope.question.name = name
+                $scope.question.url =  $scope.question.picture_url
+                $scope.questionImg =   $scope.question.picture_url
 
-            $scope.questions[i].img =  $scope.questionImg;
-            $scope.questions[i].name = $scope.questionImg.split("/")[$scope.questionImg.split("/").length-1];
-            console.log('** QuestionsHomeCtrl.updatePic() name:' + $scope.questions[i].name);
-
-            $scope.questions[i].url =  $scope.questionImg;
-            $scope.$apply();
-            DataService.storeQuestions($scope.questions,$scope.projectID);
-
-            ImageService.uploadPictureToParse($scope.questionImg,$scope.questions[i].name,$scope.projectID,questionID);
-
-            $scope.projects = DataService.globalprojects();
-            console.log("** QuestionsHomeCtrl.updatePic() projects:" + $scope.projects);
-
-            for( i = 0; i < $scope.projects.length; i += 1){
-                if($scope.projects[i].id == $scope.projectID){
-                    console.log("** QuestionsHomeCtrl.updatePic() Current projectID:" + $scope.projectID);
-                    console.log("** QuestionsHomeCtrl.updatePic() index of the current project:" + i);
-                    console.log("** QuestionsHomeCtrl.updatePic() Current project Img:" + $scope.questionImg);
-                    $scope.projects[i].img = $scope.questionImg.split("/")[$scope.questionImg.split("/").length-1];
-                    $scope.projects[i].url = $scope.questionImg;
-				    DataService.updateProject($scope.projects[i],$scope.projects[i].id);
-                    DataService.storeProjects($scope.projects);
-                    break;
+                for(var i = 0; i < $scope.questions.length; i += 1){
+                    if($scope.questions[i].question_id == questionID){
+                        $scope.questions[i] = $scope.question;
+                        break;
+                    }
                 }
-            }
-            //$scope.$apply();
+
+                console.log("** QuestionsHomeCtrl.updatePic() Pic Index: " + i);
+                console.log("** QuestionsHomeCtrl.updatePic() Pic Path:" + $scope.questions[i].img);
+                console.log('** QuestionsHomeCtrl.updatePic() name:' + $scope.questions[i].name);
+
+                $scope.$apply()
+
             });
             console.log("<< QuestionsHomeCtrl.updatePic()");
         };
@@ -264,17 +248,17 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         };
         $scope.updateQuestion = function(question) {
             console.log(">> QuestionsHomeCtrl.updateQuestion() quesstionID:" + question.question_id);
-            for(var i = 0; i < $scope.questions.length; i += 1){
-                if(parseInt($scope.questions[i].question_id) == parseInt(question.question_id)){
-					          $scope.questions[i] = question;
+            for(var i = 0; i < $scope.questions.length; i += 1) {
+                if (parseInt($scope.questions[i].question_id) == parseInt(question.question_id)) {
+                    $scope.questions[i] = question;
                     break;
                 }
             }
-            WebService.update_question(question,null,function(result,response){
+            WebService.update_question(question,question.name,function(result,response){
                 if (result==true){
                     console.log(JSON.stringify(response))
                 }else{
-                    alert("There was an error updating question")
+                    alert("error:" + JSON.stringify(response))
                 }
             })
             //DataService.storeQuestions($scope.questions,$scope.projectID);
