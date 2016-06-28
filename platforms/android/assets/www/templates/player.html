@@ -3,7 +3,7 @@
 
         <!-- Modal header bar -->
         <ion-header-bar class="bar-secondary">
-            <h1 class="title">Question {{($index + 1) / questionsToPlay.length+1}}</h1>
+            <h1 class="title">Question {{currentQuestion + 1}} / {{questionsToPlay.length}} | {{currentScore}}</h1>
             <button class="button button-clear button-positive" ng-click="closePlayer()">Cancel</button>
         </ion-header-bar>
 
@@ -12,7 +12,7 @@
             <a ng-click="fullScreen(questionImg)">
                 <img ng-src="{{ questionImg }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
             </a>
-            
+
                 <div class="item item-divider">
                 <h2 class="title">
                     {{questionTmp.title}}
@@ -20,15 +20,14 @@
                 </div>
             <div class="list">
                 <ion-checkbox ng-repeat="option in optionsTmp" ng-model="selected" ng-checked="isThisChecked(option)" ng-change="optionSelected(option)" ng-disabled="isThisDisabled(option)"><p ng-class="{strike:isThisDisabled(option)}">{{option}}</p></ion-checkbox>
-                
-<!--                    <ion-checkbox ng-checked="optionAselected" ng-click="buttonClicked()">{{questionTmp.options.A}}</ion-checkbox>          
-                    <ion-checkbox ng-checked="optionBselected" ng-click="buttonClicked()">{{questionTmp.options.B}}</ion-checkbox>   
-                    <ion-checkbox ng-checked="optionCselected" ng-click="buttonClicked()">{{questionTmp.options.C}}</ion-checkbox>            
+
+<!--                    <ion-checkbox ng-checked="optionAselected" ng-click="buttonClicked()">{{questionTmp.options.A}}</ion-checkbox>
+                    <ion-checkbox ng-checked="optionBselected" ng-click="buttonClicked()">{{questionTmp.options.B}}</ion-checkbox>
+                    <ion-checkbox ng-checked="optionCselected" ng-click="buttonClicked()">{{questionTmp.options.C}}</ion-checkbox>
                     <ion-checkbox ng-checked="optionDselected" ng-click="buttonClicked()">{{questionTmp.options.D}}</ion-checkbox>-->
-                    
-            </div>      
-                
+
+            </div>
+
         </ion-content>
 
     </div>
-

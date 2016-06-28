@@ -1,17 +1,19 @@
-angular.module('Piximony').controller('SignInCtrl', function($scope, $state) {
-     $scope.signIn = function(user) {
+angular.module('Piximony').controller('SignInCtrl', function($scope,$rootScope, $state, WebService) {
+
+    $scope.signIn = function(user) {
      console.log(">> SignInCtrl.signIn()");
-     Parse.User.logIn(user.username, user.password, {
-         success: function(PFuser) {
-           $state.go('MainPage');
-           $scope.user=PFuser;
-         },
-         error: function(PFuser, error) {
-            alert("Error: " + error.code + " " + error.message);
-         }
-     });
-    console.log("<< SignInCtrl.signIn()");
- };
+
+        WebService.login(user.username, user.password, function (result,response){
+            if (result == true){
+                $state.go('MainPage')
+            }else{
+                alert("Your credentials are wrong")
+                console.log(response)
+            }
+        })
+
+         console.log("<< SignInCtrl.signIn()");
+    };
 
  $scope.isVisible = false;
  $scope.buttonText= "Sign Up" // After click, returns to <complete registration>
@@ -23,23 +25,13 @@ angular.module('Piximony').controller('SignInCtrl', function($scope, $state) {
           $scope.buttonText = "Complete Registration";
      }else{
          console.log(">> SignInCtrl.signUp() Register");
-
-         var PFuser = new Parse.User();
-         PFuser.set("username", user.username);
-         PFuser.set("password", user.password);
-         PFuser.set("email", user.email);
-
-         PFuser.signUp(null, {
-                 success: function(PFuser) {
-
+         WebService.create_user(user.username, user.email, user.password, function(result,info){
+             if (result==true){
                  $state.go('MainPage');
-                 $scope.user=PFuser;
-                 },
-                 error: function(PFuser, error) {
-                 // Show the error message somewhere and let the user try again.
-                 alert("Error: " + error.code + " " + error.message);
-                 }
-                     });
+             }else{
+                 alert("error::"+ info)
+             }
+         })
      }
      console.log("<< SignInCtrl.signUp()");
  };

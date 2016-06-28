@@ -1,12 +1,19 @@
-angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, DataService)  {
+angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, DataService, WebService)  {
       //   $scope.projects = [
       //     {id: 1, name: 'Volkan\'s project 1', img: 'img/image-placeholder.png'},
       //     {id: 2, name: 'Martin\'s project 2', img: 'img/image-placeholder.png'},
       //     {id: 3, name: 'Atlas\'s project 3', img: 'img/image-placeholder.png'}
       // ];
-
-      $scope.projects = DataService.projects();
-
+      console.log($rootScope.user.username)
+      WebService.get_user_projects($rootScope.user.username, function (result, projects, next, previos, count) {
+          if (result==true){
+              console.log(projects)
+              $scope.projects = projects
+          }else{
+              alert("Error in get_user_projects, pleaser try again!")
+          }
+      })
+      
       // Create and load the Modal
       $ionicModal.fromTemplateUrl('templates/new-project.html', function(modal) {
         $scope.projectModal = modal;
@@ -21,36 +28,42 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
 
       // Called when the form is submitted
       $scope.createProject = function(project) {
-        var id = $scope.projects.length+1;
-        console.log(">> ProjectsHomeCtrl.createProject() with id: " + id);
 
-        $scope.projects.push({
-            id: id,
-            name: project.name,
-            img: 'img/image-placeholder.png',
-            url : 'img/image-placeholder.png',
-            remote: 'img/image-placeholder.png',
-            username: DataService.Currentusername,
-            owner: Parse.User.current()
-        });
+        var id = WebService.randomString(64)
 
-        if(project.name.length > 20){
-            alert("Project name is too long: " + project.name);
+        console.log(">> ProjectsHomeCtrl.createProject() with id: " + id)
+
+        var project =  {
+            project_id: id,
+            title: project.name,
+            thumbnail_url: 'img/image-placeholder.png',
+            picture_url: 'img/image-placeholder.png'
         }
-        else{
-        $scope.projectModal.hide();
-        DataService.storeProjects($scope.projects);
-        DataService.pushProject({ id: id, name: project.name, img: 'img/image-placeholder.png', url : 'img/image-placeholder.png', remote : 'img/image-placeholder.png', username: DataService.Currentusername, owner:Parse.User.current()});
-        project.name = "";
+
+
+        if(project.title.length > 20){
+            alert("Project name is too long: " + project.title);
+        }else{
+            $scope.projects.unshift(project);
+            $scope.projectModal.hide();
+            DataService.storeProjects($scope.projects);
+            WebService.create_project(project,function(result,response){
+                if (result == true){
+                    console.log(JSON.stringify(response))
+                }else{
+                    alert("There was an error, when creating project")
+                }
+            })
+
         }
       };
 
       $rootScope.$on('HomeBtnClicked', function (event, data) {
         console.log('** ProjectsHomeCtrl.$on() HomeBtnClicked recieved');
-        $scope.projects = DataService.projects();
+        //$scope.projects = DataService.projects();
       });
 
-    $rootScope.$on('pQueryCompleted', function (event, data) {
+      $rootScope.$on('pQueryCompleted', function (event, data) {
         console.log("** ProjectsHomeCtrl.$on() pQueryCompleted is broadcasted");
         $scope.projects = DataService.globalprojects();
          $scope.$apply();
@@ -159,8 +172,14 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
         $scope.showQuestions = function(projectId) {
             //alert(projectId);
             console.log(">> ProjectsHomeCtrl.showQuestions(" + projectId + ")");
-            callquestions =  DataService.questions(projectId);
-            callimages = DataService.images(projectId);
+            WebService.get_questions(projectId, function (result, questions) {
+                if (result==true) {
+                    console.log(questions)
+                }else{
+                    alert("There was an error in show questions")
+                }
+            })
+
 
             $state.go('QuestionsHome', {'projectId':projectId});
             console.log("<< ProjectsHomeCtrl.showQuestions()");

@@ -9,7 +9,7 @@
 
         <!-- Modal content area -->
         <ion-content>
-        <a ng-click="updateMedia(question.id)">
+        <a ng-click="updateMedia(question.question_id)">
             <img ng-src="{{ questionImg }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
         </a>
             <form ng-submit="updateQuestion(question)">
@@ -20,10 +20,10 @@
                     <div class="item item-divider">
                         Options
                     </div>
-                        <div ng-repeat="option in question.options"> 
+                        <div ng-repeat="option in question.options">
                        <div class="row">
                         <div class="col-5 col-center">                            
-                            <input type="radio" name="RightAnswer"  value="{{$index}}" ng-model="question.answer">                        
+                            <input type="radio" name="RightAnswer"  value="{{$index}}" ng-model="question.correct_option">
                         </div>
                         <div class="col">
                             <label class="item item-input">

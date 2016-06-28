@@ -1,64 +1,89 @@
+<!--
+# license: Licensed to the Apache Software Foundation (ASF) under one
+#         or more contributor license agreements.  See the NOTICE file
+#         distributed with this work for additional information
+#         regarding copyright ownership.  The ASF licenses this file
+#         to you under the Apache License, Version 2.0 (the
+#         "License"); you may not use this file except in compliance
+#         with the License.  You may obtain a copy of the License at
+#
+#           http://www.apache.org/licenses/LICENSE-2.0
+#
+#         Unless required by applicable law or agreed to in writing,
+#         software distributed under the License is distributed on an
+#         "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#         KIND, either express or implied.  See the License for the
+#         specific language governing permissions and limitations
+#         under the License.
+-->
+
 # Cordova Screen Orientation Plugin
 
 Cordova plugin to set/lock the screen orientation in a common way for iOS, Android, WP8 and Blackberry 10.  This plugin is based on an early version of [Screen Orientation API](http://www.w3.org/TR/screen-orientation/) so the api does not currently match the current spec.
 
-The plugin adds the following to the screen object:
+The plugin adds the following to the screen object (`window.screen`):
 
-__lockOrientation(ORIENTATION_STRING)__
-lock the device orientation
+```js
+// lock the device orientation
+.lockOrientation('portrait')
 
-__unlockOrientation()__
-unlock the orientation
+// unlock the orientation
+.unlockOrientation()
 
-__orientation__
-current orientation (ORIENTATION_STRING)
+// current orientation
+.orientation
+```
 
 ## Install
 
-cordova < 4
+_cordova < 4_
 
+```bash
 cordova plugin add net.yoik.cordova.plugins.screenorientation
+```
+_cordova > 4_
 
-cordova > 4
-
+```bash
 cordova plugin add cordova-plugin-screen-orientation
+```
 
 ## Supported Orientations
 
-__portrait-primary__
-The orientation is in the primary portrait mode.
+#### portrait-primary
+> The orientation is in the primary portrait mode.
 
-__portrait-secondary__
-The orientation is in the secondary portrait mode.
+#### portrait-secondary
+> The orientation is in the secondary portrait mode.
 
-__landscape-primary__
-The orientation is in the primary landscape mode.
+#### landscape-primary
+> The orientation is in the primary landscape mode.
 
-__landscape-secondary__
-The orientation is in the secondary landscape mode.
+#### landscape-secondary
+> The orientation is in the secondary landscape mode.
 
-__portrait__
-The orientation is either portrait-primary or portrait-secondary (sensor).
+#### portrait
+> The orientation is either portrait-primary or portrait-secondary (sensor).
 
-__landscape__
-The orientation is either landscape-primary or landscape-secondary (sensor).
+#### landscape
+> The orientation is either landscape-primary or landscape-secondary (sensor).
 
 ## Usage
 
-    // set to either landscape
-    screen.lockOrientation('landscape');
+```js
+// set to either landscape
+screen.lockOrientation('landscape');
 
-    // allow user rotate
-    screen.unlockOrientation();
+// allow user rotate
+screen.unlockOrientation();
 
-    // access current orientation
-    console.log('Orientation is ' + screen.orientation);
+// access current orientation
+console.log('Orientation is ' + screen.orientation);
+```
 
 ## Events
 
 Both android and iOS will fire the orientationchange event on the window object.
 For this version of the plugin use the window object if you require notification.
-
 
 For this plugin to follow the full API events should be fired on the screen object.
 iOS and BB10 do not currently support events on the _screen_ object so custom event
@@ -66,9 +91,11 @@ handling will need to be added (Suggestions welcome!).
 
 ### Example usage
 
-    window.addEventListener("orientationchange", function(){
-        console.log('Orientation changed to ' + screen.orientation);
-    });
+```js
+window.addEventListener("orientationchange", function(){
+    console.log(screen.orientation); // e.g. portrait
+});
+```
 
 ## Android Notes
 
@@ -105,6 +132,12 @@ Windows phone does not support specification or primary and secondary orientatio
 Windows 8.1 Applicaitons (runtime/metro applications) will only display orientation changes if the device has some sort of accelerometer.  The internal state of the "orientation" will still be kept, but the actual screen won't rotate unless the device supports it.
 
 # Changelog
+
+## 1.4.2
+* [#101](https://github.com/gbenvenuti/cordova-plugin-screen-orientation/pull/101) make iOS rotate as needed when lockOrientation is called
+
+## 1.4.1
+* [#89](https://github.com/gbenvenuti/cordova-plugin-screen-orientation/pull/89) Fix for cordova >= 3.6.3
 
 ## 1.4.0
 * Added Windows 8.1 Support

@@ -1,14 +1,13 @@
 angular.module('Piximony').factory('DataService', function($rootScope) {
 
-  var images;
-  var questions;
-  var projects;
+  var images= [];
+  var questions = [];
+  var projects = [];
   var projects2Play;
   var questions2Play;
-
-  var userObjectId = Parse.User.current().id;
-  var Currentusername = Parse.User.current().get("username")
   
+  var userObjectId = ""
+  var Currentusername = ""
   var IMAGE_STORAGE_KEY = 'images';
   var QUESTION_STORAGE_KEY = 'questions';
   var PROJECT_STORAGE_KEY = 'projects';

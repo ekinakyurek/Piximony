@@ -185,6 +185,12 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/cordova-plugin-file/www/browser/isChrome.js",
+        "id": "cordova-plugin-file.isChrome",
+        "pluginId": "cordova-plugin-file",
+        "runs": true
+    },
+    {
         "file": "plugins/cordova-plugin-file/www/ios/FileSystem.js",
         "id": "cordova-plugin-file.iosFileSystem",
         "pluginId": "cordova-plugin-file",
@@ -268,10 +274,12 @@ module.exports.metadata =
 // TOP OF METADATA
 {
     "com.ionic.keyboard": "1.0.4",
-    "cordova-plugin-camera": "1.2.0",
-    "cordova-plugin-file": "3.0.0",
-    "cordova-plugin-file-transfer": "1.4.0",
-    "cordova-plugin-screen-orientation": "1.4.0",
+    "cordova-plugin-compat": "1.0.0",
+    "cordova-plugin-camera": "2.2.0",
+    "cordova-plugin-file": "4.2.0",
+    "cordova-plugin-file-transfer": "1.5.1",
+    "cordova-plugin-screen-orientation": "1.4.2",
+    "cordova-plugin-whitelist": "1.2.2",
     "org.apache.cordova.console": "0.2.13",
     "org.apache.cordova.device": "0.3.0"
 }

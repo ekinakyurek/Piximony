@@ -21,7 +21,7 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+                            "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
                             "count": 1
                         },
                         {
@@ -29,7 +29,11 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -41,16 +45,6 @@
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
                             "count": 3
-                        }
-                    ]
-                }
-            },
-            "config.xml": {
-                "parents": {
-                    "/*": [
-                        {
-                            "xml": "<preference name=\"AndroidPersistentFileLocation\" value=\"Internal\" />",
-                            "count": 1
                         }
                     ]
                 }
@@ -67,16 +61,19 @@
         "cordova-plugin-file": {
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
         },
-        "org.apache.cordova.console": {
-            "PACKAGE_NAME": "com.ionicframework.piximony950885"
-        },
-        "org.apache.cordova.device": {
+        "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
         },
         "cordova-plugin-screen-orientation": {
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
         },
-        "cordova-plugin-file-transfer": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.piximony950885"
+        },
+        "org.apache.cordova.console": {
+            "PACKAGE_NAME": "com.ionicframework.piximony950885"
+        },
+        "org.apache.cordova.device": {
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
         }
     },
@@ -290,11 +287,19 @@
             "runs": true
         },
         {
-            "file": "plugins/org.apache.cordova.device/www/device.js",
-            "id": "org.apache.cordova.device.device",
-            "pluginId": "org.apache.cordova.device",
+            "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
+            "id": "cordova-plugin-file-transfer.FileTransferError",
+            "pluginId": "cordova-plugin-file-transfer",
             "clobbers": [
-                "device"
+                "window.FileTransferError"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-file-transfer/www/FileTransfer.js",
+            "id": "cordova-plugin-file-transfer.FileTransfer",
+            "pluginId": "cordova-plugin-file-transfer",
+            "clobbers": [
+                "window.FileTransfer"
             ]
         },
         {
@@ -314,29 +319,22 @@
             ]
         },
         {
-            "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
-            "id": "cordova-plugin-file-transfer.FileTransferError",
-            "pluginId": "cordova-plugin-file-transfer",
+            "file": "plugins/org.apache.cordova.device/www/device.js",
+            "id": "org.apache.cordova.device.device",
+            "pluginId": "org.apache.cordova.device",
             "clobbers": [
-                "window.FileTransferError"
-            ]
-        },
-        {
-            "file": "plugins/cordova-plugin-file-transfer/www/FileTransfer.js",
-            "id": "cordova-plugin-file-transfer.FileTransfer",
-            "pluginId": "cordova-plugin-file-transfer",
-            "clobbers": [
-                "window.FileTransfer"
+                "device"
             ]
         }
     ],
     "plugin_metadata": {
         "com.ionic.keyboard": "1.0.4",
-        "cordova-plugin-camera": "1.2.0",
-        "cordova-plugin-file": "3.0.0",
-        "org.apache.cordova.console": "0.2.13",
-        "org.apache.cordova.device": "0.3.0",
+        "cordova-plugin-camera": "2.1.0",
+        "cordova-plugin-file": "4.1.0",
+        "cordova-plugin-file-transfer": "1.5.0",
         "cordova-plugin-screen-orientation": "1.4.0",
-        "cordova-plugin-file-transfer": "1.4.0"
+        "cordova-plugin-whitelist": "1.2.2",
+        "org.apache.cordova.console": "0.2.13",
+        "org.apache.cordova.device": "0.3.0"
     }
 }

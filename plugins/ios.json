@@ -13,6 +13,9 @@
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
         },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.ionicframework.piximony950885"
+        },
         "cordova-plugin-file": {
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
         },
@@ -20,6 +23,9 @@
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
         },
         "cordova-plugin-screen-orientation": {
+            "PACKAGE_NAME": "com.ionicframework.piximony950885"
+        },
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
         },
         "org.apache.cordova.console": {
