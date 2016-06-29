@@ -1,4 +1,4 @@
-angular.module('Piximony').controller('MainPageCtrl', function($scope, $state, DataService) {
+angular.module('Piximony').controller('MainPageCtrl', function($scope, $state, $rootScope, WebService) {
     $scope.GoToProjectsHome = function() {
             console.log("** MainPageCtrl.GoToProjectsHome()");
             $state.go('ProjectsHome');
@@ -6,14 +6,10 @@ angular.module('Piximony').controller('MainPageCtrl', function($scope, $state, D
     $scope.GoToPlayerHome = function() {
           console.log("** MainPageCtrl.GoToPlayerHome()");
           $state.go('PlayerHome');
-          DataService.projectsToPlay().then(function(prjcts) {
-              DataService.questionsToPlay().then(function(qstns){
-                  
-              },function(error){
-                alert("error: cannot find questions");
-              });
-          }, function(error) {
-           alert("error: cannot find projects");
-          });
+          WebService.get_playing_projects($rootScope.user.username, function(result,projects){
+              if(result){
+                  $rootScope.$broadcast('projectsToPlay', projects)
+              }
+          })
     };
 })    

@@ -356,7 +356,25 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
 
     function get_user_pojects(username,callback){
         var settings = {
-            "url": baseUrl + "project/api/user_projects/?username=" + username,
+            "url": + baseUrl + "project/api/user_projects/?username=" + username,
+            "method": "GET"
+        }
+        return $http(settings).then(function(response) {
+            if (response.data.hasOwnProperty("count")){
+                callback(true,response.data.results, response.data.next, response.data.previous, response.data.count)
+            }else{
+                console.log(JSON.stringify(response))
+                callback(false,response.data,null,null,null,0)
+            }
+        }, function(response) {
+            console.log(JSON.stringify(response))
+            callback(false,response,null,null,null,0)
+        });
+    }
+
+    function get_playing_pojects(username,callback){
+        var settings = {
+            "url": "http://127.0.0.1:8000/"  + "project/api/playing_projects/?username=" + username,
             "method": "GET"
         }
         return $http(settings).then(function(response) {
@@ -377,7 +395,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
         json = {"users": users}
 
         var settings = {
-            "url":  "http://127.0.0.1:8000/"+ "project/api/share_project/?project_id=" + project_id,
+            "url":  "http://127.0.0.1:8000/"  + "project/api/share_project/?project_id=" + project_id,
             "method": "POST",
             "headers": {
                 "content-type": "application/json"
@@ -590,6 +608,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
         upload_picture_and_thumbnail: upload_picture_and_thumbnail,
         create_project: create_project,
         get_user_projects: get_user_pojects,
+        get_playing_projects: get_playing_pojects,
         create_question: create_question,
         get_questions: get_questions,
         randomString:randomString,

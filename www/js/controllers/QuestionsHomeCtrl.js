@@ -49,10 +49,10 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
     
         $scope.addSelectedUser = function(user,selected){
             if(selected){
-                $scope.selectedUsers.push(user)
+                $scope.selectedUsers.push(user.username)
             }else{
                 for( var i = 0 ; i < $scope.selectedUsers.length ; i++ ){
-                    if(user == $scope.selectedUsers[i]){
+                    if(user.username == $scope.selectedUsers[i]){
                         $scope.selectedUsers.splice(i,1);
                         break;
                     }
