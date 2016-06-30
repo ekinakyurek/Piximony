@@ -356,7 +356,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
 
     function get_user_pojects(username,callback){
         var settings = {
-            "url": + baseUrl + "project/api/user_projects/?username=" + username,
+            "url":  baseUrl + "project/api/user_projects/?username=" + username,
             "method": "GET"
         }
         return $http(settings).then(function(response) {
@@ -374,7 +374,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
 
     function get_playing_pojects(username,callback){
         var settings = {
-            "url": "http://127.0.0.1:8000/"  + "project/api/playing_projects/?username=" + username,
+            "url": baseUrl  + "project/api/playing_projects/?username=" + username,
             "method": "GET"
         }
         return $http(settings).then(function(response) {
@@ -395,7 +395,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
         json = {"users": users}
 
         var settings = {
-            "url":  "http://127.0.0.1:8000/"  + "project/api/share_project/?project_id=" + project_id,
+            "url":  baseUrl  + "project/api/share_project/?project_id=" + project_id,
             "method": "POST",
             "headers": {
                 "content-type": "application/json"
@@ -438,7 +438,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
                 form.append("project_id", question.project_id)
 
                 var settings = {
-                    "url":  baseUrl + "question/api/create_question/",
+                    "url":  "http://127.0.0.1:8000/"+ "question/api/create_question/",
                     "method": "POST",
                     "headers": {
                         'Content-Type': undefined
@@ -555,11 +555,6 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
         return $http(settings).then(function(response) {
             if (response.data.hasOwnProperty("questions")){
                 $rootScope.$broadcast('projectQuestions',response.data.questions);
-
-                for (var i in response.data.questions){
-                    response.data.questions[i].options = response.data.questions[i].options.split(',')
-                }
-                console.log(JSON.stringify(response.data.questions))
                 callback(true,response.data.questions)
             }else{
                 console.log(response)

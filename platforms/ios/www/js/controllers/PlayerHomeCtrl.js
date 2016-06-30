@@ -1,4 +1,4 @@
-angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootScope, $timeout, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, DataService)  {
+angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootScope, $timeout, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, DataService, WebService)  {
 
   $scope.projectindex = 0
   $rootScope.$on('projectsToPlay', function (event, data) {
@@ -9,9 +9,8 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
       $scope.currentScore = 0;
       $scope.trial = [false,false,false,false];
       $scope.bingo = false;
-    console.log("** PlayerHomeCtrl.$on() " + $scope.projectsToPlay);
-    $scope.$apply()
-    console.log('<< PlayerHomeCtrl.$on() projectsToPlay');
+      console.log("** PlayerHomeCtrl.$on() " + $scope.projectsToPlay);
+      console.log('<< PlayerHomeCtrl.$on() projectsToPlay');
   });
 
 
@@ -193,8 +192,8 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
         console.log('>> PlayerHomeCtrl.openPlayer() index: ' + index);  
         $scope.projectindex = index;
           
-        if($scope.questionsToPlay.length > 0) {
-          $scope.questionTmp = $scope.projectsToPlay[$scope.projectindex].questions[$scope.currentQuestion];
+        if($scope.projectsToPlay.length > 0) {
+          $scope.questionTmp = $scope.projectsToPlay[$scope.projectindex].questions[$scope.currentQuestion]
           $scope.optionsTmp = $scope.projectsToPlay[$scope.projectindex].questions[$scope.currentQuestion].options;
           $scope.questionImg = $scope.projectsToPlay[$scope.projectindex].questions[$scope.currentQuestion].picture_url;
         }

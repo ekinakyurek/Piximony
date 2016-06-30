@@ -4,14 +4,6 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
   $rootScope.$on('projectsToPlay', function (event, data) {
     console.log('>> PlayerHomeCtrl.$on() projectsToPlay event recieved');
     //$scope.projectsToPlay = DataService.projects2Play();
-
-
-      for(var i in data){
-          for(var j in data[i].questions){
-              data[i].questions[j].options = data[i].questions[j].options.split(',')
-          }
-      }
-
       $scope.projectsToPlay = data
       $scope.currentQuestion = 0;
       $scope.currentScore = 0;
