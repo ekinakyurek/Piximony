@@ -438,7 +438,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
                 form.append("project_id", question.project_id)
 
                 var settings = {
-                    "url":  "http://127.0.0.1:8000/"+ "question/api/create_question/",
+                    "url":  baseUrl + "question/api/create_question/",
                     "method": "POST",
                     "headers": {
                         'Content-Type': undefined

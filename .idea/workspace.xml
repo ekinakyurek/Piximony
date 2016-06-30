@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7847d57e-042c-4dd9-94dc-7ee35862bc39" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/dgph" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/dgph" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/dgph" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/dgph" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/www/templates/PlayerHome.html" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/www/templates/PlayerHome.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/www/templates/player.html" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/www/templates/player.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/www/js/controllers/MainPageCtrl.js" afterPath="$PROJECT_DIR$/platforms/ios/www/js/controllers/MainPageCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/www/js/controllers/PlayerHomeCtrl.js" afterPath="$PROJECT_DIR$/platforms/ios/www/js/controllers/PlayerHomeCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/www/js/controllers/QuestionsHomeCtrl.js" afterPath="$PROJECT_DIR$/platforms/ios/www/js/controllers/QuestionsHomeCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/www/js/services/WebService.js" afterPath="$PROJECT_DIR$/platforms/ios/www/js/services/WebService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/www/templates/PlayerHome.html" afterPath="$PROJECT_DIR$/platforms/ios/www/templates/PlayerHome.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/www/templates/player.html" afterPath="$PROJECT_DIR$/platforms/ios/www/templates/player.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controllers/PlayerHomeCtrl.js" afterPath="$PROJECT_DIR$/www/js/controllers/PlayerHomeCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controllers/QuestionsHomeCtrl.js" afterPath="$PROJECT_DIR$/www/js/controllers/QuestionsHomeCtrl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/services/WebService.js" afterPath="$PROJECT_DIR$/www/js/services/WebService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/PlayerHome.html" afterPath="$PROJECT_DIR$/www/templates/PlayerHome.html" />
     </list>
     <ignored path="piximony.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="WebService.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WebService.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/services/WebService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="459" column="21" selection-start-line="459" selection-start-column="21" selection-end-line="459" selection-end-column="21" />
+            <state relative-caret-position="113">
+              <caret line="533" column="56" selection-start-line="533" selection-start-column="54" selection-end-line="533" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -57,10 +43,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QuestionsHomeCtrl.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="QuestionsHomeCtrl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/controllers/QuestionsHomeCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
+            <state relative-caret-position="2925">
               <caret line="195" column="36" selection-start-line="195" selection-start-column="36" selection-end-line="195" selection-end-column="36" />
               <folding />
             </state>
@@ -162,9 +148,9 @@
         <option value="$PROJECT_DIR$/www/js/controllers/MainPageCtrl.js" />
         <option value="$PROJECT_DIR$/www/templates/player.html" />
         <option value="$PROJECT_DIR$/www/js/controllers/PlayerHomeCtrl.js" />
-        <option value="$PROJECT_DIR$/www/js/services/WebService.js" />
         <option value="$PROJECT_DIR$/www/templates/PlayerHome.html" />
         <option value="$PROJECT_DIR$/www/js/controllers/QuestionsHomeCtrl.js" />
+        <option value="$PROJECT_DIR$/www/js/services/WebService.js" />
       </list>
     </option>
   </component>
@@ -466,23 +452,23 @@
       <workItem from="1467154112343" duration="375000" />
       <workItem from="1467156891044" duration="127000" />
       <workItem from="1467171898246" duration="3227000" />
-      <workItem from="1467255251622" duration="4255000" />
+      <workItem from="1467255251622" duration="4384000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83521000" />
+    <option name="totallyTimeSpent" value="83650000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="717" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2542373" sideWeight="0.51005024" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20969023" sideWeight="0.48994976" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36842105" sideWeight="0.117553614" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36842105" sideWeight="0.8824464" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36842105" sideWeight="0.8824464" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24939467" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33971292" sideWeight="0.47498015" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -822,14 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/services/WebService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="459" column="21" selection-start-line="459" selection-start-column="21" selection-end-line="459" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/controllers/ProjectsHomeCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1466">
@@ -848,8 +826,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/controllers/QuestionsHomeCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
+        <state relative-caret-position="2925">
           <caret line="195" column="36" selection-start-line="195" selection-start-column="36" selection-end-line="195" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/services/WebService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="533" column="56" selection-start-line="533" selection-start-column="54" selection-end-line="533" selection-end-column="56" />
           <folding />
         </state>
       </provider>
