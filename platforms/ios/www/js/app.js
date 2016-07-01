@@ -5,8 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('Piximony', ['ionic','ngCordova']).config(function($stateProvider, $urlRouterProvider) {
 
-        //Parse.initialize("Cf8RgFxwJbxS93aUxTNYtJbzcxRpkywAwNu4aoNb", "qWAIcupqoM1QV8kbW0MblWUOZzasYBBgLrrLzA32");
-        Parse.initialize("iZdpAD7vYS44lPB2qLDedAsl8Fn5XUwtNkHJjYN4", "9OCTXn0Y0kMlRfpPtpeKGGgIevY7waMMUuwrHmpU");
+     
             $stateProvider
             .state('MainPage', {
                 url: '/MainPage',

@@ -59,12 +59,12 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
 
       $rootScope.$on('HomeBtnClicked', function (event, data) {
         console.log('** ProjectsHomeCtrl.$on() HomeBtnClicked recieved');
-        //$scope.projects = DataService.projects();
+        //$scope.projects = DataService.projects;
       });
 
       $rootScope.$on('pQueryCompleted', function (event, data) {
         console.log("** ProjectsHomeCtrl.$on() pQueryCompleted is broadcasted");
-        $scope.projects = DataService.globalprojects();
+        $scope.projects = DataService.projects;
          $scope.$apply();
       });
 
@@ -75,14 +75,14 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
          $cordovaFile.checkFile(cordova.file.dataDirectory, project.img ).then(function (success) {
             if(project.url !=  cordova.file.dataDirectory + project.img ) {
                    project.url = cordova.file.dataDirectory + project.img
-                   DataService.updateProject(project,project.id)
+                  
             }
            }, function (error) {
 
            if(project.url != project.remote) {
                 console.log("** ProjectsHomeCtrl.$on() error: " + error + " " + project.img)
                 project.url = project.remote
-                DataService.updateProject(project,project.id)
+                
              }
          });
         return project.url;
@@ -230,7 +230,6 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
     
         $scope.openShareProjectModal = function(projectID){
             console.log(">> ProjectsHomeCtrl.openShareProjectModal(" + projectID + ")");
-            DataService.getMyFriends();
             $scope.projectID = projectID;
             $scope.shareProjectModal.show();
             console.log("<< ProjectsHomeCtrl.openShareProjectModal()");
@@ -239,7 +238,6 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
          $scope.shareProject = function(){
             console.log(">> ProjectsHomeCtrl.shareProject(" + $scope.projectID + ")");
             //if there is no selected user alert error
-            DataService.shareProject($scope.projectID,$scope.selectedUsers)
             $scope.shareProjectModal.hide();
             $scope.selectedUsers = [];
             $scope.users = [];

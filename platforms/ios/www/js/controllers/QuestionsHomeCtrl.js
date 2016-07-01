@@ -83,7 +83,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             $scope.hideSheet();
             ImageService.handleMediaDialog(type,$scope.projectID,$scope.questions.length + 1).then(function() {
             $scope.questionImg = "img/image-placeholder.png";
-            $scope.images = DataService.globalimages();
+            $scope.images = DataService.images;
             //alert($scope.images[($scope.images.length)-1]);
             $scope.newQuestion($scope.images[($scope.images.length)-1]);
             //$scope.$apply();
@@ -265,8 +265,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
                 console.log("** QuestionsHomeCtrl.updatePic() Pic Index: " + i);
                 console.log("** QuestionsHomeCtrl.updatePic() Pic Path:" + $scope.questions[i].img);
                 console.log('** QuestionsHomeCtrl.updatePic() name:' + $scope.questions[i].name);
-
-                $scope.$apply()
+                
 
             });
             console.log("<< QuestionsHomeCtrl.updatePic()");

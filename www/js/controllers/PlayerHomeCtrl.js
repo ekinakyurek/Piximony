@@ -1,4 +1,4 @@
-angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootScope, $timeout, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, DataService, WebService)  {
+angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootScope, $timeout, $state, $stateParams, $ionicModal, $cordovaDevice,  $ionicPlatform, $ionicActionSheet, DataService, WebService)  {
 
   $scope.projectindex = 0
   $rootScope.$on('projectsToPlay', function (event, data) {

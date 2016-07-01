@@ -431,11 +431,11 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
             .then(function (success) {
                 var imgBlob = new Blob([success], { type: "image/jpeg" } );
                 form.append("file", imgBlob)
-                form.append("info", question)
+                form.append("info", JSON.stringify(question))
 
 
                 var settings = {
-                    "url": "http://127.0.0.1:8000/" + "video/api/upload_deneme/",
+                    "url": baseUrl + "question/api/create_question/",
                     "method": "POST",
                     "headers": {
                         'Content-Type': undefined
@@ -450,13 +450,13 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
                 $http(settings).then(function (response) {
                     if (response.data.hasOwnProperty("date_str")) {
                         callback(true, response.data)
-                        console.log("succesFull")
+                        console.log("Question Created Succesfully")
                     } else {
-                        console.log(JSON.stringify(response.data)+"http response")
+                        console.log(JSON.stringify(response.data))
                         callback(false, response.data)
                     }
                 }, function (response) {
-                    console.log(JSON.stringify(response.data) + "http data" )
+                    console.log(JSON.stringify(response))
                     callback(false, response.data)
                 });
 
@@ -469,10 +469,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
 
     function update_question(question,picture, callback){
         var form = new FormData()
-        form.append("question_id", question.question_id)
-        form.append("title", question.title)
-        form.append("options", question.options)
-        form.append("correct_option", question.correct_option)
+        form.append("info", JSON.stringify(question))
 
         var settings = {
             "url":  baseUrl + "question/api/edit_question/",
