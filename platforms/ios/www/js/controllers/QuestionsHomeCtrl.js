@@ -193,6 +193,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         $scope.newQuestion = function(img) {
             console.log(">> QuestionsHomeCtrl.newQuestion(" + img + ")");
             $scope.questionImg = img ;
+            $scope.questionTmp = {};
             $scope.options = [0,1,2,3];
             $scope.questionModal.show();
             console.log("<< QuestionsHomeCtrl.newQuestion()");

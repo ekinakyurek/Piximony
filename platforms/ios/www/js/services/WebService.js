@@ -431,14 +431,11 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
             .then(function (success) {
                 var imgBlob = new Blob([success], { type: "image/jpeg" } );
                 form.append("file", imgBlob)
-                form.append("title", question.title)
-                form.append("options", question.options)
-                form.append("correct_option", question.correct_option)
-                form.append("question_id", question.question_id)
-                form.append("project_id", question.project_id)
+                form.append("info", question)
+
 
                 var settings = {
-                    "url":  "http://127.0.0.1:8000/"+ "question/api/create_question/",
+                    "url": "http://127.0.0.1:8000/" + "video/api/upload_deneme/",
                     "method": "POST",
                     "headers": {
                         'Content-Type': undefined
