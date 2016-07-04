@@ -5,6 +5,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         $scope.selectedUsers = []
         //$scope.projects = DataService.projects();
          $scope.questions = DataService.getQuestions($scope.projectID)
+    console.log("$scope.questions ::  " +  $scope.questions)
     $rootScope.$on('projectQuestions', function (event, data) {
             console.log("** QuestionsHomeCtrl.$on() projectQuestions is broadcasted:" + $scope.projectID);
             if (data.length > 0) {

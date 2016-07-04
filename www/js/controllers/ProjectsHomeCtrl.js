@@ -33,7 +33,8 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
             project_id: id,
             title: project.name,
             thumbnail_url: 'img/image-placeholder.png',
-            picture_url: 'img/image-placeholder.png'
+            picture_url: 'img/image-placeholder.png',
+            questions: []
         }
 
 

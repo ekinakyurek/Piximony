@@ -92,7 +92,6 @@ angular.module('Piximony').factory('DataService', function() {
 
   function storeQuestions(questions,projectID) {
     console.log(">> DataService::storeQuestions() questions: " + questions.length);
-    questions = questions
     project_index = projects.map(function(e) { return e.project_id; }).indexOf(projectID);
     if (project_index != -1){
       projects[project_index].questions = questions
