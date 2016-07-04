@@ -1,10 +1,14 @@
 
-angular.module('Piximony').factory('WebService',function($rootScope, $http, $cordovaFile, $cordovaFileOpener2) {
+angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
  
     var baseUrl = "http://piximony-dev.yaudxbzu3m.us-west-1.elasticbeanstalk.com/";
     var userToken= "";
-    var currentUser = {};
 
+    function set_token(token){
+        console.log(token)
+        userToken = token ;
+        $http.defaults.headers.common.Authorization = 'Token ' + userToken;
+    }
     //ACCOUNT
 
     function create_user(username, email, password, callback){
@@ -22,10 +26,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
 
         return $http(settings).then(function(response) {
             if (response.data.hasOwnProperty("access_token")){
-                $rootScope.user = response.data
-                currentUser = response.data
-                userToken =  currentUser.access_token
-                $http.defaults.headers.common.Authorization = 'Token ' + userToken
+                set_token(response.data.access_token)
                 callback(true,response.data)
 
             }else{
@@ -53,14 +54,12 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
 
         return $http(settings).then(function(response) {
             if (response.data.hasOwnProperty("token")){
-                callback(true,userToken)
-                userToken =  response.data.token;
-                $http.defaults.headers.common.Authorization = 'Token ' + userToken
+                set_token(response.data.token)
                 get_current_user_info(function (result,info) {
                     if (result==true){
-                        $rootScope.user = info
-                        currentUser = info
+                        callback(true,info)
                     }else{
+                        callback(false,info)
                         alert("An error in login")
                     }
                 })
@@ -83,8 +82,8 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
 
         return $http(settings).then(function(response) {
             if (response.data.hasOwnProperty("username")){
+                response.data.access_token =  userToken
                 callback(true,response.data)
-                currentUser = response.data
             }else{
                 console.log(response)
                 callback(false,response)
@@ -169,7 +168,6 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
             if (response.data.hasOwnProperty("result")){
                 if (response.data.result == "success"){
                     callback(true,response.data)
-                    currentUser = {};
                 }else{
                     console.log(response)
                     callback(false,response.data)
@@ -213,7 +211,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
         });
     }
     //picture and thumbnail bytes of files
-    function upload_picture_and_thumbnail(picture, thumbnail){
+    function upload_picture_and_thumbnail(picture, thumbnail, currentUser, callback){
         form = new FormData
         form.append("picture", picture)
         form.append("thumbnail", thumbnail)
@@ -234,7 +232,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
                 if (response.data.result == "success"){
                     currentUser.picture_url = response.data.picture_url
                     currentUser.thumbnail_url = response.data.thumbnail_url
-                    callback(true,response.data)
+                    callback(true, currentUser)
                 }else{
                     console.log(response)
                     callback(false,response.data)
@@ -250,9 +248,9 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
         });
     }
 
-    function get_friends(callback){
+    function get_friends(username, callback){
         var settings = {
-            "url": baseUrl + "account/api/get_friends/?username=" + currentUser.username,
+            "url": baseUrl + "account/api/get_friends/?username=" + username,
             "method": "GET"
         }
         return $http(settings).then(function(response) {
@@ -269,9 +267,9 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
     }
 
 
-    function get_requests(callback){
+    function get_requests(username, callback){
         var settings = {
-            "url": baseUrl + "account/api/get_requests/?username=" + currentUser.username,
+            "url": baseUrl + "account/api/get_requests/?username=" + username,
             "method": "GET"
         }
         return $http(settings).then(function(response) {
@@ -325,9 +323,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
         });
     }
 
-
-
-
+    
     //PROJECT
     function create_project(project,callback){
 
@@ -354,7 +350,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
         });
     }
 
-    function get_user_pojects(username,callback){
+    function get_user_pojects(username, callback){
         var settings = {
             "url":  baseUrl + "project/api/user_projects/?username=" + username,
             "method": "GET"
@@ -372,7 +368,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
         });
     }
 
-    function get_playing_pojects(username,callback){
+    function get_playing_pojects(username, callback){
         var settings = {
             "url": baseUrl  + "project/api/playing_projects/?username=" + username,
             "method": "GET"
@@ -548,7 +544,6 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
         }
         return $http(settings).then(function(response) {
             if (response.data.hasOwnProperty("questions")){
-                $rootScope.$broadcast('projectQuestions',response.data.questions);
                 callback(true,response.data.questions)
             }else{
                 console.log(response)
@@ -586,6 +581,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
     var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
     return {
+        set_token: set_token,
         create_user: create_user,
         login: login,
         get_current_user_info: get_current_user_info,
@@ -607,9 +603,7 @@ angular.module('Piximony').factory('WebService',function($rootScope, $http, $cor
         request_friendship: request_friendship,
         accept_friendship: accept_friendship,
         share_project: share_project,
-        baseUrl: baseUrl,
-        userToken: userToken,
-        currentUser: currentUser
+        userToken: userToken
 
     }
 

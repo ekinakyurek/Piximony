@@ -1,14 +1,26 @@
-angular.module('Piximony').controller('SignInCtrl', function($scope,$rootScope, $state, WebService) {
+angular.module('Piximony').controller('SignInCtrl', function($scope,$rootScope, $state, WebService, DataService) {
+
+    
+    $scope.init = function () {
+        var user = DataService.getUser()
+        if (user !== null) {
+            WebService.set_token(user.access_token)
+            $state.go('MainPage')
+        }else{
+            console.log("require login")
+        }
+    }
+
 
     $scope.signIn = function(user) {
      console.log(">> SignInCtrl.signIn()");
 
-        WebService.login(user.username, user.password, function (result,response){
+        WebService.login(user.username, user.password, function (result,info){
             if (result == true){
+                DataService.saveUser(info)
                 $state.go('MainPage')
             }else{
                 alert("Your credentials are wrong")
-                console.log(JSON.stringify(response))
             }
         })
 
@@ -27,6 +39,7 @@ angular.module('Piximony').controller('SignInCtrl', function($scope,$rootScope, 
          console.log(">> SignInCtrl.signUp() Register");
          WebService.create_user(user.username, user.email, user.password, function(result,info){
              if (result==true){
+                 DataService.saveUser(info)
                  $state.go('MainPage');
              }else{
                  alert("error::"+JSON.stringify(info))

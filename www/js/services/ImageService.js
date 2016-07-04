@@ -70,48 +70,48 @@ angular.module('Piximony').factory('ImageService', function($cordovaCamera, Data
     function uploadPictureToParse(path,name, projectID,questionID){
 
       console.log(">> ImageService::uploadPicture()");
-      var server = 'https://api.parse.com/1/files/' + name;
-
-      //console.log(server + " " + path +  " " +  options)
-
-      $cordovaFileTransfer.upload(server, path , options)
-      .then(function(result) {
-        DataService.storeImage(result.headers.Location,projectID);
-
-        var questions = DataService.globalquestions();
-        var projects = DataService.globalprojects();
-
-        for(var i = 0; i <  questions.length; i += 1){
-            if(parseInt(questions[i].id) == parseInt(questionID)){
-              break;
-            }
-        }
-
-          questions[i].remote = result.headers.Location
-
-
-        for(var j = 0; j <  projects.length; j += 1){
-            if(projects[j].id == projectID){
-
-              projects[j].remote = result.headers.Location
-              DataService.updateProject(projects[j],projects[j].id);
-              break;
-            }
-        }
-
-
-
-          DataService.storeProjects(projects);
-          DataService.storeQuestions(questions,projectID);
-
-          console.log("uploadPicture() success" + result.headers.Location );
-
-      },function(error) {
-        alert("uploadPicture() error::" + error.message) ;
-
-      }, function (progress) {
-        // constant progress updates
-      });
+      // var server = 'https://api.parse.com/1/files/' + name;
+      //
+      // //console.log(server + " " + path +  " " +  options)
+      //
+      // $cordovaFileTransfer.upload(server, path , options)
+      // .then(function(result) {
+      //   DataService.storeImage(result.headers.Location,projectID);
+      //
+      //   var questions = DataService.globalquestions();
+      //   var projects = DataService.globalprojects();
+      //
+      //   for(var i = 0; i <  questions.length; i += 1){
+      //       if(parseInt(questions[i].id) == parseInt(questionID)){
+      //         break;
+      //       }
+      //   }
+      //
+      //     questions[i].remote = result.headers.Location
+      //
+      //
+      //   for(var j = 0; j <  projects.length; j += 1){
+      //       if(projects[j].id == projectID){
+      //
+      //         projects[j].remote = result.headers.Location
+      //         DataService.updateProject(projects[j],projects[j].id);
+      //         break;
+      //       }
+      //   }
+      //
+      //
+      //
+      //     DataService.storeProjects(projects);
+      //     DataService.storeQuestions(questions,projectID);
+      //
+      //     console.log("uploadPicture() success" + result.headers.Location );
+      //
+      // },function(error) {
+      //   alert("uploadPicture() error::" + error.message) ;
+      //
+      // }, function (progress) {
+      //   // constant progress updates
+      // });
       console.log("<< ImageService::uploadPicture()");
     }
 

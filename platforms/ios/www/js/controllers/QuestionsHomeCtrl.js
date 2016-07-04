@@ -1,22 +1,21 @@
 angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, DataService, WebService)  {
         //alert($stateParams.projectId);
         $scope.projectID = $stateParams.projectId;
-       
         $scope.users = []
         $scope.selectedUsers = []
         //$scope.projects = DataService.projects();
     
         $rootScope.$on('projectQuestions', function (event, data) {
-          console.log("** QuestionsHomeCtrl.$on() projectQuestions is broadcasted");
-          $scope.questions = data
-          console.log(JSON.stringify(data))
+            console.log("** QuestionsHomeCtrl.$on() projectQuestions is broadcasted:" + $scope.projectID);
+            $scope.questions = data
+            DataService.storeQuestions(data, $scope.projectID)
+            console.log(JSON.stringify(data))
          });
 
         $scope.openShareModal = function(){
             console.log("share modal clicked")
             $scope.shareModal.show()
-            WebService.get_friends(function(result,users){
-                
+            WebService.get_friends(DataService.getUser().username,function(result,users){
                 if(result){
                     $scope.friends = users
                 }
@@ -120,6 +119,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             console.log("** QuestionsHomeCtrl.home() HomeBtnClicked sent");
             $rootScope.$broadcast('HomeBtnClicked'); // $rootScope.$on && $scope.$on
             $state.go('MainPage');
+            $scope.questions = []
         };
 
       $scope.getUrl = function(question) {
@@ -130,7 +130,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             if(question.url !=  cordova.file.dataDirectory + question.name ) {
 
                    question.url = cordova.file.dataDirectory + question.name
-                   DataService.updateQuestion(question,$scope.projectID)
+                   DataService.storeQuestion(question, $scope.projectID)
             }
            }, function (error) {
 
@@ -138,7 +138,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
 
                    console.log(error + " " + question.img  )
                    question.url = question.remote
-                   DataService.updateQuestion(question,$scope.projectID)
+                   DataService.storeQuestion(question,$scope.projectID)
 
              }
          });
@@ -174,7 +174,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             }
 
             $scope.questions.unshift(question);
-
+            DataService.storeQuestion(question, $scope.projectID)
             WebService.create_question(question,function(result,response){
                 if (result == true){
 
@@ -285,6 +285,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
                     break;
                 }
             }
+            DataService.storeQuestion(question, $scope.projectID)
             WebService.update_question(question,question.name,function(result,response){
                 if (result==true){
                     console.log(JSON.stringify(response))

@@ -35,6 +35,6 @@ angular.module('Piximony', ['ionic','ngCordova']).config(function($stateProvider
             });
 
 
-        $urlRouterProvider.otherwise('/sign-in');
+            $urlRouterProvider.otherwise('/sign-in');
 
     })

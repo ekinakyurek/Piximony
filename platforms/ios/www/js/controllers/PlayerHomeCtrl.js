@@ -1,17 +1,22 @@
 angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootScope, $timeout, $state, $stateParams, $ionicModal, $cordovaDevice,  $ionicPlatform, $ionicActionSheet, DataService, WebService)  {
 
-  $scope.projectindex = 0
-  $rootScope.$on('projectsToPlay', function (event, data) {
-    console.log('>> PlayerHomeCtrl.$on() projectsToPlay event recieved');
-    //$scope.projectsToPlay = DataService.projects2Play();
-      $scope.projectsToPlay = data
-      $scope.currentQuestion = 0;
-      $scope.currentScore = 0;
-      $scope.trial = [false,false,false,false];
-      $scope.bingo = false;
-      console.log("** PlayerHomeCtrl.$on() " + $scope.projectsToPlay);
-      console.log('<< PlayerHomeCtrl.$on() projectsToPlay');
-  });
+    $scope.projectindex = 0
+    $scope.projectsToPlay = DataService.getProjectsToPlay()
+
+    $rootScope.$on('projectsToPlay', function (event, data) {
+        console.log('>> PlayerHomeCtrl.$on() projectsToPlay event recieved');
+        //$scope.projectsToPlay = DataService.projects2Play();
+        if (data.length > 0){
+            $scope.projectsToPlay = data
+            DataService.storeProjectsToPlay(data)
+        }
+        $scope.currentQuestion = 0;
+        $scope.currentScore = 0;
+        $scope.trial = [false,false,false,false];
+        $scope.bingo = false;
+        console.log("** PlayerHomeCtrl.$on() " + $scope.projectsToPlay);
+        console.log('<< PlayerHomeCtrl.$on() projectsToPlay');
+    });
 
 
 

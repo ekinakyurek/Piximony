@@ -1,19 +1,16 @@
 angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, DataService, WebService)  {
-      //   $scope.projects = [
-      //     {id: 1, name: 'Volkan\'s project 1', img: 'img/image-placeholder.png'},
-      //     {id: 2, name: 'Martin\'s project 2', img: 'img/image-placeholder.png'},
-      //     {id: 3, name: 'Atlas\'s project 3', img: 'img/image-placeholder.png'}
-      // ];
-      console.log($rootScope.user.username)
-      WebService.get_user_projects($rootScope.user.username, function (result, projects, next, previos, count) {
-          if (result==true){
-              $scope.projects = projects
-          }else{
-              alert("Error in get_user_projects, pleaser try again!")
-          }
-      })
-      
-      // Create and load the Modal
+
+    $scope.$projects = DataService.getProjects()
+    $rootScope.$on('userProjects', function (event, data) {
+        console.log('>> userProjects.$on() userProjects event recieved');
+        //$scope.projectsToPlay = DataService.projects2Play();
+        if(data.length > 0){
+            $scope.projects = data
+            DataService.storeProjects(data)
+        }
+    });
+
+    // Create and load the Modal
       $ionicModal.fromTemplateUrl('templates/new-project.html', function(modal) {
         $scope.projectModal = modal;
       }, {
@@ -45,7 +42,7 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
         }else{
             $scope.projects.unshift(project);
             $scope.projectModal.hide();
-            DataService.storeProjects($scope.projects);
+            DataService.storeProject(project)
             WebService.create_project(project,function(result,response){
                 if (result == true){
                     console.log(JSON.stringify(response))
@@ -59,13 +56,6 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
 
       $rootScope.$on('HomeBtnClicked', function (event, data) {
         console.log('** ProjectsHomeCtrl.$on() HomeBtnClicked recieved');
-        //$scope.projects = DataService.projects;
-      });
-
-      $rootScope.$on('pQueryCompleted', function (event, data) {
-        console.log("** ProjectsHomeCtrl.$on() pQueryCompleted is broadcasted");
-        $scope.projects = DataService.projects;
-         $scope.$apply();
       });
 
       $scope.getUrl = function(project) {
@@ -74,7 +64,7 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
 
          $cordovaFile.checkFile(cordova.file.dataDirectory, project.img ).then(function (success) {
             if(project.url !=  cordova.file.dataDirectory + project.img ) {
-                   project.url = cordova.file.dataDirectory + project.img
+                project.url = cordova.file.dataDirectory + project.img
                   
             }
            }, function (error) {
@@ -161,7 +151,7 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
             
             WebService.accept_friendship(user.username, function(result){
                 if (result){
-                    $scope.friends.unshiftpush(user)
+                    $scope.friends.unshift(user)
                     $scope.requests.splice($scope.requests.indexOf(user),1);
                 }
 
@@ -217,6 +207,7 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
             console.log(">> ProjectsHomeCtrl.showQuestions(" + projectId + ")");
             WebService.get_questions(projectId, function (result, questions) {
                 if (result==true) {
+                    $rootScope.$broadcast('projectQuestions',questions);
                     console.log(questions)
                 }else{
                     alert("There was an error in show questions")
