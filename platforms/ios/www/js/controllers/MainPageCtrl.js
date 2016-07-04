@@ -21,6 +21,10 @@ angular.module('Piximony').controller('MainPageCtrl', function($scope, $state, $
               }
           })
     };
+
+    $ionicHistory.nextViewOptions({
+        disableBack: true
+    });
     
     $scope.logOut = function () {
         console.log("** MainPageCtrl.logOut()");

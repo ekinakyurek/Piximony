@@ -4,12 +4,14 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         $scope.users = []
         $scope.selectedUsers = []
         //$scope.projects = DataService.projects();
-    
-        $rootScope.$on('projectQuestions', function (event, data) {
+         $scope.questions = DataService.getQuestions($scope.projectID)
+    $rootScope.$on('projectQuestions', function (event, data) {
             console.log("** QuestionsHomeCtrl.$on() projectQuestions is broadcasted:" + $scope.projectID);
-            $scope.questions = data
-            DataService.storeQuestions(data, $scope.projectID)
-            console.log(JSON.stringify(data))
+            if (data.length > 0) {
+                $scope.questions = data
+                DataService.storeQuestions(data, $scope.projectID)
+                console.log(JSON.stringify(data))
+            }
          });
 
         $scope.openShareModal = function(){

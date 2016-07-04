@@ -1,4 +1,4 @@
-angular.module('Piximony').controller('MainPageCtrl', function($scope, $state, $rootScope, WebService, DataService) {
+angular.module('Piximony').controller('MainPageCtrl', function($scope, $state, $rootScope, $ionicHistory, WebService, DataService) {
     $scope.GoToProjectsHome = function() {
             console.log("** MainPageCtrl.GoToProjectsHome()");
             $state.go('ProjectsHome');
@@ -21,11 +21,15 @@ angular.module('Piximony').controller('MainPageCtrl', function($scope, $state, $
               }
           })
     };
+
+
     
     $scope.logOut = function () {
         console.log("** MainPageCtrl.logOut()");
         DataService.clearStorage();
-        
+        $ionicHistory.nextViewOptions({
+            disableBack: true
+        });
         $state.go('signin');
     }
 })    

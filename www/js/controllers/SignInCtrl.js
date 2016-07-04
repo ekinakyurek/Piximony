@@ -17,6 +17,8 @@ angular.module('Piximony').controller('SignInCtrl', function($scope,$rootScope, 
 
         WebService.login(user.username, user.password, function (result,info){
             if (result == true){
+                user.username = ""
+                user.password = ""
                 DataService.saveUser(info)
                 $state.go('MainPage')
             }else{
@@ -39,6 +41,10 @@ angular.module('Piximony').controller('SignInCtrl', function($scope,$rootScope, 
          console.log(">> SignInCtrl.signUp() Register");
          WebService.create_user(user.username, user.email, user.password, function(result,info){
              if (result==true){
+                 user.username = ""
+                 user.password = ""
+                 user.email = ""
+                 user.repassword = ""
                  DataService.saveUser(info)
                  $state.go('MainPage');
              }else{
