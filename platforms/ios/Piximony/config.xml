@@ -37,6 +37,10 @@
     <feature name="Device">
         <param name="ios-package" value="CDVDevice" />
     </feature>
+    <feature name="Canvas2ImagePlugin">
+        <param name="ios-package" value="Canvas2ImagePlugin" />
+        <param name="onload" value="true" />
+    </feature>
     <icon height="60" src="icons/ios/icon-60.png" width="60" />
     <icon height="120" src="icons/ios/icon-60@2x.png" width="120" />
     <icon height="76" src="icons/ios/icon-76.png" width="76" />

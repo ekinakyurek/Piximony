@@ -55,6 +55,7 @@
 		36DD07E0E74D40488D27AB6C /* CDVViewController+UpdateSupportedOrientations.m in Sources */ = {isa = PBXBuildFile; fileRef = A5159C155CD7446DB2864772 /* CDVViewController+UpdateSupportedOrientations.m */; };
 		FBA39E2B3E0841F8BE0C50C0 /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 361F38FEF3724C488092B6EA /* CDVLogger.m */; };
 		DC730BA841DB4544A8428351 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D35CEAB65594DC58CE976DB /* CDVDevice.m */; };
+		9E360646F12C4E5FB708D226 /* Canvas2ImagePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = E85EB4395B4243EE86091713 /* Canvas2ImagePlugin.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +151,8 @@
 		39367D03C3E044B3A3940106 /* CDVLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLogger.h"; path = "org.apache.cordova.console/CDVLogger.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		7D35CEAB65594DC58CE976DB /* CDVDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVDevice.m"; path = "org.apache.cordova.device/CDVDevice.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		99C2CD194E2346169B10665A /* CDVDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVDevice.h"; path = "org.apache.cordova.device/CDVDevice.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		E85EB4395B4243EE86091713 /* Canvas2ImagePlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Canvas2ImagePlugin.m"; path = "org.devgeeks.Canvas2ImagePlugin/Canvas2ImagePlugin.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		A6215A6F8D8D47D7AE443F53 /* Canvas2ImagePlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Canvas2ImagePlugin.h"; path = "org.devgeeks.Canvas2ImagePlugin/Canvas2ImagePlugin.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +284,8 @@
 				39367D03C3E044B3A3940106 /* CDVLogger.h */,
 				7D35CEAB65594DC58CE976DB /* CDVDevice.m */,
 				99C2CD194E2346169B10665A /* CDVDevice.h */,
+				E85EB4395B4243EE86091713 /* Canvas2ImagePlugin.m */,
+				A6215A6F8D8D47D7AE443F53 /* Canvas2ImagePlugin.h */,
 			);
 			name = Plugins;
 			path = "Piximony/Plugins";
@@ -478,6 +483,7 @@
 				36DD07E0E74D40488D27AB6C /* CDVViewController+UpdateSupportedOrientations.m in Sources */,
 				FBA39E2B3E0841F8BE0C50C0 /* CDVLogger.m in Sources */,
 				DC730BA841DB4544A8428351 /* CDVDevice.m in Sources */,
+				9E360646F12C4E5FB708D226 /* Canvas2ImagePlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -35,6 +35,10 @@
                         {
                             "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Canvas2ImagePlugin\"><param name=\"android-package\" value=\"org.devgeeks.Canvas2ImagePlugin.Canvas2ImagePlugin\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -44,7 +48,7 @@
                     "/*": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 3
+                            "count": 4
                         }
                     ]
                 }
@@ -74,6 +78,9 @@
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
         },
         "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.ionicframework.piximony950885"
+        },
+        "org.devgeeks.Canvas2ImagePlugin": {
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
         }
     },
@@ -325,6 +332,14 @@
             "clobbers": [
                 "device"
             ]
+        },
+        {
+            "file": "plugins/org.devgeeks.Canvas2ImagePlugin/www/Canvas2ImagePlugin.js",
+            "id": "org.devgeeks.Canvas2ImagePlugin.Canvas2ImagePlugin",
+            "pluginId": "org.devgeeks.Canvas2ImagePlugin",
+            "clobbers": [
+                "window.canvas2ImagePlugin"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -335,6 +350,7 @@
         "cordova-plugin-screen-orientation": "1.4.0",
         "cordova-plugin-whitelist": "1.2.2",
         "org.apache.cordova.console": "0.2.13",
-        "org.apache.cordova.device": "0.3.0"
+        "org.apache.cordova.device": "0.3.0",
+        "org.devgeeks.Canvas2ImagePlugin": "0.6.0"
     }
 }

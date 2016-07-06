@@ -118,23 +118,23 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
            // })
 
 
-           WebService.get_all_users(function (result,response) {
+           WebService.get_all_users(function (result,users) {
                if (result==true){
-                   console.log(JSON.stringify(response))
+                   console.log(JSON.stringify(users))
                    $scope.friends = []
                    $scope.requests = []
                    $scope.requesteds = []
                    $scope.others = []
 
-                   for (var i in response){
-                       if (response[i].is_friend){
-                           $scope.friends.push(response[i])
-                       }else if (response[i].is_requesting){
-                           $scope.requests.push(response[i])
-                       }else if (response[i].is_requested){
-                           $scope.requesteds.push(response[i])
+                   for (var i in users){
+                       if (users[i].is_friend){
+                           $scope.friends.push(users[i])
+                       }else if (users[i].is_requesting){
+                           $scope.requests.push(users[i])
+                       }else if (users[i].is_requested){
+                           $scope.requesteds.push(users[i])
                        }else{
-                           $scope.others.push(response[i])
+                           $scope.others.push(users[i])
                        }
                    }
 

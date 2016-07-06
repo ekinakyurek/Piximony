@@ -1,4 +1,5 @@
 angular.module('Piximony').controller('MainPageCtrl', function($scope, $state, $rootScope, $ionicHistory, WebService, DataService) {
+    
     $scope.GoToProjectsHome = function() {
             console.log("** MainPageCtrl.GoToProjectsHome()");
             $state.go('ProjectsHome');
@@ -21,8 +22,6 @@ angular.module('Piximony').controller('MainPageCtrl', function($scope, $state, $
               }
           })
     };
-
-
     
     $scope.logOut = function () {
         console.log("** MainPageCtrl.logOut()");
