@@ -10,9 +10,11 @@
         <!-- Modal content area -->
         <ion-content>
 
-
-        <img ng-src="{{ questionImg }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
-        
+            <div class="profile-img-container">
+                <img ng-src="{{ questionImg }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
+                <i class="ion-edit" ng-click="openEditImage()"></i>
+            </div>
+            
             <form ng-submit="createQuestion(questionTmp)">
                 <div class="list">
                     <label class="item item-input">

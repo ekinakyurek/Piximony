@@ -4,9 +4,122 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         $scope.users = []
         $scope.selectedUsers = []
         //$scope.projects = DataService.projects();
-         $scope.questions = DataService.getQuestions($scope.projectID)
-    console.log("$scope.questions ::  " +  $scope.questions)
-    $rootScope.$on('projectQuestions', function (event, data) {
+        $scope.imageFilter = {xAxis: 0, yAxis: 0, heightPrcnt: 0, widthPrcnt: 0};
+
+        window.addEventListener("orientationchange", function(){
+            console.log('** QuestionsHomeCtrl.Orientation changed to ' + screen.orientation);
+            document.getElementById("mySvg").style.height = document.getElementById("myImage").height;
+            document.getElementById("mySvg").style.width  = document.getElementById("myImage").width;
+            document.getElementById("mySvg").style.left   = document.getElementById("myImage").x;
+            document.getElementById("mySvg").style.top    = document.getElementById("myImage").y;
+        });
+    
+        $scope.resetObject = function(){
+            console.log("** QuestionsHomeCtrl.resetObject()");
+            
+            document.getElementById("mySvg").style.height = document.getElementById("myImage").height;
+            document.getElementById("mySvg").style.width  = document.getElementById("myImage").width;
+            document.getElementById("mySvg").style.left   = document.getElementById("myImage").x;
+            document.getElementById("mySvg").style.top    = document.getElementById("myImage").y;
+            
+            $scope.xPosition1 = 0;
+            $scope.xPosition2 = 0;
+            $scope.yPosition1 = 0;
+            $scope.yPosition2 = 0;
+            $scope.changeLocation(0,0);
+            $scope.changeSize(0,0);
+        };
+        $scope.changeLocation = function(x,y){
+            console.log("** QuestionsHomeCtrl.changeLocation(" + x + "," + y + ")");
+            document.getElementById("myRect").setAttribute("x",x.toString());
+            document.getElementById("myRect").setAttribute("y",y.toString());
+        };
+        $scope.changeSize = function(w,h){
+            console.log("** QuestionsHomeCtrl.changeSize(" + w + "," + h + ")");
+            document.getElementById("myRect").setAttribute("width",w.toString());
+            document.getElementById("myRect").setAttribute("height",h.toString());
+        };
+
+        $scope.updateObject = function(){
+            $scope.changeSize((Math.abs($scope.xPosition2-$scope.xPosition1)).toString(),(Math.abs($scope.yPosition2-$scope.yPosition1)).toString());
+            if($scope.yPosition2 < $scope.yPosition1 & $scope.xPosition2 < $scope.xPosition1)
+                $scope.changeLocation($scope.xPosition2,$scope.yPosition2);
+
+            else if($scope.yPosition2 >= $scope.yPosition1 & $scope.xPosition2 < $scope.xPosition1)
+                $scope.changeLocation($scope.xPosition2,$scope.yPosition1);
+
+            else if($scope.yPosition2 < $scope.yPosition1 & $scope.xPosition2 >= $scope.xPosition1)
+                $scope.changeLocation($scope.xPosition1,$scope.yPosition2);
+
+            else if($scope.yPosition2 >= $scope.yPosition1 & $scope.xPosition2 >= $scope.xPosition1)
+                $scope.changeLocation($scope.xPosition1,$scope.yPosition1);
+        };
+
+        $scope.getMouseMovePosition = function() {
+            console.log("** QuestionsHomeCtrl.getMouseMovePosition()");
+            if($scope.fClicked == true)
+            {
+                var Position = $scope.getTouchposition(event);
+                $scope.xPosition2 = Position.x;
+                $scope.yPosition2 = Position.y;    
+                $scope.updateObject();
+            }    
+        };
+                         
+        $scope.getMouseUpPosition = function() {
+            console.log("** QuestionsHomeCtrl.getMouseUpPosition()");
+            $scope.fClicked = false;
+            var Position = $scope.getTouchposition(event);
+            $scope.xPosition2 = Position.x;
+            $scope.yPosition2 = Position.y; 
+            $scope.updateObject();
+        };
+
+        $scope.getMouseDownPosition = function() {
+            console.log("** QuestionsHomeCtrl.getMouseDownPosition()");
+            $scope.fClicked = true;
+            $scope.resetObject();
+            var Position = $scope.getTouchposition(event);
+            $scope.xPosition1 = Position.x;
+            $scope.yPosition1 = Position.y; 
+        };
+
+        // Helper function to get an element's exact position
+        $scope.getPosition = function(element) {
+            console.log(">> QuestionsHomeCtrl.getPosition()");
+            var xPosition = 0;
+            var yPosition = 0;
+
+            while(element) {
+                xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+                yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+                element = element.offsetParent;
+            }
+            console.log("<< QuestionsHomeCtrl.getPosition(" + xPosition + "," + yPosition + ")");
+            return { x: xPosition, y: yPosition };
+        };
+    
+        $scope.getTouchposition = function(event){
+            console.log(">> QuestionsHomeCtrl.getTouchposition()");
+            var canvasPosition = $scope.getPosition(event.gesture.touches[0].target);
+
+            var tap = { x:0, y:0 };
+                    if(event.gesture.touches.length>0){
+                    tt = event.gesture.touches[0];
+                    tap.x = tt.clientX || tt.pageX || tt.screenX ||0;
+                    tap.y = tt.clientY || tt.pageY || tt.screenY ||0;  
+                    }
+            tap.x = tap.x - canvasPosition.x;
+            tap.y = tap.y - canvasPosition.y;
+            console.log("<< QuestionsHomeCtrl.getTouchposition(" + tap.x + "," + tap.y + ")");
+            return {x: tap.x, y: tap.y};
+        };
+        
+    
+    
+        $scope.questions = DataService.getQuestions($scope.projectID);
+        console.log("$scope.questions ::  " +  $scope.questions)
+        $rootScope.$on('projectQuestions', function (event, data) {
             console.log("** QuestionsHomeCtrl.$on() projectQuestions is broadcasted:" + $scope.projectID);
             if (data.length > 0) {
                 $scope.questions = data
@@ -16,15 +129,47 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
          });
 
         $scope.openShareModal = function(){
-            console.log("share modal clicked")
+            console.log(">> QuestionsHomeCtrl.openShareModal()");
             $scope.shareModal.show()
             WebService.get_friends(DataService.getUser().username,function(result,users){
                 if(result){
                     $scope.friends = users
                 }
             })
+            console.log("<< QuestionsHomeCtrl.openShareModal()");
     
         }
+        
+        $scope.openEditImage = function(){
+            console.log(">> QuestionsHomeCtrl.openEditImage()");
+            $scope.fClicked = false;
+            $scope.editImageModal.show();
+            
+            console.log("<< QuestionsHomeCtrl.openEditImage()");
+        };
+        $scope.closeEditImageModal = function() {
+            console.log('** QuestionsHomeCtrl.closeEditImageModal() Modal is closed!');
+            
+            console.log("filter.height:" + document.getElementById("myRect").getAttribute("height")/document.getElementById("myImage").height);
+            console.log("filter.width:" + document.getElementById("myRect").getAttribute("width")/document.getElementById("myImage").width);
+            console.log("filter.left:" + document.getElementById("myRect").getAttribute("x"));
+            console.log("filter.top:" + document.getElementById("myRect").getAttribute("y"));
+            
+            
+            
+            $scope.imageFilter.xAxis         = document.getElementById("myRect").getAttribute("x");
+            $scope.imageFilter.yAxis         = document.getElementById("myRect").getAttribute("y");
+            $scope.imageFilter.heightPrcnt    = document.getElementById("myRect").getAttribute("height")/document.getElementById("myImage").height;
+            $scope.imageFilter.widthPrcnt     = document.getElementById("myRect").getAttribute("width")/document.getElementById("myImage").width;
+            
+            $scope.editImageModal.remove();
+            $ionicModal.fromTemplateUrl('templates/edit-image.html', function(modal) {
+                $scope.editImageModal = modal;
+                }, {
+                    scope: $scope,
+                    animation: 'slide-in-up'
+            });
+        };
     
         $scope.share = function(){
             console.log("sharing started")
@@ -117,6 +262,14 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             scope: $scope,
             animation: 'slide-in-up'
         });
+    
+        $ionicModal.fromTemplateUrl('templates/edit-image.html', function(modal) {
+            $scope.editImageModal = modal;
+            }, {
+                scope: $scope,
+                animation: 'slide-in-up'
+            });
+    
 
         $scope.home = function() {
             console.log("** QuestionsHomeCtrl.home() HomeBtnClicked sent");
@@ -125,7 +278,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             $scope.questions = []
         };
 
-      $scope.getUrl = function(question) {
+        $scope.getUrl = function(question) {
           console.log(">> QuestionsHomeCtrl.getUrl(" + question + ")");
           if(question != undefined && question.img != undefined ) {
 
@@ -173,7 +326,8 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
                 picture_url: $scope.questionImg,
                 thumbnail_url: "img/image-placeholder.png",
                 remote : "img/image-placeholder.png",
-                name: name
+                name: name,
+                imageFilter: $scope.imageFilter
             }
 
             $scope.questions.unshift(question);

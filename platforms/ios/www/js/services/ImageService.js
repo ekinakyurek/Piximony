@@ -34,6 +34,8 @@ angular.module('Piximony').factory('ImageService', function($cordovaCamera, Data
         destinationType: Camera.DestinationType.FILE_URI,
         sourceType: source,
         quality: 75,
+          targetWidth : 1080,
+          targetHeight: 1080,
         //allowEdit: true,
         encodingType: Camera.EncodingType.JPEG,
         popoverOptions: CameraPopoverOptions,
@@ -45,7 +47,6 @@ angular.module('Piximony').factory('ImageService', function($cordovaCamera, Data
       return $q(function(resolve, reject) {
         var options = optionsForType(type);
         $cordovaCamera.getPicture(options).then(function(imageUrl) {
-            resizeImage(1080,imageUrl,function(iamgeUrl){
                 var name = imageUrl.substr(imageUrl.lastIndexOf('/') + 1);
                 var namePath = imageUrl.substr(0, imageUrl.lastIndexOf('/') + 1);
                 var newName = makeid() + name;
@@ -60,7 +61,6 @@ angular.module('Piximony').factory('ImageService', function($cordovaCamera, Data
                         alert("saveMedia() error::" + error.message) ;
                         reject();
                     });
-            })
         });
       })
       console.log("<< ImageService::saveMedia()");
@@ -72,6 +72,7 @@ angular.module('Piximony').factory('ImageService', function($cordovaCamera, Data
         tempImg.src = url;
         tempImg.onload = function() {
             // Get image size and aspect ratio.
+            console.log("on load");
             var targetWidth = tempImg.width;
             var targetHeight = tempImg.height;
             var aspect = tempImg.width / tempImg.height;

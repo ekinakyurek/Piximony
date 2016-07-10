@@ -1,1 +1,2 @@
-dependencies: /Users/ekin/git/piximony/platforms/ios/Piximony/main.m
+dependencies: \
+  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/Piximony/main.m
