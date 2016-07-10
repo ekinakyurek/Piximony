@@ -10,7 +10,7 @@
         <!-- Modal content area -->
         <ion-content>
             <a ng-click="fullScreen(questionTmp.picture_url)">
-                <img ng-src="{{ questionTmp.picture_url }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
+                <img ng-src="{{ getCachedValue(questionTmp.picture_url, true) }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
             </a>
 
                 <div class="item item-divider">

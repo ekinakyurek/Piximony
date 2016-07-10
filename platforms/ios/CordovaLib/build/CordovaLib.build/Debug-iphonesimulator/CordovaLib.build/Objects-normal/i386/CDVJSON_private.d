@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/CordovaLib/Classes/CDVJSON_private.m \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/CordovaLib/Classes/CDVJSON_private.h
+  /Users/ekin/gitcopy/piximony/platforms/ios/CordovaLib/Classes/CDVJSON_private.m \
+  /Users/ekin/gitcopy/piximony/platforms/ios/CordovaLib/Classes/CDVJSON_private.h

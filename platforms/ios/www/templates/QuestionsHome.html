@@ -8,8 +8,8 @@
                 <a ng-repeat="question in questions"
                    ng-click="showQuestionDetails(question.question_id)"
                    class="item item-thumbnail-left">
-                    
-                    <img ng-src="{{ question.picture_url }}">
+
+                    <img image-source="{{ question.picture_url }}">
                     <h2>{{  question.title }}</h2>
                 </a>
 

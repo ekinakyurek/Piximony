@@ -11,7 +11,7 @@
         <ion-content>
 
             <div class="profile-img-container">
-                <img ng-src="{{ questionImg }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
+                <img ng-src="{{ getCachedValue(questionImg,false) }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
                 <i class="ion-edit" ng-click="openEditImage()"></i>
             </div>
             

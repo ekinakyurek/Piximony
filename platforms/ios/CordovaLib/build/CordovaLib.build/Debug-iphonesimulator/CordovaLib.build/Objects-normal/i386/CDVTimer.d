@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/CordovaLib/Classes/CDVTimer.m \
-  /Users/volkanbal/npm-global/PiximonyRepo/platforms/ios/CordovaLib/Classes/CDVTimer.h
+  /Users/ekin/gitcopy/piximony/platforms/ios/CordovaLib/Classes/CDVTimer.m \
+  /Users/ekin/gitcopy/piximony/platforms/ios/CordovaLib/Classes/CDVTimer.h

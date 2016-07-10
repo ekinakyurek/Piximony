@@ -1,8 +1,11 @@
-angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, DataService, WebService)  {
+angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, DataService, WebService, CacheService)  {
         //alert($stateParams.projectId);
-        $scope.projectID = $stateParams.projectId;
         $scope.users = []
         $scope.selectedUsers = []
+        $scope.isPLaying = false
+        $scope.projectID = $stateParams.projectId;
+        $scope.questions = DataService.getQuestions($scope.projectID)
+        $scope.getCachedValue = CacheService.getCachedValue
         //$scope.projects = DataService.projects();
         $scope.imageFilter = {xAxis: 0, yAxis: 0, heightPrcnt: 0, widthPrcnt: 0};
 
@@ -114,10 +117,9 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             console.log("<< QuestionsHomeCtrl.getTouchposition(" + tap.x + "," + tap.y + ")");
             return {x: tap.x, y: tap.y};
         };
-        
-    
-    
-        $scope.questions = DataService.getQuestions($scope.projectID);
+
+
+
         console.log("$scope.questions ::  " +  $scope.questions)
         $rootScope.$on('projectQuestions', function (event, data) {
             console.log("** QuestionsHomeCtrl.$on() projectQuestions is broadcasted:" + $scope.projectID);
@@ -126,20 +128,20 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
                 DataService.storeQuestions(data, $scope.projectID)
                 console.log(JSON.stringify(data))
             }
-         });
-
+        });
+    
         $scope.openShareModal = function(){
-            console.log(">> QuestionsHomeCtrl.openShareModal()");
+            console.log("share modal clicked")
             $scope.shareModal.show()
             WebService.get_friends(DataService.getUser().username,function(result,users){
                 if(result){
                     $scope.friends = users
                 }
             })
-            console.log("<< QuestionsHomeCtrl.openShareModal()");
     
         }
-        
+
+
         $scope.openEditImage = function(){
             console.log(">> QuestionsHomeCtrl.openEditImage()");
             $scope.fClicked = false;
@@ -171,6 +173,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             });
         };
     
+    
         $scope.share = function(){
             console.log("sharing started")
             //if there is no selected user alert error
@@ -180,7 +183,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
                     alert("There was an error when sharing the project")
                     console.log(response)
                 }else{
-                    
+    
                 }
             })
             $scope.shareModal.hide()
@@ -193,7 +196,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             $scope.selectedUsers = [];
             $scope.friends = [];
         }
-    
+
         $scope.addSelectedUser = function(user,selected){
             if(selected){
                 $scope.selectedUsers.push(user.username)
@@ -208,19 +211,19 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
     
             console.log($scope.selectedUsers)
         }
-       
+
         $scope.addMedia = function() {
-             console.log(">> QuestionsHomeCtrl.addMedia()");
+            console.log(">> QuestionsHomeCtrl.addMedia()");
             $scope.hideSheet = $ionicActionSheet.show({
-            buttons: [
-                { text: 'Take photo' },
-                { text: 'Photo from library' }
-            ],
-            titleText: 'Add image',
-            cancelText: 'Cancel',
-            buttonClicked: function(index) {
+                buttons: [
+                    { text: 'Take photo' },
+                    { text: 'Photo from library' }
+                ],
+                titleText: 'Add image',
+                cancelText: 'Cancel',
+                buttonClicked: function(index) {
                     $scope.addImage(index);
-            }
+                }
             });
             console.log("<< QuestionsHomeCtrl.addMedia()");
         }
@@ -229,18 +232,17 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             console.log(">> QuestionsHomeCtrl.addImage()");
             $scope.hideSheet();
             ImageService.handleMediaDialog(type,$scope.projectID,$scope.questions.length + 1).then(function() {
-            $scope.questionImg = "img/image-placeholder.png";
-            $scope.images = DataService.images;
-            //alert($scope.images[($scope.images.length)-1]);
-            $scope.newQuestion($scope.images[($scope.images.length)-1]);
-            //$scope.$apply();
+                $scope.questionImg = "img/image-placeholder.png";
+                $scope.images = DataService.images;
+                //alert($scope.images[($scope.images.length)-1]);
+                $scope.newQuestion($scope.images[($scope.images.length)-1]);
+                //$scope.$apply();
             });
             console.log("<< QuestionsHomeCtrl.addImage()");
         }
-        
 
 
-        // Create and load the Modal
+    // Create and load the Modal
         $ionicModal.fromTemplateUrl('templates/new-question.html', function(modal) {
             $scope.questionModal = modal;
         }, {
@@ -269,42 +271,17 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
                 scope: $scope,
                 animation: 'slide-in-up'
             });
-    
 
+    
         $scope.home = function() {
             console.log("** QuestionsHomeCtrl.home() HomeBtnClicked sent");
+            $scope.currentView = false
+            $scope.questions = []
             $rootScope.$broadcast('HomeBtnClicked'); // $rootScope.$on && $scope.$on
             $state.go('MainPage');
-            $scope.questions = []
+    
         };
-
-        $scope.getUrl = function(question) {
-          console.log(">> QuestionsHomeCtrl.getUrl(" + question + ")");
-          if(question != undefined && question.img != undefined ) {
-
-         $cordovaFile.checkFile(cordova.file.dataDirectory, question.name ).then(function (success) {
-            if(question.url !=  cordova.file.dataDirectory + question.name ) {
-
-                   question.url = cordova.file.dataDirectory + question.name
-                   DataService.storeQuestion(question, $scope.projectID)
-            }
-           }, function (error) {
-
-           if(question.url != question.remote) {
-
-                   console.log(error + " " + question.img  )
-                   question.url = question.remote
-                   DataService.storeQuestion(question,$scope.projectID)
-
-             }
-         });
-        console.log("<< QuestionsHomeCtrl.getUrl(" + question.url + ")");
-        return question.url;
-       }else{
-        console.log("<< QuestionsHomeCtrl.getUrl(default)");
-        return 'img/image-placeholder.png';
-       }
-      };
+    
         // Called when the form is submitted
         $scope.createQuestion = function(questionTmp) {
             //alert('HELLO');
@@ -331,22 +308,22 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             }
 
             $scope.questions.unshift(question);
+
             DataService.storeQuestion(question, $scope.projectID)
+
             WebService.create_question(question,function(result,response){
                 if (result == true){
-
+                    CacheService.addPair(response.picture_url, name, $scope.isPLaying)
                 }else{
                     alert("There was an error when creating question")
                 }
             })
 
-
             $scope.questionModal.hide();
 
-             console.log("<< QuestionsHomeCtrl.createQuestion()");
+            console.log("<< QuestionsHomeCtrl.createQuestion()");
         };
 
-        // Open our new question modal
         $scope.newQuestion = function(img) {
             console.log(">> QuestionsHomeCtrl.newQuestion(" + img + ")");
             $scope.questionImg = img ;
@@ -355,7 +332,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             $scope.questionModal.show();
             console.log("<< QuestionsHomeCtrl.newQuestion()");
         };
-
+    
         // Close the new question modal
         $scope.closeNewQuestion = function() {
             console.log(">> QuestionsHomeCtrl.closeNewQuestion() deleteImage:" + $scope.questionImg);
@@ -363,15 +340,15 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             $scope.questionModal.hide();
             console.log("<< QuestionsHomeCtrl.closeNewQuestion()");
         };
-
+    
         $scope.showQuestionDetails = function(questionID) {
             console.log(">> QuestionsHomeCtrl.showQuestionDetails() questionID:"+ questionID );
             $scope.question = '';
             for(var i = 0; i < $scope.questions.length; i += 1) {
-
                 if ($scope.questions[i].question_id == questionID) {
                     $scope.question = $scope.questions[i];
                     if ($scope.question.name != undefined) {
+                        console.log("questions")
                         $scope.questionImg = cordova.file.dataDirectory + $scope.question.name
                     } else {
                         $scope.questionImg = $scope.question.picture_url
@@ -379,13 +356,14 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
                     break;
                 }
             }
-
+    
             console.log(JSON.stringify($scope.question))
             $scope.updateQuestionModal.show();
             console.log("<< QuestionsHomeCtrl.showQuestionDetails()");
         };
 
-        $scope.updateMedia = function(questionID) {
+
+         $scope.updateMedia = function(questionID) {
             console.log(">> QuestionsHomeCtrl.UpdateMedia() questionID:" + questionID);
             $scope.hideSheet = $ionicActionSheet.show({
             buttons: [
@@ -400,54 +378,60 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             });
             console.log("<< QuestionsHomeCtrl.UpdateMedia()");
         };
-
         $scope.updatePic = function(type,questionID) {
             console.log(">> QuestionsHomeCtrl.updatePic() questionID:" + questionID);
             $scope.hideSheet();
             ImageService.handleMediaDialog(type,$scope.projectID,questionID).then(function(name) {
-
+    
                 $scope.question.picture_url =  cordova.file.dataDirectory + name
                 $scope.question.img =  $scope.question.picture_url
                 $scope.question.name = name
                 $scope.question.url =  $scope.question.picture_url
                 $scope.questionImg =   $scope.question.picture_url
-
+    
                 for(var i = 0; i < $scope.questions.length; i += 1){
                     if($scope.questions[i].question_id == questionID){
+                        console.log(i)
                         $scope.questions[i] = $scope.question;
                         break;
                     }
                 }
-
+    
+    
                 console.log("** QuestionsHomeCtrl.updatePic() Pic Index: " + i);
                 console.log("** QuestionsHomeCtrl.updatePic() Pic Path:" + $scope.questions[i].img);
                 console.log('** QuestionsHomeCtrl.updatePic() name:' + $scope.questions[i].name);
-                
-
+    
             });
             console.log("<< QuestionsHomeCtrl.updatePic()");
         };
-
         // Close the new task modal
         $scope.closeUpdateQuestion = function() {
             console.log(">> QuestionsHomeCtrl.closeUpdateQuestion()");
             $scope.updateQuestionModal.hide();
             console.log("<< QuestionsHomeCtrl.closeUpdateQuestion()");
         };
+
         $scope.updateQuestion = function(question) {
             console.log(">> QuestionsHomeCtrl.updateQuestion() quesstionID:" + question.question_id);
+    
             for(var i = 0; i < $scope.questions.length; i += 1) {
-                if (parseInt($scope.questions[i].question_id) == parseInt(question.question_id)) {
+                if ($scope.questions[i].question_id == question.question_id) {
+                    console.log(i)
                     $scope.questions[i] = question;
                     break;
                 }
             }
+    
             DataService.storeQuestion(question, $scope.projectID)
+    
             WebService.update_question(question,question.name,function(result,response){
                 if (result==true){
                     console.log(JSON.stringify(response))
+                    CacheService.addPair(response.picture_url, question.name, $scope.isPlaying)
+    
                 }else{
-                    alert("error:" + JSON.stringify(response))
+                    console.log("error:" + JSON.stringify(response))
                 }
             })
             //DataService.storeQuestions($scope.questions,$scope.projectID);

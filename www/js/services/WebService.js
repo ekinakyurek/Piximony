@@ -1,6 +1,6 @@
 
 angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
- 
+
     var baseUrl = "http://piximony-dev.yaudxbzu3m.us-west-1.elasticbeanstalk.com/";
     var userToken= "";
 
@@ -133,7 +133,7 @@ angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
     }
 
     /* userinfo={"city":"Austin", "gender": "male", "birthday": "02-04-1995",
-                "caption": "Software Engineer", "first_name": "ekin"} */
+     "caption": "Software Engineer", "first_name": "ekin"} */
     function edit_a_user(user_info){
 
         var settings = {
@@ -323,7 +323,7 @@ angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
         });
     }
 
-    
+
     //PROJECT
     function create_project(project,callback){
 
@@ -499,19 +499,19 @@ angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
                     });
 
                 })
-         }else{
-                $http(settings).then(function(response) {
+        }else{
+            $http(settings).then(function(response) {
 
-                    if (response.data.hasOwnProperty("date_str")){
-                        callback(true, response.data)
-                    }else{
-                        console.log("Im here" + response.data)
-                        callback(false,response.data)
-                    }
-                }, function(response) {
+                if (response.data.hasOwnProperty("date_str")){
+                    callback(true, response.data)
+                }else{
+                    console.log("Im here" + response.data)
                     callback(false,response.data)
-                    console.log(JSON.stringify(response.data))
-                });
+                }
+            }, function(response) {
+                callback(false,response.data)
+                console.log(JSON.stringify(response.data))
+            });
 
         }
     }
