@@ -1,1 +1,1 @@
-dependencies: /Users/ekin/gitcopy/piximony/platforms/ios/Piximony/main.m
+dependencies: /Users/ekin/git/piximony/platforms/ios/Piximony/main.m

@@ -7,7 +7,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         $scope.questions = DataService.getQuestions($scope.projectID)
         $scope.getCachedValue = CacheService.getCachedValue
         //$scope.projects = DataService.projects();
-        $scope.imageFilter = {xAxis: 0, yAxis: 0, heightPrcnt: 0, widthPrcnt: 0};
+        $scope.filter = {xAxis: 0, yAxis: 0, heightPrcnt: 0, widthPrcnt: 0};
 
         window.addEventListener("orientationchange", function(){
             console.log('** QuestionsHomeCtrl.Orientation changed to ' + screen.orientation);
@@ -159,10 +159,10 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             
             
             
-            $scope.imageFilter.xAxis         = document.getElementById("myRect").getAttribute("x");
-            $scope.imageFilter.yAxis         = document.getElementById("myRect").getAttribute("y");
-            $scope.imageFilter.heightPrcnt    = document.getElementById("myRect").getAttribute("height")/document.getElementById("myImage").height;
-            $scope.imageFilter.widthPrcnt     = document.getElementById("myRect").getAttribute("width")/document.getElementById("myImage").width;
+            $scope.filter.xAxis         = document.getElementById("myRect").getAttribute("x");
+            $scope.filter.yAxis         = document.getElementById("myRect").getAttribute("y");
+            $scope.filter.heightPrcnt    = document.getElementById("myRect").getAttribute("height")/document.getElementById("myImage").height;
+            $scope.filter.widthPrcnt     = document.getElementById("myRect").getAttribute("width")/document.getElementById("myImage").width;
             
             $scope.editImageModal.remove();
             $ionicModal.fromTemplateUrl('templates/edit-image.html', function(modal) {
@@ -304,7 +304,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
                 thumbnail_url: "img/image-placeholder.png",
                 remote : "img/image-placeholder.png",
                 name: name,
-                imageFilter: $scope.imageFilter
+                filter: $scope.filter
             }
 
             $scope.questions.unshift(question);
