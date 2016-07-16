@@ -231,11 +231,9 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         $scope.addImage = function(type) {
             console.log(">> QuestionsHomeCtrl.addImage()");
             $scope.hideSheet();
-            ImageService.handleMediaDialog(type,$scope.projectID,$scope.questions.length + 1).then(function() {
-                $scope.questionImg = "img/image-placeholder.png";
-                $scope.images = DataService.images;
-                //alert($scope.images[($scope.images.length)-1]);
-                $scope.newQuestion($scope.images[($scope.images.length)-1]);
+            ImageService.handleMediaDialog(type, function(result, name) {
+                $scope.questionImg = name;
+                $scope.newQuestion(name);
                 //$scope.$apply();
             });
             console.log("<< QuestionsHomeCtrl.addImage()");
@@ -301,11 +299,11 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
                 ],
                 correct_option: questionTmp.answer,
                 picture_url: $scope.questionImg,
-                thumbnail_url: "img/image-placeholder.png",
-                remote : "img/image-placeholder.png",
+                thumbnail_url:  $scope.questionImg,
                 name: name,
                 filter: $scope.filter
             }
+
 
             $scope.questions.unshift(question);
 
@@ -326,8 +324,8 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
 
         $scope.newQuestion = function(img) {
             console.log(">> QuestionsHomeCtrl.newQuestion(" + img + ")");
-            $scope.questionImg = img ;
             $scope.questionTmp = {};
+            $scope.questionImg = cordova.file.dataDirectory + img ;
             $scope.options = [0,1,2,3];
             $scope.questionModal.show();
             console.log("<< QuestionsHomeCtrl.newQuestion()");
@@ -381,7 +379,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         $scope.updatePic = function(type,questionID) {
             console.log(">> QuestionsHomeCtrl.updatePic() questionID:" + questionID);
             $scope.hideSheet();
-            ImageService.handleMediaDialog(type,$scope.projectID,questionID).then(function(name) {
+            ImageService.handleMediaDialog(type, function(result, name) {
     
                 $scope.question.picture_url =  cordova.file.dataDirectory + name
                 $scope.question.img =  $scope.question.picture_url

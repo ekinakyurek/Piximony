@@ -1,17 +1,17 @@
 angular.module('Piximony').factory('DataService', function($cordovaFile, $window, $ionicHistory) {
 
-  var images= [];
-
-  var questions = []
-  var projects = []
-  var projectsToPlay = []
-
-  currentUser = null;
 
   var IMAGE_STORAGE_KEY = 'images';
   var PROJECT_STORAGE_KEY = 'projects';
   var projectToPlay_STORAGE_KEY = 'projectsToPlay';
   var USER_STORAGE_KEY = 'user';
+
+  var questions = []
+  var projects = []
+  var projectsToPlay = []
+  var images= [];
+  currentUser = null;
+
 
   function saveUser(user){
     console.log(">> DataService::saveUser()");
@@ -36,6 +36,9 @@ angular.module('Piximony').factory('DataService', function($cordovaFile, $window
 
   function clearStorage(){
     console.log("clear user")
+    $ionicHistory.clearCache();
+    $ionicHistory.clearHistory();
+    $window.localStorage.clear();
     currentUser = null
     images= [];
     imageCache = {}
@@ -43,9 +46,7 @@ angular.module('Piximony').factory('DataService', function($cordovaFile, $window
     projects = []
     projectsToPlay = []
     currentUser = null;
-    $ionicHistory.clearCache();
-    $ionicHistory.clearHistory();
-    $window.localStorage.clear();
+
   }
 
   function getImages(projectID) {

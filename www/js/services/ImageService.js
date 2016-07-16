@@ -42,10 +42,11 @@ angular.module('Piximony').factory('ImageService', function($cordovaCamera, Data
         saveToPhotoAlbum: false
       };
     }
-    function saveMedia(type,projectID,questionID) {
-      console.log(">> ImageService::saveMedia() type: " + type);
-      return $q(function(resolve, reject) {
+    function saveMedia(type,callback) {
+        console.log(">> ImageService::saveMedia() type: " + type);
+
         var options = optionsForType(type);
+
         $cordovaCamera.getPicture(options).then(function(imageUrl) {
                 var name = imageUrl.substr(imageUrl.lastIndexOf('/') + 1);
                 var namePath = imageUrl.substr(0, imageUrl.lastIndexOf('/') + 1);
@@ -54,16 +55,16 @@ angular.module('Piximony').factory('ImageService', function($cordovaCamera, Data
                 $cordovaFile.copyFile(namePath, name, cordova.file.dataDirectory, newName)
                     .then(function(info) {
                         console.log("** ImageService::saveMedia() newName: " + newName);
-                        DataService.storeImage(cordova.file.dataDirectory+newName,projectID);
+                       // DataService.storeImage(cordova.file.dataDirectory+newName,projectID);
                         console.log("ImageService::saveMedia()->uploadPicture()");
-                        resolve(newName);
+                        callback(true, newName);
                     }, function(error) {
                         alert("saveMedia() error::" + error.message) ;
-                        reject();
+                        callback(false, error);
                     });
         });
-      })
-      console.log("<< ImageService::saveMedia()");
+
+        console.log("<< ImageService::saveMedia()");
     };
 
 

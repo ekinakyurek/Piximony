@@ -2,6 +2,7 @@
 angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
 
     var baseUrl = "http://piximony-dev.yaudxbzu3m.us-west-1.elasticbeanstalk.com/";
+    //var baseUrl = "http://127.0.0.1:8000/"
     var userToken= "";
 
     function set_token(token){
@@ -357,6 +358,7 @@ angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
         }
         return $http(settings).then(function(response) {
             if (response.data.hasOwnProperty("count")){
+                console.log(JSON.stringify(response.data.results))
                 callback(true,response.data.results, response.data.next, response.data.previous, response.data.count)
             }else{
                 console.log(JSON.stringify(response))
