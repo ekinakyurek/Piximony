@@ -1,5 +1,6 @@
 angular.module('Piximony').controller('MainPageCtrl', function($scope, $state, $rootScope, $ionicHistory, WebService, DataService,CacheService) {
 
+   
     $scope.GoToProjectsHome = function() {
         console.log("** MainPageCtrl.GoToProjectsHome()");
         $state.go('ProjectsHome');

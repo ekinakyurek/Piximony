@@ -6,6 +6,7 @@
 angular.module('Piximony', ['ionic','ngCordova']).config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
 
     $ionicConfigProvider.views.maxCache(2);
+   
     $stateProvider
         .state('MainPage', {
             url: '/MainPage',
@@ -26,7 +27,7 @@ angular.module('Piximony', ['ionic','ngCordova']).config(function($stateProvider
             url: '/QuestionsHome',
             templateUrl: 'templates/QuestionsHome.html',
             controller: 'QuestionsHomeCtrl',
-            params: {'projectId': null, 'questions': []}
+            params: {'project': {} }
         })
         .state('signin', {
             url: '/sign-in',

@@ -575,6 +575,34 @@ angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
         }, onErrorReadFile);
     }
 
+    //score_board
+
+    function update_score(scoreboard, callback){
+
+        var settings = {
+            "url":  baseUrl  + "scoreboard/api/update_score/",
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json"
+            },
+            "data": JSON.stringify(scoreboard)
+        }
+
+        $http(settings).then(function(response) {
+
+            if (response.data.hasOwnProperty("result")){
+                callback(response.data.result=="success")
+                console.log(JSON.stringify(response))
+            }else{
+                callback(false,JSON.stringify(response.data))
+                console.log(JSON.stringify(response))
+            }
+        }, function(response) {
+            callback(false,JSON.stringify(response))
+            console.log(JSON.stringify(response))
+        });
+    }
+
     function randomString(length) {
         var result = '';
         for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
@@ -605,6 +633,7 @@ angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
         request_friendship: request_friendship,
         accept_friendship: accept_friendship,
         share_project: share_project,
+        update_score: update_score,
         userToken: userToken
 
     }

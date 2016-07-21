@@ -1,10 +1,11 @@
-angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootScope, $timeout, $state, $stateParams, $ionicModal, $cordovaDevice,  $ionicPlatform, $ionicActionSheet, DataService, CacheService)  {
+angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootScope, $timeout, $state, $stateParams, $ionicModal, $cordovaDevice,  $ionicPlatform, $ionicActionSheet, DataService, CacheService, WebService)  {
 
     $scope.isPLaying = true
     CacheService.loadCache(true)
     $scope.getCachedValue = CacheService.getCachedValue
-    $scope.projectindex = 0
+    $scope.current_project = {}
     $scope.projectsToPlay = DataService.getProjectsToPlay()
+
     $rootScope.$on('projectsToPlay', function (event, data) {
         console.log('>> PlayerHomeCtrl.$on() projectsToPlay event recieved');
         //$scope.projectsToPlay = DataService.projects2Play();
@@ -42,23 +43,36 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
     $scope.nextQuestion = function(){
         console.log('>> PlayerHomeCtrl.nextQuestion()');
         $scope.closefullScreenModal();
+        
         $scope.trial = [false,false,false,false];
         $scope.bingo = false;
 
         console.log('** PlayerHomeCtrl.nextQuestion() $scope.currentQuestion:',$scope.currentQuestion);
-        console.log('** PlayerHomeCtrl.nextQuestion() $scope.questionsToPlay.length:',$scope.projectsToPlay[$scope.projectindex].questions.length);
-        if($scope.currentQuestion < $scope.projectsToPlay[$scope.projectindex].questions.length-1)
+        console.log('** PlayerHomeCtrl.nextQuestion() $scope.questionsToPlay.length:',$scope.current_project.questions.length);
+        if($scope.currentQuestion < $scope.current_project.questions.length-1) {
             $scope.currentQuestion++;
-        else
+            $scope.current_project.scoreboard.current_question = $scope.currentQuestion
+            $scope.current_project.scoreboard.score = $scope.currentScore
+            WebService.update_score($scope.current_project.scoreboard, function (result) {
+                console.log("score updated")
+            })
+
+        }else
         {
+            $scope.current_project.scoreboard.current_question = $scope.currentQuestion
+            $scope.current_project.scoreboard.score = $scope.currentScore
+            $scope.current_project.scoreboard.is_finished = true
+            WebService.update_score($scope.current_project.scoreboard, function (result) {
+                console.log("score updated")
+            })
             $scope.currentQuestion = 0;
             $scope.currentScore = 0;
             //$scope.closePlayer();
             $scope.removePlayer();
         }
-        $scope.questionTmp = $scope.projectsToPlay[$scope.projectindex].questions[$scope.currentQuestion];
-        $scope.optionsTmp = $scope.projectsToPlay[$scope.projectindex].questions[$scope.currentQuestion].options;
-        $scope.questionImg = $scope.projectsToPlay[$scope.projectindex].questions[$scope.currentQuestion].picture_url;
+        $scope.questionTmp = $scope.current_project.questions[$scope.currentQuestion];
+        $scope.optionsTmp = $scope.current_project.questions[$scope.currentQuestion].options;
+        $scope.questionImg = $scope.current_project.questions[$scope.currentQuestion].picture_url;
         console.log('<< PlayerHomeCtrl.nextQuestion()');
     };
 
@@ -73,7 +87,7 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
         //alert($scope.questionsToPlay[1].answer.charCodeAt(0));
         //alert('A'.charCodeAt(0));
 
-        if($scope.projectsToPlay[$scope.projectindex].questions[$scope.currentQuestion].correct_option == selectedIndex)
+        if($scope.current_project.questions[$scope.currentQuestion].correct_option == selectedIndex)
         {
             console.log('** PlayerHomeCtrl.optionSelected() BINGO');
             $scope.bingo = true;
@@ -99,9 +113,9 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
         var Index = $scope.optionsTmp.indexOf(option);
         console.log('** PlayerHomeCtrl.isThisDisabled() Index:' + Index);
         console.log('** PlayerHomeCtrl.isThisDisabled() trial[' + Index + "]:" + $scope.trial[Index]);
-        console.log('** PlayerHomeCtrl.isThisDisabled() answer:' +$scope.projectsToPlay[$scope.projectindex].questions[$scope.currentQuestion].correct_option );
+        console.log('** PlayerHomeCtrl.isThisDisabled() answer:' +$scope.current_project.questions[$scope.currentQuestion].correct_option );
 
-        if(($scope.trial[Index] == true ) & !($scope.projectsToPlay[$scope.projectindex].questions[$scope.currentQuestion].correct_option == Index))
+        if(($scope.trial[Index] == true ) & !($scope.current_project.questions[$scope.currentQuestion].correct_option == Index))
         {
             console.log('<< PlayerHomeCtrl.isThisDisabled() TRUE for: (' + option + ')');
             return true;
@@ -116,12 +130,12 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
     $scope.isThisChecked = function(option) {
         console.log('>> PlayerHomeCtrl.isThisChecked() for: (' + option + ')');
 
-        var Index = $scope.optionsTmp.indexOf(option);
+        var Index = $scope.questionTmp.options.indexOf(option);
 
         console.log('** PlayerHomeCtrl.isThisChecked() Index:' + Index);
         console.log('** PlayerHomeCtrl.isThisChecked() trial[' + Index + "]:" + $scope.trial[Index]);
-        console.log('** PlayerHomeCtrl.isThisChecked() answer:' +$scope.projectsToPlay[$scope.projectindex].questions[$scope.currentQuestion].correct_option);
-        if($scope.trial[Index] == true & !($scope.projectsToPlay[$scope.projectindex].questions[$scope.currentQuestion].correct_option == Index))
+        console.log('** PlayerHomeCtrl.isThisChecked() answer:' +$scope.current_project.questions[$scope.currentQuestion].correct_option);
+        if($scope.trial[Index] == true & !($scope.current_project.questions[$scope.currentQuestion].correct_option == Index))
         {
             console.log('<< PlayerHomeCtrl.isThisChecked() false for: (' + option + ')');
             return false;
@@ -195,14 +209,16 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
     });
 
 
-    $scope.openPlayer = function(index) {
-        console.log('>> PlayerHomeCtrl.openPlayer() index: ' + index);
-        $scope.projectindex = index;
-
+    $scope.openPlayer = function(project) {
+        console.log('>> PlayerHomeCtrl.openPlayer() id ' + project.project_id);
+        console.log(JSON.stringify(project))
+        $scope.current_project = project
+        $scope.currentQuestion = project.scoreboard.current_question;
+        $scope.currentScore = project.scoreboard.score;
         if($scope.projectsToPlay.length > 0) {
-            $scope.questionTmp = $scope.projectsToPlay[$scope.projectindex].questions[$scope.currentQuestion]
-            $scope.optionsTmp = $scope.projectsToPlay[$scope.projectindex].questions[$scope.currentQuestion].options;
-            $scope.questionImg = $scope.projectsToPlay[$scope.projectindex].questions[$scope.currentQuestion].picture_url;
+            $scope.questionTmp = project.questions[$scope.currentQuestion]
+            $scope.optionsTmp = project.questions[$scope.currentQuestion].options;
+            $scope.questionImg = project.questions[$scope.currentQuestion].picture_url;
         }
         $scope.playerModal.show();
         $scope.$apply;

@@ -3,10 +3,10 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         $scope.users = []
         $scope.selectedUsers = []
         $scope.isPLaying = false
-        $scope.projectID = $stateParams.projectId;
-        $scope.questions = DataService.getQuestions($scope.projectID)
+        $scope.project = $stateParams.project
+        $scope.projectID = $scope.project.project_id;
+        $scope.questions = $scope.project.questions
         $scope.getCachedValue = CacheService.getCachedValue
-        //$scope.projects = DataService.projects();
         $scope.filter = {xAxis: 0, yAxis: 0, heightPrcnt: 0, widthPrcnt: 0};
 
         window.addEventListener("orientationchange", function(){

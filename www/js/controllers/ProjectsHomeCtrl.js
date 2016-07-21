@@ -205,20 +205,21 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
         animation: 'slide-in-up'
     });
 
-    $scope.showQuestions = function(projectId) {
+    $scope.showQuestions = function(project) {
         //alert(projectId);
-        console.log(">> ProjectsHomeCtrl.showQuestions(" + projectId + ")");
-        WebService.get_questions(projectId, function (result, questions) {
+        console.log(">> ProjectsHomeCtrl.showQuestions(" + project.project_id + ")");
+        WebService.get_questions(project.project_id, function (result, questions) {
             if (result==true) {
                 $rootScope.$broadcast('projectQuestions',questions);
                 console.log(questions)
             }else{
-                alert("There was an error in show questions")
+                $rootScope.$broadcast('projectQuestions',DataService.getQuestions(project.project_id))
+                alert("Your are offline!")
             }
         })
 
 
-        $state.go('QuestionsHome', {'projectId':projectId, 'questions': DataService.getQuestions(projectId)});
+        $state.go('QuestionsHome', {'project': project});
         console.log("<< ProjectsHomeCtrl.showQuestions()");
     };
 
