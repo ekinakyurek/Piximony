@@ -1,6 +1,7 @@
 angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootScope, $timeout, $state, $stateParams, $ionicModal, $cordovaDevice,  $ionicPlatform, $ionicActionSheet, DataService, CacheService, WebService)  {
 
     $scope.isPLaying = true
+    $scope.isThumbnail = true
     CacheService.loadCache(true)
     $scope.getCachedValue = CacheService.getCachedValue
     $scope.current_project = {}

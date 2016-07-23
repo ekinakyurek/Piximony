@@ -3,6 +3,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         $scope.users = []
         $scope.selectedUsers = []
         $scope.isPLaying = false
+        $scope.isThumbnail = true
         $scope.project = $stateParams.project
         $scope.projectID = $scope.project.project_id;
         $scope.questions = $scope.project.questions

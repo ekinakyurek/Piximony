@@ -2,6 +2,7 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
 
     CacheService.loadCache(false)
     $scope.isPLaying = false
+    $scope.isThumbnail = true
     $scope.projects = DataService.getProjects()
     $rootScope.$on('userProjects', function (event, data) {
         console.log('>> userProjects.$on() userProjects event recieved');

@@ -2,19 +2,28 @@ angular.module('Piximony').factory('CacheService', function($cordovaFile, $windo
 
     var playingCache = {}
     var projectCache = {}
+    var playingThumbnailCache = {}
+    var projectThumbnailCache = {}
 
     var projectKeys = []
     var playingKeys = []
+    var projectThumbnailKeys = []
+    var playingThumbnailKeys = []
 
     var projectCache_Limit = 60
     var playingCache_Limit = 60
+    var projectThumbnailCache_Limit = 60
+    var playingThumbnailCache_Limit = 60
 
     var waiting_list = []
     var projectCACHE_STORAGE_KEY = "projectCache"
     var playingCACHE_STORAGE_KEY = "playingCache"
+    var projectThumbnailCACHE_STORAGE_KEY = "projectThumbnailCache"
+    var playingThumbnailCACHE_STORAGE_KEY = "playingThumbnailCache"
 
     function getCachedValue(key, isPlaying){
         console.log(">> CacheService::getCachedValue()");
+
         if (startsWith(key, ['http://', 'https://', 'ftp://'])) {
             cache = getCacheDict(isPlaying)
             if (cache.hasOwnProperty(key)) {
@@ -29,66 +38,109 @@ angular.module('Piximony').factory('CacheService', function($cordovaFile, $windo
         console.log("<< CacheService::getCachedValue()");
     }
 
-    function getCacheDict(isPlaying){
+    function getCacheDict(isPlaying, isThumbnail){
+
         if (isPlaying){
-            return playingCache
+            if (!isThumbnail) {
+                return playingCache
+            }else{
+                return playingThumbnailCache
+            }
         }else{
-            return projectCache
+            if (!isThumbnail){
+                return projectCache
+            }else{
+                return projectThumbnailCache
+            }
         }
     }
 
-    function getKeyArray(isPlaying){
+    function getKeyArray(isPlaying, isThumbnail){
+
         if(isPlaying){
-            return projectKeys
+            if (!isThumbnail) {
+                return projectKeys
+            }else{
+                return projectThumbnailKeys
+            }
         }else{
-            return playingKeys
+            if(!isThumbnail){
+                return playingKeys
+            }else{
+                return playingThumbnailKeys
+            }
         }
     }
 
     function clearCache(){
+
         for(key in projectCache){
             $cordovaFile.removeFile(cordova.file.dataDirectory, projectCache[key])
+        }
+        for(key in projectThumbnailCache){
+            $cordovaFile.removeFile(cordova.file.dataDirectory, projectThumbnailCache[key])
         }
         for (key in playingCache){
             $cordovaFile.removeFile(cordova.file.dataDirectory, playingCache[key])
         }
+        for (key in playingThumbnailCache){
+            $cordovaFile.removeFile(cordova.file.dataDirectory, playingThumbnailCache[key])
+        }
+
         projectCache = {}
+        projectThumbnailCache = {}
         playingCache = {}
-        var projectKeys = []
-        var playingKeys = []
-        var waiting_list = []
+        playingThumbnailCache = {}
+
+        projectKeys = []
+        projectThumbnailKeys = []
+        playingKeys = []
+        playingThumbnailKeys = []
+        waiting_list = []
 
     }
 
-    function addPair(key, value, isPlaying){
+    function addPair(key, value, isPlaying, isThumbnail){
         console.log(">> CacheService::addPair()");
+
         if (key != undefined && startsWith(key, ['http://', 'https://', 'ftp://'])) {
-            getCacheDict(isPlaying)[key] = value
-            getKeyArray(isPlaying).unshift(key)
-            storeCache(isPlaying)
-            checkLimits(isPlaying)
+            getCacheDict(isPlaying,isThumbnail)[key] = value
+            getKeyArray(isPlaying,isThumbnail).unshift(key)
+            storeCache(isPlaying,isThumbnail)
+            checkLimits(isPlaying,isThumbnail)
         }
         console.log("<< CacheService::addPair()");
     }
 
-    function getLimit(isPlaying){
-        if (isPlaying){
-            return playingCache_Limit
-        }else{
-            return projectCache_Limit
-        }
-    }
+    function getLimit(isPlaying, isThumbnail){
 
-    function checkLimits(isPlaying){
-        keys = getKeyArray(isPlaying)
-        if(keys.count > getLimit(isPlaying)){
-            removedKeys = keys.splice(-10)
-            for (var i in removedKeys){
-                removeKeyInCache(removedKeys[i], isPlaying)
+        if (isPlaying){
+            if(!isThumbnail) {
+                return playingCache_Limit
+            }else{
+                return playingThumbnailCache_Limit
+            }
+        }else{
+            if(!isThumbnail) {
+                return projectCache_Limit
+            }else{
+                return projectThumbnailCache_Limit
             }
         }
     }
-    function addKey(key, isPlaying){
+
+    function checkLimits(isPlaying, isThumbnail){
+        keys = getKeyArray(isPlaying, isThumbnail)
+
+        if(keys.count > getLimit(isPlaying, isThumbnail)){
+            removedKeys = keys.splice(-10)
+            for (var i in removedKeys){
+                removeKeyInCache(removedKeys[i], isPlaying, isThumbnail)
+            }
+        }
+    }
+    function addKey(key, isPlaying, isThumbnail){
+
         if(waiting_list.indexOf(key) < 0 ) {
 
             waiting_list.push(key)
@@ -96,7 +148,7 @@ angular.module('Piximony').factory('CacheService', function($cordovaFile, $windo
 
             $cordovaFileTransfer.download(key, cordova.file.dataDirectory + name, {}, true)
                 .then(function (result) {
-                    addPair(key, name, isPlaying)
+                    addPair(key, name, isPlaying, isThumbnail)
                     index = waiting_list.indexOf(key)
                     if (index > -1) {
                         waiting_list.splice(index, 1);
@@ -107,22 +159,31 @@ angular.module('Piximony').factory('CacheService', function($cordovaFile, $windo
                 });
         }
     }
-    function removeKeyInCache(key, isPlaying){
+    function removeKeyInCache(key, isPlaying, isThumbnail){
         console.log(">> CacheService::removeKeyInCache()");
-        cache = getCacheDict(isPlaying)
+        cache = getCacheDict(isPlaying, isThumbnail)
         $cordovaFile.removeFile(cordova.file.dataDirectory, cache[key])
         delete cache[key];
         console.log("<< CacheService::removeKeyInCache()");
     }
 
-    function storeCache(isPlaying){
+    function storeCache(isPlaying, isThumbnail){
         console.log(">> CacheService::storeCache()");
-        cache = getCacheDict(isPlaying)
+        cache = getCacheDict(isPlaying, isThumbnail)
         var jsonCache = JSON.stringify(cache);
+
         if (isPlaying) {
-            $window.localStorage.setItem(playingCACHE_STORAGE_KEY, jsonCache);
+            if(!isThumbnail) {
+                $window.localStorage.setItem(playingCACHE_STORAGE_KEY, jsonCache);
+            }else{
+                $window.localStorage.setItem(playingThumbnailCACHE_STORAGE_KEY, jsonCache);
+            }
         }else{
-            $window.localStorage.setItem(projectCACHE_STORAGE_KEY, jsonCache);
+            if(!isThumbnail){
+                $window.localStorage.setItem(projectCACHE_STORAGE_KEY, jsonCache);
+            }else{
+                $window.localStorage.setItem(projectThumbnailCACHE_STORAGE_KEY, jsonCache);
+            }
         }
         console.log("<< CacheService::storeCache()");
     }
@@ -131,14 +192,26 @@ angular.module('Piximony').factory('CacheService', function($cordovaFile, $windo
         console.log(">> DataService:loadCache()");
         var cache = ""
         if (isPLaying){
+
             cache =  $window.localStorage.getItem(playingCACHE_STORAGE_KEY);
             if (cache!== null) {
                 playingCache = JSON.parse(cache)
             }
+
+            thumbnailCache = $window.localStorage.getItem(playingThumbnailCACHE_STORAGE_KEY);
+            if (thumbnailCache!== null) {
+                playingThumbnailCache = JSON.parse(thumbnailCache)
+            }
+
         }else{
             cache =  $window.localStorage.getItem(projectCACHE_STORAGE_KEY);
             if (cache!== null) {
                 projectCache = JSON.parse(cache)
+            }
+
+            thumbnailCache = $window.localStorage.getItem(projectThumbnailCACHE_STORAGE_KEY);
+            if (thumbnailCache!== null) {
+                projectThumbnailCache = JSON.parse(thumbnailCache)
             }
         }
 
