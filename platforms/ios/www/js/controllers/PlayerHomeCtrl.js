@@ -7,6 +7,20 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
     $scope.current_project = {}
     $scope.projectsToPlay = DataService.getProjectsToPlay()
 
+
+    $scope.doRefresh = function(){
+
+        WebService.get_playing_projects(DataService.getUser().username, function(result,projects){
+            if(result){
+                $rootScope.$broadcast('projectsToPlay', projects)
+                $scope.$broadcast('scroll.refreshComplete');
+            }else{
+                alert("Error in get_playing_projects, pleaser try again!")
+                $scope.$broadcast('scroll.refreshComplete');
+            }
+        })
+
+    };
     $rootScope.$on('projectsToPlay', function (event, data) {
         console.log('>> PlayerHomeCtrl.$on() projectsToPlay event recieved');
         //$scope.projectsToPlay = DataService.projects2Play();

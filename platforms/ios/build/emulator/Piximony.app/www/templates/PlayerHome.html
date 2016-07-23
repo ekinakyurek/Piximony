@@ -5,6 +5,10 @@
                 <div class="item item-divider" style="text-align: center">
                     Projects to Play
                 </div>
+                <ion-refresher
+                        pulling-text="Pull to refresh..."
+                        on-refresh="doRefresh()">
+                </ion-refresher>
                 <a ng-repeat="project in projectsToPlay"
                    ng-click="openPlayer(project)"
                    class="item item-avatar">

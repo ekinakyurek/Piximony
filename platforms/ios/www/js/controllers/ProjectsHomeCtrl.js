@@ -4,6 +4,7 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
     $scope.isPLaying = false
     $scope.isThumbnail = true
     $scope.projects = DataService.getProjects()
+
     $rootScope.$on('userProjects', function (event, data) {
         console.log('>> userProjects.$on() userProjects event recieved');
         //$scope.projectsToPlay = DataService.projects2Play();
@@ -13,6 +14,17 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
         }
     });
 
+    $scope.doRefresh = function(){
+        WebService.get_user_projects(DataService.getUser().username,function (result, projects, next, previos, count) {
+            if (result==true){
+                $rootScope.$broadcast('userProjects', projects)
+                $scope.$broadcast('scroll.refreshComplete');
+            }else{
+                alert("Error in get_user_projects, pleaser try again!")
+                $scope.$broadcast('scroll.refreshComplete');
+            }
+        })
+    };
     // Create and load the Modal
     $ionicModal.fromTemplateUrl('templates/new-project.html', function(modal) {
         $scope.projectModal = modal;

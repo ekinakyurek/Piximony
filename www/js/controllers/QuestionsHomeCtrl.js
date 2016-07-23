@@ -10,6 +10,21 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         $scope.getCachedValue = CacheService.getCachedValue
         $scope.filter = {xAxis: 0, yAxis: 0, heightPrcnt: 0, widthPrcnt: 0};
 
+        $scope.doRefresh = function(){
+
+            WebService.get_questions($scope.project.project_id, function (result, questions) {
+                if (result==true) {
+                    $rootScope.$broadcast('projectQuestions',questions);
+                    console.log(questions)
+                    $scope.$broadcast('scroll.refreshComplete');
+                }else{
+                    $rootScope.$broadcast('projectQuestions',DataService.getQuestions($scope.project.project_id))
+                    alert("Your are offline!")
+                    $scope.$broadcast('scroll.refreshComplete');
+                }
+            })
+
+        };
         window.addEventListener("orientationchange", function(){
             console.log('** QuestionsHomeCtrl.Orientation changed to ' + screen.orientation);
             document.getElementById("mySvg").style.height = document.getElementById("myImage").height;

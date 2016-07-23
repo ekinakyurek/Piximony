@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7847d57e-042c-4dd9-94dc-7ee35862bc39" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controllers/PlayerHomeCtrl.js" afterPath="$PROJECT_DIR$/www/js/controllers/PlayerHomeCtrl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controllers/ProjectsHomeCtrl.js" afterPath="$PROJECT_DIR$/www/js/controllers/ProjectsHomeCtrl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controllers/QuestionsHomeCtrl.js" afterPath="$PROJECT_DIR$/www/js/controllers/QuestionsHomeCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/services/CacheService.js" afterPath="$PROJECT_DIR$/www/js/services/CacheService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/edit-question.html" afterPath="$PROJECT_DIR$/www/templates/edit-question.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/new-question.html" afterPath="$PROJECT_DIR$/www/templates/new-question.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/player.html" afterPath="$PROJECT_DIR$/www/templates/player.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/PlayerHome.html" afterPath="$PROJECT_DIR$/www/templates/PlayerHome.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/ProjectsHome.html" afterPath="$PROJECT_DIR$/www/templates/ProjectsHome.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/QuestionsHome.html" afterPath="$PROJECT_DIR$/www/templates/QuestionsHome.html" />
     </list>
     <ignored path="piximony.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,31 +28,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainPage.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/templates/MainPage.html">
+      <file leaf-file-name="QuestionsHomeCtrl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/controllers/QuestionsHomeCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-230">
-              <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+            <state relative-caret-position="300">
+              <caret line="20" column="54" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new-project.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/templates/new-project.html">
+      <file leaf-file-name="ProjectsHomeCtrl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/controllers/ProjectsHomeCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="127">
+              <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="26" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerHome.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/templates/PlayerHome.html">
+      <file leaf-file-name="MainPageCtrl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/controllers/MainPageCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="88" selection-start-line="12" selection-start-column="88" selection-end-line="12" selection-end-column="88" />
+            <state relative-caret-position="255">
+              <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="23" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -63,8 +61,18 @@
       <file leaf-file-name="ProjectsHome.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/templates/ProjectsHome.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="62" selection-start-line="10" selection-start-column="62" selection-end-line="10" selection-end-column="62" />
+            <state relative-caret-position="105">
+              <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="10" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayerHomeCtrl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/controllers/PlayerHomeCtrl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="259">
+              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -73,14 +81,14 @@
       <file leaf-file-name="QuestionsHome.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/templates/QuestionsHome.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state relative-caret-position="135">
+              <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CacheService.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CacheService.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/services/CacheService.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
@@ -100,11 +108,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shareProject.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/templates/shareProject.html">
+      <file leaf-file-name="PlayerHome.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/templates/PlayerHome.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+            <state relative-caret-position="150">
+              <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -115,16 +123,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
               <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="player.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/templates/player.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="79">
-              <caret line="12" column="83" selection-start-line="12" selection-start-column="83" selection-end-line="12" selection-end-column="83" />
               <folding />
             </state>
           </provider>
@@ -146,23 +144,23 @@
         <option value="$PROJECT_DIR$/www/templates/shareProject.html" />
         <option value="$PROJECT_DIR$/www/js/services/DataService.js" />
         <option value="$PROJECT_DIR$/www/js/services/ImageService.js" />
-        <option value="$PROJECT_DIR$/www/templates/ProjectsHome.html" />
-        <option value="$PROJECT_DIR$/www/templates/QuestionsHome.html" />
         <option value="$PROJECT_DIR$/www/templates/sign-in.html" />
         <option value="$PROJECT_DIR$/www/js/controllers/SignInCtrl.js" />
         <option value="$PROJECT_DIR$/www/templates/MainPage.html" />
         <option value="$PROJECT_DIR$/www/js/controllers/MainPageCtrl.js" />
         <option value="$PROJECT_DIR$/www/js/app.js" />
         <option value="$PROJECT_DIR$/www/index.html" />
-        <option value="$PROJECT_DIR$/www/templates/PlayerHome.html" />
         <option value="$PROJECT_DIR$/www/js/services/WebService.js" />
-        <option value="$PROJECT_DIR$/www/js/controllers/QuestionsHomeCtrl.js" />
-        <option value="$PROJECT_DIR$/www/js/controllers/ProjectsHomeCtrl.js" />
-        <option value="$PROJECT_DIR$/www/js/controllers/PlayerHomeCtrl.js" />
         <option value="$PROJECT_DIR$/www/templates/new-question.html" />
         <option value="$PROJECT_DIR$/www/templates/edit-question.html" />
         <option value="$PROJECT_DIR$/www/templates/player.html" />
         <option value="$PROJECT_DIR$/www/js/services/CacheService.js" />
+        <option value="$PROJECT_DIR$/www/templates/ProjectsHome.html" />
+        <option value="$PROJECT_DIR$/www/js/controllers/ProjectsHomeCtrl.js" />
+        <option value="$PROJECT_DIR$/www/templates/QuestionsHome.html" />
+        <option value="$PROJECT_DIR$/www/js/controllers/PlayerHomeCtrl.js" />
+        <option value="$PROJECT_DIR$/www/js/controllers/QuestionsHomeCtrl.js" />
+        <option value="$PROJECT_DIR$/www/templates/PlayerHome.html" />
       </list>
     </option>
   </component>
@@ -490,12 +488,12 @@
       <workItem from="1468966225918" duration="7270000" />
       <workItem from="1469133574110" duration="95000" />
       <workItem from="1469134729521" duration="396000" />
-      <workItem from="1469291691878" duration="1530000" />
+      <workItem from="1469291691878" duration="2160000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152976000" />
+    <option name="totallyTimeSpent" value="153606000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -746,38 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controllers/QuestionsHomeCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controllers/ProjectsHomeCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controllers/PlayerHomeCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controllers/MainPageCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4">
-          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/new-question.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -842,38 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/PlayerHome.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="88" selection-start-line="12" selection-start-column="88" selection-end-line="12" selection-end-column="88" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/ProjectsHome.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="62" selection-start-line="10" selection-start-column="62" selection-end-line="10" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/QuestionsHome.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/select-answer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/shareProject.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -894,6 +828,70 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/select-answer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-60">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/QuestionsHome.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controllers/ProjectsHomeCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="26" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controllers/MainPageCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="23" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controllers/PlayerHomeCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controllers/QuestionsHomeCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="54" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/ProjectsHome.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="10" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/PlayerHome.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
           <folding />
         </state>
       </provider>
