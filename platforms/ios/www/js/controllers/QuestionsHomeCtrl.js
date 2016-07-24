@@ -146,16 +146,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             }
         });
     
-        $scope.openShareModal = function(){
-            console.log("share modal clicked")
-            $scope.shareModal.show()
-            WebService.get_friends(DataService.getUser().username,function(result,users){
-                if(result){
-                    $scope.friends = users
-                }
-            })
-    
-        }
+   
 
 
         $scope.openEditImage = function(){
@@ -190,44 +181,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         };
     
     
-        $scope.share = function(){
-            console.log("sharing started")
-            //if there is no selected user alert error
-            //DataService.shareProject($scope.projectID,$scope.selectedUsers)
-            WebService.share_project($scope.projectID, $scope.selectedUsers, function (result,response) {
-                if(!result){
-                    alert("There was an error when sharing the project")
-                    console.log(response)
-                }else{
-    
-                }
-            })
-            $scope.shareModal.hide()
-            $scope.selectedUsers = [];
-            $scope.friends = [];
-        }
-    
-        $scope.sharecancel = function(){
-            $scope.shareModal.hide()
-            $scope.selectedUsers = [];
-            $scope.friends = [];
-        }
-
-        $scope.addSelectedUser = function(user,selected){
-            if(selected){
-                $scope.selectedUsers.push(user.username)
-            }else{
-                for( var i = 0 ; i < $scope.selectedUsers.length ; i++ ){
-                    if(user.username == $scope.selectedUsers[i]){
-                        $scope.selectedUsers.splice(i,1);
-                        break;
-                    }
-                }
-            }
-    
-            console.log($scope.selectedUsers)
-        }
-
+      
         $scope.addMedia = function() {
             console.log(">> QuestionsHomeCtrl.addMedia()");
             $scope.hideSheet = $ionicActionSheet.show({
@@ -264,14 +218,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             animation: 'slide-in-up'
         });
         
-        
-         $ionicModal.fromTemplateUrl('templates/shareProject.html', function(modal) {
-            $scope.shareModal = modal;
-        }, {
-            scope: $scope,
-            animation: 'slide-in-up'
-        });
-
+    
         $ionicModal.fromTemplateUrl('templates/edit-question.html', function(modal) {
             $scope.updateQuestionModal = modal;
         }, {

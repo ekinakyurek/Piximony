@@ -8,8 +8,18 @@
         <ion-content>
             <form ng-submit="share()">
                 <div class="list">
-                    <ion-checkbox ng-repeat="friend in friends" ng-model="selected" ng-change="addSelectedUser(friend,selected)"><p ng-class="">{{friend.username}}</p>
+                    <div class="item item-divider" style="text-align: center">
+                        Friends To Share
+                    </div>
+                    <ion-checkbox ng-repeat="friend in friends" ng-if="!friend.is_shared" ng-model="selected" ng-change="addSelectedUser(friend,selected)"><p ng-class="">{{friend.username}}</p>
                     </ion-checkbox>
+                    <div class="item item-divider" style="text-align: center">
+                        Shared Friends
+                    </div>
+                    <a ng-repeat="friend in friends" ng-if="friend.is_shared" ng-click="" class="item item-avatar">
+                        <img ng-src="{{friend.picture_url != '' && friend.picture_url || 'img/User-100.png'}}"/>
+                        <h2 style="vertical-align: middle; height: 100%;">{{friend.username}}</h2>
+                    </a>
                 </div>
                 <div class="padding">
                     <button type="submit" class="button button-block button-positive">Share The Project</button>

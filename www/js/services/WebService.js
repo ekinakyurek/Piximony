@@ -2,7 +2,7 @@
 angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
 
     var baseUrl = "http://piximony-dev.yaudxbzu3m.us-west-1.elasticbeanstalk.com/";
-    //var baseUrl = "http://127.0.0.1:8000/"
+    baseUrl = "http://127.0.0.1:8000/"
     var userToken= "";
 
     function set_token(token){
@@ -249,9 +249,9 @@ angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
         });
     }
 
-    function get_friends(username, callback){
+    function get_friends(project_id, callback){
         var settings = {
-            "url": baseUrl + "account/api/get_friends/?username=" + username,
+            "url": baseUrl + "account/api/share_friends/?project_id=" + project_id,
             "method": "GET"
         }
         return $http(settings).then(function(response) {
@@ -388,10 +388,10 @@ angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
         });
     }
 
-    function share_project(project_id, users,callback){
+    function share_project(project_id, shared_users, callback){
 
-        json = {"users": users}
-
+        json = {"users": shared_users}
+        console.log(json)
         var settings = {
             "url":  baseUrl  + "project/api/share_project/?project_id=" + project_id,
             "method": "POST",
@@ -416,6 +416,84 @@ angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
         });
     }
 
+
+    function withdraw_project(project_id, callback){
+
+        var settings = {
+            "url":  baseUrl  + "project/api/withdraw_project/?project_id=" + project_id,
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json"
+            },
+            "data": ""
+        }
+
+        $http(settings).then(function(response) {
+
+            if (response.data.hasOwnProperty("result")){
+                callback(response.data.result=="success")
+                console.log(JSON.stringify(response))
+            }else{
+                callback(false,JSON.stringify(response.data))
+                console.log(JSON.stringify(response))
+            }
+        }, function(response) {
+            callback(false,JSON.stringify(response))
+            console.log(JSON.stringify(response))
+        });
+    }
+
+    function delete_project(project_id, callback){
+
+        var settings = {
+            "url":  baseUrl  + "project/delete_project/?project_id=" + project_id,
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json"
+            },
+            "data": ""
+        }
+
+        $http(settings).then(function(response) {
+
+            if (response.data.hasOwnProperty("result")){
+                callback(response.data.result=="success")
+                console.log(JSON.stringify(response))
+            }else{
+                callback(false,JSON.stringify(response.data))
+                console.log(JSON.stringify(response))
+            }
+        }, function(response) {
+            callback(false,JSON.stringify(response))
+            console.log(JSON.stringify(response))
+        });
+    }
+
+    function publish_project(project_id, callback){
+
+        var settings = {
+            "url":  baseUrl  + "project/api/publish_project/?project_id=" + project_id,
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json"
+            },
+            "data": ""
+        }
+
+        $http(settings).then(function(response) {
+
+            if (response.data.hasOwnProperty("result")){
+                callback(response.data.result=="success")
+                console.log(JSON.stringify(response))
+            }else{
+                callback(false,JSON.stringify(response.data))
+                console.log(JSON.stringify(response))
+            }
+        }, function(response) {
+            callback(false,JSON.stringify(response))
+            console.log(JSON.stringify(response))
+        });
+    }
 
 
 
@@ -557,24 +635,6 @@ angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
         });
     }
 
-    function readFile(fileEntry,callback) {
-
-        // READ
-
-        fileEntry.file(function (file) {
-            var reader = new FileReader();
-
-            reader.onloadend = function() {
-                console.log("Successful file read: " + this.result);
-                callback(this.result)
-
-            };
-
-            reader.readAsText(file);
-
-        }, onErrorReadFile);
-    }
-
     //score_board
 
     function update_score(scoreboard, callback){
@@ -634,6 +694,9 @@ angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
         accept_friendship: accept_friendship,
         share_project: share_project,
         update_score: update_score,
+        withdraw_project: withdraw_project,
+        publish_project: publish_project,
+        delete_project: delete_project,
         userToken: userToken
 
     }
