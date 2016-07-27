@@ -9,7 +9,7 @@
                         on-refresh="doRefresh()">
                 </ion-refresher>
                 <a ng-repeat="question in questions"
-                   ng-click="showQuestionDetails(question.question_id)"
+                   ng-click="showQuestionDetails(question)"
                    class="item item-thumbnail-left">
 
                     <img image-source="{{ question.thumbnail_url }}">

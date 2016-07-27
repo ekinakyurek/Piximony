@@ -1,9 +1,12 @@
-<div class="modal image-modal transparent" id="contentContainer" ng-click="closeEditImageModal()">
+<div class="modal image-modal transparent" id="contentContainer">
   <ion-pane class="transparent">
-    <img id="myImage" ng-src="{{questionImg}}" class="fullscreen-image"/>
-    <svg id="mySvg" on-release="getMouseUpPosition()" on-touch="getMouseDownPosition()" on-drag="getMouseMovePosition()">
-      <rect id="myRect" x="0" y="0" rx="5" ry="5" width="0" height="0"/>
-    </svg>
+    <div>
+      <img id="myImage" ng-src="{{questionImg}}" class="fullscreen-image"/>
+      <svg id="mySvg" on-release="getMouseUpPosition()" on-touch="getMouseDownPosition()" on-drag="getMouseMovePosition()">
+        <rect id="myRect" x="0" y="0" rx="5" ry="5" width="0" height="0"/>
+      </svg>
+      <i id="myCloseButton" class="ion-ios-close" ng-click="closeEditImageModal()"></i>
+    </div>
   </ion-pane>
     
 </div>

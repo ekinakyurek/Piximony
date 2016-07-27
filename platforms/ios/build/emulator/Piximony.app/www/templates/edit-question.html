@@ -9,9 +9,14 @@
 
         <!-- Modal content area -->
         <ion-content>
-        <a ng-click="updateMedia(question.question_id)">
-            <img ng-src="{{ getCachedValue(questionImg,false, false) }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
-        </a>
+            <div class="profile-img-container">
+                <img id="myImageE" ng-src="{{ getCachedValue(questionImg,false, false) }}"/>
+                <svg id="mySvgE">
+                    <rect id="myRectE" x="0" y="0" rx="5" ry="5" width="0" height="0"/>
+                </svg>
+                <i id="myEditButton" class="ion-edit" ng-click="openEditImage()"></i>
+                <i id="myUploadButton" class="ion-ios-upload" ng-click="updateMedia(question.question_id)"></i>
+            </div>
             <form ng-submit="updateQuestion(question)">
                 <div class="list">
                     <label class="item item-input">

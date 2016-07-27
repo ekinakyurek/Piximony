@@ -9,12 +9,13 @@
 
         <!-- Modal content area -->
         <ion-content>
-
             <div class="profile-img-container">
-                <img ng-src="{{ getCachedValue(questionImg,false, false) }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
-                <i class="ion-edit" ng-click="openEditImage()"></i>
+                <img id="myImageN" ng-src="{{ getCachedValue(questionImg,false, false) }}"/>
+                <svg id="mySvgN">
+                    <rect id="myRectN" x="0" y="0" rx="5" ry="5" width="0" height="0"/>
+                </svg>
+                <i id="myEditButton" class="ion-edit" ng-click="openEditImage()"></i>
             </div>
-            
             <form ng-submit="createQuestion(questionTmp)">
                 <div class="list">
                     <label class="item item-input">

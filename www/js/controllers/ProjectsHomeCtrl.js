@@ -20,7 +20,7 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
                 $rootScope.$broadcast('userProjects', projects)
                 $scope.$broadcast('scroll.refreshComplete');
             }else{
-                alert("Error in get_user_projects, pleaser try again!")
+                alert("Error in get_user_projects, please try again!");
                 $scope.$broadcast('scroll.refreshComplete');
             }
         })

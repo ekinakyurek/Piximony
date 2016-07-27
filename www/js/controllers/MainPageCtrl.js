@@ -8,7 +8,7 @@ angular.module('Piximony').controller('MainPageCtrl', function($scope, $state, $
             if (result==true){
                 $rootScope.$broadcast('userProjects', projects)
             }else{
-                alert("Error in get_user_projects, pleaser try again!")
+                console.log("** MainPageCtrl.GoToProjectsHome() Error in get_user_projects, please try again!");
             }
         })
     };
@@ -19,7 +19,7 @@ angular.module('Piximony').controller('MainPageCtrl', function($scope, $state, $
             if(result){
                 $rootScope.$broadcast('projectsToPlay', projects)
             }else{
-                alert("Error in get_playing_projects, pleaser try again!")
+                console.log("** MainPageCtrl.GoToPlayerHome() Error in get_playing_projects, please try again!");
             }
         })
     };
