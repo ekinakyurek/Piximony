@@ -4,12 +4,23 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
     $scope.isPLaying = false
     $scope.isThumbnail = true
     $scope.projects = DataService.getProjects()
-    $scope.listCanSwipe = true
     $scope.showDelete = false
     $scope.users = []
     $scope.selectedUsers = []
     $scope.project = {}
+    
+    WebService.get_user_projects(DataService.getUser().username,function (result, projects, next, previos, count) {
+        if (result==true){
+            $rootScope.$broadcast('userProjects', projects)
+        }else{
+            alert("Error in get_user_projects, pleaser try again!")
+        }
+    })
 
+    $scope.show_delete = function () {
+        $scope.showDelete = !$scope.showDelete
+    }
+    
     $rootScope.$on('userProjects', function (event, data) {
         console.log('>> userProjects.$on() userProjects event recieved');
         //$scope.projectsToPlay = DataService.projects2Play();
@@ -283,7 +294,7 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
         })
 
 
-        $state.go('QuestionsHome', {'project': project});
+        $state.go('tab.QuestionsHome', {'project': project});
         console.log("<< ProjectsHomeCtrl.showQuestions()");
     };
 

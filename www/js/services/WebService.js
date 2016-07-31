@@ -2,7 +2,7 @@
 angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
 
     var baseUrl = "http://piximony-dev.yaudxbzu3m.us-west-1.elasticbeanstalk.com/";
-    baseUrl = "http://127.0.0.1:8000/"
+    //baseUrl = "http://127.0.0.1:8000/"
     var userToken= "";
 
     function set_token(token){
@@ -98,7 +98,7 @@ angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
 
     function get_user_info(username,callback){
         var settings = {
-            "url": baseUrl+ "account/api/get_user/?username=testuser",
+            "url": baseUrl+ "account/api/get_user/?username=" + username,
             "method": "GET"
         }
 

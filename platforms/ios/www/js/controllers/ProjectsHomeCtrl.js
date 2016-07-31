@@ -4,12 +4,23 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
     $scope.isPLaying = false
     $scope.isThumbnail = true
     $scope.projects = DataService.getProjects()
-    $scope.listCanSwipe = true
     $scope.showDelete = false
     $scope.users = []
     $scope.selectedUsers = []
     $scope.project = {}
+    
+    WebService.get_user_projects(DataService.getUser().username,function (result, projects, next, previos, count) {
+        if (result==true){
+            $rootScope.$broadcast('userProjects', projects)
+        }else{
+            alert("Error in get_user_projects, pleaser try again!")
+        }
+    })
 
+    $scope.show_delete = function () {
+        $scope.showDelete = !$scope.showDelete
+    }
+    
     $rootScope.$on('userProjects', function (event, data) {
         console.log('>> userProjects.$on() userProjects event recieved');
         //$scope.projectsToPlay = DataService.projects2Play();
@@ -31,41 +42,7 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
         $state.go('MainPage');
     };
 
-    $scope.openShareModal = function(project){
-        console.log("share modal clicked")
-        $scope.project = project
-        $scope.shareModal.show()
-        WebService.get_friends(project.project_id,function(result,users){
-            if(result){
-                $scope.friends = users
-            }
-        })
 
-    }
-    $scope.share = function(){
-        console.log("sharing started")
-        //if there is no selected user alert error
-        //DataService.shareProject($scope.projectID,$scope.selectedUsers)
-        WebService.share_project($scope.project.project_id, $scope.selectedUsers, function (result,response) {
-            if(!result){
-                alert("There was an error when sharing the project")
-                console.log(response)
-            }else{
-
-            }
-        })
-        $scope.shareModal.hide()
-        $ionicListDelegate.closeOptionButtons();
-        $scope.selectedUsers = [];
-        $scope.friends = [];
-    }
-
-    $scope.sharecancel = function(){
-        $scope.shareModal.hide()
-        $scope.selectedUsers = [];
-        $scope.friends = [];
-    }
-    
     $ionicModal.fromTemplateUrl('templates/shareProject.html', function(modal) {
         $scope.shareModal = modal;
     }, {
@@ -317,33 +294,44 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
         })
 
 
-        $state.go('QuestionsHome', {'project': project});
+        $state.go('tab.QuestionsHome', {'project': project});
         console.log("<< ProjectsHomeCtrl.showQuestions()");
     };
 
-    $scope.openShareProjectModal = function(projectID){
-        console.log(">> ProjectsHomeCtrl.openShareProjectModal(" + projectID + ")");
-        $scope.projectID = projectID;
-        $scope.shareProjectModal.show();
-        console.log("<< ProjectsHomeCtrl.openShareProjectModal()");
-    };
+    $scope.openShareModal = function(project){
+        console.log("share modal clicked")
+        $scope.project = project
+        $scope.shareModal.show()
+        WebService.get_friends(project.project_id,function(result,users){
+            if(result){
+                $scope.friends = users
+            }
+        })
 
-    $scope.shareProject = function(){
-        console.log(">> ProjectsHomeCtrl.shareProject(" + $scope.projectID + ")");
+    }
+    $scope.share = function(){
+        console.log("sharing started")
         //if there is no selected user alert error
-        $scope.shareProjectModal.hide();
-        $scope.selectedUsers = [];
-        $scope.users = [];
-        console.log("<< ProjectsHomeCtrl.shareProject()");
-    };
+        //DataService.shareProject($scope.projectID,$scope.selectedUsers)
+        WebService.share_project($scope.project.project_id, $scope.selectedUsers, function (result,response) {
+            if(!result){
+                alert("There was an error when sharing the project")
+                console.log(response)
+            }else{
 
-    $scope.shareProjectCancel = function(){
-        console.log(">> ProjectsHomeCtrl.shareProjectCancel()");
-        $scope.shareProjectModal.hide();
+            }
+        })
+        $scope.shareModal.hide()
+        $ionicListDelegate.closeOptionButtons();
         $scope.selectedUsers = [];
-        $scope.users = [];
-        console.log("<< ProjectsHomeCtrl.shareProjectCancel()");
-    };
+        $scope.friends = [];
+    }
+
+    $scope.sharecancel = function(){
+        $scope.shareModal.hide()
+        $scope.selectedUsers = [];
+        $scope.friends = [];
+    }
 
     $scope.addSelectedUser = function(user,selected){
         console.log(">> ProjectsHomeCtrl.addSelectedUser(" + user + selected + ")");

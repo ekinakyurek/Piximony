@@ -1,5 +1,6 @@
 angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, DataService, WebService, CacheService)  {
         //alert($stateParams.projectId);
+        CacheService.loadCache($scope.isPLaying)
         $scope.users = []
         $scope.selectedUsers = []
         $scope.isPLaying = false
@@ -10,6 +11,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         $scope.getCachedValue = CacheService.getCachedValue
         $scope.filter = {xAxis: 0, yAxis: 0, heightPrcnt: 0, widthPrcnt: 0};
 
+    
         $scope.doRefresh = function(){
 
             WebService.get_questions($scope.project.project_id, function (result, questions) {
@@ -274,7 +276,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
 
             WebService.create_question(question,function(result,response){
                 if (result == true){
-                    CacheService.addPair(response.picture_url, name, $scope.isPLaying)
+                    CacheService.addPair(response.picture_url, name, $scope.isPLaying, false)
                 }else{
                     alert("There was an error when creating question")
                 }
@@ -302,23 +304,12 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             console.log("<< QuestionsHomeCtrl.closeNewQuestion()");
         };
     
-        $scope.showQuestionDetails = function(questionID) {
-            console.log(">> QuestionsHomeCtrl.showQuestionDetails() questionID:"+ questionID );
-            $scope.question = '';
-            for(var i = 0; i < $scope.questions.length; i += 1) {
-                if ($scope.questions[i].question_id == questionID) {
-                    $scope.question = $scope.questions[i];
-                    if ($scope.question.name != undefined) {
-                        console.log("questions")
-                        $scope.questionImg = cordova.file.dataDirectory + $scope.question.name
-                    } else {
-                        $scope.questionImg = $scope.question.picture_url
-                    }
-                    break;
-                }
-            }
-    
-            console.log(JSON.stringify($scope.question))
+        $scope.showQuestionDetails = function(question) {
+            console.log(">> QuestionsHomeCtrl.showQuestionDetails() question:"+ question);
+            $scope.questionTmp = DataService.clone(question);
+            $scope.questionImg = $scope.questionTmp.picture_url
+            $scope.filter = question.filter
+            console.log(JSON.stringify($scope.filter))
             $scope.updateQuestionModal.show();
             console.log("<< QuestionsHomeCtrl.showQuestionDetails()");
         };
@@ -344,21 +335,13 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             $scope.hideSheet();
             ImageService.handleMediaDialog(type, function(result, name) {
     
-                $scope.question.picture_url =  cordova.file.dataDirectory + name
-                $scope.question.img =  $scope.question.picture_url
-                $scope.question.name = name
-                $scope.question.url =  $scope.question.picture_url
-                $scope.questionImg =   $scope.question.picture_url
-    
-                for(var i = 0; i < $scope.questions.length; i += 1){
-                    if($scope.questions[i].question_id == questionID){
-                        console.log(i)
-                        $scope.questions[i] = $scope.question;
-                        break;
-                    }
-                }
-    
-    
+                $scope.questionTmp.picture_url =  cordova.file.dataDirectory + name
+                $scope.questionTmp.thumbnail_url =    $scope.questionTmp.picture_url
+                $scope.questionTmp.img =     $scope.questionTmp.picture_url
+                $scope.questionTmp.name = name
+                $scope.questionTmp.url =    $scope.questionTmp.picture_url
+                $scope.questionImg =     $scope.questionTmp.picture_url
+
                 console.log("** QuestionsHomeCtrl.updatePic() Pic Index: " + i);
                 console.log("** QuestionsHomeCtrl.updatePic() Pic Path:" + $scope.questions[i].img);
                 console.log('** QuestionsHomeCtrl.updatePic() name:' + $scope.questions[i].name);
@@ -369,33 +352,40 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         // Close the new task modal
         $scope.closeUpdateQuestion = function() {
             console.log(">> QuestionsHomeCtrl.closeUpdateQuestion()");
+            $scope.questionTmp = {}
             $scope.updateQuestionModal.hide();
             console.log("<< QuestionsHomeCtrl.closeUpdateQuestion()");
         };
 
         $scope.updateQuestion = function(question) {
-            console.log(">> QuestionsHomeCtrl.updateQuestion() quesstionID:" + question.question_id);
-    
+            console.log(">> QuestionsHomeCtrl.updateQuestion() quesstionID:" + question.question_id)
+
             for(var i = 0; i < $scope.questions.length; i += 1) {
                 if ($scope.questions[i].question_id == question.question_id) {
                     console.log(i)
-                    $scope.questions[i] = question;
+                    $scope.questions[i] = DataService.clone(question);
                     break;
                 }
             }
+            $scope.project.thumbnail_url = question.thumbnail_url
     
-            DataService.storeQuestion(question, $scope.projectID)
-    
+            DataService.storeQuestions($scope.questions, $scope.project.project_id)
+
+
+
             WebService.update_question(question,question.name,function(result,response){
                 if (result==true){
                     console.log(JSON.stringify(response))
-                    CacheService.addPair(response.picture_url, question.name, $scope.isPlaying)
+                    if(question.name !== undefined) {
+                        CacheService.addPair(response.picture_url, question.name, $scope.isPlaying, false)
+                    }
     
                 }else{
                     console.log("error:" + JSON.stringify(response))
                 }
             })
             //DataService.storeQuestions($scope.questions,$scope.projectID);
+            $scope.questionTmp = {}
             $scope.updateQuestionModal.hide();
             console.log("<< QuestionsHomeCtrl.updateQuestion()");
         };

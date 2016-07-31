@@ -9,27 +9,27 @@
 
         <!-- Modal content area -->
         <ion-content>
-        <a ng-click="updateMedia(question.question_id)">
+        <a ng-click="updateMedia(questionTmp.question_id)">
             <img ng-src="{{ getCachedValue(questionImg,false, false) }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
         </a>
-            <form ng-submit="updateQuestion(question)">
+            <form ng-submit="updateQuestion(questionTmp)">
                 <div class="list">
                     <label class="item item-input">
-                        <input type="text" placeholder="Your Question" ng-model="question.title">
+                        <input type="text" placeholder="Your Question" ng-model="questionTmp.title">
                     </label>
                     <div class="item item-divider">
                         Options
                     </div>
-                        <div ng-repeat="option in question.options">
+                        <div ng-repeat="option in questionTmp.options">
                        <div class="row">
                         <div class="col-5 col-center">
-                            <input type="radio" name="RightAnswer"  value="{{$index}}" ng-model="question.correct_option">
+                            <input type="radio" name="RightAnswer"  value="{{$index}}" ng-model="questionTmp.correct_option">
                         </div>
                         <div class="col">
                             <label class="item item-input">
-                                <input type="text" placeholder="Option {{$index}}" ng-model="question.options[$index]">
+                                <input type="text" placeholder="Option {{$index}}" ng-model="questionTmp.options[$index]">
                             </label>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
                 <div class="padding">

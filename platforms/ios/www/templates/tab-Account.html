@@ -1,0 +1,9 @@
+<ion-view view-title="Account">
+    <ion-content>
+        <img ng-src="{{user.thumbnail_url != '' && user.thumbnail_url || 'img/User-100.png'}}"/>
+        <div>Username:{{user.username}} </div>
+        <div>First name: {{user.first_name}}</div>
+        <div>Last name: {{user.last_name}}</div>
+        <button ng-click="logOut()">Log Out</button>
+    </ion-content>
+</ion-view>

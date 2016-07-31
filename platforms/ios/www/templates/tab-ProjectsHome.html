@@ -1,11 +1,20 @@
-
+<ion-view view-title="Projects">
+    <ion-nav-buttons side="right">
+        <button class="button button-icon icon ion-ios-compose-outline" ng-click="newProject()">
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="left">
+        <button class="button button-icon" ng-click="show_delete()">
+            Edit
+        </button>
+    </ion-nav-buttons>
     <ion-content>
             <div class="list">
                 <ion-refresher
                         pulling-text="Pull to refresh..."
                         on-refresh="doRefresh()">
                 </ion-refresher>
-                <ion-list can-swipe="listCanSwipe" show-delete="showDelete" hold-list>
+                <ion-list can-swipe="true" show-delete="showDelete" hold-list>
                 <ion-item ng-repeat="project in projects">
                     <div class="row">
                         <div class="col">
@@ -28,21 +37,11 @@
                     </ion-option-button>
                     <ion-option-button  ng-click="toggleProject(project)" ng-class="{'item': true, 'ion-arrow-return-left': project.is_published, 'ion-forward': !project.is_published}">
                     </ion-option-button>
-                    <ion-option-button class="ion-ios-trash"
+                    <ion-delete-button class="ion-minus-circled"
                                        ng-click="deleteProject(project); projects.splice($index, 1)">
-                    </ion-option-button>
-
+                    </ion-delete-button>
                 </ion-item>
                 </ion-list>
             </div>
         </ion-content>
-
-        <div class="bar bar-footer">
-
-            <button class="button button-icon ion-home" ng-click="home()"></button>
-
-            <button class="button button-icon ion-person" ng-click="getMyFriends()"></button>
-
-            <button class="button button-icon ion-plus" ng-click="newProject()"></button>
-        </div>
-
+</ion-view>
