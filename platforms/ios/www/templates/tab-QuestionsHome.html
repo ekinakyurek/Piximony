@@ -1,0 +1,32 @@
+ <ion-view title="QuestionsHome">
+
+     <ion-nav-buttons side="right">
+         <button class="button button-icon icon ion-ios-compose-outline" ng-click="addMedia()">
+         </button>
+     </ion-nav-buttons>
+
+        <ion-content>
+            <div class="list">
+                <ion-refresher
+                        pulling-text="Pull to refresh..."
+                        on-refresh="doRefresh()">
+                </ion-refresher>
+                <ion-list can-swipe="true" hold-list>
+                <ion-item ng-repeat="question in questions">
+                    <div class="row">
+                        <div class="col">
+                            <a ng-click="showQuestionDetails(question)"
+                               class="item item-thumbnail-left">
+                                <img image-source="{{ question.thumbnail_url }}">
+                                <h2 style="vertical-align: middle; height: 100%;">{{ ($index + 1) + ". " + question.title }}</h2>
+                            </a>
+                        </div>
+                     </div>
+                    <ion-option-button  ng-click="delete_question(question)" class="ion-minus-circled">
+                    </ion-option-button>
+
+                </ion-item>
+                </ion-list>
+            </div>
+        </ion-content>
+</ion-view>

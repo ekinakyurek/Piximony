@@ -1,12 +1,23 @@
 angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootScope, $timeout, $state, $stateParams, $ionicModal, $cordovaDevice,  $ionicPlatform, $ionicActionSheet, DataService, CacheService, WebService)  {
 
+    CacheService.loadCache(true)
     $scope.isPLaying = true
     $scope.isThumbnail = true
-    CacheService.loadCache(true)
     $scope.getCachedValue = CacheService.getCachedValue
     $scope.current_project = {}
     $scope.projectsToPlay = DataService.getProjectsToPlay()
+    $scope.currentQuestion = 0;
+    $scope.currentScore = 0;
+    $scope.trial = [false,false,false,false];
+    $scope.bingo = false;
 
+    WebService.get_playing_projects(DataService.getUser().username, function(result,projects){
+        if(result){
+            $rootScope.$broadcast('projectsToPlay', projects)
+        }else{
+            alert("Error in get_playing_projects, pleaser try again!")
+        }
+    })
 
     $scope.doRefresh = function(){
 
@@ -28,10 +39,6 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
             $scope.projectsToPlay = data
             DataService.storeProjectsToPlay(data)
         }
-        $scope.currentQuestion = 0;
-        $scope.currentScore = 0;
-        $scope.trial = [false,false,false,false];
-        $scope.bingo = false;
         console.log("** PlayerHomeCtrl.$on() " + $scope.projectsToPlay);
         console.log('<< PlayerHomeCtrl.$on() projectsToPlay');
     });

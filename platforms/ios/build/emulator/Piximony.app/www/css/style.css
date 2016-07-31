@@ -5,16 +5,17 @@
     color: red;
 }
 
-
 .transparent {
   background: transparent !important;
 }
+
 .image-modal {
   width: 100% !important;
   height: 100%;
   top: 0 !important;
   left: 0 !important;
 }
+
 .fullscreen-image {
   max-width: 100%;
   max-height: 100%;

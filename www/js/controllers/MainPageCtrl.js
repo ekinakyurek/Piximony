@@ -12,6 +12,7 @@ angular.module('Piximony').controller('MainPageCtrl', function($scope, $state, $
             }
         })
     };
+    
     $scope.GoToPlayerHome = function() {
         console.log("** MainPageCtrl.GoToPlayerHome()");
         $state.go('PlayerHome');

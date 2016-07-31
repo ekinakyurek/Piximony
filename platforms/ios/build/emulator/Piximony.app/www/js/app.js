@@ -8,27 +8,59 @@ angular.module('Piximony', ['ionic','ngCordova']).config(function($stateProvider
     $ionicConfigProvider.views.maxCache(2);
    
     $stateProvider
+
+        .state('tab', {
+            url: '/tab',
+            abstract: true,
+            templateUrl: 'templates/tabs.html'
+        })
+
+        .state('tab.ProjectsHome', {
+            url: '/ProjectsHome',
+            params: {'projects': {} },
+            views: {
+                'tab-ProjectsHome': {
+                    templateUrl: 'templates/tab-ProjectsHome.html',
+                    controller: 'ProjectsHomeCtrl'
+                }
+            }
+        })
+        .state('tab.PlayerHome', {
+            url: '/PlayerHome',
+            params: {'projects': {} },
+            views: {
+                'tab-PlayerHome': {
+                    templateUrl: 'templates/tab-PlayerHome.html',
+                    controller: 'PlayerHomeCtrl'
+                }
+            }
+        })
+        .state('tab.Account', {
+            url: '/Account',
+            views: {
+                'tab-Account': {
+                    templateUrl: 'templates/tab-Account.html',
+                    controller: 'AccountCtrl'
+                }
+            }
+        })
+
+        .state('tab.QuestionsHome', {
+            url: '/ProjectsHome/QuestionsHome',
+            params: {'project': {} },
+            views: {
+                'tab-ProjectsHome': {
+                    templateUrl: 'templates/tab-QuestionsHome.html',
+                    controller: 'QuestionsHomeCtrl'
+                }
+            }
+        })
         .state('MainPage', {
             url: '/MainPage',
             templateUrl: 'templates/MainPage.html',
             controller: 'MainPageCtrl'
         })
-        .state('PlayerHome', {
-            url: '/PlayerHome',
-            templateUrl: 'templates/PlayerHome.html',
-            controller: 'PlayerHomeCtrl'
-        })
-        .state('ProjectsHome', {
-            url: '/ProjectsHome',
-            templateUrl: 'templates/ProjectsHome.html',
-            controller: 'ProjectsHomeCtrl'
-        })
-        .state('QuestionsHome', {
-            url: '/QuestionsHome',
-            templateUrl: 'templates/QuestionsHome.html',
-            controller: 'QuestionsHomeCtrl',
-            params: {'project': {} }
-        })
+
         .state('signin', {
             url: '/sign-in',
             templateUrl: 'templates/sign-in.html',
@@ -48,4 +80,32 @@ angular.module('Piximony', ['ionic','ngCordova']).config(function($stateProvider
 
         }
     };
-});
+}).directive('holdList', ['$ionicGesture', function($ionicGesture) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            $ionicGesture.on('hold', function(e) {
+
+                var content = element[0].querySelector('.item-content');
+
+                var buttons = element[0].querySelector('.item-options');
+                var buttonsWidth = buttons.offsetWidth;
+
+                ionic.requestAnimationFrame(function() {
+                    content.style[ionic.CSS.TRANSITION] = 'all ease-out .25s';
+
+                    if (!buttons.classList.contains('invisible')) {
+                        content.style[ionic.CSS.TRANSFORM] = '';
+                        setTimeout(function() {
+                            buttons.classList.add('invisible');
+                        }, 250);
+                    } else {
+                        buttons.classList.remove('invisible');
+                        content.style[ionic.CSS.TRANSFORM] = 'translate3d(-' + buttonsWidth + 'px, 0, 0)';
+                    }
+                });
+
+            }, element);
+        }
+    };
+}]);
