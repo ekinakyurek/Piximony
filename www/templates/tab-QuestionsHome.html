@@ -17,7 +17,7 @@
                         <div class="col">
                             <a ng-click="showQuestionDetails(question)"
                                class="item item-thumbnail-left">
-                                <img image-source="{{ question.thumbnail_url }}">
+                                <img image-source="{{ question.thumbnail_url }}" is-thumbnail="true">
                                 <h2 style="vertical-align: middle; height: 100%;">{{ ($index + 1) + ". " + question.title }}</h2>
                             </a>
                         </div>

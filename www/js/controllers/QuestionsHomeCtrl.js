@@ -478,9 +478,9 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
                 $scope.questionImg =     $scope.questionTmp.picture_url
 
 
-                console.log("** QuestionsHomeCtrl.updatePic() Pic Index: " + i);
-                console.log("** QuestionsHomeCtrl.updatePic() Pic Path:" + $scope.questions[i].img);
-                console.log('** QuestionsHomeCtrl.updatePic() name:' + $scope.questions[i].name);
+                // console.log("** QuestionsHomeCtrl.updatePic() Pic Index: " + i);
+                // console.log("** QuestionsHomeCtrl.updatePic() Pic Path:" + $scope.questions[i].img);
+                // console.log('** QuestionsHomeCtrl.updatePic() name:' + $scope.questions[i].name);
     
             });
             console.log("<< QuestionsHomeCtrl.updatePic()");
@@ -533,6 +533,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
                     console.log(JSON.stringify(response))
                   if(question.name !== undefined) {
                         CacheService.addPair(response.picture_url, question.name, $scope.isPlaying, false)
+                        CacheService.addPair(response.thumbnail_url, question.name, $scope.isPlaying, true)
                     }
     
 

@@ -1,6 +1,6 @@
 angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $rootScope, $timeout, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, DataService, WebService, CacheService)  {
         //alert($stateParams.projectId);
-<<<<<<< HEAD
+        CacheService.loadCache($scope.isPLaying)
         $scope.users = [];
         $scope.selectedUsers = [];
         $scope.isPLaying = false;
@@ -9,14 +9,9 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         $scope.isupdateQuestionModalActive  = false;
         $scope.iseditImageModalActive       = false;
         $scope.project = $stateParams.project;
-=======
-        CacheService.loadCache($scope.isPLaying)
-        $scope.users = []
-        $scope.selectedUsers = []
-        $scope.isPLaying = false
-        $scope.isThumbnail = true
-        $scope.project = $stateParams.project
->>>>>>> swipe
+
+
+
         $scope.projectID = $scope.project.project_id;
         $scope.questions = $scope.project.questions;
         $scope.getCachedValue = CacheService.getCachedValue;
@@ -399,13 +394,10 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             DataService.storeQuestion(question, $scope.projectID)
 
             WebService.create_question(question,function(result,response){
-                if (result == true){
-<<<<<<< HEAD
+            if(result){
                         CacheService.addPair(response.picture_url, name, $scope.isPLaying, false)
 
-=======
-                    CacheService.addPair(response.picture_url, name, $scope.isPLaying, false)
->>>>>>> swipe
+
                 }else{
                     alert("There was an error when creating question")
                 }
@@ -442,20 +434,14 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         };
     
         $scope.showQuestionDetails = function(question) {
-<<<<<<< HEAD
-            console.log(">> QuestionsHomeCtrl.showQuestionDetails() question:"+ JSON.stringify(question));
-            $scope.question     = question;
-            $scope.questionImg  = $scope.question.picture_url;
-            $scope.filter       = question.filter;
-            console.log("** QuestionsHomeCtrl.showQuestionDetails() $scope.filter:"+JSON.stringify($scope.filter));
 
-=======
+
             console.log(">> QuestionsHomeCtrl.showQuestionDetails() question:"+ question);
             $scope.questionTmp = DataService.clone(question);
             $scope.questionImg = $scope.questionTmp.picture_url
             $scope.filter = question.filter
             console.log(JSON.stringify($scope.filter))
->>>>>>> swipe
+
             $scope.updateQuestionModal.show();
             console.log("<< QuestionsHomeCtrl.showQuestionDetails()");
         };
@@ -481,23 +467,9 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             $scope.hideSheet();
             ImageService.handleMediaDialog(type, function(result, name) {
     
-<<<<<<< HEAD
-                $scope.question.picture_url =   cordova.file.dataDirectory + name
-                $scope.question.img         =   $scope.question.picture_url
-                $scope.question.name        =   name
-                $scope.question.url         =   $scope.question.picture_url
-                $scope.questionImg          =   $scope.question.picture_url
-    
-                for(var i = 0; i < $scope.questions.length; i += 1){
-                    if($scope.questions[i].question_id == questionID){
-                        console.log(i)
-                        $scope.questions[i] = $scope.question;
-                        break;
-                    }
-                }
-    
-    
-=======
+
+
+
                 $scope.questionTmp.picture_url =  cordova.file.dataDirectory + name
                 $scope.questionTmp.thumbnail_url =    $scope.questionTmp.picture_url
                 $scope.questionTmp.img =     $scope.questionTmp.picture_url
@@ -505,10 +477,10 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
                 $scope.questionTmp.url =    $scope.questionTmp.picture_url
                 $scope.questionImg =     $scope.questionTmp.picture_url
 
->>>>>>> swipe
-                console.log("** QuestionsHomeCtrl.updatePic() Pic Index: " + i);
-                console.log("** QuestionsHomeCtrl.updatePic() Pic Path:" + $scope.questions[i].img);
-                console.log('** QuestionsHomeCtrl.updatePic() name:' + $scope.questions[i].name);
+
+                // console.log("** QuestionsHomeCtrl.updatePic() Pic Index: " + i);
+                // console.log("** QuestionsHomeCtrl.updatePic() Pic Path:" + $scope.questions[i].img);
+                // console.log('** QuestionsHomeCtrl.updatePic() name:' + $scope.questions[i].name);
     
             });
             console.log("<< QuestionsHomeCtrl.updatePic()");
@@ -517,7 +489,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         // Close the new task modal
         $scope.closeUpdateQuestion = function() {
             console.log(">> QuestionsHomeCtrl.closeUpdateQuestion()");
-<<<<<<< HEAD
+            $scope.questionTmp = {}
             $scope.isupdateQuestionModalActive = false;
             $scope.updateQuestionModal.remove();
             $ionicModal.fromTemplateUrl('templates/edit-question.html', function(modal) {
@@ -527,10 +499,8 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
                 scope: $scope,
                 animation: 'slide-in-up'
             });
-=======
-            $scope.questionTmp = {}
-            $scope.updateQuestionModal.hide();
->>>>>>> swipe
+
+
             console.log("<< QuestionsHomeCtrl.closeUpdateQuestion()");
         };
 
@@ -544,16 +514,15 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
                     break;
                 }
             }
-<<<<<<< HEAD
+
 
             // VB
             // Reset the filter for the new picture and update the dialog
+            $scope.project.thumbnail_url = question.thumbnail_url
             $scope.resetFilter();
             question.filter      =   $scope.filter;
             $scope.updateObjectonEditQuestion();
-=======
-            $scope.project.thumbnail_url = question.thumbnail_url
->>>>>>> swipe
+
     
             DataService.storeQuestions($scope.questions, $scope.project.project_id)
 
@@ -562,16 +531,12 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             WebService.update_question(question,question.name,function(result,response){
                 if (result==true){
                     console.log(JSON.stringify(response))
-<<<<<<< HEAD
-                    if (question.name !== undefined) {
-                        CacheService.addPair(response.picture_url, name, $scope.isPLaying,false)
-                    }
-=======
-                    if(question.name !== undefined) {
+                  if(question.name !== undefined) {
                         CacheService.addPair(response.picture_url, question.name, $scope.isPlaying, false)
+                        CacheService.addPair(response.thumbnail_url, question.name, $scope.isPlaying, true)
                     }
     
->>>>>>> swipe
+
                 }else{
                     console.log("error:" + JSON.stringify(response))
                 }

@@ -21,11 +21,11 @@ angular.module('Piximony').factory('CacheService', function($cordovaFile, $windo
     var projectThumbnailCACHE_STORAGE_KEY = "projectThumbnailCache"
     var playingThumbnailCACHE_STORAGE_KEY = "playingThumbnailCache"
 
-    function getCachedValue(key, isPlaying){
+    function getCachedValue(key, isPlaying, isThumbnail){
         console.log(">> CacheService::getCachedValue()");
 
         if (startsWith(key, ['http://', 'https://', 'ftp://'])) {
-            cache = getCacheDict(isPlaying)
+            cache = getCacheDict(isPlaying, isThumbnail)
             if (cache.hasOwnProperty(key)) {
                 return cordova.file.dataDirectory + cache[key]
             } else {
