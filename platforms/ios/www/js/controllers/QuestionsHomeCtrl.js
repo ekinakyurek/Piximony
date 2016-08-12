@@ -113,7 +113,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             }
             if($scope.isupdateQuestionModalActive){
                 $scope.syncElementsonEditQuestion();
-                $timeout($scope.updateObjectonEditQuestion,150);
+                $timeout($scope.updateObjectonEditQuestion,300);
             }
             if($scope.iseditImageModalActive){
                 $scope.syncElementsonEditImage();
@@ -439,7 +439,7 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
             console.log(">> QuestionsHomeCtrl.showQuestionDetails() question:"+ question);
             $scope.questionTmp = DataService.clone(question);
             $scope.questionImg = $scope.questionTmp.picture_url
-            $scope.filter = question.filter
+            $scope.filter =  $scope.questionTmp.filter
             console.log(JSON.stringify($scope.filter))
 
             $scope.updateQuestionModal.show();

@@ -1,7 +1,7 @@
 <div class="modal image-modal transparent" id="contentContainer">
   <ion-pane class="transparent">
     <div>
-      <img id="myImage" ng-src="{{questionImg}}" class="fullscreen-image"/>
+      <img id="myImage" ng-src="{{getCachedValue(questionImg,false, false) }}" class="fullscreen-image"/>
       <svg id="mySvg" on-release="getMouseUpPosition()" on-touch="getMouseDownPosition()" on-drag="getMouseMovePosition()">
         <rect id="myRect" x="0" y="0" rx="5" ry="5" width="0" height="0"/>
       </svg>
