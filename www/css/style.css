@@ -173,3 +173,7 @@
     opacity: 0.3    ;
     font-size: 30px;
 }
+
+#myProfileImage{
+    height: 200px;
+}

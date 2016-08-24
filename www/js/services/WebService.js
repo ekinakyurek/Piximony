@@ -2,7 +2,7 @@
 angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
 
     var baseUrl = "http://piximony-dev.yaudxbzu3m.us-west-1.elasticbeanstalk.com/";
-    //baseUrl = "http://127.0.0.1:8000/"
+    baseUrl = "http://127.0.0.1:8000/"
     var userToken= "";
 
     function set_token(token){
@@ -212,41 +212,49 @@ angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
         });
     }
     //picture and thumbnail bytes of files
-    function upload_picture_and_thumbnail(picture, thumbnail, currentUser, callback){
-        form = new FormData
-        form.append("picture", picture)
-        form.append("thumbnail", thumbnail)
+    function upload_picture_data(picture, currentUser, callback){
+        var form = new FormData()
 
-        var settings = {
-            "url": baseUrl + "account/api/upload_both/",
-            "method": "POST",
-            "headers": {
-                "authorization": "Token "+ userToken
-            },
-            "contentType": false,
-            "mimeType": "multipart/form-data",
-            "data": form
-        }
-
-        return $http(settings).then(function(response) {
-            if (response.data.hasOwnProperty("result")){
-                if (response.data.result == "success"){
-                    currentUser.picture_url = response.data.picture_url
-                    currentUser.thumbnail_url = response.data.thumbnail_url
-                    callback(true, currentUser)
-                }else{
-                    console.log(response)
-                    callback(false,response.data)
+        $cordovaFile.readAsArrayBuffer(cordova.file.dataDirectory, picture)
+            .then(function (success) {
+                console.log("pictureeee")
+                var imgBlob = new Blob([success], { type: "image/jpeg" } );
+                form.append("picture", imgBlob)
+                form.append('user', JSON.stringify(currentUser))
+                
+                var settings = {
+                    "url": baseUrl + "account/api/upload_picture_data/",
+                    "method": "POST",
+                    "headers": {
+                        'Content-Type': undefined
+                    },
+                    "filename": currentUser.username,
+                    "processData": false,
+                    "data": form
                 }
 
-            }else{
-                console.log(response)
-                callback(false,response)
-            }
-        }, function(response) {
-            console.log(response)
-            callback(false,response)
-        });
+                return $http(settings).then(function(response) {
+                    if (response.data.hasOwnProperty("username")){
+                        if (response.data.result == "success"){
+                            callback(true, response.data)
+                        }else{
+                            console.log(response)
+                            callback(false,response.data)
+                        }
+
+                    }else{
+                        console.log(response)
+                        callback(false,response)
+                    }
+                }, function(response) {
+                    console.log(response)
+                    callback(false,response)
+                });
+            })
+
+
+
+
     }
 
     function get_friends(project_id, callback){
@@ -680,7 +688,7 @@ angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
         edit_a_user: edit_a_user,
         delete_self: delete_self,
         change_password: change_password,
-        upload_picture_and_thumbnail: upload_picture_and_thumbnail,
+        upload_picture_data: upload_picture_data,
         create_project: create_project,
         get_user_projects: get_user_pojects,
         get_playing_projects: get_playing_pojects,

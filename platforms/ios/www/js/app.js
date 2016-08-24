@@ -75,7 +75,6 @@ angular.module('Piximony', ['ionic','ngCordova']).config(function($stateProvider
         link: function (scope, element, attrs){
 
             attrs.$observe('imageSource', function() {
-                console.log(attrs.isThumbnail + "atrrriibutee")
                 element.attr("src", CacheService.getCachedValue(attrs.imageSource, scope.isPLaying, attrs.isThumbnail));
             })
 
