@@ -74,8 +74,7 @@
     top: 0;
 }
 #myRect {
-    fill: red;
-    stroke: black;
+    fill: white;
     stroke-width: 2;
     opacity: 0.99;
     visibility: visible;
@@ -98,8 +97,7 @@
     top: 0;
 }
 #myRectN {
-    fill: red;
-    stroke: black;
+    fill: white;
     stroke-width: 2;
     opacity: 0.99;
     visibility: visible;
@@ -123,8 +121,7 @@
     top: 0;
 }
 #myRectE {
-    fill: red;
-    stroke: black;
+    fill: white;
     stroke-width: 2;
     opacity: 0.99;
     visibility: visible;
