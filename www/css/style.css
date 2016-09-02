@@ -159,6 +159,17 @@
     opacity: 0.3;
     font-size: 30px;
 }
+#mySaveButton{
+    display:inline-block;
+    padding:5px;
+    position:absolute;
+    bottom:5px;
+    left:45px;
+    border: 2px;
+    background-color: white;
+    opacity: 0.3;
+    font-size: 30px;
+}
 #myEditButton{
     display:inline-block;
     padding:5px;
@@ -172,5 +183,5 @@
 }
 
 #myProfileImage{
-    height: 200px;
+    height: 100px;
 }
