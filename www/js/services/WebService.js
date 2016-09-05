@@ -12,9 +12,7 @@ angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
     }
     //ACCOUNT
 
-    function create_user(username, email, password, callback){
-
-        json =  {"username":username, "email": email, "password": password}
+    function create_user(newuser, callback){
 
         var settings = {
             "url":  baseUrl + "account/register/",
@@ -22,7 +20,7 @@ angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
             "headers": {
                 "content-type": "application/json"
             },
-            "data": JSON.stringify(json)
+            "data": JSON.stringify(newuser)
         }
 
         return $http(settings).then(function(response) {

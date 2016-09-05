@@ -10,6 +10,7 @@ angular.module('Piximony').controller('SignInCtrl', function($scope, $rootScope,
         }
     }
 
+    $scope.lang = 'en'
     $scope.signIn = function(user) {
      console.log(">> SignInCtrl.signIn()");
 
@@ -36,7 +37,8 @@ angular.module('Piximony').controller('SignInCtrl', function($scope, $rootScope,
               $scope.buttonText = "ID_COMP_REGISTER";
          }else{
              console.log(">> SignInCtrl.signUp() Register");
-             WebService.create_user(user.username, user.email, user.password, function(result,info){
+             user.lang = $scope.lang
+             WebService.create_user(user, function(result,info){
                  if (result==true){
                      user.username = ""
                      user.password = ""
@@ -60,6 +62,7 @@ angular.module('Piximony').controller('SignInCtrl', function($scope, $rootScope,
      };
     
     $scope.changeLang = function(lang) {
+        $scope.lang = lang
         window.localStorage.setItem('lang',lang);
         $translate.use(lang);
         $state.go('signin');
