@@ -35,6 +35,7 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
     $rootScope.$on('projectsToPlay', function (event, data) {
         console.log('>> PlayerHomeCtrl.$on() projectsToPlay event recieved');
         //$scope.projectsToPlay = DataService.projects2Play();
+        console.log(JSON.stringify(data))
         if (data.length > 0){
             $scope.projectsToPlay = data
             DataService.storeProjectsToPlay(data)

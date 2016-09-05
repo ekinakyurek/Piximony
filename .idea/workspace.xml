@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7847d57e-042c-4dd9-94dc-7ee35862bc39" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controllers/SignInCtrl.js" afterPath="$PROJECT_DIR$/www/js/controllers/SignInCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/services/WebService.js" afterPath="$PROJECT_DIR$/www/js/services/WebService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controllers/PlayerHomeCtrl.js" afterPath="$PROJECT_DIR$/www/js/controllers/PlayerHomeCtrl.js" />
     </list>
     <ignored path="piximony.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,16 +63,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="34" column="53" selection-start-line="34" selection-start-column="53" selection-end-line="34" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="FriendsHomeCtrl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/controllers/FriendsHomeCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -97,8 +86,18 @@
       <file leaf-file-name="WebService.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/services/WebService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="60">
               <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayerHomeCtrl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/controllers/PlayerHomeCtrl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="37" column="40" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -151,7 +150,6 @@
         <option value="$PROJECT_DIR$/www/templates/MainPage.html" />
         <option value="$PROJECT_DIR$/www/templates/player.html" />
         <option value="$PROJECT_DIR$/www/templates/ProjectsHome.html" />
-        <option value="$PROJECT_DIR$/www/js/controllers/PlayerHomeCtrl.js" />
         <option value="$PROJECT_DIR$/www/templates/PlayerHome.html" />
         <option value="$PROJECT_DIR$/www/templates/new-question.html" />
         <option value="$PROJECT_DIR$/www/js/controllers/MainPageCtrl.js" />
@@ -174,6 +172,7 @@
         <option value="$PROJECT_DIR$/www/js/controllers/FriendsHomeCtrl.js" />
         <option value="$PROJECT_DIR$/www/js/app.js" />
         <option value="$PROJECT_DIR$/www/js/controllers/SignInCtrl.js" />
+        <option value="$PROJECT_DIR$/www/js/controllers/PlayerHomeCtrl.js" />
         <option value="$PROJECT_DIR$/www/js/services/WebService.js" />
       </list>
     </option>
@@ -528,12 +527,12 @@
       <workItem from="1469484529293" duration="3525000" />
       <workItem from="1469953361997" duration="784000" />
       <workItem from="1470962075305" duration="8214000" />
-      <workItem from="1473061594175" duration="3895000" />
+      <workItem from="1473061594175" duration="5095000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="196279000" />
+    <option name="totallyTimeSpent" value="197479000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -682,13 +681,6 @@
     <entry file="file://$PROJECT_DIR$/www/templates/ProjectsHome.html" />
     <entry file="file://$PROJECT_DIR$/www/js/#app.js#" />
     <entry file="file://$PROJECT_DIR$/www/templates/PlayerHome.html" />
-    <entry file="file://$PROJECT_DIR$/www/js/controllers/PlayerHomeCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="85" selection-start-line="0" selection-start-column="85" selection-end-line="0" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/QuestionsHome.html" />
     <entry file="file://$PROJECT_DIR$/www/templates/player.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -955,9 +947,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controllers/PlayerHomeCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="37" column="40" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/services/WebService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
+        <state relative-caret-position="60">
           <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
           <folding />
         </state>
