@@ -1,17 +1,16 @@
-<ion-view view-title="Projects">
+<ion-view view-title="{{'ID_PIXIMONIES' | translate}}">
     <ion-nav-buttons side="right">
-        <button class="button button-icon icon ion-ios-compose-outline" ng-click="newProject()">
+        <button class="button button-icon icon ion-ios-plus-empty" ng-click="newProject()">
         </button>
     </ion-nav-buttons>
     <ion-nav-buttons side="left">
-        <button class="button button-icon" ng-click="show_delete()">
-            Edit
+        <button class="button button-icon" ng-click="show_delete()" translate='ID_EDIT'>
         </button>
     </ion-nav-buttons>
     <ion-content>
             <div class="list">
                 <ion-refresher
-                        pulling-text="Pull to refresh..."
+                        pulling-text="{{'ID_REFRESH_HINT' | translate}}"
                         on-refresh="doRefresh()">
                 </ion-refresher>
                 <ion-list can-swipe="true" show-delete="showDelete" hold-list>
@@ -33,9 +32,9 @@
                         <!--</div> -->
                     </div>
                     <ion-option-button class="item ion-person-add"
-                                       ng-click="openShareModal(project)">
+                                       ng-click="openShareModal(project)" style="font-size:30px;">
                     </ion-option-button>
-                    <ion-option-button  ng-click="toggleProject(project)" ng-class="{'item': true, 'ion-arrow-return-left': project.is_published, 'ion-forward': !project.is_published}">
+                    <ion-option-button  ng-click="toggleProject(project)" ng-class="{'item': true, 'ion-arrow-return-left': project.is_published, 'ion-forward': !project.is_published}" style="font-size:30px;">
                     </ion-option-button>
                     <ion-delete-button class="ion-minus-circled"
                                        ng-click="deleteProject(project); projects.splice($index, 1)">

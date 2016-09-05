@@ -2,8 +2,8 @@
 
         <!-- Modal header bar -->
         <ion-header-bar class="bar-secondary">
-            <h1 class="title">New Project</h1>
-            <button class="button button-clear button-positive" ng-click="closeNewProject()">Cancel</button>
+            <h1 class="title" translate="ID_NEW_PIXIMONY"></h1>
+            <button class="button button-clear button-positive" ng-click="closeNewProject()" translate="ID_CANCEL"></button>
         </ion-header-bar>
 
         <!-- Modal content area -->
@@ -12,11 +12,11 @@
             <form ng-submit="createProject(project)">
                 <div class="list">
                     <label class="item item-input">
-                        <input type="text" placeholder="Name your project" ng-model="project.name">
+                        <input type="text" placeholder="{{'ID_NEW_PIXIMONY_HINT' | translate}}" ng-model="project.name">
                     </label>
                 </div>
                 <div class="padding">
-                    <button type="submit" class="button button-block button-positive">Create Project</button>
+                    <button type="submit" class="button button-block button-positive" translate="ID_CREATE_PIXIMONY"></button>
                 </div>
             </form>
 

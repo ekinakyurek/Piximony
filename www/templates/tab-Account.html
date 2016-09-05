@@ -1,4 +1,4 @@
- <ion-view view-title="Account">
+ <ion-view view-title="{{'ID_ACCOUNT' | translate}}">
      <ion-nav-buttons side="right">
          <button class="button button-icon icon ion-log-out" ng-click="logOut()">
          </button>
@@ -9,31 +9,36 @@
             <div class="profile-img-container">
                 <img id="myProfileImage" ng-src="{{user.thumbnail_url != '' && user.thumbnail_url || 'img/User-100.png'}}" ng-click="updateMedia()"/>
             </div>
-            <div class="item item-divider">
-                Username
+            <div class="item item-divider" translate="ID_USERNAME">
+                
               </div>
               <div class="item item-text-wrap">
                 {{user.username}}
               </div>
-              <div class="item item-divider">
+              <div class="item item-divider" translate="ID_NAME">
                 First Name
               </div>
                 <div class="item item-text-wrap">
                 {{user.first_name}}
               </div>
-            <div class="item item-divider">
-                Last Name
+            <div class="item item-divider" translate="ID_LAST_NAME">
+                
               </div>
                 <div class="item item-text-wrap">
                 {{user.last_name}}
               </div>
-            <div class="item item-divider">
-                e-mail
-              </div>
-                <div class="item item-text-wrap">
-                {{user.e-mail}}
-              </div>
-            </div>
+            <div class="list">
+              <label class="item item-input item-select">
+                <div class="input-label" translate="ID_LANGUAGE">
             
+                </div>
+                <select ng-model="lang" ng-change="changeLanguage(lang)">
+                    <option value="en" selected>English</option>
+                    <option value="es">Español</option>
+                    <option value="de">Deutsch</option>
+                    <option value="tr">Türkçe</option>
+                </select>
+              </label>
+            </div>
         </ion-content>
 </ion-view>

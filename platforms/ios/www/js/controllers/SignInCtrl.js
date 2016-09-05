@@ -1,4 +1,4 @@
-angular.module('Piximony').controller('SignInCtrl', function($scope, $rootScope, $state, WebService, DataService) {
+angular.module('Piximony').controller('SignInCtrl', function($scope, $rootScope, $state, WebService, DataService, $translate) {
     
     $scope.init = function () {
         var user = DataService.getUser()
@@ -27,13 +27,13 @@ angular.module('Piximony').controller('SignInCtrl', function($scope, $rootScope,
     };
 
      $scope.isVisible = false;
-     $scope.buttonText= "Sign Up" // After click, returns to <complete registration>
+     $scope.buttonText= "ID_SIGN_UP" // After click, returns to <complete registration>
     
      $scope.signUp = function(user) {
          console.log(">> SignInCtrl.signUp()");
          if(!$scope.isVisible){
               $scope.isVisible = !$scope.isVisible;
-              $scope.buttonText = "Complete Registration";
+              $scope.buttonText = "ID_COMP_REGISTER";
          }else{
              console.log(">> SignInCtrl.signUp() Register");
              WebService.create_user(user.username, user.email, user.password, function(result,info){
@@ -55,8 +55,14 @@ angular.module('Piximony').controller('SignInCtrl', function($scope, $rootScope,
      $scope.toggle = function() {
          console.log(">> SignInCtrl.toggle()");
          $scope.isVisible = !$scope.isVisible;
-         $scope.buttonText = "Sign Up";
+         $scope.buttonText = "ID_SIGN_UP";
          console.log("<< SignInCtrl.toggle()");
      };
-
+    
+    $scope.changeLang = function(lang) {
+        window.localStorage.setItem('lang',lang);
+        $translate.use(lang);
+        $state.go('signin');
+    };
+    
     })

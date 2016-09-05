@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('Piximony', ['ionic','ngCordova']).config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+angular.module('Piximony', ['ionic','ngCordova','pascalprecht.translate']).config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider,$translateProvider) {
 
     $ionicConfigProvider.views.maxCache(2);
    
@@ -69,6 +69,109 @@ angular.module('Piximony', ['ionic','ngCordova']).config(function($stateProvider
 
 
     $urlRouterProvider.otherwise('/sign-in');
+    
+    $translateProvider.translations('en', {
+    //generic
+    ID_CANCEL:              'Cancel',
+    //sign-in.html
+    ID_USERNAME:            'Username',
+    ID_PASSWORD:            'Password',
+    ID_RE_PASSWORD:         'Re-password',
+    ID_E_MAIL:              'E-mail',
+    ID_COMP_REGISTER:       'Complete Registration',
+    ID_FORGOT_PASSWORD:     'Forgot password',
+    ID_SIGN_IN:             'Sign-In',
+    ID_SIGN_UP:             'Sign Up',
+    //tab-ProjectsHome.html
+    ID_EDIT:                'Edit',
+    ID_PIXIMONIES:          'Piximonies',
+    ID_REFRESH_HINT:        'Pull to refresh...',
+    //new-project.html
+    ID_NEW_PIXIMONY:        'New Piximony',
+    ID_CREATE_PIXIMONY:     'Create',
+    ID_NEW_PIXIMONY_HINT:   'Name your Piximony',
+    //tab-Account.html
+    ID_LANGUAGE:            'Language',
+    ID_NAME:                'First Name',
+    ID_LAST_NAME:           'Last Name',
+    ID_ACCOUNT:             'Account',
+    //tabs.html
+    ID_FEED:                'Feed',
+    ID_PLAY:                'Play',
+    ID_CREATE:              'Create',
+    ID_FRIENDS:             'Friends',
+    ID_ME:                  'Me',
+    });
+ 
+    $translateProvider.translations('tr', {
+    ID_CANCEL:              'İptal',
+    //sign-in.html
+    ID_USERNAME:            'Kullanıcı Adı',
+    ID_PASSWORD:            'Parola',
+    ID_RE_PASSWORD:         'Parola Tekrar',
+    ID_E_MAIL:              'E-posta',
+    ID_COMP_REGISTER:       'Kaydı Tamamla',
+    ID_FORGOT_PASSWORD:     'Parolamı unuttum',
+    ID_SIGN_IN:             'Giriş',
+    ID_SIGN_UP:             'Kayıt',
+    //tab-ProjectsHome.html
+    ID_EDIT:                'Düzenle',
+    ID_PIXIMONIES:          'Piximonyler',
+    ID_REFRESH_HINT:         'Yenilemek için aşağıya çekin...',
+    //new-project.html
+    ID_NEW_PIXIMONY:        'Yeni Piximony',
+    ID_CREATE_PIXIMONY:     'Yarat',
+    ID_NEW_PIXIMONY_HINT:   'Piximony\'ine isim ver',
+    //tab-Account.html
+    ID_LANGUAGE:            'Dil',
+    ID_NAME:                'Ad',
+    ID_LAST_NAME:           'Soyad',
+    ID_ACCOUNT:             'Hesap',
+    //tabs.html
+    ID_FEED:                'Bildirimler',
+    ID_PLAY:                'Oyna',
+    ID_CREATE:              'Ekle',
+    ID_FRIENDS:             'Arkadaşlar',
+    ID_ME:                  'Profil',
+    });
+    
+    $translateProvider.translations('es', {
+    ID_USERNAME:        'Username',
+    ID_PASSWORD:        'Password',
+    ID_RE_PASSWORD:     'Re-password',
+    ID_E_MAIL:          'E-mail',
+    ID_COMP_REGISTER:   'Complete Registration',
+    ID_FORGOT_PASSWORD: 'Forgot password',
+    ID_SIGN_IN:         'Sign-In',
+    ID_SIGN_UP:         'Sign Up',
+    ID_LANGUAGE:        'Language',
+    ID_CANCEL:          'Cancel',
+    ID_EDIT:            'Edit'
+    });
+    
+    $translateProvider.translations('de', {
+    ID_USERNAME:        'Username',
+    ID_PASSWORD:        'Password',
+    ID_RE_PASSWORD:     'Re-password',
+    ID_E_MAIL:          'E-mail',
+    ID_COMP_REGISTER:   'Complete Registration',
+    ID_FORGOT_PASSWORD: 'Forgot password',
+    ID_SIGN_IN:         'Sign-In',
+    ID_SIGN_UP:         'Sign Up',
+    ID_LANGUAGE:        'Language',
+    ID_CANCEL:          'Cancel',
+    ID_EDIT:            'Edit'
+    });
+    
+    
+    if (window.localStorage.getItem('lang')) {
+    $translateProvider.preferredLanguage(window.localStorage.getItem('lang'));
+    } else {
+    $translateProvider.preferredLanguage('tr');
+    };
+ 
+  $translateProvider.useSanitizeValueStrategy('escape');
+    
 
 }).directive("imageSource", function (CacheService){
     return {

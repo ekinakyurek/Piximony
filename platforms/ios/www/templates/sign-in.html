@@ -5,36 +5,41 @@
     <ion-content>
         <div class="list">
             <label class="item item-input">
-                <span class="input-label">Username</span>
+                <span class="input-label" translate="ID_USERNAME"></span>
                 <input type="text" ng-model="user.username">
             </label>
             <label class="item item-input">
-                <span class="input-label">Password</span>
+                <span class="input-label" translate="ID_PASSWORD"></span>
                 <input type="password" ng-model="user.password">
             </label>
-            <label class="item item-input" ng-show= isVisible >
-                <span class="input-label" > Re-password</span>
+            <label class="item item-input" ng-show=isVisible >
+                <span class="input-label" translate="ID_RE_PASSWORD"></span>
                 <input type="password" ng-model="user.repassword" >
             </label>
-            <label  class="item item-input" ng-show= isVisible >
-                <span class="input-label">E-mail</span>
+            <label class="item item-input" ng-show=isVisible >
+                <span class="input-label" translate="ID_E_MAIL"></span>
                 <input type="text" ng-model="user.email">
             </label>
         </div>
     
         <div class="padding">
-            <button class="button button-block button-positive" ng-click="signIn(user)" ng-show= !isVisible  >
-                Sign-In
+            <button class="button button-block button-positive" ng-click="signIn(user)" ng-show=!isVisible translate="ID_SIGN_IN">
+                
             </button>
             <button class="button button-block button-positive" ng-click= "signUp(user)">
-               {{buttonText}}
+               {{buttonText | translate}}
             </button>
-            <button class="button button-block button-positive" ng-click= "toggle()" ng-show= isVisible>
-               Cancel
+            <button class="button button-block button-positive" ng-click= "toggle()" ng-show=isVisible translate="ID_CANCEL">
             </button>
             <p class="text-center">
-            <a href="#/forgot-password">Forgot password</a>
+            <a href="#/forgot-password" translate='ID_FORGOT_PASSWORD'></a>
             </p>
+            <div class="button-bar">
+                <a class="button button-small button-outline button-positive" ng-click="changeLang('en')">English</a>
+                <a class="button button-small button-outline button-positive" ng-click="changeLang('sp')">Español</a>
+                <a class="button button-small button-outline button-positive" ng-click="changeLang('de')">Deutsch</a>
+                <a class="button button-small button-outline button-positive" ng-click="changeLang('tr')">Türkçe</a>
+            </div>
         </div>
     </ion-content>
 </ion-view>

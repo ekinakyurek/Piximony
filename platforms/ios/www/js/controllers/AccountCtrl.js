@@ -1,4 +1,4 @@
-angular.module('Piximony').controller('AccountCtrl', function($scope, $state, DataService, WebService, CacheService, ImageService, $ionicHistory, $ionicActionSheet) {
+angular.module('Piximony').controller('AccountCtrl', function($scope, $state, DataService, WebService, CacheService, ImageService, $ionicHistory, $ionicActionSheet,$translate) {
 
     $scope.user = DataService.getUser()
     $scope.profile_image = undefined
@@ -44,8 +44,7 @@ angular.module('Piximony').controller('AccountCtrl', function($scope, $state, Da
 
         })
     }
-
-
+    
     $scope.logOut = function () {
         console.log("** MainPageCtrl.logOut()");
         DataService.clearStorage();
@@ -54,6 +53,13 @@ angular.module('Piximony').controller('AccountCtrl', function($scope, $state, Da
             disableBack: true
         });
         $state.go('signin');
+    }
+    
+    $scope.changeLanguage = function(lang) {
+        //alert(lang);
+        window.localStorage.setItem('lang',lang);
+        $translate.use(lang);
+        $state.go('tab.Account');
     }
     
 });
