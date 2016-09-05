@@ -44,6 +44,16 @@ angular.module('Piximony', ['ionic','ngCordova','pascalprecht.translate']).confi
                 }
             }
         })
+        
+        .state('tab.FriendsHome', {
+            url: '/FriendsHome',
+            views: {
+                'tab-Account': {
+                    templateUrl: 'templates/tab-FriendsHome.html',
+                    controller: 'FriendsHomeCtrl'
+                }
+            }
+        })
 
         .state('tab.QuestionsHome', {
             url: '/ProjectsHome/QuestionsHome',
