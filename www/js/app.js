@@ -48,7 +48,7 @@ angular.module('Piximony', ['ionic','ngCordova','pascalprecht.translate']).confi
         .state('tab.FriendsHome', {
             url: '/FriendsHome',
             views: {
-                'tab-Account': {
+                'tab-FriendsHome': {
                     templateUrl: 'templates/tab-FriendsHome.html',
                     controller: 'FriendsHomeCtrl'
                 }

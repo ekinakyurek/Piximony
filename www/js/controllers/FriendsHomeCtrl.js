@@ -1,4 +1,4 @@
-angular.module('Piximony').controller('FriendsHomeCtrl', function($scope, $state, DataService, WebService, CacheService, ImageService, $ionicHistory, $ionicActionSheet,$translate) {
+angular.module('Piximony').controller('FriendsHomeCtrl', function($scope, $state, DataService, WebService) {
     /**
      * Created by ekin on 05/09/16.
      */
