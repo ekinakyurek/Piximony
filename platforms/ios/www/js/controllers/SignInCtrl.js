@@ -10,7 +10,6 @@ angular.module('Piximony').controller('SignInCtrl', function($scope, $rootScope,
         }
     }
 
-    $scope.lang = 'en'
     $scope.signIn = function(user) {
      console.log(">> SignInCtrl.signIn()");
 
@@ -62,10 +61,37 @@ angular.module('Piximony').controller('SignInCtrl', function($scope, $rootScope,
      };
     
     $scope.changeLang = function(lang) {
-        $scope.lang = lang
+        $scope.toogleLangBar(lang);
+        $scope.lang = lang;
         window.localStorage.setItem('lang',lang);
         $translate.use(lang);
         $state.go('signin');
     };
+    
+    $scope.toogleLangBar = function(lang) {
+        $scope.supportedLanguages = ["en","sp","de","tr"];
+        for(i=0; i<$scope.supportedLanguages.length;i++){
+            //alert($scope.supportedLanguages[i]);
+            //alert(lang);
+            if($scope.supportedLanguages[i] == lang)
+            {
+                document.getElementById(lang).className = "button button-small button-positive";
+                document.getElementById(lang).style.fontWeight = "bold";
+            }
+            else
+            {
+                document.getElementById($scope.supportedLanguages[i]).className = "button button-small button-outline button-positive";
+                document.getElementById($scope.supportedLanguages[i]).style.fontWeight = "normal";
+            }
+        }
+    };
+    
+     $scope.$on('$ionicView.loaded', function (viewInfo, state) {
+        if (window.localStorage.getItem('lang')) {
+        $scope.toogleLangBar(window.localStorage.getItem('lang'));
+        } else {
+        $scope.toogleLangBar('en');
+        };    
+    });
     
     })

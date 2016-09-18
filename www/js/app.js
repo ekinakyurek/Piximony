@@ -177,7 +177,7 @@ angular.module('Piximony', ['ionic','ngCordova','pascalprecht.translate']).confi
     if (window.localStorage.getItem('lang')) {
     $translateProvider.preferredLanguage(window.localStorage.getItem('lang'));
     } else {
-    $translateProvider.preferredLanguage('tr');
+    $translateProvider.preferredLanguage('en');
     };
  
   $translateProvider.useSanitizeValueStrategy('escape');
