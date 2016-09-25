@@ -15,7 +15,7 @@ angular.module('Piximony').controller('PlayerHomeCtrl', function($scope, $rootSc
         if(result){
             $rootScope.$broadcast('projectsToPlay', projects)
         }else{
-            alert("Error in get_playing_projects, pleaser try again!")
+            alert("Error in get_playing_projects, please try again!")
         }
     })
 
