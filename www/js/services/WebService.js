@@ -641,6 +641,24 @@ angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
         });
     }
 
+    function delete_question(question_id,callback){
+        var settings = {
+            "url": baseUrl + "question/delete_question/?question_id=" + question_id,
+            "method": "POST"
+        }
+        return $http(settings).then(function(response) {
+            if (response.data.hasOwnProperty("result")){
+                callback(true,response.data.questions)
+            }else{
+                console.log(response)
+                callback(false,response.data)
+            }
+        }, function(response) {
+            console.log(response)
+            callback(false,response)
+        });
+    }
+
     //score_board
 
     function update_score(scoreboard, callback){
@@ -692,6 +710,7 @@ angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
         get_playing_projects: get_playing_pojects,
         create_question: create_question,
         get_questions: get_questions,
+        delete_question:delete_question,
         randomString:randomString,
         update_question: update_question,
         get_friends: get_friends,

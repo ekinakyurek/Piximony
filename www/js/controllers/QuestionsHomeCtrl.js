@@ -1,4 +1,4 @@
-angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $rootScope, $timeout, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, ImageService, DataService, WebService, CacheService)  {
+angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $rootScope, $timeout, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, $ionicListDelegate, $ionicPopup, ImageService, DataService, WebService, CacheService)  {
         //alert($stateParams.projectId);
         CacheService.loadCache($scope.isPLaying)
         $scope.users = [];
@@ -17,7 +17,36 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         $scope.getCachedValue = CacheService.getCachedValue;
         $scope.filter = {xAxisPrcnt: 0, yAxisPrcnt: 0, heightPrcnt: 0, widthPrcnt: 0};
 
+    $scope.showConfirm = function(question) {
+        var confirmPopup = $ionicPopup.confirm({
+            title: 'Deleting question',
+            template: 'Are you sure you want to delete this question?'
+        });
+
+        confirmPopup.then(function(res) {
+            $ionicListDelegate.closeOptionButtons();
+            if(res) {
+               $scope.delete_question(question)
+            } else {
+                console.log('You are not sure');
+            }
+        });
+    };
     
+    $scope.delete_question = function (question) {
+
+         WebService.delete_question(question.question_id, function (result, info){
+             if (result) {
+                 console.log("success")
+                 qindex = $scope.questions.map(function (e) {
+                     return e.question_id;
+                 }).indexOf(question.question_id);
+                 $scope.questions.splice(qindex, 1)
+             }
+         })
+
+          
+    }
         $scope.doRefresh = function(){
 
             WebService.get_questions($scope.project.project_id, function (result, questions) {
