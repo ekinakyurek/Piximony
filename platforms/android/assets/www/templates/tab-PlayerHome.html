@@ -1,0 +1,22 @@
+<ion-nav-buttons side="left"></ion-nav-buttons>
+<ion-nav-buttons side="right"></ion-nav-buttons>
+<ion-view view-title="Playing Projects">
+        <ion-content>
+            <div class="list">
+                <ion-refresher
+                        pulling-text="Pull to refresh..."
+                        on-refresh="doRefresh()">
+                </ion-refresher>
+                <a ng-repeat="project in projectsToPlay"
+                   ng-click="openPlayer(project)"
+                   class="item item-avatar">
+
+                    <img image-source="{{ project.thumbnail_url }}" is-thumbnail="true">
+                    <h2 style="vertical-align: middle; height: 100%;">{{ project.title }}</h2>
+
+                </a>
+
+            </div>
+
+        </ion-content>
+</ion-view>

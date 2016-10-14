@@ -1,0 +1,46 @@
+<ion-view view-title="{{'ID_PIXIMONIES' | translate}}">
+    <ion-nav-buttons side="right">
+        <button class="button button-icon icon ion-ios-plus-empty" ng-click="newProject()">
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="left">
+        <button class="button button-icon" ng-click="show_delete()" translate='ID_EDIT'>
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+            <div class="list">
+                <ion-refresher
+                        pulling-text="{{'ID_REFRESH_HINT' | translate}}"
+                        on-refresh="doRefresh()">
+                </ion-refresher>
+                <ion-list can-swipe="true" show-delete="showDelete" hold-list>
+                <ion-item ng-repeat="project in projects">
+                    <div class="row">
+                        <div class="col">
+                            <a ng-click="showQuestions(project)" class="item item-avatar">
+                                <img image-source="{{ project.thumbnail_url }}" is-thumbnail="true">
+                                <h2 style="vertical-align: middle; height: 100%;">{{ ($index + 1) + ". " + project.title }}</h2>
+                            </a>
+                        </div>
+                        <!--<div class="col-5 col-center">-->
+                            <!--<a ng-click="getMyFriends()" class="item ion-person-add">-->
+                            <!--</a>-->
+                            <!--<a ng-click="toggleProject(project)" ng-class="{'item': true, 'ion-arrow-return-left': project.is_published, 'ion-forward': !project.is_published}">-->
+                            <!--</a>-->
+                            <!--<a ng-click="deleteProject()" class="item ion-minus-circled" ng-if="!project.is_deleted">-->
+                            <!--</a>-->
+                        <!--</div> -->
+                    </div>
+                    <ion-option-button class="item ion-person-add"
+                                       ng-click="openShareModal(project)" style="font-size:30px;">
+                    </ion-option-button>
+                    <ion-option-button  ng-click="toggleProject(project)" ng-class="{'item': true, 'ion-arrow-return-left': project.is_published, 'ion-forward': !project.is_published}" style="font-size:30px;">
+                    </ion-option-button>
+                    <ion-delete-button class="ion-minus-circled"
+                                       ng-click="deleteProject(project); projects.splice($index, 1)">
+                    </ion-delete-button>
+                </ion-item>
+                </ion-list>
+            </div>
+        </ion-content>
+</ion-view>

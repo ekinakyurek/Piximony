@@ -9,6 +9,38 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/cordova-plugin-screen-orientation/www/screenorientation.js",
+        "id": "cordova-plugin-screen-orientation.screenorientation",
+        "pluginId": "cordova-plugin-screen-orientation",
+        "clobbers": [
+            "cordova.plugins.screenorientation"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-screen-orientation/www/screenorientation.android.js",
+        "id": "cordova-plugin-screen-orientation.screenorientation.android",
+        "pluginId": "cordova-plugin-screen-orientation",
+        "merges": [
+            "cordova.plugins.screenorientation"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.device/www/device.js",
+        "id": "org.apache.cordova.device.device",
+        "pluginId": "org.apache.cordova.device",
+        "clobbers": [
+            "device"
+        ]
+    },
+    {
+        "file": "plugins/org.devgeeks.Canvas2ImagePlugin/www/Canvas2ImagePlugin.js",
+        "id": "org.devgeeks.Canvas2ImagePlugin.Canvas2ImagePlugin",
+        "pluginId": "org.devgeeks.Canvas2ImagePlugin",
+        "clobbers": [
+            "window.canvas2ImagePlugin"
+        ]
+    },
+    {
         "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
         "id": "cordova-plugin-camera.Camera",
         "pluginId": "cordova-plugin-camera",
@@ -185,6 +217,12 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/cordova-plugin-file/www/browser/isChrome.js",
+        "id": "cordova-plugin-file.isChrome",
+        "pluginId": "cordova-plugin-file",
+        "runs": true
+    },
+    {
         "file": "plugins/cordova-plugin-file/www/android/FileSystem.js",
         "id": "cordova-plugin-file.androidFileSystem",
         "pluginId": "cordova-plugin-file",
@@ -206,68 +244,20 @@ module.exports = [
             "cordova"
         ],
         "runs": true
-    },
-    {
-        "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
-        "id": "cordova-plugin-file-transfer.FileTransferError",
-        "pluginId": "cordova-plugin-file-transfer",
-        "clobbers": [
-            "window.FileTransferError"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-file-transfer/www/FileTransfer.js",
-        "id": "cordova-plugin-file-transfer.FileTransfer",
-        "pluginId": "cordova-plugin-file-transfer",
-        "clobbers": [
-            "window.FileTransfer"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-screen-orientation/www/screenorientation.js",
-        "id": "cordova-plugin-screen-orientation.screenorientation",
-        "pluginId": "cordova-plugin-screen-orientation",
-        "clobbers": [
-            "cordova.plugins.screenorientation"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-screen-orientation/www/screenorientation.android.js",
-        "id": "cordova-plugin-screen-orientation.screenorientation.android",
-        "pluginId": "cordova-plugin-screen-orientation",
-        "merges": [
-            "cordova.plugins.screenorientation"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.device/www/device.js",
-        "id": "org.apache.cordova.device.device",
-        "pluginId": "org.apache.cordova.device",
-        "clobbers": [
-            "device"
-        ]
-    },
-    {
-        "file": "plugins/org.devgeeks.Canvas2ImagePlugin/www/Canvas2ImagePlugin.js",
-        "id": "org.devgeeks.Canvas2ImagePlugin.Canvas2ImagePlugin",
-        "pluginId": "org.devgeeks.Canvas2ImagePlugin",
-        "clobbers": [
-            "window.canvas2ImagePlugin"
-        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
     "com.ionic.keyboard": "1.0.4",
-    "cordova-plugin-camera": "2.1.0",
-    "cordova-plugin-file": "4.1.0",
-    "cordova-plugin-file-transfer": "1.5.0",
     "cordova-plugin-screen-orientation": "1.4.0",
-    "cordova-plugin-whitelist": "1.2.2",
-    "org.apache.cordova.console": "0.2.13",
     "org.apache.cordova.device": "0.3.0",
-    "org.devgeeks.Canvas2ImagePlugin": "0.6.0"
+    "org.devgeeks.Canvas2ImagePlugin": "0.6.0",
+    "cordova-plugin-compat": "1.0.0",
+    "cordova-plugin-camera": "2.3.1-dev",
+    "cordova-plugin-whitelist": "1.3.0",
+    "cordova-plugin-console": "1.0.4",
+    "cordova-plugin-file": "4.3.0"
 }
 // BOTTOM OF METADATA
 });

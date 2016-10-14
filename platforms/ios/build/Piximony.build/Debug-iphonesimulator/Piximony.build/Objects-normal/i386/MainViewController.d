@@ -7,9 +7,9 @@ dependencies: \
   /Users/ekin/git/piximony/platforms/ios/build/emulator/include/Cordova/CDVInvokedUrlCommand.h \
   /Users/ekin/git/piximony/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegate.h \
   /Users/ekin/git/piximony/platforms/ios/build/emulator/include/Cordova/CDVCommandQueue.h \
-  /Users/ekin/git/piximony/platforms/ios/build/emulator/include/Cordova/CDVWhitelist.h \
   /Users/ekin/git/piximony/platforms/ios/build/emulator/include/Cordova/CDVScreenOrientationDelegate.h \
   /Users/ekin/git/piximony/platforms/ios/build/emulator/include/Cordova/CDVPlugin.h \
   /Users/ekin/git/piximony/platforms/ios/build/emulator/include/Cordova/CDVPluginResult.h \
   /Users/ekin/git/piximony/platforms/ios/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h \
+  /Users/ekin/git/piximony/platforms/ios/build/emulator/include/Cordova/CDVWebViewEngineProtocol.h \
   /Users/ekin/git/piximony/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegateImpl.h

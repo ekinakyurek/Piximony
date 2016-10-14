@@ -10,22 +10,7 @@
         "com.ionic.keyboard": {
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
         },
-        "cordova-plugin-camera": {
-            "PACKAGE_NAME": "com.ionicframework.piximony950885"
-        },
-        "cordova-plugin-file": {
-            "PACKAGE_NAME": "com.ionicframework.piximony950885"
-        },
-        "cordova-plugin-file-transfer": {
-            "PACKAGE_NAME": "com.ionicframework.piximony950885"
-        },
         "cordova-plugin-screen-orientation": {
-            "PACKAGE_NAME": "com.ionicframework.piximony950885"
-        },
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.ionicframework.piximony950885"
-        },
-        "org.apache.cordova.console": {
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
         },
         "org.apache.cordova.device": {
@@ -33,7 +18,23 @@
         },
         "org.devgeeks.Canvas2ImagePlugin": {
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.ionicframework.piximony950885"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.piximony950885"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.ionicframework.piximony950885"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.ionicframework.piximony950885"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.ionicframework.piximony950885"
+        }
+    }
 }

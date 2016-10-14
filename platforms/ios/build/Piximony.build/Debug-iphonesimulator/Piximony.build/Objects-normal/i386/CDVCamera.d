@@ -8,6 +8,6 @@ dependencies: \
   /Users/ekin/git/piximony/platforms/ios/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h \
   /Users/ekin/git/piximony/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegate.h \
   /Users/ekin/git/piximony/platforms/ios/build/emulator/include/Cordova/CDVInvokedUrlCommand.h \
+  /Users/ekin/git/piximony/platforms/ios/build/emulator/include/Cordova/CDVWebViewEngineProtocol.h \
   /Users/ekin/git/piximony/platforms/ios/Piximony/Plugins/cordova-plugin-camera/CDVJpegHeaderWriter.h \
-  /Users/ekin/git/piximony/platforms/ios/Piximony/Plugins/cordova-plugin-camera/UIImage+CropScaleOrientation.h \
-  /Users/ekin/git/piximony/platforms/ios/build/emulator/include/Cordova/NSData+Base64.h
+  /Users/ekin/git/piximony/platforms/ios/Piximony/Plugins/cordova-plugin-camera/UIImage+CropScaleOrientation.h

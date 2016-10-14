@@ -1,25 +1,16 @@
 dependencies: \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDVCommandQueue.m \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDV.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDVAvailability.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDVAvailabilityDeprecated.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDVPlugin.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDVPluginResult.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDVCommandDelegate.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDVViewController.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDVCommandQueue.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDVWhitelist.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDVScreenOrientationDelegate.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDVURLProtocol.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDVDebug.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDVLocalStorage.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDVTimer.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/NSData+Base64.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDVJSON.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.h \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDVJSON_private.h
+  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/Public/CDVCommandQueue.m \
+  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/Public/CDVCommandQueue.h \
+  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/Public/CDVViewController.h \
+  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/Public/CDVAvailability.h \
+  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/Public/CDVAvailabilityDeprecated.h \
+  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/Public/CDVInvokedUrlCommand.h \
+  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/Public/CDVCommandDelegate.h \
+  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/Public/CDVScreenOrientationDelegate.h \
+  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/Public/CDVPlugin.h \
+  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/Public/CDVPluginResult.h \
+  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/Public/NSMutableArray+QueueAdditions.h \
+  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/Public/CDVWebViewEngineProtocol.h \
+  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/Public/CDVCommandDelegateImpl.h \
+  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/Private/CDVJSON_private.h \
+  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/Private/CDVDebug.h

@@ -1,0 +1,38 @@
+<ion-view view-title="{{'ID_FRIENDS' | translate}}">
+    <ion-nav-buttons side="left"></ion-nav-buttons>
+    <ion-nav-buttons side="right"></ion-nav-buttons>
+    <!-- Modal header bar -->
+    <ion-content>
+                    <div class="item item-divider" style="text-align: center">
+                        Friends
+                    </div>
+                    <a ng-repeat="friend in friends" ng-click="" class="item item-avatar">
+                        <img ng-src="{{friend.picture_url != '' && friend.picture_url || 'img/User-100.png'}}"/>
+                        <h2 style="vertical-align: middle; height: 100%;">{{friend.username}}</h2>
+                    </a>
+
+                    <div class="item item-divider" style="text-align: center">
+                        Requests
+                    </div>
+                    <a ng-repeat="request in requests" ng-click="accept_friendship(request)" class="item item-avatar">
+                        <img ng-src="{{request.picture_url != '' && request.picture_url || 'img/User-100.png'}}"/>
+                        <h2 style="vertical-align: middle; height: 100%;">{{request.username}}</h2>
+                    </a>
+
+                    <div class="item item-divider" style="text-align: center">
+                        Requested
+                    </div>
+                    <a ng-repeat="requested in requesteds" ng-click="" class="item item-avatar">
+                        <img ng-src="{{requested.picture_url != '' && requested.picture_url || 'img/User-100.png'}}"/>
+                        <h2 style="vertical-align: middle; height: 100%;">{{requested.username}}</h2>
+                    </a>
+
+                    <div class="item item-divider" style="text-align: center">
+                        OtherUsers
+                    </div>
+                    <a ng-repeat="other in others" ng-click="request_friendship(other)" class="item item-avatar">
+                        <img ng-src="{{other.picture_url != '' && other.picture_url || 'img/User-100.png'}}"/>
+                        <h2 style="vertical-align: middle; height: 100%;">{{other.username }}</h2>
+                    </a>
+        </ion-content>
+</ion-view>

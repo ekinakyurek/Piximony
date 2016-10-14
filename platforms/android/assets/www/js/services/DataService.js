@@ -1,31 +1,30 @@
-angular.module('Piximony').factory('DataService', function() {
+angular.module('Piximony').factory('DataService', function($cordovaFile, $window, $ionicHistory) {
 
-  var images= [];
-  
-  var questions = [];
-  var projects = [];
-  var projectsToPlay = [];
-
-  currentUser = null;
 
   var IMAGE_STORAGE_KEY = 'images';
-  //var QUESTION_STORAGE_KEY = 'questions';
   var PROJECT_STORAGE_KEY = 'projects';
   var projectToPlay_STORAGE_KEY = 'projectsToPlay';
   var USER_STORAGE_KEY = 'user';
+
+  var questions = []
+  var projects = []
+  var projectsToPlay = []
+  var images= [];
+  currentUser = null;
+
 
   function saveUser(user){
     console.log(">> DataService::saveUser()");
     currentUser = user
     console.log("save user:" + JSON.stringify(user))
-    window.localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user))
+    $window.localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user))
     console.log("<< DataService::saveUser()");
   }
 
   function getUser(){
     console.log(">> DataService::getUser()");
     if( currentUser === null ){
-      var user = window.localStorage.getItem(USER_STORAGE_KEY)
+      var user = $window.localStorage.getItem(USER_STORAGE_KEY)
       if(user !== null){
         currentUser =  JSON.parse(user)
         console.log("get User: " + currentUser.username+JSON.stringify(currentUser))
@@ -37,13 +36,22 @@ angular.module('Piximony').factory('DataService', function() {
 
   function clearStorage(){
     console.log("clear user")
-    window.localStorage.clear();
+    $ionicHistory.clearCache();
+    $ionicHistory.clearHistory();
+    $window.localStorage.clear();
     currentUser = null
+    images= [];
+    imageCache = {}
+    questions = []
+    projects = []
+    projectsToPlay = []
+    currentUser = null;
+
   }
 
   function getImages(projectID) {
     console.log(">> DataService::getImages() for projectID::" + projectID);
-    var img = window.localStorage.getItem(IMAGE_STORAGE_KEY + projectID);
+    var img = $window.localStorage.getItem(IMAGE_STORAGE_KEY + projectID);
     if (img !== null) {
       images = JSON.parse(img);
     }else {
@@ -57,7 +65,7 @@ angular.module('Piximony').factory('DataService', function() {
     console.log(">> DataService::addImage() img: " + img);
     images.push(img);
     var jsonImages = JSON.stringify(images);
-    window.localStorage.setItem(IMAGE_STORAGE_KEY + projectID, jsonImages);
+    $window.localStorage.setItem(IMAGE_STORAGE_KEY + projectID, jsonImages);
     console.log("<< DataService::addImage()");
   };
 
@@ -68,7 +76,7 @@ angular.module('Piximony').factory('DataService', function() {
       images.splice(index, 1);
     }
     var jsonImages = JSON.stringify(images);
-    window.localStorage.setItem(IMAGE_STORAGE_KEY + projectID, jsonImages);
+    $window.localStorage.setItem(IMAGE_STORAGE_KEY + projectID, jsonImages);
     console.log("<< DataService::deleteImage()");
   };
 
@@ -79,6 +87,7 @@ angular.module('Piximony').factory('DataService', function() {
     if (project_index != -1) {
       question_index = projects[project_index].questions.map(function(e) { return e.question_id; }).indexOf(question.question_id);
       if (question_index != -1) {
+        console.log("Im saving your data")
         projects[project_index].questions[question_index] = question
       }else{
         projects[project_index].questions.unshift(question)
@@ -97,7 +106,7 @@ angular.module('Piximony').factory('DataService', function() {
       projects[project_index].questions = questions
       storeProjects(projects)
     }else{
-      alert("Error in DataService::storeQuestions()")
+      console.log("projectID couldn't find : " + projectID)
     }
     console.log("<< DataService::storeQuestions()");
   };
@@ -118,13 +127,13 @@ angular.module('Piximony').factory('DataService', function() {
     console.log(">> DataService::storeProjects()");
     projects = Projects;
     var jsonProjects = JSON.stringify(projects);
-    window.localStorage.setItem(PROJECT_STORAGE_KEY, jsonProjects);
+    $window.localStorage.setItem(PROJECT_STORAGE_KEY, jsonProjects);
     console.log("<< DataService::storeProjects()");
   };
 
   function getProjects(){
     console.log(">> DataService::getProjects()");
-    var local_projects =  window.localStorage.getItem(PROJECT_STORAGE_KEY);
+    var local_projects =  $window.localStorage.getItem(PROJECT_STORAGE_KEY);
     if (local_projects!== null) {
       projects = JSON.parse(local_projects)
     }
@@ -137,7 +146,7 @@ angular.module('Piximony').factory('DataService', function() {
     console.log(">> DataService::getQustions()");
     project_index = projects.map(function(e) { return e.project_id; }).indexOf(projectID);
     if (project_index != -1){
-       questions = projects[project_index].questions
+      questions = projects[project_index].questions
     }else{
       alert("Error in DataService::storeQuestions")
     }
@@ -149,13 +158,13 @@ angular.module('Piximony').factory('DataService', function() {
     console.log(">> DataService::storeProjectsToPlay()");
     projectsToPlay = Projects;
     var jsonProjects = JSON.stringify(projectsToPlay);
-    window.localStorage.setItem(projectToPlay_STORAGE_KEY, jsonProjects);
+    $window.localStorage.setItem(projectToPlay_STORAGE_KEY, jsonProjects);
     console.log("<< DataService::storeProjectsToPlay()");
   };
 
   function getProjectsToPlay() {
     console.log(">> DataService:getProjectsToPlay()");
-    var local_projects =  window.localStorage.getItem(projectToPlay_STORAGE_KEY);
+    var local_projects =  $window.localStorage.getItem(projectToPlay_STORAGE_KEY);
     if (local_projects!== null) {
       projectsToPlay = JSON.parse(local_projects)
     }
@@ -163,6 +172,39 @@ angular.module('Piximony').factory('DataService', function() {
     return projectsToPlay
   };
 
+  function clone(obj) {
+    var copy;
+
+    // Handle the 3 simple types, and null or undefined
+    if (null == obj || "object" != typeof obj) return obj;
+
+    // Handle Date
+    if (obj instanceof Date) {
+      copy = new Date();
+      copy.setTime(obj.getTime());
+      return copy;
+    }
+
+    // Handle Array
+    if (obj instanceof Array) {
+      copy = [];
+      for (var i = 0, len = obj.length; i < len; i++) {
+        copy[i] = clone(obj[i]);
+      }
+      return copy;
+    }
+
+    // Handle Object
+    if (obj instanceof Object) {
+      copy = {};
+      for (var attr in obj) {
+        if (obj.hasOwnProperty(attr)) copy[attr] = clone(obj[attr]);
+      }
+      return copy;
+    }
+
+    throw new Error("Unable to copy obj! Its type isn't supported.");
+  }
 
   return {
     saveUser: saveUser,
@@ -178,8 +220,8 @@ angular.module('Piximony').factory('DataService', function() {
     getProjects: getProjects,
     getQuestions: getQuestions,
     getProjectsToPlay: getProjectsToPlay,
-    images: images,
-    USER_STORAGE_KEY: USER_STORAGE_KEY
+    clone: clone,
+    images: images
   }
 
-  })
+})

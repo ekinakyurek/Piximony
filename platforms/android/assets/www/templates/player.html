@@ -3,14 +3,14 @@
 
         <!-- Modal header bar -->
         <ion-header-bar class="bar-secondary">
-            <h1 class="title">Question {{currentQuestion + 1}} / {{projectsToPlay[projectindex].questions.length}} | {{currentScore}}</h1>
+            <h1 class="title">Question {{currentQuestion + 1}} / {{current_project.questions.length}} | {{currentScore}}</h1>
             <button class="button button-clear button-positive" ng-click="closePlayer()">Cancel</button>
         </ion-header-bar>
 
         <!-- Modal content area -->
         <ion-content>
             <a ng-click="fullScreen(questionTmp.picture_url)">
-                <img ng-src="{{ questionTmp.picture_url }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
+                <img ng-src="{{ getCachedValue(questionTmp.picture_url, true, false) }}" style="height:200px; padding: 5px 5px 5px 5px;"/>
             </a>
 
                 <div class="item item-divider">

@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDVTimer.m \
-  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/CDVTimer.h
+  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/Public/CDVTimer.m \
+  /Users/ekin/git/piximony/platforms/ios/CordovaLib/Classes/Public/CDVTimer.h

@@ -2,82 +2,427 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7847d57e-042c-4dd9-94dc-7ee35862bc39" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/MJ.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/Settings-100.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/ShyGirl.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/austin-tx.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/create.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/ionic.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/ionic_.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/mac_mini_2011.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/play.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/semacamaro4c.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/#app.js#" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/parse-1.6.7.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/templates/PlayerHome.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/templates/ProjectsHome.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/templates/QuestionsHome.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/templates/friends.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDV.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVAvailability.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVAvailabilityDeprecated.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVCommandDelegate.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVCommandQueue.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVCommandQueue.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVConfigParser.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVConfigParser.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVDebug.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVHandleOpenURL.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVHandleOpenURL.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVJSON.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVJSON.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVJSON_private.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVJSON_private.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVLocalStorage.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVLocalStorage.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVPlugin.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVPlugin.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVPluginResult.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVPluginResult.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVScreenOrientationDelegate.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVShared.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVTimer.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVTimer.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVURLProtocol.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVURLProtocol.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVViewController.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVViewController.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVWhitelist.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/CDVWhitelist.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/NSData+Base64.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/NSData+Base64.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/CordovaLib.xcodeproj/xcuserdata/volkanbal.xcuserdatad/xcschemes/CordovaLib.xcscheme" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/CordovaLib.xcodeproj/xcuserdata/volkanbal.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVJSON.d" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVJSON.dia" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVJSON.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWebViewDelegate.d" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWebViewDelegate.dia" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWebViewDelegate.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSArray+Comparisons.d" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSArray+Comparisons.dia" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSArray+Comparisons.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSData+Base64.d" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSData+Base64.dia" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSData+Base64.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSDictionary+Extensions.d" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSDictionary+Extensions.dia" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSDictionary+Extensions.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/UIDevice+Extensions.d" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/UIDevice+Extensions.dia" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/UIDevice+Extensions.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony.xcodeproj/project.xcworkspace/xcuserdata/volkanbal.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony.xcodeproj/project.xcworkspace/xcuserdata/volkanbal.xcuserdatad/WorkspaceSettings.xcsettings" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony.xcodeproj/xcuserdata/volkanbal.xcuserdatad/xcschemes/Piximony.xcscheme" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony.xcodeproj/xcuserdata/volkanbal.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/com.ionic.keyboard/IonicKeyboard.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/com.ionic.keyboard/IonicKeyboard.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/com.ionic.keyboard/UIWebViewExtension.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/com.ionic.keyboard/UIWebViewExtension.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/cordova-plugin-camera/CDVCamera.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/cordova-plugin-camera/CDVCamera.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/cordova-plugin-camera/CDVExif.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/cordova-plugin-camera/CDVJpegHeaderWriter.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/cordova-plugin-camera/CDVJpegHeaderWriter.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/cordova-plugin-camera/UIImage+CropScaleOrientation.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/cordova-plugin-camera/UIImage+CropScaleOrientation.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/cordova-plugin-file-transfer/CDVFileTransfer.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/cordova-plugin-file-transfer/CDVFileTransfer.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/cordova-plugin-file/CDVAssetLibraryFilesystem.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/cordova-plugin-file/CDVAssetLibraryFilesystem.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/cordova-plugin-file/CDVFile.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/cordova-plugin-file/CDVFile.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/cordova-plugin-file/CDVLocalFilesystem.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/cordova-plugin-file/CDVLocalFilesystem.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/cordova-plugin-screen-orientation/CDVViewController+UpdateSupportedOrientations.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/cordova-plugin-screen-orientation/CDVViewController+UpdateSupportedOrientations.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/cordova-plugin-screen-orientation/YoikScreenOrientation.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/cordova-plugin-screen-orientation/YoikScreenOrientation.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/org.apache.cordova.console/CDVLogger.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/org.apache.cordova.console/CDVLogger.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/org.apache.cordova.device/CDVDevice.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/org.apache.cordova.device/CDVDevice.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/org.devgeeks.Canvas2ImagePlugin/Canvas2ImagePlugin.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Plugins/org.devgeeks.Canvas2ImagePlugin/Canvas2ImagePlugin.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/Icon-167.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/Icon-Small-40.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/Icon-Small-40@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/Icon-Small-40@3x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/Icon-Small-50.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/Icon-Small-50@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/Icon-Small@3x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/iTunesArtwork@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/iTunesArtwork@2x_tmp495475760" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/icon-40.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/icon-40@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/icon-50.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/icon-50@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/icon-60.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/icon-60@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/icon-60@3x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/icon-72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/icon-72@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/icon-76.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/icon-76@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/icon-small.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/icon-small@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/icons/icon@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default-1242@3x~iphone6s-landscape_2208x1242.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default-1242@3x~iphone6s-portrait_1242x2208.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default-568h@2x~iphone.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default-568h@2x~iphone_640x1136.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default-667h.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default-736h.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default-750@2x~iphone6-landscape_1334x750.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default-750@2x~iphone6-portrait_750x1334.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default-Landscape-736h.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default-Landscape@2x~ipad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default-Landscape@2x~ipad_2048x1496.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default-Landscape@2x~ipad_2048x1536.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default-Landscape~ipad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default-Landscape~ipad_1024x748.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default-Landscape~ipad_1024x768.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default-Portrait@2x~ipad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default-Portrait@2x~ipad_1536x2008.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default-Portrait@2x~ipad_1536x2048.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default-Portrait~ipad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default-Portrait~ipad_768x1024.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default@2x~iphone.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default@2x~iphone_640x960.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default~ipad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash/Default~iphone.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash_/Default-568h@2x~iphone.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash_/Default-667h.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash_/Default-736h.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash_/Default-Landscape-736h.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash_/Default-Landscape@2x~ipad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash_/Default-Landscape~ipad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash_/Default-Portrait@2x~ipad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash_/Default-Portrait~ipad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Resources/splash_/Default@2x~iphone.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-568h@2x~iphone.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-667h.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-736h.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-Landscape-736h.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-Landscape@2x~ipad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-Landscape~ipad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-Portrait@2x~ipad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-Portrait~ipad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default@2x~iphone.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default~iphone.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-40.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-40@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-50.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-50@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-60.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-60@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-60@3x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-72@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-76.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-76@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-small.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-small@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/www/lib/angular-animate/.bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/www/lib/angular-sanitize/.bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/www/lib/angular-ui-router/.bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/www/lib/angular/.bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/www/lib/ionic/.bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/www/lib/ngCordova/.bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/inflight/.eslintrc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/inflight/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/inflight/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/inflight/inflight.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/inflight/node_modules/wrappy/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/inflight/node_modules/wrappy/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/inflight/node_modules/wrappy/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/inflight/node_modules/wrappy/test/basic.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/inflight/node_modules/wrappy/wrappy.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/inflight/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/inflight/test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/inherits/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/inherits/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/inherits/inherits.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/inherits/inherits_browser.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/inherits/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/inherits/test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/browser.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/minimatch.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/example.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/node_modules/balanced-match/.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/node_modules/balanced-match/.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/node_modules/balanced-match/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/node_modules/balanced-match/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/node_modules/balanced-match/example.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/node_modules/balanced-match/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/node_modules/balanced-match/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/node_modules/balanced-match/test/balanced.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/node_modules/concat-map/.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/node_modules/concat-map/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/node_modules/concat-map/README.markdown" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/node_modules/concat-map/example/map.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/node_modules/concat-map/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/node_modules/concat-map/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/node_modules/concat-map/test/map.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test/bash-comparison.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test/bash-results.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test/cases.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test/dollar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test/empty-option.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test/generate.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test/negative-increment.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test/nested.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test/order.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test/pad.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test/same-type.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test/sequence.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/minimatch/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/once/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/once/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/once/node_modules/wrappy/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/once/node_modules/wrappy/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/once/node_modules/wrappy/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/once/node_modules/wrappy/test/basic.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/once/node_modules/wrappy/wrappy.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/once/once.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/once/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/once/test/once.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/path-is-absolute/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/path-is-absolute/license" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/path-is-absolute/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/node_modules/path-is-absolute/readme.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/nopt/node_modules/abbrev/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/nopt/node_modules/abbrev/abbrev.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/nopt/node_modules/abbrev/package.json" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/User-100.png" afterPath="$PROJECT_DIR$/platforms/android/assets/www/img/User-100.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-non-framework-target-headers.hmap" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-non-framework-target-headers.hmap" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova.hmap" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova.hmap" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandDelegateImpl.dia" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandDelegateImpl.dia" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandDelegateImpl.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandDelegateImpl.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandQueue.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandQueue.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVConfigParser.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVConfigParser.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVHandleOpenURL.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVHandleOpenURL.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVInvokedUrlCommand.dia" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVInvokedUrlCommand.dia" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVInvokedUrlCommand.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVInvokedUrlCommand.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVJSON.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVJSON.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVJSON_private.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVJSON_private.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVLocalStorage.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVLocalStorage.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPlugin.dia" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPlugin.dia" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPlugin.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPlugin.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPluginResult.dia" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPluginResult.dia" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPluginResult.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPluginResult.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVTimer.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVTimer.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVURLProtocol.dia" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVURLProtocol.dia" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVURLProtocol.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVURLProtocol.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVUserAgentUtil.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVUserAgentUtil.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVViewController.dia" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVViewController.dia" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVViewController.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVViewController.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWebViewDelegate.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWebViewDelegate.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWhitelist.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWhitelist.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSArray+Comparisons.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSArray+Comparisons.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSData+Base64.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSData+Base64.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSDictionary+Extensions.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSDictionary+Extensions.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSMutableArray+QueueAdditions.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSMutableArray+QueueAdditions.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/UIDevice+Extensions.o" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/UIDevice+Extensions.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/dgph" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/dgph" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/AppDelegate.o" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/AppDelegate.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/CDVAssetLibraryFilesystem.o" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/CDVAssetLibraryFilesystem.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/CDVCamera.o" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/CDVCamera.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/CDVDevice.o" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/CDVDevice.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/CDVFile.o" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/CDVFile.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/CDVFileTransfer.o" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/CDVFileTransfer.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/CDVJpegHeaderWriter.o" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/CDVJpegHeaderWriter.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/CDVLocalFilesystem.o" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/CDVLocalFilesystem.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/CDVLogger.o" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/CDVLogger.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/IonicKeyboard.o" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/IonicKeyboard.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/MainViewController.o" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/MainViewController.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/Piximony_dependency_info.dat" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/Piximony_dependency_info.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/UIImage+CropScaleOrientation.o" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/UIImage+CropScaleOrientation.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/UIWebViewExtension.o" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/UIWebViewExtension.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/YoikScreenOrientation.o" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/YoikScreenOrientation.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/main.o" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/main.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Piximony-project-headers.hmap" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Piximony-project-headers.hmap" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Piximony.hmap" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Piximony.hmap" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/dgph" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/dgph" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app.dSYM/Contents/Resources/DWARF/Piximony" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app.dSYM/Contents/Resources/DWARF/Piximony" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-568h@2x~iphone.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-568h@2x~iphone.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-667h.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-667h.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-736h.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-736h.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-Landscape-736h.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-Landscape-736h.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-Landscape@2x~ipad.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-Landscape@2x~ipad.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-Landscape~ipad.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-Landscape~ipad.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-Portrait@2x~ipad.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-Portrait@2x~ipad.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-Portrait~ipad.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default-Portrait~ipad.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default@2x~iphone.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default@2x~iphone.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default~iphone.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Default~iphone.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Info.plist" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Info.plist" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/MainViewController.nib" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/MainViewController.nib" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Piximony" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/Piximony" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-40.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-40.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-40@2x.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-40@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-50.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-50.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-50@2x.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-50@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-60.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-60.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-60@2x.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-60@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-60@3x.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-60@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-72.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-72.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-72@2x.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-72@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-76.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-76.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-76@2x.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-76@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-small.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-small.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-small@2x.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon-small@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon@2x.png" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/icon@2x.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/libCordova.a" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/libCordova.a" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/www/js/controllers/QuestionsHomeCtrl.js" afterPath="$PROJECT_DIR$/platforms/ios/www/js/controllers/QuestionsHomeCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/www/js/services/WebService.js" afterPath="$PROJECT_DIR$/platforms/ios/www/js/services/WebService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/www/templates/tab-QuestionsHome.html" afterPath="$PROJECT_DIR$/platforms/ios/www/templates/tab-QuestionsHome.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controllers/QuestionsHomeCtrl.js" afterPath="$PROJECT_DIR$/www/js/controllers/QuestionsHomeCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/services/WebService.js" afterPath="$PROJECT_DIR$/www/js/services/WebService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/tab-QuestionsHome.html" afterPath="$PROJECT_DIR$/www/templates/tab-QuestionsHome.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/css/style.css" afterPath="$PROJECT_DIR$/platforms/android/assets/www/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/index.html" afterPath="$PROJECT_DIR$/platforms/android/assets/www/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/app.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/controllers/MainPageCtrl.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/controllers/MainPageCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/controllers/PlayerHomeCtrl.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/controllers/PlayerHomeCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/controllers/ProjectsHomeCtrl.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/controllers/ProjectsHomeCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/controllers/QuestionsHomeCtrl.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/controllers/QuestionsHomeCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/controllers/SignInCtrl.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/controllers/SignInCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/services/DataService.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/services/DataService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/services/ImageService.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/services/ImageService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/services/WebService.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/services/WebService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/lib/ionic/css/ionic.css" afterPath="$PROJECT_DIR$/platforms/android/assets/www/lib/ionic/css/ionic.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/lib/ionic/css/ionic.min.css" afterPath="$PROJECT_DIR$/platforms/android/assets/www/lib/ionic/css/ionic.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/templates/MainPage.html" afterPath="$PROJECT_DIR$/platforms/android/assets/www/templates/MainPage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/templates/edit-question.html" afterPath="$PROJECT_DIR$/platforms/android/assets/www/templates/edit-question.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/templates/new-project.html" afterPath="$PROJECT_DIR$/platforms/android/assets/www/templates/new-project.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/templates/new-question.html" afterPath="$PROJECT_DIR$/platforms/android/assets/www/templates/new-question.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/templates/player.html" afterPath="$PROJECT_DIR$/platforms/android/assets/www/templates/player.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/templates/shareProject.html" afterPath="$PROJECT_DIR$/platforms/android/assets/www/templates/shareProject.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/templates/sign-in.html" afterPath="$PROJECT_DIR$/platforms/android/assets/www/templates/sign-in.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/res/xml/config.xml" afterPath="$PROJECT_DIR$/platforms/android/res/xml/config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/CordovaLib.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/CordovaLib.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/VERSION" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/VERSION" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandDelegateImpl.d" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandDelegateImpl.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandQueue.d" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandQueue.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVConfigParser.d" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVConfigParser.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVHandleOpenURL.d" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVHandleOpenURL.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVInvokedUrlCommand.d" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVInvokedUrlCommand.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVJSON_private.d" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVJSON_private.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVLocalStorage.d" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVLocalStorage.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPlugin.d" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPlugin.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPluginResult.d" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPluginResult.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVTimer.d" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVTimer.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVURLProtocol.d" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVURLProtocol.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVUserAgentUtil.d" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVUserAgentUtil.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVViewController.d" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVViewController.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWhitelist.d" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWhitelist.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/Cordova.LinkFileList" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/Cordova.LinkFileList" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSMutableArray+QueueAdditions.d" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSMutableArray+QueueAdditions.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/CordovaLib/cordova.js" afterPath="$PROJECT_DIR$/platforms/ios/CordovaLib/cordova.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/Piximony.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/platforms/ios/Piximony.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Classes/AppDelegate.h" afterPath="$PROJECT_DIR$/platforms/ios/Piximony/Classes/AppDelegate.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Classes/AppDelegate.m" afterPath="$PROJECT_DIR$/platforms/ios/Piximony/Classes/AppDelegate.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Classes/MainViewController.m" afterPath="$PROJECT_DIR$/platforms/ios/Piximony/Classes/MainViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/Piximony-Info.plist" afterPath="$PROJECT_DIR$/platforms/ios/Piximony/Piximony-Info.plist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/Piximony/config.xml" afterPath="$PROJECT_DIR$/platforms/ios/Piximony/config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/AppDelegate.d" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/AppDelegate.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/MainViewController.d" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/MainViewController.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/Piximony.LinkFileList" afterPath="$PROJECT_DIR$/platforms/ios/build/Piximony.build/Debug-iphonesimulator/Piximony.build/Objects-normal/i386/Piximony.LinkFileList" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/config.xml" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/www/cordova-js-src/exec.js" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/www/cordova-js-src/exec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/www/cordova.js" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/www/cordova.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/www/js/app.js" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/Piximony.app/www/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/CDV.h" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/CDV.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/CDVAvailability.h" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/CDVAvailability.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/CDVAvailabilityDeprecated.h" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/CDVAvailabilityDeprecated.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegate.h" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegate.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/CDVCommandQueue.h" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/CDVCommandQueue.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/CDVConfigParser.h" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/CDVConfigParser.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/CDVPlugin.h" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/CDVPlugin.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/CDVPluginResult.h" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/CDVPluginResult.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/CDVURLProtocol.h" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/CDVURLProtocol.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/CDVViewController.h" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/CDVViewController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h" afterPath="$PROJECT_DIR$/platforms/ios/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/build" afterPath="$PROJECT_DIR$/platforms/ios/cordova/build" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/build-debug.xcconfig" afterPath="$PROJECT_DIR$/platforms/ios/cordova/build-debug.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/build.xcconfig" afterPath="$PROJECT_DIR$/platforms/ios/cordova/build.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/check_reqs" afterPath="$PROJECT_DIR$/platforms/ios/cordova/check_reqs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/clean" afterPath="$PROJECT_DIR$/platforms/ios/cordova/clean" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/clean.bat" afterPath="$PROJECT_DIR$/platforms/ios/cordova/clean.bat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/defaults.xml" afterPath="$PROJECT_DIR$/platforms/ios/cordova/defaults.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/lib/build.js" afterPath="$PROJECT_DIR$/platforms/ios/cordova/lib/build.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/lib/check_reqs.js" afterPath="$PROJECT_DIR$/platforms/ios/cordova/lib/check_reqs.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/lib/clean.js" afterPath="$PROJECT_DIR$/platforms/ios/cordova/lib/clean.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/lib/copy-www-build-step.js" afterPath="$PROJECT_DIR$/platforms/ios/cordova/lib/copy-www-build-step.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/lib/list-emulator-images" afterPath="$PROJECT_DIR$/platforms/ios/cordova/lib/list-emulator-images" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/lib/run.js" afterPath="$PROJECT_DIR$/platforms/ios/cordova/lib/run.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/lib/spawn.js" afterPath="$PROJECT_DIR$/platforms/ios/cordova/lib/spawn.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/README.md" afterPath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/glob.js" afterPath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/glob.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/package.json" afterPath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/sync.js" afterPath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/glob/sync.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/nopt/LICENSE" afterPath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/nopt/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/nopt/lib/nopt.js" afterPath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/nopt/lib/nopt.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/nopt/package.json" afterPath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/nopt/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/q/package.json" afterPath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/q/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/q/q.js" afterPath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/q/q.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/shelljs/package.json" afterPath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/shelljs/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/shelljs/shell.js" afterPath="$PROJECT_DIR$/platforms/ios/cordova/node_modules/shelljs/shell.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/run" afterPath="$PROJECT_DIR$/platforms/ios/cordova/run" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/run.bat" afterPath="$PROJECT_DIR$/platforms/ios/cordova/run.bat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/cordova/version" afterPath="$PROJECT_DIR$/platforms/ios/cordova/version" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/platform_www/cordova-js-src/exec.js" afterPath="$PROJECT_DIR$/platforms/ios/platform_www/cordova-js-src/exec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/platform_www/cordova.js" afterPath="$PROJECT_DIR$/platforms/ios/platform_www/cordova.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/www/cordova-js-src/exec.js" afterPath="$PROJECT_DIR$/platforms/ios/www/cordova-js-src/exec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/www/cordova.js" afterPath="$PROJECT_DIR$/platforms/ios/www/cordova.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/www/js/services/ImageService.js" afterPath="$PROJECT_DIR$/platforms/ios/www/js/services/ImageService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/platforms.json" afterPath="$PROJECT_DIR$/platforms/platforms.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/fetch.json" afterPath="$PROJECT_DIR$/plugins/fetch.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/services/ImageService.js" afterPath="$PROJECT_DIR$/www/js/services/ImageService.js" />
     </list>
     <ignored path="piximony.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -98,51 +443,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FeedCtrl.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/js/controllers/FeedCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="82">
-              <caret line="205" column="53" selection-start-line="205" selection-start-column="3" selection-end-line="205" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tab-Feed.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/templates/tab-Feed.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tabs.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/templates/tabs.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="118" selection-start-line="11" selection-start-column="118" selection-end-line="11" selection-end-column="118" />
+            <state relative-caret-position="1689">
+              <caret line="207" column="8" selection-start-line="207" selection-start-column="8" selection-end-line="207" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -151,18 +456,38 @@
       <file leaf-file-name="QuestionsHomeCtrl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/controllers/QuestionsHomeCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
+            <state relative-caret-position="585">
+              <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebService.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WebService.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/services/WebService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+            <state relative-caret-position="10455">
+              <caret line="697" column="5" selection-start-line="697" selection-start-column="5" selection-end-line="724" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Info.plist" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugins/cordova-plugin-camera/tests/ios/CDVCameraTest/CDVCameraLibTests/Info.plist">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-389">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImageService.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/js/services/ImageService.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="49" column="60" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -181,7 +506,7 @@
       <file leaf-file-name="ProjectsHomeCtrl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/controllers/ProjectsHomeCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
+            <state relative-caret-position="975">
               <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="48" />
               <folding />
             </state>
@@ -193,6 +518,26 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
               <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2760">
+              <caret line="184" column="15" selection-start-line="184" selection-start-column="15" selection-end-line="184" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tab-ProjectsHome.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/templates/tab-ProjectsHome.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="32" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -220,7 +565,6 @@
         <option value="$PROJECT_DIR$/www/templates/friends.html" />
         <option value="$PROJECT_DIR$/www/templates/shareProject.html" />
         <option value="$PROJECT_DIR$/www/js/services/DataService.js" />
-        <option value="$PROJECT_DIR$/www/js/services/ImageService.js" />
         <option value="$PROJECT_DIR$/www/templates/MainPage.html" />
         <option value="$PROJECT_DIR$/www/templates/ProjectsHome.html" />
         <option value="$PROJECT_DIR$/www/templates/PlayerHome.html" />
@@ -252,6 +596,7 @@
         <option value="$PROJECT_DIR$/www/templates/tab-QuestionsHome.html" />
         <option value="$PROJECT_DIR$/www/js/controllers/QuestionsHomeCtrl.js" />
         <option value="$PROJECT_DIR$/www/js/services/WebService.js" />
+        <option value="$PROJECT_DIR$/www/js/services/ImageService.js" />
       </list>
     </option>
   </component>
@@ -267,9 +612,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="-44" />
     <option name="y" value="22" />
     <option name="width" value="1280" />
-    <option name="height" value="725" />
+    <option name="height" value="727" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -296,7 +642,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -398,15 +743,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="platforms" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -420,16 +757,69 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
+              <option name="myItemId" value="platforms" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
+              <option name="myItemId" value="ios" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="piximony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="piximony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platforms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ios" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="piximony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="piximony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platforms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ios" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Piximony.build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Debug-iphonesimulator" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -441,7 +831,7 @@
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="js.buildTools.gulp.gulp_package_dir" value="" />
-    <property name="SearchEverywhereHistoryKey" value="readAsBinaryString&#9;null&#9;null&#10;piximony-dev.yaudxbzu3m.us-west-1.elasticbeanstalk.com&#9;null&#9;null&#10;piximony&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="info&#9;FILE&#9;file:///Users/ekin/git/piximony/plugins/cordova-plugin-camera/tests/ios/CDVCameraTest/CDVCameraLibTests/Info.plist&#10;readAsBinaryString&#9;null&#9;null&#10;piximony-dev.yaudxbzu3m.us-west-1.elasticbeanstalk.com&#9;null&#9;null&#10;piximony&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -610,12 +1000,18 @@
       <workItem from="1474823033416" duration="663000" />
       <workItem from="1474926535788" duration="397000" />
       <workItem from="1475318441830" duration="1423000" />
-      <workItem from="1475335226625" duration="949000" />
+      <workItem from="1475335226625" duration="1346000" />
+      <workItem from="1475354122133" duration="1829000" />
+      <workItem from="1475506090081" duration="30000" />
+      <workItem from="1476053785731" duration="389000" />
+      <workItem from="1476083645337" duration="350000" />
+      <workItem from="1476095482304" duration="33000" />
+      <workItem from="1476463967910" duration="2496000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="200911000" />
+    <option name="totallyTimeSpent" value="206435000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -627,7 +1023,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1280" height="725" extended-state="6" />
+    <frame x="-44" y="22" width="1280" height="727" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2542373" sideWeight="0.51005024" order="2" side_tool="true" content_ui="tabs" />
@@ -635,7 +1031,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32854864" sideWeight="0.49722" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19530103" sideWeight="0.24861" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32747602" sideWeight="0.4940429" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1918239" sideWeight="0.75139" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38932496" sideWeight="0.75139" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24861" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33865815" sideWeight="0.38125497" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -700,11 +1096,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/icons/ios/Icon.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/icons/ios/Icon@2x.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -807,13 +1198,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2760">
-          <caret line="184" column="15" selection-start-line="184" selection-start-column="15" selection-end-line="184" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/new-question.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -863,20 +1247,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/services/ImageService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="64" column="10" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/tab-ProjectsHome.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="32" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -940,7 +1310,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -948,7 +1317,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -976,6 +1344,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controllers/ProjectsHomeCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="975">
+          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/tab-QuestionsHome.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -984,34 +1360,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+    <entry file="file://$PROJECT_DIR$/www/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="205" column="53" selection-start-line="205" selection-start-column="3" selection-end-line="205" selection-end-column="53" />
+        <state relative-caret-position="2760">
+          <caret line="184" column="15" selection-start-line="184" selection-start-column="15" selection-end-line="184" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controllers/ProjectsHomeCtrl.js">
+    <entry file="file://$PROJECT_DIR$/www/templates/tab-ProjectsHome.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="48" />
+        <state relative-caret-position="0">
+          <caret line="0" column="32" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/controllers/QuestionsHomeCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
+        <state relative-caret-position="585">
+          <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1689">
+          <caret line="207" column="8" selection-start-line="207" selection-start-column="8" selection-end-line="207" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/services/WebService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+        <state relative-caret-position="10455">
+          <caret line="697" column="5" selection-start-line="697" selection-start-column="5" selection-end-line="724" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/cordova-plugin-camera/tests/ios/CDVCameraTest/CDVCameraLibTests/Info.plist">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-389">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/services/ImageService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="49" column="60" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="60" />
           <folding />
         </state>
       </provider>

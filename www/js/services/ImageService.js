@@ -47,25 +47,29 @@ angular.module('Piximony').factory('ImageService', function($cordovaCamera, Data
 
         var options = optionsForType(type);
 
-        $cordovaCamera.getPicture(options).then(function(imageUrl) {
-                var name = imageUrl.substr(imageUrl.lastIndexOf('/') + 1);
-                var namePath = imageUrl.substr(0, imageUrl.lastIndexOf('/') + 1);
-                var newName = makeid() + name;
+        navigator.camera.getPicture(function camera_success(imageUrl){
+            console.log(imageUrl)
+            var name = imageUrl.substr(imageUrl.lastIndexOf('/') + 1);
+            var namePath = imageUrl.substr(0, imageUrl.lastIndexOf('/') + 1);
+            var newName = makeid() + name;
 
-                $cordovaFile.copyFile(namePath, name, cordova.file.dataDirectory, newName)
-                    .then(function(info) {
-                        console.log("** ImageService::saveMedia() newName: " + newName);
-                       // DataService.storeImage(cordova.file.dataDirectory+newName,projectID);
-                        console.log("ImageService::saveMedia()->uploadPicture()");
-                        callback(true, newName);
-                    }, function(error) {
-                        alert("saveMedia() error::" + error.message) ;
-                        callback(false, error);
-                    });
-        });
+            $cordovaFile.copyFile(namePath, name, cordova.file.dataDirectory, newName)
+                .then(function(info) {
+                    console.log("** ImageService::saveMedia() newName: " + newName);
+                    // DataService.storeImage(cordova.file.dataDirectory+newName,projectID);
+                    console.log("ImageService::saveMedia()->uploadPicture()");
+                    callback(true, newName);
+                }, function(error) {
+                    alert("saveMedia() error::" + error.message) ;
+                    callback(false, error);
+                });
+        }, function camera_error(error){
+            console.log("Error in ImageService:: SaveMedia:" + error)
+        }, options)
 
         console.log("<< ImageService::saveMedia()");
     };
+
 
 
     function removeMedia(imageUrl,projectID) {

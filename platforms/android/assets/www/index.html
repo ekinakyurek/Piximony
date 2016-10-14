@@ -20,29 +20,35 @@
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
-
+      
+    <!-- Angular Translate -->
+    <script src="lib/angular-translate/angular-translate.js"></script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
 
     <!-- Controllers -->
     <script src="js/controllers/MainPageCtrl.js"></script>
+    <script src="js/controllers/AccountCtrl.js"></script>
+    <script src="js/controllers/FeedCtrl.js"></script>
     <script src="js/controllers/SignInCtrl.js"></script>  
     <script src="js/controllers/PlayerHomeCtrl.js"></script> 
     <script src="js/controllers/ProjectsHomeCtrl.js"></script>
     <script src="js/controllers/QuestionsHomeCtrl.js"></script>
+    <script src="js/controllers/FriendsHomeCtrl.js"></script>
+
       
     <!-- Services -->  
     <script src="js/services/DataService.js"></script>
     <script src="js/services/ImageService.js"></script>
     <script src="js/services/WebService.js"></script>
+    <script src="js/services/CacheService.js"></script>
 
   </head>
   <body>
 
   <ion-nav-bar class="bar-positive">
-      <ion-nav-back-button class="button-icon ion-arrow-left-c">
-      </ion-nav-back-button>
+
   </ion-nav-bar>
 
   <ion-nav-view animation="slide-left-right"></ion-nav-view>
