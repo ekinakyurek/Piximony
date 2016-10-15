@@ -2,12 +2,14 @@ angular.module('Piximony').controller('AccountCtrl', function($scope, $state, Da
 
     $scope.user = DataService.getUser()
     $scope.profile_image = undefined
+    $scope.showSave = false
     console.log(JSON.stringify($scope.user))
 
     WebService.get_current_user_info(function (result, info) {
         if(result){
             console.log(JSON.stringify(info))
             $scope.user = info
+            DataService.saveUser(info)
         }
     })
 
@@ -27,7 +29,9 @@ angular.module('Piximony').controller('AccountCtrl', function($scope, $state, Da
     };
     
     $scope.updatePic = function(type) {
+        $scope.showSave = true;
         $scope.hideSheet();
+
         ImageService.handleMediaDialog(type, function(result, name) {
             $scope.user.picture_url =  cordova.file.dataDirectory + name
             $scope.user.thumbnail_url =    cordova.file.dataDirectory + name
@@ -44,7 +48,14 @@ angular.module('Piximony').controller('AccountCtrl', function($scope, $state, Da
 
         })
     }
-    
+
+    $scope.save_user_info = function(){
+        console.log('SAVING profile photooo')
+        if ($scope.showSave) {
+            $scope.upload_picture_data();
+            $scope.showSave = false
+        }
+    }
     $scope.logOut = function () {
         console.log("** MainPageCtrl.logOut()");
         DataService.clearStorage();

@@ -3,11 +3,16 @@
          <button class="button button-icon icon ion-log-out" ng-click="logOut()">
          </button>
      </ion-nav-buttons>
-     
+         <ion-nav-buttons side="left">
+             <button class="button button-icon" ng-click="save_user_info()" translate="{{showSave &&  'ID_SAVE' || undefined}}">
+             </button>
+         </ion-nav-buttons>
+
         <ion-content>
             <div class="card">
             <div class="profile-img-container">
-                <img id="myProfileImage" ng-src="{{user.thumbnail_url != '' && user.thumbnail_url || 'img/User-100.png'}}" ng-click="updateMedia()"/>
+                <img id="myProfileImage" image-source="{{user.thumbnail_url != '' && user.thumbnail_url || 'img/User-100.png'}}" is-thumbnail="false" ng-click="updateMedia()"/>
+                <!--<img id="myProfileImage" ng-src="{{user.thumbnail_url != '' && user.thumbnail_url || 'img/User-100.png'}}" ng-click="updateMedia()"/>-->
             </div>
             <div class="item item-divider" translate="ID_USERNAME">
                 
