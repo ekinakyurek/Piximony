@@ -30,6 +30,9 @@
         },
         "cordova-plugin-file": {
             "PACKAGE_NAME": "com.ionicframework.piximony950885"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.ionicframework.piximony950885"
         }
     },
     "dependent_plugins": {

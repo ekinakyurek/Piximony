@@ -18,7 +18,8 @@
     "cordova-plugin-console",
     "cordova-plugin-screen-orientation",
     "cordova-plugin-whitelist@1",
-    "cordova-plugin-file"
+    "cordova-plugin-file",
+    "cordova-plugin-file-transfer"
   ],
   "cordovaPlatforms": [
     "android",
