@@ -104,6 +104,7 @@ angular.module('Piximony', ['ionic','ngCordova','pascalprecht.translate']).confi
     ID_SIGN_UP:             'Sign Up',
     //tab-ProjectsHome.html
     ID_EDIT:                'Edit',
+    ID_DONE:                'Done',
     ID_PIXIMONIES:          'Piximonies',
     ID_REFRESH_HINT:        'Pull to refresh...',
     //new-project.html
@@ -136,6 +137,7 @@ angular.module('Piximony', ['ionic','ngCordova','pascalprecht.translate']).confi
     ID_SIGN_UP:             'Kayıt',
     //tab-ProjectsHome.html
     ID_EDIT:                'Düzenle',
+    ID_DONE:                'Tamam',
     ID_PIXIMONIES:          'Piximonyler',
     ID_REFRESH_HINT:         'Yenilemek için aşağıya çekin...',
     //new-project.html
@@ -166,7 +168,8 @@ angular.module('Piximony', ['ionic','ngCordova','pascalprecht.translate']).confi
     ID_SIGN_UP:         'Sign Up',
     ID_LANGUAGE:        'Language',
     ID_CANCEL:          'Cancel',
-    ID_EDIT:            'Edit'
+    ID_EDIT:            'Edit',
+    ID_DONE:            'Done',
     });
     
     $translateProvider.translations('de', {
@@ -180,7 +183,8 @@ angular.module('Piximony', ['ionic','ngCordova','pascalprecht.translate']).confi
     ID_SIGN_UP:         'Sign Up',
     ID_LANGUAGE:        'Language',
     ID_CANCEL:          'Cancel',
-    ID_EDIT:            'Edit'
+    ID_EDIT:            'Edit',
+    ID_DONE:            'Done',
     });
     
     
@@ -203,35 +207,37 @@ angular.module('Piximony', ['ionic','ngCordova','pascalprecht.translate']).confi
 
         }
     };
-}).directive('holdList', ['$ionicGesture', function($ionicGesture) {
-    return {
-        restrict: 'A',
-        link: function(scope, element, attrs) {
-            $ionicGesture.on('hold', function(e) {
-
-                var content = element[0].querySelector('.item-content');
-
-                var buttons = element[0].querySelector('.item-options');
-                var buttonsWidth = buttons.offsetWidth;
-
-                ionic.requestAnimationFrame(function() {
-                    content.style[ionic.CSS.TRANSITION] = 'all ease-out .25s';
-
-                    if (!buttons.classList.contains('invisible')) {
-                        content.style[ionic.CSS.TRANSFORM] = '';
-                        setTimeout(function() {
-                            buttons.classList.add('invisible');
-                        }, 250);
-                    } else {
-                        buttons.classList.remove('invisible');
-                        content.style[ionic.CSS.TRANSFORM] = 'translate3d(-' + buttonsWidth + 'px, 0, 0)';
-                    }
-                });
-
-            }, element);
-        }
-    };
-}]).directive('closeOptionsOnTap', function($ionicGesture, $ionicListDelegate) {
+})
+//     .directive('holdList', ['$ionicGesture', function($ionicGesture) {
+//     return {
+//         restrict: 'A',
+//         link: function(scope, element, attrs) {
+//             $ionicGesture.on('hold', function(e) {
+//
+//                 var content = element[0].querySelector('.item-content');
+//
+//                 var buttons = element[0].querySelector('.item-options');
+//                 var buttonsWidth = buttons.offsetWidth;
+//
+//                 ionic.requestAnimationFrame(function() {
+//                     content.style[ionic.CSS.TRANSITION] = 'all ease-out .25s';
+//
+//                     if (!buttons.classList.contains('invisible')) {
+//                         content.style[ionic.CSS.TRANSFORM] = '';
+//                         setTimeout(function() {
+//                             buttons.classList.add('invisible');
+//                         }, 250);
+//                     } else {
+//                         buttons.classList.remove('invisible');
+//                         content.style[ionic.CSS.TRANSFORM] = 'translate3d(-' + buttonsWidth + 'px, 0, 0)';
+//                     }
+//                 });
+//
+//             }, element);
+//         }
+//     };
+// }])
+    .directive('closeOptionsOnTap', function($ionicGesture, $ionicListDelegate) {
     return {
         restrict: 'A',
         link: function($scope, $element, $attr) {
