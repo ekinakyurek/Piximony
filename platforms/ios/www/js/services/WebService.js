@@ -506,6 +506,7 @@ angular.module('Piximony').factory('WebService',function($http, $cordovaFile) {
     //Question
 
     function create_question(question, callback){
+        console.log(JSON.stringify(question))
 
         var form = new FormData()
 
