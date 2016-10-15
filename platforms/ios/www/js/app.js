@@ -122,7 +122,6 @@ angular.module('Piximony', ['ionic','ngCordova','pascalprecht.translate']).confi
     ID_CREATE:              'Create',
     ID_FRIENDS:             'Friends',
     ID_ME:                  'Me',
-        ID_SAVE:            'Save',
     });
  
     $translateProvider.translations('tr', {
@@ -156,7 +155,6 @@ angular.module('Piximony', ['ionic','ngCordova','pascalprecht.translate']).confi
     ID_CREATE:              'Ekle',
     ID_FRIENDS:             'Arkadaşlar',
     ID_ME:                  'Profil',
-        ID_SAVE:            'Kaydet',
     });
     
     $translateProvider.translations('es', {
@@ -172,7 +170,7 @@ angular.module('Piximony', ['ionic','ngCordova','pascalprecht.translate']).confi
     ID_CANCEL:          'Cancel',
     ID_EDIT:            'Edit',
     ID_DONE:            'Done',
-        ID_SAVE:            'Save',
+   
     });
     
     $translateProvider.translations('de', {
@@ -189,7 +187,7 @@ angular.module('Piximony', ['ionic','ngCordova','pascalprecht.translate']).confi
     ID_EDIT:            'Edit',
     ID_DONE:            'Done',
     ID_SAVE:            'Save',
-
+        
     });
     
     
