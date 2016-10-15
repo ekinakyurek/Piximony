@@ -466,13 +466,9 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
 
 
             console.log(">> QuestionsHomeCtrl.showQuestionDetails() question:"+ question);
-            console.log(JSON.stringify(question))
             $scope.questionTmp = DataService.clone(question);
-            console.log(JSON.stringify($scope.questionTmp));
             $scope.questionImg = $scope.questionTmp.picture_url
             $scope.filter =  $scope.questionTmp.filter
-            console.log(JSON.stringify($scope.filter))
-
             $scope.updateQuestionModal.show();
             console.log("<< QuestionsHomeCtrl.showQuestionDetails()");
         };

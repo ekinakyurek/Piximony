@@ -13,8 +13,8 @@
                         pulling-text="{{'ID_REFRESH_HINT' | translate}}"
                         on-refresh="doRefresh()">
                 </ion-refresher>
-                <ion-list can-swipe="true" show-delete="showDelete" hold-list>
-                <ion-item ng-repeat="project in projects">
+                <ion-list can-swipe="true" show-delete="showDelete">
+                <ion-item ng-repeat="project in projects" hold-list>
                     <div class="row">
                         <div class="col">
                             <a ng-click="showQuestions(project)" class="item item-avatar">

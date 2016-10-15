@@ -231,4 +231,4 @@ angular.module('Piximony', ['ionic','ngCordova','pascalprecht.translate']).confi
             }, element);
         }
     };
-}]);
+}])
