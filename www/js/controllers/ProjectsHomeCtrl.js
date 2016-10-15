@@ -61,6 +61,9 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
             }
         })
     };
+
+   
+
     
     $scope.toggleProject = function(project){
         $ionicListDelegate.closeOptionButtons();

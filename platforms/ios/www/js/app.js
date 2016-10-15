@@ -231,4 +231,13 @@ angular.module('Piximony', ['ionic','ngCordova','pascalprecht.translate']).confi
             }, element);
         }
     };
-}])
+}]).directive('closeOptionsOnTap', function($ionicGesture, $ionicListDelegate) {
+    return {
+        restrict: 'A',
+        link: function($scope, $element, $attr) {
+            $ionicGesture.on('tap', function(e) {
+               $ionicListDelegate.closeOptionButtons();
+            }, $element);
+        }
+    }
+})

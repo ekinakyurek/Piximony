@@ -7,14 +7,14 @@
         <button class="button button-icon" ng-click="show_delete()" translate='ID_EDIT'>
         </button>
     </ion-nav-buttons>
-    <ion-content>
+    <ion-content  close-options-on-tap>
             <div class="list">
                 <ion-refresher
                         pulling-text="{{'ID_REFRESH_HINT' | translate}}"
                         on-refresh="doRefresh()">
                 </ion-refresher>
                 <ion-list can-swipe="true" show-delete="showDelete">
-                <ion-item ng-repeat="project in projects" hold-list>
+                <ion-item ng-repeat="project in projects" hold-list >
                     <div class="row">
                         <div class="col">
                             <a ng-click="showQuestions(project)" class="item item-avatar">
