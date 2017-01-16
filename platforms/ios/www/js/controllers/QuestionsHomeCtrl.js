@@ -1,4 +1,4 @@
-angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $rootScope, $timeout, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicHistory, $ionicPlatform, $ionicActionSheet, $ionicListDelegate, $ionicPopup, ImageService, DataService, WebService, CacheService)  {
+angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $rootScope, $timeout, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicActionSheet, $ionicListDelegate, $ionicPopup, ImageService, DataService, WebService, CacheService)  {
         //alert($stateParams.projectId);
         CacheService.loadCache($scope.isPLaying)
         $scope.users = [];
@@ -16,10 +16,6 @@ angular.module('Piximony').controller('QuestionsHomeCtrl', function($scope, $roo
         $scope.questions = $scope.project.questions;
         $scope.getCachedValue = CacheService.getCachedValue;
         $scope.filter = {xAxisPrcnt: 0, yAxisPrcnt: 0, heightPrcnt: 0, widthPrcnt: 0};
-
-    $scope.goBack = function(){
-        $ionicHistory.goBack()
-    }
 
 
 

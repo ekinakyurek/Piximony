@@ -1,4 +1,4 @@
-angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet, CacheService, DataService, WebService, $ionicListDelegate)  {
+angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, $cordovaDevice, $cordovaFile, $ionicActionSheet, CacheService, DataService, WebService, $ionicListDelegate)  {
 
     CacheService.loadCache(false)
     $scope.isPLaying = false
@@ -8,7 +8,7 @@ angular.module('Piximony').controller('ProjectsHomeCtrl', function($scope, $root
     $scope.users = []
     $scope.selectedUsers = []
     $scope.project = {}
-    
+
     WebService.get_user_projects(DataService.getUser().username,function (result, projects, next, previos, count) {
         if (result==true){
             $rootScope.$broadcast('userProjects', projects)

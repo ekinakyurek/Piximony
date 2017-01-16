@@ -6,7 +6,8 @@
 angular.module('Piximony', ['ionic','ngCordova','pascalprecht.translate']).config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider,$translateProvider) {
 
     $ionicConfigProvider.views.maxCache(2);
-   
+    $ionicConfigProvider.backButton.previousTitleText(false).text('');
+    $ionicConfigProvider.views.swipeBackEnabled(true)
     $stateProvider
 
         .state('tab', {
@@ -122,6 +123,7 @@ angular.module('Piximony', ['ionic','ngCordova','pascalprecht.translate']).confi
     ID_CREATE:              'Create',
     ID_FRIENDS:             'Friends',
     ID_ME:                  'Me',
+        ID_SAVE:            'Save',
     });
  
     $translateProvider.translations('tr', {
@@ -155,6 +157,7 @@ angular.module('Piximony', ['ionic','ngCordova','pascalprecht.translate']).confi
     ID_CREATE:              'Ekle',
     ID_FRIENDS:             'Arkadaşlar',
     ID_ME:                  'Profil',
+        ID_SAVE:            'Kaydet',
     });
     
     $translateProvider.translations('es', {
@@ -170,6 +173,7 @@ angular.module('Piximony', ['ionic','ngCordova','pascalprecht.translate']).confi
     ID_CANCEL:          'Cancel',
     ID_EDIT:            'Edit',
     ID_DONE:            'Done',
+        ID_SAVE:            'Save',
    
     });
     
@@ -205,6 +209,7 @@ angular.module('Piximony', ['ionic','ngCordova','pascalprecht.translate']).confi
         link: function (scope, element, attrs){
 
             attrs.$observe('imageSource', function() {
+                console.log(CacheService.getCachedValue(attrs.imageSource, scope.isPLaying, attrs.isThumbnail))
                 element.attr("src", CacheService.getCachedValue(attrs.imageSource, scope.isPLaying, attrs.isThumbnail));
             })
 

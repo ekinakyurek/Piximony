@@ -33,6 +33,7 @@ angular.module('Piximony').controller('AccountCtrl', function($scope, $state, Da
         $scope.hideSheet();
 
         ImageService.handleMediaDialog(type, function(result, name) {
+            
             $scope.user.picture_url =  cordova.file.dataDirectory + name
             $scope.user.thumbnail_url =    cordova.file.dataDirectory + name
             $scope.profile_image = name
